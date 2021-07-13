@@ -29,7 +29,7 @@ function AdminDashBoard() {
   };
 
   const login = () => {
-    Axios.post("https://executive-app.herokuapp.com/login", {
+    Axios.get("https://executive-app.herokuapp.com/login", {
       username: setUsername,
       password: setPassword,
     }).then((response) => {
