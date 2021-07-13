@@ -19,9 +19,13 @@ function AdminDashBoard() {
     Axios.post("https://executive-app.herokuapp.com/register", {
       username: usernameReg,
       password: passwordReg,
-    }).then((response, error) => {
-      console.log(error);
-    });
+    })
+      .then((response, error) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   const login = () => {
