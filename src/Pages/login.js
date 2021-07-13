@@ -3,9 +3,7 @@
 // import loggingIn from "./components/login";
 import Axios from "axios";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-const cors = require("cors");
-app.use(cors());
+// import { useHistory } from "react-router-dom";
 
 function AdminDashBoard() {
   //     let history = useHistory();
