@@ -16,7 +16,7 @@ function AdminDashBoard() {
   const [password, setPassword] = useState("");
 
   const register = () => {
-    Axios.post("http://executive-app.herokuapp.com/register", {
+    Axios.post("https://executive-app.herokuapp.com/register", {
       username: usernameReg,
       password: passwordReg,
     }).then((response) => {
@@ -25,7 +25,7 @@ function AdminDashBoard() {
   };
 
   const login = () => {
-    Axios.post("http://executive-app.herokuapp.com/login", {
+    Axios.post("https://executive-app.herokuapp.com/login", {
       username: setUsername,
       password: setPassword,
     }).then((response) => {
