@@ -1,6 +1,8 @@
 import { Card, Table, Feed, Icon, Input, Button } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+const cors = require("cors");
+app.use(cors());
 
 function DashboardNotes() {
   const [noteTyped, setNoteTyped] = useState("");
