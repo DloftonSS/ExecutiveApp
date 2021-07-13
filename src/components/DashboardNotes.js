@@ -7,20 +7,18 @@ function DashboardNotes() {
   const [notesList, setNotesList] = useState("");
 
   const submitNote = (e) => {
-    Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
+    Axios.post("http://executive-app.herokuapp.com/newDashboardNote", {
       noteTyped: noteTyped,
     }).then(() => {
-      alert("successful note posted");
+      console.log("successful note posted");
     });
   };
 
   useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/api/get").then(
-      (response) => {
-        setNotesList(response.data);
-        console.log(response.data);
-      }
-    );
+    Axios.get("http://executive-app.herokuapp.com/api/get").then((response) => {
+      setNotesList(response.data);
+      console.log(response.data);
+    });
   }, []);
 
   return (
