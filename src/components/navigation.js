@@ -1,4 +1,3 @@
-import "./navigation.css";
 import logo from "../Pages/images/ExecutiveAccess.png";
 import { Card, Button } from "semantic-ui-react";
 
