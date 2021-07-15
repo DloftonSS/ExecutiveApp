@@ -1,10 +1,10 @@
 import "./App.css";
 // import loggingIn from "./components/login";
-// import Axios from "axios";
-// import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AdminDashBoard from "./Pages/adminDashBoard";
-import Login from "./Pages/login";
+import Axios from "axios";
+import React, { useState } from "react";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import AdminDashBoard from "./Pages/adminDashBoard";
+// import Login from "./Pages/login";
 
 function App() {
   const [usernameReg, setUsernameReg] = useState("");
