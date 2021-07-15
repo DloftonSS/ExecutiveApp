@@ -15,6 +15,7 @@ function DashboardNotes() {
       noteTyped: noteTyped,
     }).then(() => {
       console.log("successful note posted");
+      reloadPage();
     });
   };
 
@@ -24,7 +25,6 @@ function DashboardNotes() {
         // Axios.get("localhost:3001/api/get").then((response) => {
         setNotesList(response.data);
         console.log(response.data);
-        reloadPage();
       }
     );
   }, []);
