@@ -12,6 +12,7 @@ function DashboardNotes() {
       noteTyped: noteTyped,
     }).then(() => {
       console.log("successful note posted");
+      window.location.reload();
     });
   };
 
@@ -54,7 +55,7 @@ function DashboardNotes() {
                       >
                         Name of Admin
                       </Feed.User>
-                      <Feed.Date></Feed.Date>
+                      <Feed.Date>Date</Feed.Date>
                     </Feed.Summary>
                     <Feed.Meta>
                       <Feed.User>Name of Customer</Feed.User>
