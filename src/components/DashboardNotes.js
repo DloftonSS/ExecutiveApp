@@ -54,7 +54,7 @@ function DashboardNotes() {
                       >
                         Name of Admin
                       </Feed.User>
-                      <Feed.Date>{notesList[keyName].createdAt}</Feed.Date>
+                      <Feed.Date></Feed.Date>
                     </Feed.Summary>
                     <Feed.Meta>
                       <Feed.User>Name of Customer</Feed.User>
