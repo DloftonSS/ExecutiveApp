@@ -12,7 +12,6 @@ function DashboardNotes() {
       noteTyped: noteTyped,
     }).then(() => {
       console.log("successful note posted");
-      location.reload();
     });
   };
 
