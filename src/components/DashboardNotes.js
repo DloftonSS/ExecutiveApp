@@ -6,13 +6,15 @@ function DashboardNotes() {
   const [noteTyped, setNoteTyped] = useState("");
   const [notesList, setNotesList] = useState("");
 
+  const reloadPage = () => {
+    window.location.reload(true);
+  };
   const submitNote = (e) => {
     Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
       // Axios.post("localhost:3001/newDashboardNote", {
       noteTyped: noteTyped,
     }).then(() => {
       console.log("successful note posted");
-      window.location.reload(true);
     });
   };
 
@@ -22,6 +24,7 @@ function DashboardNotes() {
         // Axios.get("localhost:3001/api/get").then((response) => {
         setNotesList(response.data);
         console.log(response.data);
+        reloadPage();
       }
     );
   }, []);
