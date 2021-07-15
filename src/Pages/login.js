@@ -17,6 +17,7 @@ function AdminDashBoard() {
 
   const register = () => {
     Axios.post("https://executive-app.herokuapp.com/register", {
+      // Axios.post("localhost:3001/register", {
       username: usernameReg,
       password: passwordReg,
     })
@@ -30,6 +31,7 @@ function AdminDashBoard() {
 
   const login = () => {
     Axios.get("https://executive-app.herokuapp.com/login", {
+      // Axios.get("localhost:3001/login", {
       username: setUsername,
       password: setPassword,
     }).then((response) => {

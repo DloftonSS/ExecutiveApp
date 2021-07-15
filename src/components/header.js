@@ -1,17 +1,15 @@
-import "./navigation.css";
+import "./header.css";
 import logo from "../Pages/images/ExecutiveAccess.png";
 import { Card, Button } from "semantic-ui-react";
 
-function Navigation() {
+function Header() {
   return (
     <div className="Navigation">
       <div className="background">
-        <ul>
-          <ui>hrey</ui>
-        </ul>
+        <img src={logo} style={{ height: "100px" }}></img>
       </div>
     </div>
   );
 }
 
-export default Navigation;
+export default Header;

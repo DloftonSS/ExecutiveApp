@@ -8,6 +8,7 @@ function DashboardNotes() {
 
   const submitNote = (e) => {
     Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
+      // Axios.post("localhost:3001/newDashboardNote", {
       noteTyped: noteTyped,
     }).then(() => {
       console.log("successful note posted");
@@ -17,6 +18,7 @@ function DashboardNotes() {
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
       (response) => {
+        // Axios.get("localhost:3001/api/get").then((response) => {
         setNotesList(response.data);
         console.log(response.data);
       }
