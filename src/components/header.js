@@ -1,6 +1,6 @@
 import "./header.css";
 import logo from "../Pages/images/ExecutiveAccess.png";
-import { Card, Button } from "semantic-ui-react";
+// import { Card, Button } from "semantic-ui-react";
 
 function Header() {
   return (

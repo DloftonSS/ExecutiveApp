@@ -1,4 +1,4 @@
-import { Card, Table, Feed, Icon, Input, Button } from "semantic-ui-react";
+import { Card, Feed, Icon, Input, Button } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
@@ -11,7 +11,7 @@ function DashboardNotes() {
   };
   const submitNote = (e) => {
     Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
-      // Axios.post("localhost:3001/newDashboardNote", {
+      // Axios.post("http://localhost:3001/newDashboardNote", {
       noteTyped: noteTyped,
     }).then(() => {
       console.log("successful note posted");
@@ -22,7 +22,7 @@ function DashboardNotes() {
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
       (response) => {
-        // Axios.get("localhost:3001/api/get").then((response) => {
+        // Axios.get("http://localhost:3001/api/get").then((response) => {
         setNotesList(response.data);
         console.log(response.data);
       }
