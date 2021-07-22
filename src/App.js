@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AdminDashBoard from "./Pages/adminDashBoard";
 import Login from "./Pages/login";
 import AddMember from "./Pages/AddMember";
+import AddAdmin from "./Pages/AddAdmin";
 
 function App() {
   // const [usernameReg, setUsernameReg] = useState("");
@@ -37,7 +38,9 @@ function App() {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/adminDashBoard" exact component={AdminDashBoard} />
+
         <Route path="/addMember" exact component={AddMember} />
+        <Route path="/addAdmin" exact component={AddAdmin} />
       </Switch>
     </Router>
     // <div className="App">

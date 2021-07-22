@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/header";
-import Navigation from "../components/navigation";
+// import Navigation from "../components/navigation";
 import { Button, Checkbox, Form, Input } from "semantic-ui-react";
 import Axios from "axios";
 
@@ -33,10 +33,10 @@ function AddMember() {
   return (
     <div className="newMember">
       <Header />
-      <Navigation />
+      {/* <Navigation /> */}
       {/* <div>This will be for adding the members to the Database.</div> */}
       <Form className="form-contents">
-        <h1>New Member</h1>
+        <h3>REGISTER A NEW EXECUTIVE MEMBER</h3>
         <Form.Field>
           <label>First Name</label>
           <Input
@@ -83,9 +83,11 @@ function AddMember() {
           />
         </Form.Field>
         <Form.Field>
-          <Checkbox label="I agree to the Terms and Conditions" />
+          {/* <Checkbox label="I agree to the Terms and Conditions" /> */}
         </Form.Field>
-        <Button onClick={submitNewCustomer}>Submit</Button>
+        <Button type="reset" onClick={submitNewCustomer}>
+          Register Executive
+        </Button>
       </Form>
       <footer></footer>
     </div>

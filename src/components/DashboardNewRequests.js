@@ -1,26 +1,23 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import API from "../../utils/API";
 import { Card, Table } from "semantic-ui-react";
+import Axios from "axios";
+
 // import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
 function DashboardNewRequest() {
-  //   const [newRequests, setNewRequests] = useState("");
-  //   const { token } = useSelector((state) => state.auth);
+  const [requestList, setRequestList] = useState("");
 
-  //   async function loadRequests() {
-  //     const options = {
-  //       headers: {
-  //         token: token,
-  //       },
-  //     };
-  //     const requests = await API.loadNewRequests(options);
-
-  //     setNewRequests(requests.data[0]);
-  //   }
-  //   useEffect(() => {
-  //     loadRequests();
-  //   }, []);
+  useEffect(() => {
+    Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/requests").then((response) => {
+        setRequestList(response.data);
+        console.log(response.data);
+      }
+    );
+  }, []);
 
   return (
     <Card fluid style={{ marginRight: "10px", height: "350px" }}>
@@ -39,7 +36,27 @@ function DashboardNewRequest() {
             </Table.Row>
           </Table.Header>
 
-          <Table.Body></Table.Body>
+          <Table.Body>
+            {Object.keys(requestList).map((request, i) => {
+              return (
+                <Table.Row key={request.id}>
+                  <Table.Cell>
+                    {requestList[request].member_first +
+                      " " +
+                      requestList[request].member_last}
+                  </Table.Cell>
+
+                  <Table.Cell>{requestList[request].item}</Table.Cell>
+                  <Table.Cell>
+                    {requestList[request].first_name +
+                      " " +
+                      requestList[request].last_name}
+                  </Table.Cell>
+                  <Table.Cell>{requestList[request].date}</Table.Cell>
+                </Table.Row>
+              );
+            })}
+          </Table.Body>
         </Table>
       </Card.Content>
     </Card>

@@ -1,0 +1,19 @@
+.form {
+  background-color: gray;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border-color: black;
+  border-style: solid;
+  margin-top: 5%;
+}
+
+label {
+  color: black;
+}
+
+input {
+  border-radius: 5px;
+  width: 200px;
+}

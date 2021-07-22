@@ -6,16 +6,16 @@ function DashboardNotes() {
   const [noteTyped, setNoteTyped] = useState("");
   const [notesList, setNotesList] = useState("");
 
-  const reloadPage = () => {
-    window.location.reload(true);
-  };
+  // const reloadPage = () => {
+  //   window.location.reload(true);
+  // };
   const submitNote = (e) => {
     Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
       // Axios.post("http://localhost:3001/newDashboardNote", {
       noteTyped: noteTyped,
     }).then(() => {
       console.log("successful note posted");
-      reloadPage();
+      // reloadPage();
     });
   };
 
@@ -30,7 +30,7 @@ function DashboardNotes() {
   }, []);
 
   return (
-    <div className="newMembers">
+    <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
       <Card fluid style={{ maxHeight: "350px" }}>
         <Card.Content>
           <Card.Header>Notes</Card.Header>
@@ -40,6 +40,8 @@ function DashboardNotes() {
             overflowY: "scroll",
             scrollbarWidth: "1px",
             height: "100%",
+            display: "flex",
+            flexDirection: "column-reverse",
           }}
         >
           <Feed>
@@ -51,7 +53,7 @@ function DashboardNotes() {
                     <Icon name="user circle" />
                   </Feed.Label>
 
-                  <Feed.Content>
+                  <Feed.Content style={{ color: "red" }}>
                     <Feed.Summary>
                       <Feed.User
                         style={{ cursor: "default", color: "#DB2828" }}
@@ -67,6 +69,7 @@ function DashboardNotes() {
                       {" "}
                       {notesList[keyName].note}
                     </Feed.Extra>
+                    ______________________________________________________________________________________________
                   </Feed.Content>
                 </Feed.Event>
               );
@@ -74,7 +77,7 @@ function DashboardNotes() {
           </Feed>
         </Card.Content>
       </Card>
-      <Card>
+      <Card fluid>
         <Card.Content>
           <Card.Header>New Note</Card.Header>
         </Card.Content>
@@ -83,20 +86,14 @@ function DashboardNotes() {
             onChange={(e) => {
               setNoteTyped(e.target.value);
             }}
-            style={{ margin: "1rem" }}
+            style={{ margin: "1rem", width: "90%" }}
             icon="sticky note outline"
-            // action={{
-            //   icon: "add",
-            //   onClick: () => handleClick(),
-            // }}
             iconPosition="left"
             placeholder="Add Note..."
-            // value={note}
-            // onChange={(event) => handleChange(event)}
           />
         </Card.Content>
         <Card.Content>
-          <Button secondary onClick={submitNote}>
+          <Button type="reset" secondary onClick={submitNote}>
             Submit Note
           </Button>
         </Card.Content>

@@ -16,8 +16,8 @@ function NewMembers() {
   }, []);
 
   return (
-    <div className="newMembers">
-      <Card fluid style={{ marginRight: "10px", height: "350px" }}>
+    <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
+      <Card fluid style={{ marginRight: "10px", height: "570px" }}>
         <Card.Content>
           <Card.Header>New Members</Card.Header>
         </Card.Content>

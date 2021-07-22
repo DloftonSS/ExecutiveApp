@@ -2,69 +2,67 @@
 // import "./App.css";
 // import loggingIn from "./components/login";
 import Axios from "axios";
-import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function AdminDashBoard() {
-  //     let history = useHistory();
+function LoggingIn() {
+  let history = useHistory();
   // history.push("/adminDashBoard");
 
-  const [usernameReg, setUsernameReg] = useState("");
-  const [passwordReg, setPasswordReg] = useState("");
+  //*** not registering here ***/
+  // const [emailReg, setEmailReg] = useState("");
+  // const [passwordReg, setPasswordReg] = useState("");
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const register = () => {
-    Axios.post("https://executive-app.herokuapp.com/register", {
-      // Axios.post("http://localhost:3001/register", {
-      username: usernameReg,
-      password: passwordReg,
-    })
-      .then((response, error) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  };
+  const [loginStatus, setLoginStatus] = useState("");
 
   const login = () => {
     Axios.get("https://executive-app.herokuapp.com/login", {
-      // Axios.get("http://localhost:3001/login", {
-      username: setUsername,
-      password: setPassword,
+      // Axios.post("http://localhost:3001/login", {
+      email: email,
+      password: password,
     }).then((response) => {
-      console.log(response);
+      if (response.data[0].role == "admin") {
+        // setLoginStatus("Welcome" + " " + response.data[0].first_name);
+        history.push("/adminDashBoard");
+      } else if (response.data[0].role == "fake" || "undefined") {
+        setLoginStatus("Unauthorized user");
+      } else {
+        setLoginStatus(response.data.message);
+        console.log(response.data);
+      }
     });
   };
 
+  //authenticate user
+  // const [role, setRole] = useState("");
+  // const history = useHistory();
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   if (loggedIn && role == "admin") {
+  //     history.push("/adminDashBoard");
+  //     console.log(role);
+  //   }
+  //   if (role == "user") {
+  //     history.push("/");
+  //   } else {
+  //     console.log("incorrect credentials");
+  //   }
+  // });
+
+  //rendered to page
   return (
     <div className="App">
       {" "}
       <div className="form">
-        <h3>Register</h3>
-        <label>UserName</label>{" "}
-        <input
-          type="text"
-          onChange={(e) => {
-            setUsernameReg(e.target.value);
-          }}
-        ></input>
-        <label>Password</label>
-        <input
-          type="text"
-          onChange={(e) => {
-            setPasswordReg(e.target.value);
-          }}
-        ></input>
-        <button onClick={register}>Create Account</button>
         <h3>login</h3>
         <input
           type="text"
-          placeholder="User Name"
+          placeholder="Email"
           onChange={(e) => {
-            setUsername(e.target.value);
+            setEmail(e.target.value);
           }}
         ></input>
         <input
@@ -76,8 +74,9 @@ function AdminDashBoard() {
         ></input>
         <button onClick={login}>Sign In</button>
       </div>
+      <h3>{loginStatus}</h3>
     </div>
   );
 }
 
-export default AdminDashBoard;
+export default LoggingIn;
