@@ -19,6 +19,10 @@ function DashboardNotes() {
     });
   };
 
+  const deleteNote = (note) => {
+    Axios.delete(`http://localhost:3001/deleteNote/${note}`);
+  };
+
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
       (response) => {
@@ -60,7 +64,7 @@ function DashboardNotes() {
                       >
                         Name of Admin
                       </Feed.User>
-                      <Feed.Date>Date</Feed.Date>
+                      <Feed.Date>{notesList[keyName].createdAt}</Feed.Date>
                     </Feed.Summary>
                     <Feed.Meta>
                       <Feed.User>Name of Customer</Feed.User>
@@ -69,7 +73,14 @@ function DashboardNotes() {
                       {" "}
                       {notesList[keyName].note}
                     </Feed.Extra>
-                    ______________________________________________________________________________________________
+                    ____________________________________________________________________________________________{" "}
+                    <Icon
+                      name="x"
+                      style={{ marginRight: "0px" }}
+                      onClick={() => {
+                        deleteNote(keyName.note);
+                      }}
+                    />{" "}
                   </Feed.Content>
                 </Feed.Event>
               );

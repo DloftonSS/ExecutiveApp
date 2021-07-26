@@ -1,61 +1,51 @@
 // import React from "react";
 // import "./App.css";
 // import loggingIn from "./components/login";
+import "./login.css";
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import logo from "../Pages/images/ExecutiveAccess.png";
+import { Container, Icon } from "semantic-ui-react";
 
 function LoggingIn() {
   let history = useHistory();
-  // history.push("/adminDashBoard");
 
-  //*** not registering here ***/
-  // const [emailReg, setEmailReg] = useState("");
-  // const [passwordReg, setPasswordReg] = useState("");
+  // history.push("/adminDashBoard");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
+  // const [isAuth, setIsAuth] = useState(false);
 
   const login = () => {
-    Axios.post("https://executive-app.herokuapp.com/login", {
-      // Axios.post("http://localhost:3001/login", {
+    // Axios.post("https://executive-app.herokuapp.com/login", {
+    Axios.post("http://localhost:3001/login", {
       email: email,
       password: password,
     }).then((response) => {
-      if (response.data[0].role == "admin") {
-        // setLoginStatus("Welcome" + " " + response.data[0].first_name);
+      if (response.data[0].email && response.data[0].password) {
+        // setIsAuth(true);
         history.push("/adminDashBoard");
-      } else if (response.data[0].role == "fake" || "undefined") {
-        setLoginStatus("Unauthorized user");
+        console.log("matching user and password");
       } else {
-        setLoginStatus(response.data.message);
-        console.log(response.data);
+        setLoginStatus("Incorrect email or password");
       }
     });
   };
-
-  //authenticate user
-  // const [role, setRole] = useState("");
-  // const history = useHistory();
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (loggedIn && role == "admin") {
-  //     history.push("/adminDashBoard");
-  //     console.log(role);
-  //   }
-  //   if (role == "user") {
-  //     history.push("/");
-  //   } else {
-  //     console.log("incorrect credentials");
-  //   }
-  // });
 
   //rendered to page
   return (
     <div className="App">
       {" "}
+      <Container textAlign="center">
+        {" "}
+        <a href="/adminDashBoard">
+          {" "}
+          <img src={logo} style={{ height: "150px" }}></img>
+        </a>
+      </Container>
       <div className="form">
         <h3>login</h3>
         <input

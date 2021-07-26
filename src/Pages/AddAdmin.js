@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../components/header";
 // import Navigation from "../components/navigation";
-import { Button, Checkbox, Form, Input } from "semantic-ui-react";
+import { Button, Form, Input } from "semantic-ui-react";
 import Axios from "axios";
 // import Header from "../components/header";
 

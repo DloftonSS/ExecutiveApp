@@ -1,5 +1,5 @@
 import "./header.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import logo from "../Pages/images/ExecutiveAccess.png";
 import { Container, Icon } from "semantic-ui-react";
 
@@ -24,7 +24,7 @@ function Header() {
           </li>
           <li>
             {" "}
-            <a href="...">
+            <a href="/allMembers">
               {" "}
               <Icon disabled name="users"></Icon> All Members
             </a>
