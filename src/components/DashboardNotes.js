@@ -19,9 +19,9 @@ function DashboardNotes() {
     });
   };
 
-  // const deleteNote = (note) => {
-  //   Axios.delete(`http://localhost:3001/deleteNote/${note}`);
-  // };
+  const deleteNote = (note) => {
+    Axios.delete(`http://localhost:3001/deleteNote/${note}`);
+  };
 
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
