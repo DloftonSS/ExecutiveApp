@@ -22,7 +22,11 @@ function App() {
         <Route path="/addMember" exact component={AddMember} />
         <Route path="/allMembers" exact component={AllMembers} />
         <Route path="/addAdmin" exact component={AddAdmin} />
-        <Route path="/executiveAccount" exact component={ExecutiveAccount} />
+        <Route
+          path="/executiveAccount/:id"
+          exact
+          component={ExecutiveAccount}
+        />
       </Switch>
     </Router>
   );

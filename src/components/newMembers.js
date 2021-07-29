@@ -1,6 +1,7 @@
 import { Card, Table } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 function NewMembers() {
   const [memberList, setMemberList] = useState("");
@@ -36,8 +37,22 @@ function NewMembers() {
               {Object.keys(memberList).map((member, i) => {
                 return (
                   <Table.Row key={member.id}>
-                    <Table.Cell>{memberList[member].first_name}</Table.Cell>
-                    <Table.Cell>{memberList[member].last_name}</Table.Cell>
+                    <Table.Cell>
+                      <Link
+                        style={{ color: "black" }}
+                        to={`/executiveAccount/${memberList[member].id}`}
+                      >
+                        {memberList[member].first_name}
+                      </Link>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Link
+                        style={{ color: "black" }}
+                        to={`/executiveAccount/${memberList[member].id}`}
+                      >
+                        {memberList[member].last_name}
+                      </Link>
+                    </Table.Cell>
                     <Table.Cell>{memberList[member].phone}</Table.Cell>
                     <Table.Cell>{memberList[member].email}</Table.Cell>
                     <Table.Cell>{memberList[member].address}</Table.Cell>
