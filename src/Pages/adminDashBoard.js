@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import NewMembers from "../components/newMembers";
 import DashboardNotes from "../components/DashboardNotes";
 import DashboardNewRequest from "../components/DashboardNewRequests";
+import SideChat from "../components/SideChat";
 
 // import { useHistory } from "react-router-dom";
 // import { useSelector } from "react-redux";
@@ -16,6 +17,7 @@ function AdminDashBoard() {
   return (
     <div>
       <Header />
+
       <div
         style={{
           width: "100%",
@@ -23,9 +25,16 @@ function AdminDashBoard() {
           scrollbarWidth: "1px",
         }}
       >
-        <div style={{ display: "flex", padding: ".5rem", alignItems: "top" }}>
+        <div
+          style={{
+            display: "flex",
+            padding: ".5rem",
+            alignItems: "top",
+          }}
+        >
           <NewMembers />
-          <DashboardNotes />
+          {/* <DashboardNotes /> */}
+          <SideChat />
         </div>
         {/* Row Two */}
         <div style={{ display: "flex", padding: ".5rem", alignItems: "top" }}>

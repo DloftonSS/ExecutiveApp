@@ -1,4 +1,4 @@
-import { Card, Table } from "semantic-ui-react";
+import { Card, Table, Button } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 function NewMembers() {
   const [memberList, setMemberList] = useState("");
 
+  // const showUser = () => {
+  //   Axios.get("http://localhost:3001/memeber").then((response) => {
+  //     console.log(response.data);
+  //   });
+  // };
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
       (response) => {
@@ -18,7 +23,7 @@ function NewMembers() {
 
   return (
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
-      <Card fluid style={{ marginRight: "10px", height: "570px" }}>
+      <Card fluid style={{ marginRight: "10px", height: "670px" }}>
         <Card.Content>
           <Card.Header>New Members</Card.Header>
         </Card.Content>
@@ -46,12 +51,17 @@ function NewMembers() {
                       </Link>
                     </Table.Cell>
                     <Table.Cell>
-                      <Link
+                      {/* <Link
                         style={{ color: "black" }}
                         to={`/executiveAccount/${memberList[member].id}`}
+                      > */}
+                      <Button
+                      // onClick={showUser}
                       >
+                        {" "}
                         {memberList[member].last_name}
-                      </Link>
+                      </Button>
+                      {/* </Link> */}
                     </Table.Cell>
                     <Table.Cell>{memberList[member].phone}</Table.Cell>
                     <Table.Cell>{memberList[member].email}</Table.Cell>

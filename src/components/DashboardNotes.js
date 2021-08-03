@@ -28,7 +28,7 @@ function DashboardNotes() {
       (response) => {
         // Axios.get("http://localhost:3001/api/get").then((response) => {
         setNotesList(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       }
     );
   }, []);

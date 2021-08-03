@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import API from "../../utils/API";
 import { Card, Table } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 
 // import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ function DashboardNewRequest() {
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
       (response) => {
-        // Axios.get("http://localhost:3001/requests").then((response) => {
+        // Axios.get("http://localhost:3001/newRequests").then((response) => {
         setRequestList(response.data);
         console.log(response.data);
       }
@@ -41,18 +42,23 @@ function DashboardNewRequest() {
               return (
                 <Table.Row key={request.id}>
                   <Table.Cell>
-                    {requestList[request].member_first +
-                      " " +
-                      requestList[request].member_last}
+                    <Link
+                      style={{ color: "black" }}
+                      to={`/executiveAccount/${requestList[request].id}`}
+                    >
+                      {requestList[request].first_name +
+                        " " +
+                        requestList[request].last_name}
+                    </Link>
                   </Table.Cell>
 
                   <Table.Cell>{requestList[request].item}</Table.Cell>
                   <Table.Cell>
-                    {requestList[request].first_name +
+                    {requestList[request].admin_first +
                       " " +
-                      requestList[request].last_name}
+                      requestList[request].admin_last}
                   </Table.Cell>
-                  <Table.Cell>{requestList[request].date}</Table.Cell>
+                  <Table.Cell>{requestList[request].date_created}</Table.Cell>
                 </Table.Row>
               );
             })}

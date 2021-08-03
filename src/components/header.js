@@ -2,6 +2,7 @@ import "./header.css";
 // import { Link } from "react-router-dom";
 import logo from "../Pages/images/ExecutiveAccess.png";
 import { Container, Icon } from "semantic-ui-react";
+import SideChat from "../components/SideChat";
 
 function Header() {
   return (
@@ -31,14 +32,14 @@ function Header() {
           </li>
           <li>
             {" "}
-            <a href="...">
+            <a href="/allRequests">
               {" "}
               <Icon disabled name="heart"></Icon> All Requests
             </a>
           </li>
           <li>
             {" "}
-            <a href="...">
+            <a href="/catalog">
               {" "}
               <Icon disabled name="list"></Icon> Catalog
             </a>

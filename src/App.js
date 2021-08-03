@@ -10,7 +10,9 @@ import Login from "./Pages/login";
 import AddMember from "./Pages/AddMember";
 import AllMembers from "./Pages/Allmembers";
 import AddAdmin from "./Pages/AddAdmin";
+import AllRequests from "./Pages/AllRequests";
 import ExecutiveAccount from "./Pages/ExecutiveAccount";
+import Catalog from "./Pages/Catalog";
 // import PrivateRoute from "./PrivateRoute";
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
         <Route path="/addMember" exact component={AddMember} />
         <Route path="/allMembers" exact component={AllMembers} />
         <Route path="/addAdmin" exact component={AddAdmin} />
+        <Route path="/allRequests" exact component={AllRequests} />
+        <Route path="/catalog" exact component={Catalog} />
         <Route
           path="/executiveAccount/:id"
           exact

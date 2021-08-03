@@ -1,67 +1,73 @@
 import {
   Card,
-  Link,
+  // Link,
   Checkbox,
   Table,
   Icon,
   Feed,
   Input,
   Button,
-  Item,
+  // Item,
 } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 // import Axios from "axios";
 import Header from "../components/header";
 import API from "../utils/API";
+import axios from "axios";
+// import axios from "axios";
+
 // import { useSelector } from "react-redux";
 
 function ExecutiveAccount(props) {
   // const { token } = useSelector((state) => state.auth);
 
   const [memberDetails, setMemberDetails] = useState({});
-  //  const [dates, setDates] = useState({
-  //  date_joined: "",
-  //  expiration_date: "",
-  //  });
+  // const [dates, setDates] = useState({
+  //   date_joined: "",
+  //   expiration_date: "",
+  // });
   const id = props.id;
 
   useEffect(() => {
-    async function getDetails() {
-      // const options = {
-      //   headers: {
-      //     token: token,
-      //   },
-      // };
-
-      const { data } = await API.loadMember(
-        id
-        // , options
-      );
-
-      setMemberDetails(data);
-
-      //  let dateJoined = new Date(data.date_joined)
-      //    .toUTCString()
-      //    .split(" ")
-      //    .slice(0, 4)
-      //    .join(" ");
-
-      //  let dateExpired = new Date(data.expiration_date)
-      //    .toUTCString()
-      //    .split(" ")
-      //    .slice(0, 4)
-      //    .join(" ");
-
-      //  setDates({
-      //    date_joined: dateJoined,
-      //    expiration_date: dateExpired,
-      //  });
-    }
-    getDetails();
+    // async function getDetails() {
+    // axios.get(`http://localhost:3001/member/${id}`).then((response) => {
+    //   setMemberDetails(response.data[1]);
+    //   console.log(memberDetails);
+    // });
+    // const options = {
+    //   headers: {
+    //     token: token,
+    //   },
+    // };
+    // const { data } = await API.loadMember(id);
+    // setMemberDetails(data);
+    //
+    // let dateJoined = new Date(data.date_joined)
+    //   .toUTCString()
+    //   .split(" ")
+    //   .slice(0, 4)
+    //   .join(" ");
+    // let dateExpired = new Date(data.expiration_date)
+    //   .toUTCString()
+    //   .split(" ")
+    //   .slice(0, 4)
+    //   .join(" ");
+    // setDates({
+    //   date_joined: dateJoined,
+    //   expiration_date: dateExpired,
+    // });
+    // console.log(data);
+    // }
+    // getDetails();
   }, []);
+
   return (
     <div style={{ width: "100%", overflowY: "scroll", scrollbarWidth: "1px" }}>
       <Header />
+      {/* <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+      <button onClick={clickHandler}>click</button>
+      {memberDetails.first_name} */}
+
       <div style={{ display: "flex", padding: ".5rem", alignItems: "top" }}>
         <Card fluid style={{ width: "50%", marginRight: "10px" }}>
           {/* {Object.keys(memberDetails).map((Details, i) => {
@@ -82,30 +88,21 @@ function ExecutiveAccount(props) {
                 {/* </Link> */}
               </span>
             </Card.Header>
-            <Card.Meta>{memberDetails.address} </Card.Meta>;
+            <Card.Meta>{memberDetails.address} </Card.Meta>
             <Card.Meta>
-              {memberDetails.address ? (
-                <span className="date">{memberDetails.address}</span>
-              ) : (
-                <span className="date">No address given</span>
-              )}
+              {/* <span className="date">{memberDetails.address}</span> */}
             </Card.Meta>
           </Card.Content>
-          {/* );
-            }
-          }
-          )
-          }
-          ; */}
+
           <Card.Content extra>
             <Icon name="phone" style={{ margin: "0 5px" }} />
 
-            {memberDetails.phone_number
-              ? memberDetails.phone_number
+            {memberDetails.phone
+              ? memberDetails.phone
               : "No phone number provided"}
             <Icon name="mail" style={{ margin: "0 5px" }} />
 
-            {memberDetails.email ? memberDetails.email : "No email provided"}
+            {memberDetails.email}
           </Card.Content>
           <Card.Content>
             <Table celled striped color="red">
