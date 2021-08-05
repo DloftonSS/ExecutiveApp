@@ -1,4 +1,4 @@
-const db = require("../../src/models/Members");
+const db = require("../models");
 const { sequelize } = require("../models");
 // const { QueryTypes, DATE } = require("sequelize");
 // const path = require("path");

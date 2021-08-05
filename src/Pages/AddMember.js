@@ -12,6 +12,8 @@ function AddMember() {
   const [customerPhone, setCustomerPhone] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerAddress, setCustomerAddress] = useState("");
+  const [dateJoined, setDateJoined] = useState("");
+  const [preferredStore, setPreferredStore] = useState("");
 
   const submitNewCustomer = () => {
     Axios.post("https://executive-app.herokuapp.com/addMember", {
@@ -21,6 +23,8 @@ function AddMember() {
       customerPhone: customerPhone,
       customerEmail: customerEmail,
       customerAddress: customerAddress,
+      dateJoined: dateJoined,
+      preferredStore: preferredStore,
     })
       .then((response, error) => {
         console.log(response);
@@ -61,7 +65,7 @@ function AddMember() {
             onChange={(e) => {
               setCustomerPhone(e.target.value);
             }}
-            placeholder="Phone Number"
+            placeholder="000-867-5309"
           />
         </Form.Field>
         <Form.Field>
@@ -70,7 +74,7 @@ function AddMember() {
             onChange={(e) => {
               setCustomerEmail(e.target.value);
             }}
-            placeholder="Email"
+            placeholder="executive@email.com"
           />
         </Form.Field>
         <Form.Field>
@@ -79,12 +83,28 @@ function AddMember() {
             onChange={(e) => {
               setCustomerAddress(e.target.value);
             }}
-            placeholder="Address"
+            placeholder="3149 S Orange Blossom Tr. Apopka, FL 32703"
           />
         </Form.Field>
         <Form.Field>
-          {/* <Checkbox label="I agree to the Terms and Conditions" /> */}
+          <label>Date Joined</label>
+          <Input
+            onChange={(e) => {
+              setDateJoined(e.target.value);
+            }}
+            placeholder="MM-DD-YYY"
+          />
         </Form.Field>
+        <Form.Field>
+          <label>Preferred Store</label>
+          <Input
+            onChange={(e) => {
+              setPreferredStore(e.target.value);
+            }}
+            placeholder="Apopka"
+          />
+        </Form.Field>
+
         <Button type="reset" onClick={submitNewCustomer}>
           Register Executive
         </Button>

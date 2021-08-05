@@ -6,11 +6,6 @@ import { Link } from "react-router-dom";
 function NewMembers() {
   const [memberList, setMemberList] = useState("");
 
-  // const showUser = () => {
-  //   Axios.get("http://localhost:3001/memeber").then((response) => {
-  //     console.log(response.data);
-  //   });
-  // };
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
       (response) => {

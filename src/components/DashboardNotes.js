@@ -6,9 +6,7 @@ function DashboardNotes() {
   const [noteTyped, setNoteTyped] = useState("");
   const [notesList, setNotesList] = useState("");
 
-  // const reloadPage = () => {
-  //   window.location.reload(true);
-  // };
+  //SUBMIT NOTE
   const submitNote = (e) => {
     Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
       // Axios.post("http://localhost:3001/newDashboardNote", {
@@ -19,9 +17,7 @@ function DashboardNotes() {
     });
   };
 
-  const deleteNote = (note) => {
-    Axios.delete(`http://localhost:3001/deleteNote/${note}`);
-  };
+  //DELETE NOTE
 
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
@@ -77,9 +73,9 @@ function DashboardNotes() {
                     <Icon
                       name="x"
                       style={{ marginRight: "0px" }}
-                      onClick={() => {
-                        deleteNote(keyName.note);
-                      }}
+                      // onClick={() => {
+                      //   deleteNote(keyName.note);
+                      // }}
                     />{" "}
                   </Feed.Content>
                 </Feed.Event>

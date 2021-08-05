@@ -15,7 +15,7 @@ function DashboardNewRequest() {
       (response) => {
         // Axios.get("http://localhost:3001/newRequests").then((response) => {
         setRequestList(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       }
     );
   }, []);

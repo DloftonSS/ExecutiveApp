@@ -10,6 +10,7 @@ import {
   Sidebar,
 } from "semantic-ui-react";
 import DashboadNotes from "../components/DashboardNotes";
+import AdminChat from "../components/Chat/Chat";
 
 function SideChat() {
   const [visible, setVisible] = React.useState(false);
@@ -44,7 +45,8 @@ function SideChat() {
               visible={visible}
               width="very wide"
             >
-              <Menu.Item as="a">
+              <AdminChat />
+              {/* <Menu.Item as="a">
                 <Icon name="home" />
                 Home
               </Menu.Item>
@@ -55,7 +57,7 @@ function SideChat() {
               <Menu.Item as="a">
                 <Icon name="camera" />
                 Channels
-              </Menu.Item>
+              </Menu.Item> */}
             </Sidebar>
             <Sidebar.Pusher style={{ height: "600px" }}>
               <Segment basic>
