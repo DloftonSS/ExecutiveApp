@@ -21,7 +21,7 @@ function ExectuiveNotes(props) {
       // reloadPage();
     });
   };
-
+//dfjtupd
   //DELETE NOTE
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
