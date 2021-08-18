@@ -41,7 +41,7 @@ function AllRequests(props) {
 
   //NEW REQUEST
   const submitRequest = (e) => {
-    Axios.post("http://executive-app.herokuapp.com/requsted", {
+    Axios.post("https://executive-app.herokuapp.com/requsted", {
       // Axios.post("http://localhost:3001/requsted", {
       category: category,
       item: item,
@@ -60,7 +60,7 @@ function AllRequests(props) {
 
   //CHANGE REQUEST DATE
   const dateChange = (id) => {
-    Axios.put("http://executive-app.herokuapp.com/dateChange", {
+    Axios.put("https://executive-app.herokuapp.com/dateChange", {
       // Axios.put("http://localhost;3001/dateChange", {
       id: id,
     });
@@ -68,7 +68,7 @@ function AllRequests(props) {
 
   //UPDATE REQUEST STATUS
   const updateStatus = (id) => {
-    Axios.put("http://executive-app.herokuapp.com/statusUpdate", {
+    Axios.put("https://executive-app.herokuapp.com/statusUpdate", {
       // Axios.put("http://localhost:3001/statusUpdate", {
       //   status: newStatus,
       id: id,
@@ -76,7 +76,7 @@ function AllRequests(props) {
   };
   //UPDATE REQUEST NOTE
   const updateNote = (id) => {
-    Axios.put("http://executive-app.herokuapp.com/noteUpdate", {
+    Axios.put("https://executive-app.herokuapp.com/noteUpdate", {
       // Axios.put("http://localhost:3001/noteUpdate", {
       note: newNote,
       id: id,
