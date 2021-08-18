@@ -31,7 +31,7 @@ function DashboardNotes() {
 
   return (
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
-      <Card fluid style={{ maxHeight: "350px" }}>
+      <Card fluid style={{ maxHeight: "660px" }}>
         <Card.Content>
           <Card.Header>Notes</Card.Header>
         </Card.Content>
@@ -58,12 +58,12 @@ function DashboardNotes() {
                       <Feed.User
                         style={{ cursor: "default", color: "#DB2828" }}
                       >
-                        Name of Admin
+                        {notesList[keyName].adminName}
                       </Feed.User>
                       <Feed.Date>{notesList[keyName].createdAt}</Feed.Date>
                     </Feed.Summary>
                     <Feed.Meta>
-                      <Feed.User>Name of Customer</Feed.User>
+                      <Feed.User>{notesList[keyName].memberName}</Feed.User>
                     </Feed.Meta>
                     <Feed.Extra style={{ width: "300px" }}>
                       {" "}
@@ -84,7 +84,7 @@ function DashboardNotes() {
           </Feed>
         </Card.Content>
       </Card>
-      <Card fluid>
+      {/* <Card fluid>
         <Card.Content>
           <Card.Header>New Note</Card.Header>
         </Card.Content>
@@ -104,7 +104,7 @@ function DashboardNotes() {
             Submit Note
           </Button>
         </Card.Content>
-      </Card>
+      </Card> */}
     </div>
   );
 }

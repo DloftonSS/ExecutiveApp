@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/header";
 // import Navigation from "../components/navigation";
-import { withRouter } from "react-router-dom";
+import { Route, Redirect, withRouter } from "react-router-dom";
 import NewMembers from "../components/newMembers";
 import DashboardNotes from "../components/DashboardNotes";
 import DashboardNewRequest from "../components/DashboardNewRequests";
@@ -33,8 +33,8 @@ function AdminDashBoard() {
           }}
         >
           <NewMembers />
-          {/* <DashboardNotes /> */}
-          <SideChat />
+          <DashboardNotes />
+          {/* <SideChat /> */}
         </div>
         {/* Row Two */}
         <div style={{ display: "flex", padding: ".5rem", alignItems: "top" }}>

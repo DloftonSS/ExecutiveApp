@@ -31,8 +31,9 @@ function DashboardNewRequest() {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Executive Name</Table.HeaderCell>
-              <Table.HeaderCell>Item</Table.HeaderCell>
               <Table.HeaderCell>Concierge</Table.HeaderCell>
+              <Table.HeaderCell>Item</Table.HeaderCell>
+              <Table.HeaderCell>status</Table.HeaderCell>
               <Table.HeaderCell>Date</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -52,12 +53,13 @@ function DashboardNewRequest() {
                     </Link>
                   </Table.Cell>
 
-                  <Table.Cell>{requestList[request].item}</Table.Cell>
                   <Table.Cell>
                     {requestList[request].admin_first +
                       " " +
                       requestList[request].admin_last}
                   </Table.Cell>
+                  <Table.Cell>{requestList[request].item}</Table.Cell>
+                  <Table.Cell>{requestList[request].status}</Table.Cell>
                   <Table.Cell>{requestList[request].date_created}</Table.Cell>
                 </Table.Row>
               );

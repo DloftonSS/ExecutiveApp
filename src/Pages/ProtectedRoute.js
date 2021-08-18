@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-function PrivateRoute({ isAuth: isAuth, component: Component, ...rest }) {
+function ProtectedRoute({ isAuth: isAuth, component: Component, ...rest }) {
   return (
     <Route
       {...rest}
@@ -9,13 +9,11 @@ function PrivateRoute({ isAuth: isAuth, component: Component, ...rest }) {
         if (isAuth) {
           return <Component />;
         } else {
-          return (
-            <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-          );
+          return <Redirect to={{ pathname: "/" }} />;
         }
       }}
     />
   );
 }
 
-export default PrivateRoute;
+export default ProtectedRoute;

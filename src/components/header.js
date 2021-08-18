@@ -2,9 +2,11 @@ import "./header.css";
 // import { Link } from "react-router-dom";
 import logo from "../Pages/images/ExecutiveAccess.png";
 import { Container, Icon } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 import SideChat from "../components/SideChat";
 
 function Header() {
+  let history = useHistory();
   return (
     <div className="Navigation">
       <Container textAlign="center">

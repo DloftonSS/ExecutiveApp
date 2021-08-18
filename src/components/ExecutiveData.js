@@ -8,55 +8,25 @@ function ExecutiveData(props) {
   const [memberDetails, setMemberDetails] = useState("");
   const [memID, setMemId] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [memberId, setMemberId] = useState("");
 
   const id = props.id;
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
       // Axios.get("http://localhost:3001/member").then((response) => {
-      // setMemberDetails(response.data);
-      // if ((response.data.id = id)) {
       const userID = response.data[id - 1];
       setMemberDetails(userID);
-      // setMemberDetails(response.data[id]);
-      console.log(response.data);
-      console.log(memberDetails);
-      // }
-
       // console.log(response.data);
+      setMemberId(memberDetails.id);
+      // console.log("member ID is" + " " + memberDetails.id);
     });
   }, []);
 
-  ////   SPLIT   /////
-  // async function getDetails() {
-  //   const { data } = await API.loadMember(id);
-  //   setMemberDetails(data);
-  //   console.log(data);
-  // }
-  // getDetails();
-
-  // Axios.get("https://localhost:3001/member").then((response) => {
-  //   setMemberDetails(response.data);
-  //   console.log(response);
-  // });
-
-  /// END ///
-
   return (
     <div style={{ padding: "1%", width: "100%" }}>
-      {/* <Input
-        onChange={(e) => {
-          setCustomerName(e.target.value);
-        }}
-        placeholder="get member..."
-      ></Input>
-      <Button onClick={findMember}>Find</Button> */}
       <Card fluid style={{ width: "100%", marginRight: "10px" }}>
-        {/* {Object.keys(memberDetails).map((Details, i) => {
-            if (Details.id === id) {
-              return ( */}
         <Card.Content>
           <Card.Header>
-            {/* {memberDetails.id} */}
             {memberDetails.first_name} {memberDetails.last_name}{" "}
             <span>
               {/* <Link */}

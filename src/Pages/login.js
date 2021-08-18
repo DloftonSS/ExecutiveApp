@@ -8,8 +8,10 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import logo from "../Pages/images/ExecutiveAccess.png";
 import { Container, Icon } from "semantic-ui-react";
+import LoginHeader from "../components/Storefront/loginHeader";
+// import auth from "../auth";
 
-function LoggingIn() {
+function LoggingIn(props) {
   let history = useHistory();
 
   // history.push("/adminDashBoard");
@@ -17,7 +19,8 @@ function LoggingIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
-  // const [isAuth, setIsAuth] = useState(false);
+  // const { isAuthenticated, role } = useSelector((state) => state.auth);
+  // const [isAuth, setisAuth] = useState(true);
 
   const login = () => {
     Axios.post("https://executive-app.herokuapp.com/login", {
@@ -25,12 +28,26 @@ function LoggingIn() {
       email: email,
       password: password,
     }).then((response) => {
-      if (response.data[0].email && response.data[0].password) {
+      console.log(response);
+      // const manager = response.data[0].first_name;
+      // const admin = response.data[0].first_name;
+
+      // setLoginStatus("Correct passwor");
+      if (response.data.message) {
         // setIsAuth(true);
+        // console.log(response.data.message);
+        setLoginStatus("Incorrect UserName/Password Combination");
+      } else if (response.data[0].role == "admin") {
         history.push("/adminDashBoard");
-        console.log("matching user and password");
+        console.log(response.data[0].role == "admin");
+
+        // console.log("Admin " + admin + " logged in");
+        // setIsAuth(true);
+      } else if (response.data[0].role == "manager") {
+        history.push("/storeFront");
+        // console.log("manager " + manager + " logged in");
       } else {
-        setLoginStatus("Incorrect email or password");
+        setLoginStatus("you are not authorized to login here");
       }
     });
   };
@@ -39,13 +56,14 @@ function LoggingIn() {
   return (
     <div className="App">
       {" "}
-      <Container textAlign="center">
-        {" "}
+      {/* <Container textAlign="center"> */}
+      {/* {" "}
         <a href="/adminDashBoard">
           {" "}
           <img src={logo} style={{ height: "150px" }}></img>
-        </a>
-      </Container>
+        </a> */}
+      <LoginHeader />
+      {/* </Container> */}
       <div className="form">
         <h3>login</h3>
         <input
@@ -63,6 +81,21 @@ function LoggingIn() {
           }}
         ></input>
         <button onClick={login}>Sign In</button>
+        {/* <button
+          onClick={() => {
+            setIsAuth(true);
+          }}
+        >
+          test Login
+        </button>
+        <button
+          onClick={() => {
+            setIsAuth(false);
+          }}
+        >
+          test logout
+        </button>
+        <link to="/profile">Go to profile page</link> */}
       </div>
       <h3>{loginStatus}</h3>
     </div>

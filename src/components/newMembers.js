@@ -46,17 +46,12 @@ function NewMembers() {
                       </Link>
                     </Table.Cell>
                     <Table.Cell>
-                      {/* <Link
+                      <Link
                         style={{ color: "black" }}
                         to={`/executiveAccount/${memberList[member].id}`}
-                      > */}
-                      <Button
-                      // onClick={showUser}
                       >
-                        {" "}
                         {memberList[member].last_name}
-                      </Button>
-                      {/* </Link> */}
+                      </Link>
                     </Table.Cell>
                     <Table.Cell>{memberList[member].phone}</Table.Cell>
                     <Table.Cell>{memberList[member].email}</Table.Cell>

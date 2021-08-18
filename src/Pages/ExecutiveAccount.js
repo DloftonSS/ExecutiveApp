@@ -15,8 +15,9 @@ import Header from "../components/header";
 
 import ExectuiveNotes from "../components/ExecutiveNotes";
 import ExecutiveData from "../components/ExecutiveData";
-import AddExNote from "../components/AddExecutiveNote";
-import DashboardNewRequest from "../components/DashboardNewRequests";
+// import AddExNote from "../components/AddExecutiveNote";
+// import DashboardNewRequest from "../components/DashboardNewRequests";
+import ExecutiveRequests from "../components/ExecutiveRequests";
 
 function ExecutiveAccount(props) {
   const id = props.match.params.id;
@@ -41,12 +42,14 @@ function ExecutiveAccount(props) {
         >
           <ExecutiveData id={id} />
           {/* <DashboardNotes /> */}
-          <ExectuiveNotes />
+          {/* <ExectuiveNotes /> */}
         </div>
         {/* Row Two */}
         <div style={{ display: "flex", padding: ".5rem", alignItems: "top" }}>
-          <DashboardNewRequest />
-          <AddExNote />
+          <ExecutiveRequests />
+
+          <ExectuiveNotes />
+          {/* <AddExNote /> */}
         </div>
         {/* Row Three */}
         <div
