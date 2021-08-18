@@ -12,7 +12,7 @@ function ExectuiveNotes(props) {
   //SUBMIT NOTE
   const submitNote = (e) => {
     Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
-    // Axios.post("http://localhost:3001/newDashboardNote", {
+      // Axios.post("http://localhost:3001/newDashboardNote", {
       noteTyped: noteTyped,
       adminName: adminName,
       memberName: memberName,
@@ -21,21 +21,22 @@ function ExectuiveNotes(props) {
       // reloadPage();
     });
   };
-//dfjtupd
+  //dfjtupd
   //DELETE NOTE
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
       (response) => {
-    // Axios.get("http://localhost:3001/userNotes").then((response) => {
-      if (response.data)
-      const userID = response.data;
-      setNotesList(userID);
+        // Axios.get("http://localhost:3001/userNotes").then((response) => {
+        // if (response.data)
+        const userID = response.data;
+        setNotesList(userID);
 
-      console.log(response);
-      // console.log(props.memberDetails.first_name);
-      // console.log("current member name is" + " " + currentName);
-      // console.log(response.data);
-    });
+        console.log(response);
+        // console.log(props.memberDetails.first_name);
+        // console.log("current member name is" + " " + currentName);
+        // console.log(response.data);
+      }
+    );
   }, []);
 
   return (
