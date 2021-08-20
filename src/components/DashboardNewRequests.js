@@ -11,7 +11,7 @@ function DashboardNewRequest() {
   const [requestList, setRequestList] = useState("");
 
   useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
+    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
       (response) => {
         // Axios.get("http://localhost:3001/newRequests").then((response) => {
         setRequestList(response.data);

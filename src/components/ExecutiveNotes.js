@@ -24,7 +24,7 @@ function ExectuiveNotes(props) {
   //dfjtupd
   //DELETE NOTE
   useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/api/get").then(
+    Axios.get("https://executive-app.herokuapp.com/userNotes").then(
       (response) => {
         // Axios.get("http://localhost:3001/userNotes").then((response) => {
         // if (response.data)

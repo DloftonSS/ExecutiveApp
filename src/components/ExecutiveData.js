@@ -23,7 +23,7 @@ function ExecutiveData(props) {
   }, []);
 
   return (
-    <div style={{ padding: "1%", width: "100%" }}>
+    <div style={{ padding: "1%", width: "100%", backgroundColor: "white" }}>
       <Card fluid style={{ width: "100%", marginRight: "10px" }}>
         <Card.Content>
           <Card.Header>

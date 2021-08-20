@@ -54,14 +54,14 @@ function ExecutiveRequests(props) {
   };
 
   const updateStatus = (id) => {
-    Axios.put("http://executive-app.herokuapp.comstatusUpdate", {
+    Axios.put("http://executive-app.herokuapp.com/statusUpdate", {
       // Axios.put("http://localhost:3001/statusUpdate", {
       status: newStatus,
       id: id,
     }).then((response) => {});
   };
   useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
+    Axios.get("https://executive-app.herokuapp.com/memberRequest").then(
       (response) => {
         // Axios.get("http://localhost:3001/memberRequest").then((response) => {
         if (response.data.user_id == userId) {

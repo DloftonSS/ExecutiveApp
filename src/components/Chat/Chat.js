@@ -8,7 +8,7 @@ function AdminChat() {
 
   //SUBMIT NOTE
   const submitChat = (e) => {
-    Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
+    Axios.post("https://executive-app.herokuapp.com/postChat", {
       // Axios.post("http://localhost:3001/postChat", {
       chatTyped: chatTyped,
     }).then(() => {
@@ -18,13 +18,11 @@ function AdminChat() {
   };
 
   useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/api/get").then(
-      (response) => {
-        // Axios.get("http://localhost:3001/chat").then((response) => {
-        setchatList(response.data);
-        // console.log(response.data);
-      }
-    );
+    Axios.get("https://executive-app.herokuapp.com/chat").then((response) => {
+      // Axios.get("http://localhost:3001/chat").then((response) => {
+      setchatList(response.data);
+      // console.log(response.data);
+    });
   }, []);
 
   return (
