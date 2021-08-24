@@ -74,7 +74,7 @@ function ExecutiveRequests(props) {
     }).then((response) => {});
   };
   useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/memberRequest").then(
+    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
       (response) => {
         // Axios.get("http://localhost:3001/newRequests").then((response) => {
         setRequestList(response.data);
