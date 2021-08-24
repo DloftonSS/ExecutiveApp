@@ -13,7 +13,7 @@ function AllMembers() {
       (response) => {
         // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
         setMemberList(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       }
     );
   }, []);
@@ -42,6 +42,7 @@ function AllMembers() {
                   <Table.HeaderCell>Last Name</Table.HeaderCell>
                   <Table.HeaderCell>Phone</Table.HeaderCell>
                   <Table.HeaderCell>Email</Table.HeaderCell>
+                  <Table.HeaderCell>Address</Table.HeaderCell>
                   <Table.HeaderCell>Date Joined</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
@@ -91,8 +92,13 @@ function AllMembers() {
                           </Link>
                         </Table.Cell>
                         <Table.Cell>{memberList[member].phone}</Table.Cell>
-                        <Table.Cell>{memberList[member].email}</Table.Cell>
+                        <Table.Cell>
+                          <a style={{ color: "black" }} href="mailto:">
+                            {memberList[member].email}
+                          </a>
+                        </Table.Cell>
                         <Table.Cell>{memberList[member].address}</Table.Cell>
+                        <Table.Cell>{memberList[member].dateJoined}</Table.Cell>
                       </Table.Row>
                     );
                   })}

@@ -27,10 +27,10 @@ function StoreFront() {
       preferredStore: preferredStore,
     })
       .then((response, error) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log(error);
       });
   };
 

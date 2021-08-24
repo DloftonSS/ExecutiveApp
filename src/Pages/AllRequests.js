@@ -84,13 +84,12 @@ function AllRequests(props) {
   };
   useEffect(() => {
     //GET ALL REQUESTS
-    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
-      (response) => {
-        // Axios.get("http://localhost:3001/newRequests").then((response) => {
-        setRequestList(response.data);
-        console.log(response.data);
-      }
-    );
+    // Axios.get("https://executive-app.herokuapp.com/newRequests").then(
+    //   (response) => {
+    Axios.get("http://localhost:3001/allRequests").then((response) => {
+      setRequestList(response.data);
+      // console.log(response.data);
+    });
   }, []);
 
   return (
@@ -143,11 +142,11 @@ function AllRequests(props) {
               onChange={(e) => {
                 setMemberName(e.target.value.toUpperCase());
               }}
-              placeholder="Member Name"
+              placeholder="Member first / last"
             ></Input>
             <Input
               onChange={(e) => {
-                setNote(e.target.value);
+                setNewNote(e.target.value);
               }}
               placeholder="Note"
             ></Input>

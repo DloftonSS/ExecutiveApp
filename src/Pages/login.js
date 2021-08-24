@@ -28,7 +28,7 @@ function LoggingIn(props) {
       email: email,
       password: password,
     }).then((response) => {
-      console.log(response);
+      // console.log(response);
       // const manager = response.data[0].first_name;
       // const admin = response.data[0].first_name;
 
@@ -39,7 +39,7 @@ function LoggingIn(props) {
         setLoginStatus("Incorrect UserName/Password Combination");
       } else if (response.data[0].role == "admin") {
         history.push("/adminDashBoard");
-        console.log(response.data[0].role == "admin");
+        // console.log(response.data[0].role == "admin");
 
         // console.log("Admin " + admin + " logged in");
         // setIsAuth(true);
@@ -80,7 +80,7 @@ function LoggingIn(props) {
             setPassword(e.target.value);
           }}
         ></input>
-        <button onClick={login}>Sign In</button>
+        <button onClick={login}>Authenticate</button>
         {/* <button
           onClick={() => {
             setIsAuth(true);

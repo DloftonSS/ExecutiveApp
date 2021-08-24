@@ -25,7 +25,7 @@ function AddAdmin() {
       password: passwordReg,
     })
       .then((response, error) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch((error) => {
         console.log(error.response);

@@ -7,13 +7,13 @@ import Axios from "axios";
 // import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
-function DashboardNewRequest() {
+function OldestRequests() {
   const [requestList, setRequestList] = useState("");
 
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/newRequests").then(
       (response) => {
-        // Axios.get("http://localhost:3001/newRequests").then((response) => {
+        // Axios.get("http://localhost:3001/oldRequests").then((response) => {
         setRequestList(response.data);
         // console.log(response.data);
       }
@@ -23,10 +23,10 @@ function DashboardNewRequest() {
   return (
     <Card
       fluid
-      style={{ marginRight: "10px", height: "350px", marginBottom: "2%" }}
+      style={{ marginRight: "10px", height: "350px", marginBottom: "3%" }}
     >
       <Card.Content>
-        <Card.Header>Newest Requests</Card.Header>
+        <Card.Header>Oldest Requests</Card.Header>
       </Card.Content>
 
       <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
@@ -70,4 +70,4 @@ function DashboardNewRequest() {
   );
 }
 
-export default DashboardNewRequest;
+export default OldestRequests;

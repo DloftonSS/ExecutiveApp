@@ -1,16 +1,45 @@
-import { Card, Table, Icon, Checkbox, Input, Button } from "semantic-ui-react";
-import React, { useState, useEffect } from "react";
+import {
+  Card,
+  Table,
+  Icon,
+  Checkbox,
+  Modal,
+  Button,
+  Image,
+  Header,
+} from "semantic-ui-react";
+import React, { useState, useEffect, Input, Form } from "react";
 import Axios from "axios";
 import API from "../utils/API";
 import { useLocation } from "react-router-dom";
 
 function ExecutiveData(props) {
   const [memberDetails, setMemberDetails] = useState("");
-  const [memID, setMemId] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+
   const [memberId, setMemberId] = useState("");
 
+  const [open, setOpen] = React.useState(false);
+
+  // const [customerFirst, setCustomerFirst] = useState("");
+
   const id = props.id;
+
+  const UpdateDetails = (id) => {
+    Axios.get("https://executive-app.herokuapp.com/updateDetails", {
+      // Axios.put("http://localhost:3001/updateDetails", {
+      firstName: firstName,
+      lastName: lastName,
+      phone: phone,
+      email: email,
+      address: address,
+      id: id,
+    }).then((response) => {});
+  };
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
       // Axios.get("http://localhost:3001/member").then((response) => {
@@ -28,15 +57,93 @@ function ExecutiveData(props) {
         <Card.Content>
           <Card.Header>
             {memberDetails.first_name} {memberDetails.last_name}{" "}
-            <span>
-              {/* <Link */}
-              {/* // to={"/edit/member/" + memberDetails.id}
-            > */}
-              <Icon
+            <span style={{ position: "relative", float: "right" }}>
+              <Modal
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                trigger={<Button>Edit Details</Button>}
+              >
+                <Modal.Header>Edit Customer Data</Modal.Header>
+                {/* <Modal.Content image>
+                  <Image
+                    size="medium"
+                    src="/images/avatar/large/rachel.png"
+                    wrapped
+                  />
+                  <Modal.Description>
+                    <Header>Default Profile Image</Header>
+                    <p>
+                      We've found the following gravatar image associated with
+                      your e-mail address.
+                    </p>
+                    <p>Is it okay to use this photo?</p>
+                  </Modal.Description>
+                </Modal.Content> */}
+                <Modal.Content style={{ float: "center" }}>
+                  <Header>First Name</Header>
+                  <input
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
+                    placeholder="first name"
+                    style={{ height: "30px" }}
+                  ></input>
+                  <Header>Last Name</Header>
+                  <input
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                    placeholder="first name"
+                    style={{ height: "30px" }}
+                  ></input>
+                  <Header>Email</Header>
+                  <input
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                    placeholder="first name"
+                    style={{ height: "30px" }}
+                  ></input>
+                  <Header>Phone</Header>
+                  <input
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }}
+                    placeholder="first name"
+                    style={{ height: "30px" }}
+                  ></input>
+                  <Header>Address</Header>
+                  <input
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                    }}
+                    placeholder="first name"
+                    style={{ height: "30px" }}
+                  ></input>
+                </Modal.Content>
+                <Modal.Actions>
+                  <Button color="black" onClick={() => setOpen(false)}>
+                    Cancel
+                  </Button>
+                  <Button
+                    content="Submit Change"
+                    labelPosition="right"
+                    icon="checkmark"
+                    onClick={(id) => {
+                      UpdateDetails(memberDetails);
+                    }}
+                    onClick={() => setOpen(false)}
+                    positive
+                  />
+                </Modal.Actions>
+              </Modal>
+
+              {/* <Icon
                 style={{ float: "right" }}
                 color="red"
                 name="edit outline"
-              />
+              /> */}
               {/* </Link> */}
             </span>
           </Card.Header>
@@ -54,7 +161,7 @@ function ExecutiveData(props) {
             : "No phone number provided"}
           <Icon name="mail" style={{ margin: "0 5px" }} />
 
-          {memberDetails.email}
+          <a href={"mailto:"}>{memberDetails.email}</a>
         </Card.Content>
         <Card.Content>
           <Table celled striped color="red">

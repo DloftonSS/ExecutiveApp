@@ -7,6 +7,8 @@ function ExectuiveNotes(props) {
   const [adminName, setAdminName] = useState("");
   const [memberName, setMemberName] = useState("");
   const [notesList, setNotesList] = useState("");
+
+  const [searchTerm, setSearchTerm] = useState("");
   const name = props.id;
 
   //SUBMIT NOTE
@@ -17,7 +19,7 @@ function ExectuiveNotes(props) {
       adminName: adminName,
       memberName: memberName,
     }).then(() => {
-      console.log("successful note posted");
+      // console.log("successful note posted");
       // reloadPage();
     });
   };
@@ -31,7 +33,7 @@ function ExectuiveNotes(props) {
         const userID = response.data;
         setNotesList(userID);
 
-        console.log(response);
+        // console.log(response);
         // console.log(props.memberDetails.first_name);
         // console.log("current member name is" + " " + currentName);
         // console.log(response.data);
@@ -43,7 +45,15 @@ function ExectuiveNotes(props) {
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
       <Card fluid style={{ maxHeight: "404px" }}>
         <Card.Content>
-          <Card.Header>Notes</Card.Header>
+          <Card.Header>Executive Notes</Card.Header>
+          <input
+            type="text"
+            placeholder="Search Name, Date, Note"
+            style={{ width: "250px", height: "30px" }}
+            onChange={(event) => {
+              setSearchTerm(event.target.value);
+            }}
+          ></input>
         </Card.Content>
         <Card.Content
           style={{
@@ -55,42 +65,66 @@ function ExectuiveNotes(props) {
           }}
         >
           <Feed>
-            {Object.keys(notesList).map((keyName, i) => {
-              return (
-                // <p>{notesList[keyName].note}</p>;
-                <Feed.Event>
-                  <Feed.Label>
-                    <Icon name="user circle" />
-                  </Feed.Label>
+            {Object.keys(notesList)
+              .filter((keyName) => {
+                if (searchTerm == "") {
+                  return "";
+                } else if (
+                  notesList[keyName].adminName
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase()) ||
+                  notesList[keyName].memberName
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return keyName;
+                } else if (
+                  notesList[keyName].note
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase()) ||
+                  notesList[keyName].createdAt
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return keyName;
+                }
+              })
+              .map((keyName, i) => {
+                return (
+                  // <p>{notesList[keyName].note}</p>;
+                  <Feed.Event>
+                    <Feed.Label>
+                      <Icon name="user circle" />
+                    </Feed.Label>
 
-                  <Feed.Content style={{ color: "red" }}>
-                    <Feed.Summary>
-                      <Feed.User
-                        style={{ cursor: "default", color: "#DB2828" }}
-                      >
-                        {notesList[keyName].adminName}
-                      </Feed.User>
-                      <Feed.Date>{notesList[keyName].createdAt}</Feed.Date>
-                    </Feed.Summary>
-                    <Feed.Meta>
-                      <Feed.User> {notesList[keyName].memberName}</Feed.User>
-                    </Feed.Meta>
-                    <Feed.Extra style={{ width: "300px" }}>
-                      {" "}
-                      {notesList[keyName].note}
-                    </Feed.Extra>
-                    ____________________________________________________________________________________________{" "}
-                    <Icon
-                      name="x"
-                      style={{ marginRight: "0px" }}
-                      // onClick={() => {
-                      //   deleteNote(keyName.note);
-                      // }}
-                    />{" "}
-                  </Feed.Content>
-                </Feed.Event>
-              );
-            })}
+                    <Feed.Content style={{ color: "red" }}>
+                      <Feed.Summary>
+                        <Feed.User
+                          style={{ cursor: "default", color: "#DB2828" }}
+                        >
+                          {notesList[keyName].adminName}
+                        </Feed.User>
+                        <Feed.Date>{notesList[keyName].createdAt}</Feed.Date>
+                      </Feed.Summary>
+                      <Feed.Meta>
+                        <Feed.User> {notesList[keyName].memberName}</Feed.User>
+                      </Feed.Meta>
+                      <Feed.Extra style={{ width: "300px" }}>
+                        {" "}
+                        {notesList[keyName].note}
+                      </Feed.Extra>
+                      ____________________________________________________________________________________________{" "}
+                      <Icon
+                        name="x"
+                        style={{ marginRight: "0px" }}
+                        // onClick={() => {
+                        //   deleteNote(keyName.note);
+                        // }}
+                      />{" "}
+                    </Feed.Content>
+                  </Feed.Event>
+                );
+              })}
           </Feed>
         </Card.Content>
       </Card>
@@ -120,7 +154,7 @@ function ExectuiveNotes(props) {
           display: "flex",
           padding: ".5rem",
           alignItems: "top",
-          marginTop: "-4.5%",
+          marginTop: "1%",
         }}
       >
         <Input
@@ -148,7 +182,7 @@ function ExectuiveNotes(props) {
           display: "flex",
           padding: ".5rem",
           alignItems: "top",
-          marginTop: "-4.5%",
+          // marginTop: "1%",
         }}
       >
         <textarea

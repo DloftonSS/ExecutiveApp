@@ -11,7 +11,7 @@ function NewMembers() {
       (response) => {
         // Axios.get("http://localhost:3001/api/getMembers").then((response) => {
         setMemberList(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       }
     );
   }, []);
@@ -20,7 +20,7 @@ function NewMembers() {
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
       <Card fluid style={{ marginRight: "10px", height: "670px" }}>
         <Card.Content>
-          <Card.Header>New Members</Card.Header>
+          <Card.Header>Newest Members</Card.Header>
         </Card.Content>
         <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
           <Table celled striped color="red">
@@ -55,7 +55,7 @@ function NewMembers() {
                     </Table.Cell>
                     <Table.Cell>{memberList[member].phone}</Table.Cell>
                     <Table.Cell>{memberList[member].email}</Table.Cell>
-                    <Table.Cell>{memberList[member].address}</Table.Cell>
+                    <Table.Cell>{memberList[member].dateJoined}</Table.Cell>
                   </Table.Row>
                 );
               })}

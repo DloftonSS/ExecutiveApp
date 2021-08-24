@@ -12,13 +12,20 @@ function DashboardNotes() {
       // Axios.post("http://localhost:3001/newDashboardNote", {
       noteTyped: noteTyped,
     }).then(() => {
-      console.log("successful note posted");
+      // console.log("successful note posted");
       // reloadPage();
     });
   };
 
   //DELETE NOTE
-
+  const Deletenote = (id) => {
+    Axios.post(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
+      () => {
+        // Axios.delete(`http://localhost:3001/deleteNote/${id}`).then(() => {
+        console.log("deleted");
+      }
+    );
+  };
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
       (response) => {
@@ -33,7 +40,7 @@ function DashboardNotes() {
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
       <Card fluid style={{ maxHeight: "660px" }}>
         <Card.Content>
-          <Card.Header>Notes</Card.Header>
+          <Card.Header>All Notes</Card.Header>
         </Card.Content>
         <Card.Content
           style={{
@@ -70,13 +77,20 @@ function DashboardNotes() {
                       {notesList[keyName].note}
                     </Feed.Extra>
                     ____________________________________________________________________________________________{" "}
+                    {/* Delete */}
+                    {/* <button
+                      onClick={() => {
+                        Deletenote(notesList[keyName].id);
+                      }}
+                    > */}
                     <Icon
+                      onClick={() => {
+                        Deletenote(notesList[keyName].id);
+                      }}
                       name="x"
                       style={{ marginRight: "0px" }}
-                      // onClick={() => {
-                      //   deleteNote(keyName.note);
-                      // }}
                     />{" "}
+                    {/* </button> */}
                   </Feed.Content>
                 </Feed.Event>
               );

@@ -27,10 +27,10 @@ function AddMember() {
       preferredStore: preferredStore,
     })
       .then((response, error) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log(error);
       });
   };
 
@@ -92,7 +92,7 @@ function AddMember() {
             onChange={(e) => {
               setDateJoined(e.target.value);
             }}
-            placeholder="MM-DD-YYY"
+            placeholder="MM-DD-YYYY"
           />
         </Form.Field>
         <Form.Field>

@@ -39,7 +39,7 @@ function App() {
       email: email,
       password: password,
     }).then((response) => {
-      console.log(response);
+      // console.log(response);
       // const manager = response.data[0].first_name;
       // const admin = response.data[0].first_name;
 
@@ -55,8 +55,22 @@ function App() {
             onClick={() => {
               setIsAuth(true);
             }}
+            style={{
+              backgroundColor: "black",
+              borderRadius: "5px",
+              borderColor: "red",
+              height: "50px",
+              width: "350px",
+            }}
           >
-            <Link to="/adminDashBoard">Success!, go to dashboard.</Link>
+            <Link
+              style={{
+                color: "white",
+              }}
+              to="/adminDashBoard"
+            >
+              Success!, go to dashboard.
+            </Link>
           </button>
         );
         // history.push("/adminDashBoard");
@@ -73,8 +87,22 @@ function App() {
             onClick={() => {
               setIsAuth(true);
             }}
+            style={{
+              backgroundColor: "black",
+              borderRadius: "5px",
+              borderColor: "red",
+              height: "50px",
+              width: "350px",
+            }}
           >
-            <Link to="/storeFront">Success!, click to create user.</Link>
+            <Link
+              style={{
+                color: "white",
+              }}
+              to="/storeFront"
+            >
+              Success!, click to create user.
+            </Link>
           </button>
         );
         console.log(isAuth);
@@ -130,13 +158,13 @@ function App() {
                 }}
               ></input>
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
               ></input>
-              <button onClick={login}>Sign In</button>
+              <button onClick={login}>Authenticate</button>
               {/* <button
                 onClick={() => {
                   setIsAuth(true);
@@ -170,7 +198,7 @@ function App() {
         />
 
         {/* PROTECTED ROUTES */}
-        <ProtectedRoute
+        <Route
           path="/adminDashBoard"
           exact
           component={AdminDashBoard}
