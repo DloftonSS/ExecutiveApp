@@ -33,6 +33,8 @@ function ExectuiveNotes(props) {
         const userID = response.data;
         setNotesList(userID);
 
+        console.log(name);
+
         // console.log(response);
         // console.log(props.memberDetails.first_name);
         // console.log("current member name is" + " " + currentName);
@@ -43,12 +45,12 @@ function ExectuiveNotes(props) {
 
   return (
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
-      <Card fluid style={{ maxHeight: "404px" }}>
+      <Card fluid style={{ maxHeight: "600px" }}>
         <Card.Content>
           <Card.Header>Executive Notes</Card.Header>
           <input
             type="text"
-            placeholder="Search Name, Date, Note"
+            placeholder="Search Admin or Customer Name"
             style={{ width: "250px", height: "30px" }}
             onChange={(event) => {
               setSearchTerm(event.target.value);
@@ -74,15 +76,6 @@ function ExectuiveNotes(props) {
                     .toLowerCase()
                     .includes(searchTerm.toLowerCase()) ||
                   notesList[keyName].memberName
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase())
-                ) {
-                  return keyName;
-                } else if (
-                  notesList[keyName].note
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase()) ||
-                  notesList[keyName].createdAt
                     .toLowerCase()
                     .includes(searchTerm.toLowerCase())
                 ) {
@@ -127,6 +120,76 @@ function ExectuiveNotes(props) {
               })}
           </Feed>
         </Card.Content>
+        <div
+          style={{
+            display: "flex",
+            padding: ".5rem",
+            alignItems: "top",
+            marginTop: "1%",
+          }}
+        >
+          <Input
+            onChange={(e) => {
+              setAdminName(e.target.value);
+            }}
+            style={{ margin: "1rem", width: "50%" }}
+            icon="sticky note outline"
+            iconPosition="left"
+            placeholder="Admin Frist and Last"
+          />
+
+          <Input
+            onChange={(e) => {
+              setMemberName(e.target.value);
+            }}
+            style={{ margin: "1rem", width: "50%" }}
+            icon="sticky note outline"
+            iconPosition="left"
+            placeholder="Member First and Last"
+          />
+        </div>{" "}
+        <div
+          style={{
+            display: "flex",
+            padding: ".5rem",
+            alignItems: "top",
+            // marginTop: "1%",
+          }}
+        >
+          <textarea
+            onChange={(e) => {
+              setNoteTyped(e.target.value);
+            }}
+            style={{ margin: "1rem", width: "88%", height: "100px" }}
+            icon="sticky note outline"
+            iconPosition="left"
+            placeholder="Add Note..."
+          />
+          {/* <Button type="reset" secondary onClick={submitChat}>
+          Submit{" "} */}
+          <div
+            onClick={submitNote}
+            style={{
+              border: "solid black 2px",
+              height: "100px",
+              marginTop: "15px",
+              borderRadius: "5px",
+              backgroundColor: "lightgrey",
+            }}
+          >
+            <Icon
+              // onClick={submitNote}
+              name="arrow alternate circle up outline"
+              size="big"
+              style={{
+                color: "black",
+                marginTop: "30px",
+                marginLeft: "4px",
+              }}
+            ></Icon>
+          </div>
+          {/* </Button> */}
+        </div>
       </Card>
       {/* <Card fluid>
         <Card.Content>
@@ -149,76 +212,6 @@ function ExectuiveNotes(props) {
           </Button>
         </Card.Content>
       </Card> */}
-      <div
-        style={{
-          display: "flex",
-          padding: ".5rem",
-          alignItems: "top",
-          marginTop: "1%",
-        }}
-      >
-        <Input
-          onChange={(e) => {
-            setAdminName(e.target.value);
-          }}
-          style={{ margin: "1rem", width: "50%" }}
-          icon="sticky note outline"
-          iconPosition="left"
-          placeholder="Admin Frist and Last"
-        />
-
-        <Input
-          onChange={(e) => {
-            setMemberName(e.target.value);
-          }}
-          style={{ margin: "1rem", width: "50%" }}
-          icon="sticky note outline"
-          iconPosition="left"
-          placeholder="Member First and Last"
-        />
-      </div>{" "}
-      <div
-        style={{
-          display: "flex",
-          padding: ".5rem",
-          alignItems: "top",
-          // marginTop: "1%",
-        }}
-      >
-        <textarea
-          onChange={(e) => {
-            setNoteTyped(e.target.value);
-          }}
-          style={{ margin: "1rem", width: "88%", height: "100px" }}
-          icon="sticky note outline"
-          iconPosition="left"
-          placeholder="Add Note..."
-        />
-        {/* <Button type="reset" secondary onClick={submitChat}>
-          Submit{" "} */}
-        <div
-          onClick={submitNote}
-          style={{
-            border: "solid black 2px",
-            height: "100px",
-            marginTop: "15px",
-            borderRadius: "5px",
-            backgroundColor: "lightgrey",
-          }}
-        >
-          <Icon
-            onClick={submitNote}
-            name="arrow alternate circle up outline"
-            size="big"
-            style={{
-              color: "black",
-              marginTop: "30px",
-              marginLeft: "4px",
-            }}
-          ></Icon>
-        </div>
-        {/* </Button> */}
-      </div>
     </div>
   );
 }

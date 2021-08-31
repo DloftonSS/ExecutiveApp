@@ -105,9 +105,21 @@ function AllRequests(props) {
           <Card.Content style={{ height: "100px" }}>
             <Input
               onChange={(e) => {
+                setMemberName(e.target.value.toUpperCase());
+              }}
+              placeholder="Member Name"
+            ></Input>
+            <Input
+              onChange={(e) => {
                 setCategory(e.target.value.toUpperCase());
               }}
               placeholder="Category"
+            ></Input>
+            <Input
+              onChange={(e) => {
+                setBrand(e.target.value.toUpperCase());
+              }}
+              placeholder="Brand"
             ></Input>
             <Input
               onChange={(e) => {
@@ -117,10 +129,11 @@ function AllRequests(props) {
             ></Input>
             <Input
               onChange={(e) => {
-                setBrand(e.target.value.toUpperCase());
+                setSku(e.target.value.toUpperCase());
               }}
-              placeholder="Brand"
+              placeholder="UPC / SKU"
             ></Input>
+
             <Input
               onChange={(e) => {
                 setQuantity(e.target.value);
@@ -133,25 +146,13 @@ function AllRequests(props) {
               }}
               placeholder="Status"
             ></Input>
+
             <Input
               onChange={(e) => {
-                setSku(e.target.value.toUpperCase());
-              }}
-              placeholder="Sku"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setMemberName(e.target.value.toUpperCase());
-              }}
-              placeholder="Member first / last"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setNewNote(e.target.value);
+                setNote(e.target.value);
               }}
               placeholder="Note"
             ></Input>
-
             <Button onClick={submitRequest}>Submit Request</Button>
           </Card.Content>
         </Card>
@@ -159,7 +160,7 @@ function AllRequests(props) {
           <Card.Header>All Requests</Card.Header>
           <input
             type="text"
-            placeholder="Search Category or Status"
+            placeholder="Search Category, Status, or Name"
             style={{ width: "250px", height: "30px" }}
             onChange={(event) => {
               setSearchTerm(event.target.value);
@@ -170,10 +171,12 @@ function AllRequests(props) {
           <Table celled striped color="red">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Category</Table.HeaderCell>
-                <Table.HeaderCell>Item</Table.HeaderCell>
                 <Table.HeaderCell>Member Name</Table.HeaderCell>
+                <Table.HeaderCell>Category</Table.HeaderCell>
+                <Table.HeaderCell>Brand</Table.HeaderCell>
                 <Table.HeaderCell>Sku</Table.HeaderCell>
+                <Table.HeaderCell>Item</Table.HeaderCell>
+                <Table.HeaderCell>Qty</Table.HeaderCell>
                 <Table.HeaderCell>Status</Table.HeaderCell>
                 <Table.HeaderCell>Change Status</Table.HeaderCell>
                 <Table.HeaderCell>Note</Table.HeaderCell>
@@ -211,6 +214,7 @@ function AllRequests(props) {
                 .map((request, i) => {
                   return (
                     <Table.Row key={request.id}>
+                      <Table.Cell>{requestList[request].memberName}</Table.Cell>
                       <Table.Cell>
                         {/* <Link
                           style={{ color: "black" }}
@@ -220,9 +224,11 @@ function AllRequests(props) {
                         {/* </Link> */}
                       </Table.Cell>
 
-                      <Table.Cell>{requestList[request].item}</Table.Cell>
-                      <Table.Cell>{requestList[request].memberName}</Table.Cell>
+                      <Table.Cell>{requestList[request].brand}</Table.Cell>
                       <Table.Cell>{requestList[request].sku}</Table.Cell>
+                      <Table.Cell>{requestList[request].item}</Table.Cell>
+                      <Table.Cell>{requestList[request].quantity}</Table.Cell>
+
                       <Table.Cell>
                         {" "}
                         {requestList[request].status}

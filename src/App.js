@@ -15,7 +15,7 @@ import ExecutiveAccount from "./Pages/ExecutiveAccount";
 import Catalog from "./Pages/Catalog";
 import StoreFront from "./Pages/StoreFront";
 import ProtectedRoute from "./Pages/ProtectedRoute";
-import Profile from "./Pages/Profile";
+import Profile from "./Pages/ProfilePage/Profilepage";
 import LoggingIn from "./Pages/login";
 import "./Pages/login.css";
 import Axios from "axios";
@@ -47,7 +47,7 @@ function App() {
       if (response.data.message) {
         // setIsAuth(true);
         // console.log(response.data.message);
-        setLoginStatus("Incorrect UserName/Password Combination");
+        setLoginStatus(<p>Incorrect UserName/Password Combination.</p>);
       } else if (response.data[0].role == "admin") {
         setIsAuth(true);
         setLoginStatus(
@@ -108,7 +108,7 @@ function App() {
         console.log(isAuth);
         // console.log("manager " + manager + " logged in");
       } else {
-        setLoginStatus("you are not authorized to login here");
+        setLoginStatus(<p>You are not authorized to login here.</p>);
       }
     });
   };
@@ -208,6 +208,11 @@ function App() {
           path="/storeFront"
           component={StoreFront}
           isAuth={isAuth}
+        />
+        <Route
+          path="/profile"
+          component={Profile}
+          //  isAuth={isAuth}
         />
       </Switch>
     </Router>

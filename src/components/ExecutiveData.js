@@ -15,11 +15,11 @@ import { useLocation } from "react-router-dom";
 
 function ExecutiveData(props) {
   const [memberDetails, setMemberDetails] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
+  const [newFirstName, setNewFirstName] = useState("");
+  const [newLastName, setNewLastName] = useState("");
+  const [newPhone, setNewPhone] = useState("");
+  const [newEmail, setNewEmail] = useState("");
+  const [newAddress, setNewAddress] = useState("");
 
   const [memberId, setMemberId] = useState("");
 
@@ -29,25 +29,30 @@ function ExecutiveData(props) {
 
   const id = props.id;
 
-  const UpdateDetails = (id) => {
+  const UpdateDetails = (memberDetails) => {
     Axios.get("https://executive-app.herokuapp.com/updateDetails", {
       // Axios.put("http://localhost:3001/updateDetails", {
-      firstName: firstName,
-      lastName: lastName,
-      phone: phone,
-      email: email,
-      address: address,
-      id: id,
-    }).then((response) => {});
+      firstName: newFirstName,
+      lastName: newLastName,
+      phone: newPhone,
+      email: newEmail,
+      address: newAddress,
+      userID: memberDetails,
+    }).then((response) => {
+      console.log(response);
+    });
   };
   useEffect(() => {
+    // Axios.get(`http://localhost:3001/member/${id}`).then((response) => {
+    //   console.log(response);
+    // });
     Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
       // Axios.get("http://localhost:3001/member").then((response) => {
       const userID = response.data[id - 1];
       setMemberDetails(userID);
       // console.log(response.data);
       setMemberId(memberDetails.id);
-      // console.log("member ID is" + " " + memberDetails.id);
+      console.log("member ID is" + " " + memberDetails.id);
     });
   }, []);
 
@@ -84,42 +89,42 @@ function ExecutiveData(props) {
                   <Header>First Name</Header>
                   <input
                     onChange={(e) => {
-                      setFirstName(e.target.value);
+                      setNewFirstName(e.target.value);
                     }}
                     placeholder="first name"
-                    style={{ height: "30px" }}
+                    style={{ height: "30px", width: "300px" }}
                   ></input>
                   <Header>Last Name</Header>
                   <input
                     onChange={(e) => {
-                      setLastName(e.target.value);
+                      setNewLastName(e.target.value);
                     }}
-                    placeholder="first name"
-                    style={{ height: "30px" }}
+                    placeholder="last name"
+                    style={{ height: "30px", width: "300px" }}
                   ></input>
                   <Header>Email</Header>
                   <input
                     onChange={(e) => {
-                      setEmail(e.target.value);
+                      setNewEmail(e.target.value);
                     }}
-                    placeholder="first name"
-                    style={{ height: "30px" }}
+                    placeholder="example@email.com"
+                    style={{ height: "30px", width: "300px" }}
                   ></input>
                   <Header>Phone</Header>
                   <input
                     onChange={(e) => {
-                      setPhone(e.target.value);
+                      setNewPhone(e.target.value);
                     }}
-                    placeholder="first name"
-                    style={{ height: "30px" }}
+                    placeholder="000-000-0000"
+                    style={{ height: "30px", width: "300px" }}
                   ></input>
                   <Header>Address</Header>
                   <input
                     onChange={(e) => {
-                      setAddress(e.target.value);
+                      setNewAddress(e.target.value);
                     }}
-                    placeholder="first name"
-                    style={{ height: "30px" }}
+                    placeholder="123 Main Street Orlando, FL 32808"
+                    style={{ height: "30px", width: "300px" }}
                   ></input>
                 </Modal.Content>
                 <Modal.Actions>
@@ -130,7 +135,7 @@ function ExecutiveData(props) {
                     content="Submit Change"
                     labelPosition="right"
                     icon="checkmark"
-                    onClick={(id) => {
+                    onClick={() => {
                       UpdateDetails(memberDetails);
                     }}
                     onClick={() => setOpen(false)}
@@ -179,9 +184,18 @@ function ExecutiveData(props) {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <Icon name="calendar times outline" /> Expiration Date
+                  {" "}
+                  <Icon name="calendar check outline" />
+                  Renewal Date
                 </Table.Cell>
-                <Table.Cell>Date expires goes here</Table.Cell>
+                <Table.Cell>Date Renewed goes here</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  <Icon name="calendar times outline" />
+                  Expiring Date
+                </Table.Cell>
+                <Table.Cell>{memberDetails.expiring}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
@@ -194,12 +208,13 @@ function ExecutiveData(props) {
                   <Icon name="id card outline" /> Card Status
                 </Table.Cell>
                 <Table.Cell>
-                  <Icon
+                  {memberDetails.card}
+                  {/* <Icon
                     name="id card outline"
                     color="green"
                     size="large"
                     style={{ margin: "0 auto" }}
-                  />
+                  /> */}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>

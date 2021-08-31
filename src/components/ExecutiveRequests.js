@@ -44,7 +44,7 @@ function ExecutiveRequests(props) {
   const submitRequest = (e) => {
     Axios.post("http://executive-app.herokuapp.com/requsted", {
       // Axios.post("http://localhost:3001/requsted", {
-      category: category,
+      //   category: category,
       item: item,
       brand: brand,
       quantity: quantity,
@@ -78,14 +78,14 @@ function ExecutiveRequests(props) {
       (response) => {
         // Axios.get("http://localhost:3001/newRequests").then((response) => {
         setRequestList(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       }
     );
   }, []);
 
   return (
     <div style={{ padding: "1%", width: "100%" }}>
-      <Card fluid style={{ marginRight: "10px", height: "350px" }}>
+      <Card fluid style={{ marginRight: "10px", height: "550px" }}>
         <Card.Content>
           <Card.Header>Requests</Card.Header>
           <input
@@ -97,7 +97,60 @@ function ExecutiveRequests(props) {
             }}
           ></input>
         </Card.Content>
+        <Card.Content style={{ height: "100px" }}>
+          <Input
+            onChange={(e) => {
+              setMemberName(e.target.value.toUpperCase());
+            }}
+            placeholder="Member Name"
+          ></Input>
+          <Input
+            onChange={(e) => {
+              setCategory(e.target.value.toUpperCase());
+            }}
+            placeholder="Category"
+          ></Input>
+          <Input
+            onChange={(e) => {
+              setBrand(e.target.value.toUpperCase());
+            }}
+            placeholder="Brand"
+          ></Input>
+          <Input
+            onChange={(e) => {
+              setItem(e.target.value.toUpperCase());
+            }}
+            placeholder="Item"
+          ></Input>
+          <Input
+            onChange={(e) => {
+              setSku(e.target.value.toUpperCase());
+            }}
+            placeholder="UPC / SKU"
+          ></Input>
 
+          <Input
+            onChange={(e) => {
+              setQuantity(e.target.value);
+            }}
+            placeholder="Quantity"
+          ></Input>
+          <Input
+            onChange={(e) => {
+              setStatus(e.target.value.toUpperCase());
+            }}
+            placeholder="Status"
+          ></Input>
+
+          <Input
+            onChange={(e) => {
+              setNewNote(e.target.value);
+            }}
+            placeholder="Note"
+          ></Input>
+
+          <Button onClick={submitRequest}>Submit Request</Button>
+        </Card.Content>
         <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
           <Table celled striped color="red">
             <Table.Header>
@@ -105,13 +158,14 @@ function ExecutiveRequests(props) {
                 <Table.HeaderCell>Member Name</Table.HeaderCell>
                 <Table.HeaderCell>Category</Table.HeaderCell>
                 <Table.HeaderCell>Item</Table.HeaderCell>
+                <Table.HeaderCell>UPC / SKU</Table.HeaderCell>
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Concierge</Table.HeaderCell>
                 <Table.HeaderCell>Status</Table.HeaderCell>
+                <Table.HeaderCell>Update Status</Table.HeaderCell>
+                <Table.HeaderCell>Note</Table.HeaderCell>
                 <Table.HeaderCell>Date Created</Table.HeaderCell>
                 <Table.HeaderCell>Date Updated</Table.HeaderCell>
-                <Table.HeaderCell>Update Status</Table.HeaderCell>
-                <Table.HeaderCell>ID</Table.HeaderCell>
+                {/* <Table.HeaderCell>ID</Table.HeaderCell> */}
               </Table.Row>
             </Table.Header>
 
@@ -131,6 +185,7 @@ function ExecutiveRequests(props) {
                 .map((request, i) => {
                   return (
                     <Table.Row key={request.id}>
+                      <Table.Cell>{requestList[request].memberName}</Table.Cell>
                       <Table.Cell>
                         {/* <Link
                           style={{ color: "black" }}
@@ -141,8 +196,8 @@ function ExecutiveRequests(props) {
                       </Table.Cell>
 
                       <Table.Cell>{requestList[request].item}</Table.Cell>
-                      <Table.Cell>{requestList[request].memberName}</Table.Cell>
                       <Table.Cell>{requestList[request].sku}</Table.Cell>
+                      <Table.Cell>{requestList[request].quantity}</Table.Cell>
                       <Table.Cell>
                         {" "}
                         {requestList[request].status}
@@ -204,7 +259,7 @@ function ExecutiveRequests(props) {
                       <Table.Cell>
                         {requestList[request].date_created}
                       </Table.Cell>
-                      <Table.Cell></Table.Cell>
+                      {/* <Table.Cell></Table.Cell> */}
                     </Table.Row>
                   );
                 })}
@@ -212,7 +267,7 @@ function ExecutiveRequests(props) {
           </Table>
         </Card.Content>
       </Card>
-      <div>
+      {/* <div>
         <Card fluid style={{ marginRight: "10px", height: "350px" }}>
           {" "}
           <Card.Content>
@@ -221,9 +276,21 @@ function ExecutiveRequests(props) {
           <Card.Content style={{ height: "100px" }}>
             <Input
               onChange={(e) => {
+                setMemberName(e.target.value.toUpperCase());
+              }}
+              placeholder="Member Name"
+            ></Input>
+            <Input
+              onChange={(e) => {
                 setCategory(e.target.value.toUpperCase());
               }}
               placeholder="Category"
+            ></Input>
+            <Input
+              onChange={(e) => {
+                setBrand(e.target.value.toUpperCase());
+              }}
+              placeholder="Brand"
             ></Input>
             <Input
               onChange={(e) => {
@@ -233,10 +300,11 @@ function ExecutiveRequests(props) {
             ></Input>
             <Input
               onChange={(e) => {
-                setBrand(e.target.value.toUpperCase());
+                setSku(e.target.value.toUpperCase());
               }}
-              placeholder="Brand"
+              placeholder="UPC / SKU"
             ></Input>
+
             <Input
               onChange={(e) => {
                 setQuantity(e.target.value);
@@ -249,18 +317,7 @@ function ExecutiveRequests(props) {
               }}
               placeholder="Status"
             ></Input>
-            <Input
-              onChange={(e) => {
-                setSku(e.target.value.toUpperCase());
-              }}
-              placeholder="Sku"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setMemberName(e.target.value.toUpperCase());
-              }}
-              placeholder="Member Name"
-            ></Input>
+
             <Input
               onChange={(e) => {
                 setNewNote(e.target.value);
@@ -271,7 +328,7 @@ function ExecutiveRequests(props) {
             <Button onClick={submitRequest}>Submit Request</Button>
           </Card.Content>
         </Card>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -12,7 +12,7 @@ function AddMember() {
   const [customerPhone, setCustomerPhone] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerAddress, setCustomerAddress] = useState("");
-  const [dateJoined, setDateJoined] = useState("");
+  // const [dateJoined, setDateJoined] = useState("");
   const [preferredStore, setPreferredStore] = useState("");
 
   const submitNewCustomer = () => {
@@ -23,7 +23,7 @@ function AddMember() {
       customerPhone: customerPhone,
       customerEmail: customerEmail,
       customerAddress: customerAddress,
-      dateJoined: dateJoined,
+      // dateJoined: dateJoined,
       preferredStore: preferredStore,
     })
       .then((response, error) => {
@@ -86,7 +86,7 @@ function AddMember() {
             placeholder="3149 S Orange Blossom Tr. Apopka, FL 32703"
           />
         </Form.Field>
-        <Form.Field>
+        {/* <Form.Field>
           <label>Date Joined</label>
           <Input
             onChange={(e) => {
@@ -94,7 +94,7 @@ function AddMember() {
             }}
             placeholder="MM-DD-YYYY"
           />
-        </Form.Field>
+        </Form.Field> */}
         <Form.Field>
           <label>Preferred Store</label>
           <Input

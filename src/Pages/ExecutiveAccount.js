@@ -48,10 +48,10 @@ function ExecutiveAccount(props) {
         <div style={{ display: "flex", padding: ".5rem", alignItems: "top" }}>
           <ExecutiveRequests />
 
-          <ExectuiveNotes />
           {/* <AddExNote /> */}
         </div>
         {/* Row Three */}
+        <ExectuiveNotes />
         <div
           style={{ display: "flex", padding: ".5rem", alignItems: "top" }}
         ></div>
