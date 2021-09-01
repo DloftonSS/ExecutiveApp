@@ -34,7 +34,7 @@ function AllMembers() {
               }}
             ></input>
           </Card.Content>
-          <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
+          <Card.Content style={{ overflowY: "scroll", height: "2000px" }}>
             <Table celled striped color="red">
               <Table.Header>
                 <Table.Row>
