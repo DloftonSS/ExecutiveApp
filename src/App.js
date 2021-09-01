@@ -53,8 +53,7 @@ function App() {
               backgroundColor: "black",
               borderRadius: "5px",
               borderColor: "red",
-              height: "50px",
-              width: "350px",
+              color: "white",
             }}
           >
             Incorrect UserName/Password Combination.
@@ -126,8 +125,7 @@ function App() {
               backgroundColor: "black",
               borderRadius: "5px",
               borderColor: "red",
-              height: "50px",
-              width: "350px",
+              color: "white",
             }}
           >
             You are not authorized to login here.
