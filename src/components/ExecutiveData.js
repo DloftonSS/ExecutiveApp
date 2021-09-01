@@ -188,7 +188,7 @@ function ExecutiveData(props) {
                   <Icon name="calendar check outline" />
                   Renewal Date
                 </Table.Cell>
-                <Table.Cell>Date Renewed goes here</Table.Cell>
+                <Table.Cell>{memberDetails.renewal_date}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
