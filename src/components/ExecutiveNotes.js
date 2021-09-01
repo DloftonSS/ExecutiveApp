@@ -33,7 +33,7 @@ function ExectuiveNotes(props) {
         const userID = response.data;
         setNotesList(userID);
 
-        console.log(name);
+        // console.log(name);
 
         // console.log(response);
         // console.log(props.memberDetails.first_name);

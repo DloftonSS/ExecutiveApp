@@ -30,8 +30,8 @@ function ExecutiveData(props) {
   const id = props.id;
 
   const UpdateDetails = (memberDetails) => {
-    Axios.get("https://executive-app.herokuapp.com/updateDetails", {
-      // Axios.put("http://localhost:3001/updateDetails", {
+    // Axios.get("https://executive-app.herokuapp.com/updateDetails", {
+    Axios.put("http://localhost:3001/updateDetails", {
       firstName: newFirstName,
       lastName: newLastName,
       phone: newPhone,
@@ -46,8 +46,8 @@ function ExecutiveData(props) {
     // Axios.get(`http://localhost:3001/member/${id}`).then((response) => {
     //   console.log(response);
     // });
-    Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
-      // Axios.get("http://localhost:3001/member").then((response) => {
+    // Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
+    Axios.get("http://localhost:3001/member").then((response) => {
       const userID = response.data[id];
       setMemberDetails(userID);
       // console.log(response.data);
@@ -219,10 +219,12 @@ function ExecutiveData(props) {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <Icon name="handshake outline" /> Initial Contact
+                  <Icon name="handshake outline" />
+                  Communication Method
                 </Table.Cell>
                 <Table.Cell>
-                  <Checkbox toggle defaultChecked />
+                  {/* <Checkbox toggle defaultChecked /> */}
+                  {memberDetails.communication}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
