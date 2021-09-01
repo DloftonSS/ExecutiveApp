@@ -47,7 +47,19 @@ function App() {
       if (response.data.message) {
         // setIsAuth(true);
         // console.log(response.data.message);
-        setLoginStatus(<p>Incorrect UserName/Password Combination.</p>);
+        setLoginStatus(
+          <p
+            style={{
+              backgroundColor: "black",
+              borderRadius: "5px",
+              borderColor: "red",
+              height: "50px",
+              width: "350px",
+            }}
+          >
+            Incorrect UserName/Password Combination.
+          </p>
+        );
       } else if (response.data[0].role == "admin") {
         setIsAuth(true);
         setLoginStatus(
@@ -108,7 +120,19 @@ function App() {
         console.log(isAuth);
         // console.log("manager " + manager + " logged in");
       } else {
-        setLoginStatus(<p>You are not authorized to login here.</p>);
+        setLoginStatus(
+          <p
+            style={{
+              backgroundColor: "black",
+              borderRadius: "5px",
+              borderColor: "red",
+              height: "50px",
+              width: "350px",
+            }}
+          >
+            You are not authorized to login here.
+          </p>
+        );
       }
     });
   };
