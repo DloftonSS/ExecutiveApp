@@ -12,8 +12,11 @@ function AddMember() {
   const [customerPhone, setCustomerPhone] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerAddress, setCustomerAddress] = useState("");
-  // const [dateJoined, setDateJoined] = useState("");
+  const [dateJoined, setDateJoined] = useState("");
+  const [renewDate, setRenewDate] = useState("");
+  const [expiring, setExpiring] = useState("");
   const [preferredStore, setPreferredStore] = useState("");
+  const [card, setCard] = useState("");
 
   const submitNewCustomer = () => {
     Axios.post("https://executive-app.herokuapp.com/addMember", {
@@ -23,8 +26,11 @@ function AddMember() {
       customerPhone: customerPhone,
       customerEmail: customerEmail,
       customerAddress: customerAddress,
-      // dateJoined: dateJoined,
+      dateJoined: dateJoined,
+      renewDate: renewDate,
+      expiring: expiring,
       preferredStore: preferredStore,
+      card: card,
     })
       .then((response, error) => {
         // console.log(response);
@@ -86,7 +92,7 @@ function AddMember() {
             placeholder="3149 S Orange Blossom Tr. Apopka, FL 32703"
           />
         </Form.Field>
-        {/* <Form.Field>
+        <Form.Field>
           <label>Date Joined</label>
           <Input
             onChange={(e) => {
@@ -94,7 +100,25 @@ function AddMember() {
             }}
             placeholder="MM-DD-YYYY"
           />
-        </Form.Field> */}
+        </Form.Field>
+        <Form.Field>
+          <label>Renew Date</label>
+          <Input
+            onChange={(e) => {
+              setRenewDate(e.target.value);
+            }}
+            placeholder="MM-DD-YYYY"
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Expiring Date</label>
+          <Input
+            onChange={(e) => {
+              setExpiring(e.target.value);
+            }}
+            placeholder="MM-DD-YYYY"
+          />
+        </Form.Field>
         <Form.Field>
           <label>Preferred Store</label>
           <Input
@@ -102,6 +126,15 @@ function AddMember() {
               setPreferredStore(e.target.value);
             }}
             placeholder="Apopka"
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Card</label>
+          <Input
+            onChange={(e) => {
+              setCard(e.target.value);
+            }}
+            placeholder="YES OR NO"
           />
         </Form.Field>
 
