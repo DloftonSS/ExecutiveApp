@@ -48,11 +48,11 @@ function ExecutiveData(props) {
     // });
     Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
       // Axios.get("http://localhost:3001/member").then((response) => {
-      const userID = response.data[id - 1];
+      const userID = response.data[id];
       setMemberDetails(userID);
       // console.log(response.data);
       setMemberId(memberDetails.id);
-      console.log("member ID is" + " " + memberDetails.id);
+      // console.log("member ID is" + " " + memberDetails.id);
     });
   }, []);
 
