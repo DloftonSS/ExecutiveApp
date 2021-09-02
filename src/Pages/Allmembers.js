@@ -28,7 +28,7 @@ function AllMembers() {
   // };
 
   useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
+    Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
         setMemberList(response.data);
