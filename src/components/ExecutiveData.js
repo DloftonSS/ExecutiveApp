@@ -172,7 +172,10 @@ function ExecutiveData(props) {
           <Table celled striped color="red">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell colSpan="3">Account Info</Table.HeaderCell>
+                <Table.HeaderCell colSpan="3">
+                  Account Info{" "}
+                  <Card.Meta>Member Number: {memberDetails.number} </Card.Meta>
+                </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
