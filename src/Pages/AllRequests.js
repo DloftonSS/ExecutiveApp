@@ -255,15 +255,15 @@ function AllRequests(props) {
                       {requestList[request].status} */}
                       </Table.Cell>
                       <Table.Cell>
-                        <Input
+                        <Field.Input
                           onChange={(e) => {
                             setNewStatus(e.target.value.toUpperCase());
                           }}
                           placeholder="New Status"
                           style={{ width: "100px" }}
-                        ></Input>
+                        ></Field.Input>
 
-                        <button
+                        <Button
                           onClick={() => {
                             updateStatus(requestList[request].id);
                           }}
@@ -276,7 +276,7 @@ function AllRequests(props) {
                             // }}
                             name="edit outline"
                           ></Icon>
-                        </button>
+                        </Button>
                       </Table.Cell>
                       <Table.Cell style={{ maxWidth: "300px" }}>
                         {" "}
@@ -290,7 +290,7 @@ function AllRequests(props) {
                           placeholder="Update Note"
                           // style={{ marginLeft: "20px" }}
                         ></textarea>
-                        <button
+                        <Button
                           onClick={() => {
                             updateNote(requestList[request].id);
                           }}
@@ -303,7 +303,7 @@ function AllRequests(props) {
                             // }}
                             name="edit outline"
                           ></Icon>
-                        </button>
+                        </Button>
                       </Table.Cell>
 
                       <Table.Cell>
