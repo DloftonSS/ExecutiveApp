@@ -26,9 +26,9 @@ function AddMember() {
       customerPhone: customerPhone,
       customerEmail: customerEmail,
       customerAddress: customerAddress,
-      dateJoined: dateJoined,
-      renewDate: renewDate,
-      expiring: expiring,
+      // dateJoined: dateJoined,
+      // renewDate: renewDate,
+      // expiring: expiring,
       preferredStore: preferredStore,
       card: card,
     })
@@ -92,7 +92,7 @@ function AddMember() {
             placeholder="3149 S Orange Blossom Tr. Apopka, FL 32703"
           />
         </Form.Field>
-        <Form.Field>
+        {/* <Form.Field>
           <label>Date Joined</label>
           <Input
             onChange={(e) => {
@@ -118,7 +118,7 @@ function AddMember() {
             }}
             placeholder="MM-DD-YYYY"
           />
-        </Form.Field>
+        </Form.Field> */}
         <Form.Field>
           <label>Preferred Store</label>
           <Input

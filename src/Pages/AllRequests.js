@@ -8,6 +8,7 @@ import {
   Menu,
   Input,
   Icon,
+  Form,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
@@ -59,9 +60,9 @@ function AllRequests(props) {
   };
 
   //CHANGE REQUEST DATE
-  const dateChange = (id) => {
+  const DateChange = (id) => {
     Axios.put("https://executive-app.herokuapp.com/dateChange", {
-      // Axios.put("http://localhost;3001/dateChange", {
+      // Axios.put("http://localhost:3001/dateChange", {
       id: id,
     });
   };
@@ -80,7 +81,9 @@ function AllRequests(props) {
       // Axios.put("http://localhost:3001/noteUpdate", {
       note: newNote,
       id: id,
-    }).then((response) => {});
+    }).then((response) => {
+      // DateChange();
+    });
   };
   useEffect(() => {
     //GET ALL REQUESTS
@@ -97,65 +100,81 @@ function AllRequests(props) {
     <div>
       <Header />
       <Card fluid style={{ marginRight: "10px", height: "1300px" }}>
-        <Card fluid style={{ marginRight: "10px", height: "180px" }}>
+        <Card fluid style={{ marginRight: "10px", height: "50%" }}>
           {" "}
           <Card.Content>
             <Card.Header>Create Request</Card.Header>
           </Card.Content>
-          <Card.Content style={{ height: "100px" }}>
-            <Input
-              onChange={(e) => {
-                setMemberName(e.target.value.toUpperCase());
+          <Card.Content>
+            <Form
+              style={{
+                backgroundColor: "white",
+                border: "none",
+                padding: "0px",
+                marginLeft: "0",
+                width: "100%",
               }}
-              placeholder="Member Name"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setCategory(e.target.value.toUpperCase());
-              }}
-              placeholder="Category"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setBrand(e.target.value.toUpperCase());
-              }}
-              placeholder="Brand"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setItem(e.target.value.toUpperCase());
-              }}
-              placeholder="Item"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setSku(e.target.value.toUpperCase());
-              }}
-              placeholder="UPC / SKU"
-            ></Input>
+            >
+              <Form.Group widths="equal">
+                <Form.Input
+                  onChange={(e) => {
+                    setMemberName(e.target.value.toUpperCase());
+                  }}
+                  placeholder="Member Name"
+                />
+                <Form.Input
+                  onChange={(e) => {
+                    setCategory(e.target.value.toUpperCase());
+                  }}
+                  placeholder="Category"
+                />
+                <Form.Input
+                  onChange={(e) => {
+                    setBrand(e.target.value.toUpperCase());
+                  }}
+                  placeholder="Brand"
+                />
+                <Form.Input
+                  onChange={(e) => {
+                    setItem(e.target.value.toUpperCase());
+                  }}
+                  placeholder="Item"
+                />
+              </Form.Group>
+              <Form.Group widths="equal" style={{ height: "50px" }}>
+                <Form.Input
+                  onChange={(e) => {
+                    setSku(e.target.value.toUpperCase());
+                  }}
+                  placeholder="UPC / SKU"
+                />
+                <Form.Input
+                  onChange={(e) => {
+                    setQuantity(e.target.value);
+                  }}
+                  placeholder="Quantity"
+                />
+                <Form.Input
+                  onChange={(e) => {
+                    setStatus(e.target.value.toUpperCase());
+                  }}
+                  placeholder="Status"
+                />
+                <Form.Input
+                  onChange={(e) => {
+                    setNote(e.target.value);
+                  }}
+                  placeholder="Note"
+                />
+              </Form.Group>
 
-            <Input
-              onChange={(e) => {
-                setQuantity(e.target.value);
-              }}
-              placeholder="Quantity"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setStatus(e.target.value.toUpperCase());
-              }}
-              placeholder="Status"
-            ></Input>
-
-            <Input
-              onChange={(e) => {
-                setNote(e.target.value);
-              }}
-              placeholder="Note"
-            ></Input>
-            <Button onClick={submitRequest}>Submit Request</Button>
+              <Button type="reset" onClick={submitRequest}>
+                Submit Request
+              </Button>
+            </Form>
           </Card.Content>
         </Card>
+
         <Card.Content>
           <Card.Header>All Requests</Card.Header>
           <input
@@ -290,7 +309,10 @@ function AllRequests(props) {
                       <Table.Cell>
                         {requestList[request].date_created}
                       </Table.Cell>
-                      <Table.Cell></Table.Cell>
+                      <Table.Cell>
+                        {" "}
+                        {requestList[request].date_updated}
+                      </Table.Cell>
                     </Table.Row>
                   );
                 })}
@@ -303,3 +325,59 @@ function AllRequests(props) {
 }
 
 export default AllRequests;
+
+{
+  /* <Card.Content style={{ height: "100px" }}>
+            <Input
+              onChange={(e) => {
+                setMemberName(e.target.value.toUpperCase());
+              }}
+              placeholder="Member Name"
+            ></Input>
+            <Input
+              onChange={(e) => {
+                setCategory(e.target.value.toUpperCase());
+              }}
+              placeholder="Category"
+            ></Input>
+            <Input
+              onChange={(e) => {
+                setBrand(e.target.value.toUpperCase());
+              }}
+              placeholder="Brand"
+            ></Input>
+            <Input
+              onChange={(e) => {
+                setItem(e.target.value.toUpperCase());
+              }}
+              placeholder="Item"
+            ></Input>
+            <Input
+              onChange={(e) => {
+                setSku(e.target.value.toUpperCase());
+              }}
+              placeholder="UPC / SKU"
+            ></Input>
+
+            <Input
+              onChange={(e) => {
+                setQuantity(e.target.value);
+              }}
+              placeholder="Quantity"
+            ></Input>
+            <Input
+              onChange={(e) => {
+                setStatus(e.target.value.toUpperCase());
+              }}
+              placeholder="Status"
+            ></Input>
+
+            <Input
+              onChange={(e) => {
+                setNote(e.target.value);
+              }}
+              placeholder="Note"
+            ></Input>
+            <Button onClick={submitRequest}>Submit Request</Button>
+          </Card.Content> */
+}

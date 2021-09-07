@@ -152,39 +152,7 @@ function ExectuiveNotes(props) {
                 placeholder="Member First and Last"
               />
             </Form.Group>
-            {/* <Form.Field
-              style={{
-                height: "50px",
-                display: "flex",
-                flexWrap: "wrap",
-                JustifyContent: "space-between",
-              }}
-            >
-              <Input
-                onChange={(e) => {
-                  setAdminName(e.target.value);
-                }}
-                icon="user circle"
-                iconPosition="left"
-                placeholder="Admin Frist and Last"
-              />
-            </Form.Field>
-            <Form.Field
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                JustifyContent: "space-between",
-              }}
-            >
-              <Input
-                onChange={(e) => {
-                  setMemberName(e.target.value);
-                }}
-                icon="user circle"
-                iconPosition="left"
-                placeholder="Member First and Last"
-              />
-            </Form.Field>{" "} */}
+
             <textarea
               onChange={(e) => {
                 setNoteTyped(e.target.value);
