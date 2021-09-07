@@ -19,7 +19,7 @@ function DashboardNotes() {
 
   //DELETE NOTE
   const Deletenote = (id) => {
-    Axios.post(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
+    Axios.delete(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
       () => {
         // Axios.delete(`http://localhost:3001/deleteNote/${id}`).then(() => {
         console.log("deleted");
