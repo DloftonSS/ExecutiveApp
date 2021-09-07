@@ -255,28 +255,30 @@ function AllRequests(props) {
                       {requestList[request].status} */}
                       </Table.Cell>
                       <Table.Cell>
-                        <Field.Input
-                          onChange={(e) => {
-                            setNewStatus(e.target.value.toUpperCase());
-                          }}
-                          placeholder="New Status"
-                          style={{ width: "100px" }}
-                        ></Field.Input>
+                        <Form>
+                          <Form.Input
+                            onChange={(e) => {
+                              setNewStatus(e.target.value.toUpperCase());
+                            }}
+                            placeholder="New Status"
+                            style={{ width: "100px" }}
+                          ></Form.Input>
 
-                        <Button
-                          onClick={() => {
-                            updateStatus(requestList[request].id);
-                          }}
-                          style={{ marginLeft: "20px" }}
-                        >
-                          Update
-                          <Icon
-                            // onClick={() => {
-                            //   updateStatus(requestList[request].id);
-                            // }}
-                            name="edit outline"
-                          ></Icon>
-                        </Button>
+                          <Button
+                            onClick={() => {
+                              updateStatus(requestList[request].id);
+                            }}
+                            style={{ marginLeft: "20px" }}
+                          >
+                            Update
+                            <Icon
+                              // onClick={() => {
+                              //   updateStatus(requestList[request].id);
+                              // }}
+                              name="edit outline"
+                            ></Icon>
+                          </Button>
+                        </Form>
                       </Table.Cell>
                       <Table.Cell style={{ maxWidth: "300px" }}>
                         {" "}
