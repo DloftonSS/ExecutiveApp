@@ -218,22 +218,22 @@ function AllMembers() {
                             return ing;
                           } else if (
                             expiringMembers[ing].first_name
-                              .toLowerCase()
+                              // .toLowerCase()
                               .includes(searchTerm.toLowerCase()) ||
                             expiringMembers[ing].last_name
-                              .toLowerCase()
+                              // .toLowerCase()
                               .includes(searchTerm.toLowerCase())
                           ) {
                             return ing;
                           } else if (
                             expiringMembers[ing].email
-                              .toLowerCase()
+                              // .toLowerCase()
                               .includes(searchTerm.toLowerCase()) ||
                             expiringMembers[ing].phone
-                              .toLowerCase()
+                              // .toLowerCase()
                               .includes(searchTerm.toLowerCase()) ||
                             expiringMembers[ing].number
-                              .toLowerCase()
+                              // .toLowerCase()
                               .includes(searchTerm.toLowerCase())
                           ) {
                             return ing;

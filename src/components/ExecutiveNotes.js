@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { Card, Feed, Icon, Input, Button } from "semantic-ui-react";
+import { Card, Feed, Icon, Input, Button, Form } from "semantic-ui-react";
 
 function ExectuiveNotes(props) {
   const [noteTyped, setNoteTyped] = useState("");
@@ -45,9 +45,10 @@ function ExectuiveNotes(props) {
 
   return (
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
-      <Card fluid style={{ maxHeight: "600px" }}>
+      <Card fluid style={{ height: "600px" }}>
         <Card.Content>
           <Card.Header>Executive Notes</Card.Header>
+
           <input
             type="text"
             placeholder="Search Admin or Customer Name"
@@ -57,6 +58,7 @@ function ExectuiveNotes(props) {
             }}
           ></input>
         </Card.Content>
+
         <Card.Content
           style={{
             overflowY: "scroll",
@@ -85,6 +87,7 @@ function ExectuiveNotes(props) {
               .map((keyName, i) => {
                 return (
                   // <p>{notesList[keyName].note}</p>;
+
                   <Feed.Event>
                     <Feed.Label>
                       <Icon name="user circle" />
@@ -106,7 +109,7 @@ function ExectuiveNotes(props) {
                         {" "}
                         {notesList[keyName].note}
                       </Feed.Extra>
-                      ____________________________________________________________________________________________{" "}
+                      ________________________________________________________________{" "}
                       <Icon
                         name="x"
                         style={{ marginRight: "0px" }}
@@ -120,98 +123,83 @@ function ExectuiveNotes(props) {
               })}
           </Feed>
         </Card.Content>
-        <div
-          style={{
-            display: "flex",
-            padding: ".5rem",
-            alignItems: "top",
-            marginTop: "1%",
-          }}
-        >
-          <Input
-            onChange={(e) => {
-              setAdminName(e.target.value);
-            }}
-            style={{ margin: "1rem", width: "50%" }}
-            icon="sticky note outline"
-            iconPosition="left"
-            placeholder="Admin Frist and Last"
-          />
 
-          <Input
-            onChange={(e) => {
-              setMemberName(e.target.value);
-            }}
-            style={{ margin: "1rem", width: "50%" }}
-            icon="sticky note outline"
-            iconPosition="left"
-            placeholder="Member First and Last"
-          />
-        </div>{" "}
-        <div
-          style={{
-            display: "flex",
-            padding: ".5rem",
-            alignItems: "top",
-            // marginTop: "1%",
-          }}
-        >
-          <textarea
-            onChange={(e) => {
-              setNoteTyped(e.target.value);
-            }}
-            style={{ margin: "1rem", width: "88%", height: "100px" }}
-            icon="sticky note outline"
-            iconPosition="left"
-            placeholder="Add Note..."
-          />
-          {/* <Button type="reset" secondary onClick={submitChat}>
-          Submit{" "} */}
-          <div
-            onClick={submitNote}
+        <Card.Content>
+          <Form
             style={{
-              border: "solid black 2px",
-              height: "100px",
-              marginTop: "15px",
-              borderRadius: "5px",
-              backgroundColor: "lightgrey",
+              backgroundColor: "white",
+              border: "none",
+              padding: "0px",
+              marginLeft: "0",
+              width: "100%",
             }}
           >
-            <Icon
-              // onClick={submitNote}
-              name="arrow alternate circle up outline"
-              size="big"
+            <Form.Group widths="equal" style={{ height: "50px" }}>
+              <Form.Input
+                onChange={(e) => {
+                  setAdminName(e.target.value);
+                }}
+                icon="user circle"
+                iconPosition="left"
+                placeholder="Admin Frist and Last"
+              />
+              <Form.Input
+                onChange={(e) => {
+                  setMemberName(e.target.value);
+                }}
+                icon="user circle"
+                iconPosition="left"
+                placeholder="Member First and Last"
+              />
+            </Form.Group>
+            {/* <Form.Field
               style={{
-                color: "black",
-                marginTop: "30px",
-                marginLeft: "4px",
+                height: "50px",
+                display: "flex",
+                flexWrap: "wrap",
+                JustifyContent: "space-between",
               }}
-            ></Icon>
-          </div>
-          {/* </Button> */}
-        </div>
+            >
+              <Input
+                onChange={(e) => {
+                  setAdminName(e.target.value);
+                }}
+                icon="user circle"
+                iconPosition="left"
+                placeholder="Admin Frist and Last"
+              />
+            </Form.Field>
+            <Form.Field
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                JustifyContent: "space-between",
+              }}
+            >
+              <Input
+                onChange={(e) => {
+                  setMemberName(e.target.value);
+                }}
+                icon="user circle"
+                iconPosition="left"
+                placeholder="Member First and Last"
+              />
+            </Form.Field>{" "} */}
+            <textarea
+              onChange={(e) => {
+                setNoteTyped(e.target.value);
+              }}
+              style={{ margin: "1px", width: "88%", height: "100px" }}
+              icon="sticky note outline"
+              iconPosition="left"
+              placeholder="Add Note..."
+            />
+            <Button type="reset" onClick={submitNote}>
+              Submit
+            </Button>
+          </Form>
+        </Card.Content>
       </Card>
-      {/* <Card fluid>
-        <Card.Content>
-          <Card.Header>New Note</Card.Header>
-        </Card.Content>
-        <Card.Content>
-          <Input
-            onChange={(e) => {
-              setNoteTyped(e.target.value);
-            }}
-            style={{ margin: "1rem", width: "90%" }}
-            icon="sticky note outline"
-            iconPosition="left"
-            placeholder="Add Note..."
-          />
-        </Card.Content>
-        <Card.Content>
-          <Button type="reset" secondary onClick={submitNote}>
-            Submit Note
-          </Button>
-        </Card.Content>
-      </Card> */}
     </div>
   );
 }

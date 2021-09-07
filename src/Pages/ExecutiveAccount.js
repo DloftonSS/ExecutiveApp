@@ -42,7 +42,7 @@ function ExecutiveAccount(props) {
         >
           <ExecutiveData id={id} />
           {/* <DashboardNotes /> */}
-          {/* <ExectuiveNotes /> */}
+          <ExectuiveNotes />
         </div>
         {/* Row Two */}
         <div style={{ display: "flex", padding: ".5rem", alignItems: "top" }}>
@@ -51,7 +51,7 @@ function ExecutiveAccount(props) {
           {/* <AddExNote /> */}
         </div>
         {/* Row Three */}
-        <ExectuiveNotes />
+        {/* <ExectuiveNotes /> */}
         <div
           style={{ display: "flex", padding: ".5rem", alignItems: "top" }}
         ></div>
