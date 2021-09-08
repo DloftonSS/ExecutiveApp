@@ -257,36 +257,36 @@ function AllRequests(props) {
                       {requestList[request].status} */}
                       </Table.Cell>
                       <Table.Cell>
-                        <Form>
-                          <Form.Group
-                            style={{ backgroundColor: "none", border: "none" }}
-                          >
-                            <Form.Input
-                              onChange={(e) => {
-                                setNewStatus(e.target.value.toUpperCase());
-                              }}
-                              placeholder="New Status"
-                              style={{
-                                width: "100px",
-                              }}
-                            ></Form.Input>
+                        {/* <Form> */}
+                        <Form.Group
+                          style={{ backgroundColor: "none", border: "none" }}
+                        >
+                          <Form.Input
+                            onChange={(e) => {
+                              setNewStatus(e.target.value.toUpperCase());
+                            }}
+                            placeholder="New Status"
+                            style={{
+                              width: "100px",
+                            }}
+                          ></Form.Input>
 
-                            <Button
-                              onClick={() => {
-                                updateStatus(requestList[request].id);
-                              }}
-                              // style={{ marginLeft: "20px" }}
-                            >
-                              Update
-                              <Icon
-                                // onClick={() => {
-                                //   updateStatus(requestList[request].id);
-                                // }}
-                                name="edit outline"
-                              ></Icon>
-                            </Button>
-                          </Form.Group>
-                        </Form>
+                          <Button
+                            onClick={() => {
+                              updateStatus(requestList[request].id);
+                            }}
+                            // style={{ marginLeft: "20px" }}
+                          >
+                            Update
+                            <Icon
+                              // onClick={() => {
+                              //   updateStatus(requestList[request].id);
+                              // }}
+                              name="edit outline"
+                            ></Icon>
+                          </Button>
+                        </Form.Group>
+                        {/* </Form> */}
                       </Table.Cell>
                       <Table.Cell style={{ maxWidth: "300px" }}>
                         {" "}
