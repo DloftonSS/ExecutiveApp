@@ -61,7 +61,6 @@ function ExecutiveData(props) {
       style={{
         padding: "1%",
         width: "100%",
-        backgroundColor: "white",
       }}
     >
       <Card
