@@ -263,7 +263,11 @@ function AllRequests(props) {
                               setNewStatus(e.target.value.toUpperCase());
                             }}
                             placeholder="New Status"
-                            style={{ width: "100px" }}
+                            style={{
+                              width: "100px",
+                              backgroundColor: "none",
+                              border: "none",
+                            }}
                           ></Form.Input>
 
                           <Button
