@@ -257,7 +257,9 @@ function AllRequests(props) {
                       {requestList[request].status} */}
                       </Table.Cell>
                       <Table.Cell>
-                        <Form>
+                        <Form.Group
+                          style={{ backgroundColor: "none", border: "none" }}
+                        >
                           <Form.Input
                             onChange={(e) => {
                               setNewStatus(e.target.value.toUpperCase());
@@ -265,8 +267,6 @@ function AllRequests(props) {
                             placeholder="New Status"
                             style={{
                               width: "100px",
-                              backgroundColor: "none",
-                              border: "none",
                             }}
                           ></Form.Input>
 
@@ -284,7 +284,7 @@ function AllRequests(props) {
                               name="edit outline"
                             ></Icon>
                           </Button>
-                        </Form>
+                        </Form.Group>
                       </Table.Cell>
                       <Table.Cell style={{ maxWidth: "300px" }}>
                         {" "}
