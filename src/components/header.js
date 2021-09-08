@@ -13,7 +13,7 @@ function Header() {
         {" "}
         <a href="/adminDashBoard">
           {" "}
-          <img src={logo} style={{ height: "150px" }}></img>
+          <img src={logo} style={{ height: "200px" }}></img>
         </a>
       </Container>
 

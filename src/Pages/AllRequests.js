@@ -103,9 +103,11 @@ function AllRequests(props) {
         <Card fluid style={{ marginRight: "10px", height: "50%" }}>
           {" "}
           <Card.Content>
-            <Card.Header>Create Request</Card.Header>
+            <Card.Header style={{ alignItems: "center" }}>
+              Create Request
+            </Card.Header>
           </Card.Content>
-          <Card.Content>
+          <Card.Content style={{ marginTop: "-5%" }}>
             <Form
               style={{
                 backgroundColor: "white",
