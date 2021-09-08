@@ -274,7 +274,7 @@ function AllRequests(props) {
                             onClick={() => {
                               updateStatus(requestList[request].id);
                             }}
-                            style={{ marginLeft: "20px" }}
+                            // style={{ marginLeft: "20px" }}
                           >
                             Update
                             <Icon
