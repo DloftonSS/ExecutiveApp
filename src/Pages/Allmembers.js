@@ -202,7 +202,7 @@ function AllMembers() {
                     setSearchTerm(event.target.value);
                   }}
                 ></Input>
-                <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
+                <Card.Content style={{ overflowY: "scroll", height: "500px" }}>
                   <Table celled striped color="red">
                     <Table.Header>
                       <Table.Row>
@@ -355,7 +355,10 @@ function AllMembers() {
                   })
                   .map((member, i) => {
                     return (
-                      <Table.Row key={member.id}>
+                      <Table.Row
+                        style={{ overflowY: "scroll" }}
+                        key={member.id}
+                      >
                         <Table.Cell>{memberList[member].number}</Table.Cell>
                         <Table.Cell>
                           <Link
