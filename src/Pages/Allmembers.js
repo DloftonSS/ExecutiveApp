@@ -245,7 +245,10 @@ function AllMembers() {
                         })
                         .map((ing, i) => {
                           return (
-                            <Table.Row key={ing.id}>
+                            <Table.Row
+                              style={{ overflowY: "scroll" }}
+                              key={ing.id}
+                            >
                               <Table.Cell>
                                 {expiringMembers[ing].number}
                               </Table.Cell>
