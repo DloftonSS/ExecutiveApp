@@ -246,7 +246,7 @@ function AllMembers() {
                         .map((ing, i) => {
                           return (
                             <Table.Row
-                              style={{ overflowY: "scroll" }}
+                              style={{ overflowY: "scroll", width: "100%" }}
                               key={ing.id}
                             >
                               <Table.Cell>
@@ -356,7 +356,7 @@ function AllMembers() {
                   .map((member, i) => {
                     return (
                       <Table.Row
-                        style={{ overflowY: "scroll" }}
+                        style={{ overflowY: "scroll", width: "100%" }}
                         key={member.id}
                       >
                         <Table.Cell>{memberList[member].number}</Table.Cell>
