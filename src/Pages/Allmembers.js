@@ -94,7 +94,7 @@ function AllMembers() {
                         <Table.HeaderCell>Phone</Table.HeaderCell>
                         <Table.HeaderCell>Email</Table.HeaderCell>
                         <Table.HeaderCell>Address</Table.HeaderCell>
-                        <Table.HeaderCell>Expiring</Table.HeaderCell>
+                        <Table.HeaderCell>Date Expired</Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
