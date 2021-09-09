@@ -49,14 +49,14 @@ function ExectuiveNotes(props) {
         <Card.Content>
           <Card.Header>Executive Notes</Card.Header>
 
-          <input
+          <Input
             type="text"
             placeholder="Search Admin or Customer Name"
             style={{ width: "250px", height: "30px" }}
             onChange={(event) => {
               setSearchTerm(event.target.value);
             }}
-          ></input>
+          ></Input>
         </Card.Content>
 
         <Card.Content

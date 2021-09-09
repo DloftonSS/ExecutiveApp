@@ -8,6 +8,7 @@ import {
   Button,
   Dropdown,
   Menu,
+  Form,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
@@ -88,68 +89,121 @@ function ExecutiveRequests(props) {
       <Card fluid style={{ marginRight: "10px", height: "550px" }}>
         <Card.Content>
           <Card.Header>Requests</Card.Header>
-          <input
+          <Input
             type="text"
             placeholder="Search Member Name"
             style={{ width: "250px", height: "30px" }}
             onChange={(event) => {
               setSearchTerm(event.target.value);
             }}
-          ></input>
+          ></Input>
         </Card.Content>
-        <Card.Content style={{ height: "100px" }}>
-          <Input
-            onChange={(e) => {
-              setMemberName(e.target.value.toUpperCase());
+        <Card.Content style={{ marginTop: "-5%" }}>
+          <Form
+            style={{
+              backgroundColor: "white",
+              border: "none",
+              padding: "0px",
+              marginLeft: "0",
+              width: "100%",
             }}
-            placeholder="Member Name"
-          ></Input>
-          <Input
-            onChange={(e) => {
-              setCategory(e.target.value.toUpperCase());
-            }}
-            placeholder="Category"
-          ></Input>
-          <Input
-            onChange={(e) => {
-              setBrand(e.target.value.toUpperCase());
-            }}
-            placeholder="Brand"
-          ></Input>
-          <Input
-            onChange={(e) => {
-              setItem(e.target.value.toUpperCase());
-            }}
-            placeholder="Item"
-          ></Input>
-          <Input
-            onChange={(e) => {
-              setSku(e.target.value.toUpperCase());
-            }}
-            placeholder="UPC / SKU"
-          ></Input>
+          >
+            <Form.Group widths="equal">
+              <Form.Input
+                onChange={(e) => {
+                  setMemberName(e.target.value.toUpperCase());
+                }}
+                placeholder="Member Name"
+              />
+              <select
+                onChange={(e) => {
+                  setCategory(e.target.value.toUpperCase());
+                }}
+                style={{
+                  height: "60px",
+                  width: "100%",
+                  backgroundColor: "lightGrey",
+                  borderRadius: "5px",
+                  border: "none",
+                }}
+              >
+                <option>Category</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Ammunition">Ammunition</option>
+                <option value="Firearms">Firearms</option>
+                <option value="Scopes">Scopes</option>
+                <option value="Suppressors">Suppressors</option>
+              </select>
+              {/* <Form.Input
+                  onChange={(e) => {
+                    setCategory(e.target.value.toUpperCase());
+                  }}
+                  placeholder="Category"
+                /> */}
+              <Form.Input
+                onChange={(e) => {
+                  setBrand(e.target.value.toUpperCase());
+                }}
+                placeholder="Brand"
+              />
+              <Form.Input
+                onChange={(e) => {
+                  setItem(e.target.value.toUpperCase());
+                }}
+                placeholder="Item"
+              />
+            </Form.Group>
+            <Form.Group widths="equal" style={{ height: "50px" }}>
+              <Form.Input
+                onChange={(e) => {
+                  setSku(e.target.value.toUpperCase());
+                }}
+                placeholder="UPC / SKU"
+              />
+              <Form.Input
+                onChange={(e) => {
+                  setQuantity(e.target.value);
+                }}
+                placeholder="Quantity"
+              />
 
-          <Input
-            onChange={(e) => {
-              setQuantity(e.target.value);
-            }}
-            placeholder="Quantity"
-          ></Input>
-          <Input
-            onChange={(e) => {
-              setStatus(e.target.value.toUpperCase());
-            }}
-            placeholder="Status"
-          ></Input>
+              {/* <Form.Input
+                  onChange={(e) => {
+                    setStatus(e.target.value.toUpperCase());
+                  }}
+                  placeholder="Status"
+                /> */}
+              <select
+                onChange={(e) => {
+                  setStatus(e.target.value.toUpperCase());
+                }}
+                style={{
+                  height: "60px",
+                  width: "100%",
+                  backgroundColor: "lightGrey",
+                  borderRadius: "5px",
+                  border: "none",
+                }}
+              >
+                <option> Status</option>
+                <option value="Pending">Pending</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Ordered">Ordered</option>
+                <option value="Completed">Completed</option>
+                <option value="Canceled">Canceled</option>
+              </select>
+              <Form.Input
+                onChange={(e) => {
+                  setNewNote(e.target.value);
+                }}
+                placeholder="Note"
+              />
+            </Form.Group>
 
-          <Input
-            onChange={(e) => {
-              setNewNote(e.target.value);
-            }}
-            placeholder="Note"
-          ></Input>
-
-          <Button onClick={submitRequest}>Submit Request</Button>
+            <Button type="reset" onClick={submitRequest}>
+              Submit Request
+            </Button>
+          </Form>
         </Card.Content>
         <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
           <Table celled striped color="red">

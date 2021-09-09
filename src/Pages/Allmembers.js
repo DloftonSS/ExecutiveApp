@@ -7,6 +7,7 @@ import {
   Button,
   Image,
   Header,
+  Input,
 } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
@@ -59,14 +60,14 @@ function AllMembers() {
         <Card fluid style={{ marginRight: "10px", height: "100%" }}>
           <Card.Content>
             <Card.Header>All Members</Card.Header>
-            <input
+            <Input
               type="text"
               placeholder="Search First, Last, Phone, or Email"
               style={{ width: "250px", height: "30px" }}
               onChange={(event) => {
                 setSearchTerm(event.target.value);
               }}
-            ></input>
+            ></Input>
             <span style={{ position: "relative", float: "right" }}>
               <Modal
                 onClose={() => setOpen(false)}
@@ -76,15 +77,15 @@ function AllMembers() {
                 trigger={<Button>Expired</Button>}
               >
                 <Modal.Header>Expired Customers</Modal.Header>
-                <input
+                <Input
                   type="text"
                   placeholder="Search First, Last, Phone, or Email"
                   style={{ width: "250px", height: "30px", marginLeft: "2%" }}
                   onChange={(event) => {
                     setSearchTerm(event.target.value);
                   }}
-                ></input>
-                <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
+                ></Input>
+                <Card.Content style={{ overflowY: "scroll", height: "500px" }}>
                   <Table celled striped color="red">
                     <Table.Header>
                       <Table.Row>
@@ -100,7 +101,7 @@ function AllMembers() {
                     <Table.Body>
                       {Object.keys(expiredMembers)
                         .filter((exp) => {
-                          if (searchTerm == "") {
+                          if (searchTerm == "" || searchTerm == null) {
                             return exp;
                           } else if (
                             expiredMembers[exp].first_name
@@ -127,7 +128,10 @@ function AllMembers() {
                         })
                         .map((exp, i) => {
                           return (
-                            <Table.Row key={exp.id}>
+                            <Table.Row
+                              style={{ overflowY: "scroll" }}
+                              key={exp.id}
+                            >
                               <Table.Cell>
                                 {expiredMembers[exp].number}
                               </Table.Cell>
@@ -190,14 +194,14 @@ function AllMembers() {
                 trigger={<Button>Expiring</Button>}
               >
                 <Modal.Header>Expiring Customers</Modal.Header>
-                <input
+                <Input
                   type="text"
                   placeholder="Search First, Last, Phone, or Email"
                   style={{ width: "250px", height: "30px", marginLeft: "2%" }}
                   onChange={(event) => {
                     setSearchTerm(event.target.value);
                   }}
-                ></input>
+                ></Input>
                 <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
                   <Table celled striped color="red">
                     <Table.Header>
@@ -214,7 +218,7 @@ function AllMembers() {
                     <Table.Body>
                       {Object.keys(expiringMembers)
                         .filter((ing) => {
-                          if (searchTerm == "") {
+                          if (searchTerm == "" || searchTerm == null) {
                             return ing;
                           } else if (
                             expiringMembers[ing].first_name
@@ -321,7 +325,7 @@ function AllMembers() {
               <Table.Body>
                 {Object.keys(memberList)
                   .filter((member) => {
-                    if (searchTerm == "") {
+                    if (searchTerm == "" || searchTerm == null) {
                       return member;
                     } else if (
                       memberList[member].first_name

@@ -9,6 +9,10 @@ import {
   Input,
   Icon,
   Form,
+  Popup,
+  Grid,
+  Select,
+  MenuItem,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
@@ -39,7 +43,6 @@ function AllRequests(props) {
   //   { key: 3, text: "Returned", value: 3 },
   //   { key: 4, text: "Completed", value: 4 },
   // ];
-
   //NEW REQUEST
   const submitRequest = (e) => {
     Axios.post("https://executive-app.herokuapp.com/requsted", {
@@ -124,12 +127,31 @@ function AllRequests(props) {
                   }}
                   placeholder="Member Name"
                 />
-                <Form.Input
+                <select
+                  onChange={(e) => {
+                    setCategory(e.target.value.toUpperCase());
+                  }}
+                  style={{
+                    height: "60px",
+                    width: "100%",
+                    backgroundColor: "lightGrey",
+                    borderRadius: "5px",
+                    border: "none",
+                  }}
+                >
+                  <option>Category</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Firearms">Firearms</option>
+                  <option value="Ammunition">Ammunition</option>
+                  <option value="Scopes">Scopes</option>
+                  <option value="Suppressors">Suppressors</option>
+                </select>
+                {/* <Form.Input
                   onChange={(e) => {
                     setCategory(e.target.value.toUpperCase());
                   }}
                   placeholder="Category"
-                />
+                /> */}
                 <Form.Input
                   onChange={(e) => {
                     setBrand(e.target.value.toUpperCase());
@@ -156,12 +178,32 @@ function AllRequests(props) {
                   }}
                   placeholder="Quantity"
                 />
-                <Form.Input
+
+                {/* <Form.Input
                   onChange={(e) => {
                     setStatus(e.target.value.toUpperCase());
                   }}
                   placeholder="Status"
-                />
+                /> */}
+                <select
+                  onChange={(e) => {
+                    setStatus(e.target.value.toUpperCase());
+                  }}
+                  style={{
+                    height: "60px",
+                    width: "100%",
+                    backgroundColor: "lightGrey",
+                    borderRadius: "5px",
+                    border: "none",
+                  }}
+                >
+                  <option> Status</option>
+                  <option value="Pending">Pending</option>
+                  <option value="On Hold">On Hold</option>
+                  <option value="Ordered">Ordered</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Canceled">Canceled</option>
+                </select>
                 <Form.Input
                   onChange={(e) => {
                     setNote(e.target.value);
@@ -253,15 +295,22 @@ function AllRequests(props) {
                       <Table.Cell>
                         {" "}
                         {requestList[request].status}
-                        {/* <Dropdown clearable options={options} selection />
-                      {requestList[request].status} */}
+                        {/* <Dropdown
+                          clearable
+                          onChange={(e) => {
+                            setNewStatus(e.target.value);
+                          }}
+                          options={options}
+                          selection
+                        /> */}
+                        {/* {requestList[request].status} */}
                       </Table.Cell>
                       <Table.Cell>
                         {/* <Form> */}
                         <Form.Group
                           style={{ backgroundColor: "none", border: "none" }}
                         >
-                          <Form.Input
+                          {/* <Form.Input
                             onChange={(e) => {
                               setNewStatus(e.target.value.toUpperCase());
                             }}
@@ -269,29 +318,45 @@ function AllRequests(props) {
                             style={{
                               width: "100px",
                             }}
-                          ></Form.Input>
+                          ></Form.Input> */}
 
+                          <select
+                            onChange={(e) => {
+                              setNewStatus(e.target.value.toUpperCase());
+                            }}
+                            style={{
+                              height: "35px",
+                              width: "100%",
+                              backgroundColor: "lightGrey",
+                              borderRadius: "5px",
+                              border: "none",
+                            }}
+                          >
+                            <option>Choose Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="On Hold">On Hold</option>
+                            <option value="Ordered">Ordered</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Canceled">Canceled</option>
+                          </select>
                           <Button
                             onClick={() => {
                               updateStatus(requestList[request].id);
                             }}
-                            // style={{ marginLeft: "20px" }}
+                            style={{ width: "100%", marginTop: "10px" }}
                           >
                             Update
                             <Icon
+                              style={{ marginLeft: "10px" }}
                               // onClick={() => {
                               //   updateStatus(requestList[request].id);
                               // }}
                               name="edit outline"
                             ></Icon>
                           </Button>
-                        </Form.Group>
-                        {/* </Form> */}
+                        </Form.Group>{" "}
                       </Table.Cell>
-                      <Table.Cell style={{ maxWidth: "300px" }}>
-                        {" "}
-                        {requestList[request].note}
-                      </Table.Cell>
+                      <Table.Cell>{requestList[request].note}</Table.Cell>
                       <Table.Cell>
                         <textarea
                           onChange={(e) => {
@@ -335,59 +400,3 @@ function AllRequests(props) {
 }
 
 export default AllRequests;
-
-{
-  /* <Card.Content style={{ height: "100px" }}>
-            <Input
-              onChange={(e) => {
-                setMemberName(e.target.value.toUpperCase());
-              }}
-              placeholder="Member Name"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setCategory(e.target.value.toUpperCase());
-              }}
-              placeholder="Category"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setBrand(e.target.value.toUpperCase());
-              }}
-              placeholder="Brand"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setItem(e.target.value.toUpperCase());
-              }}
-              placeholder="Item"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setSku(e.target.value.toUpperCase());
-              }}
-              placeholder="UPC / SKU"
-            ></Input>
-
-            <Input
-              onChange={(e) => {
-                setQuantity(e.target.value);
-              }}
-              placeholder="Quantity"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setStatus(e.target.value.toUpperCase());
-              }}
-              placeholder="Status"
-            ></Input>
-
-            <Input
-              onChange={(e) => {
-                setNote(e.target.value);
-              }}
-              placeholder="Note"
-            ></Input>
-            <Button onClick={submitRequest}>Submit Request</Button>
-          </Card.Content> */
-}
