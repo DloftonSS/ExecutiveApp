@@ -19,12 +19,13 @@ import Profile from "./Pages/ProfilePage/Profilepage";
 import LoggingIn from "./Pages/login";
 import "./Pages/login.css";
 import Axios from "axios";
+import { Button, Table } from "semantic-ui-react";
 
 import { useHistory } from "react-router-dom";
 
 import LoginHeader from "./components/Storefront/loginHeader";
 
-function App() {
+function App(props) {
   const [isAuth, setIsAuth] = useState(false);
   // let isAuth = false;
   let history = useHistory();
@@ -32,7 +33,49 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
+  const [profileData, setProfileData] = useState("");
+  const id = props.id;
+  // const [memberList, setMemberList] = useState("");
 
+  const memberLogin = (props) => {
+    Axios.post("https://executive-app.herokuapp.com/memberLogin", {
+      // Axios.post("http://localhost:3001/memberLogin", {
+      email: email,
+      password: password,
+    }).then((response) => {
+      setIsAuth(true);
+      console.log(response.data[0]);
+      // const profileName = response.data[0].first_name;
+      setProfileData(response.data[0]);
+      const profileData = response.data[0];
+      // findMember();
+      // console.log("profile ID is" + " " + profileData.id);
+      setLoginStatus(
+        <button
+          onClick={() => {
+            setIsAuth(true);
+          }}
+          style={{
+            backgroundColor: "black",
+            borderRadius: "5px",
+            borderColor: "red",
+            height: "50px",
+            width: "350px",
+          }}
+          className="loginStatus"
+        >
+          <Link
+            style={{
+              color: "white",
+            }}
+            to={`/profile/${profileData.id}`}
+          >
+            Hello {profileData.first_name}, Click to view Profile.
+          </Link>
+        </button>
+      );
+    });
+  };
   const login = (props) => {
     Axios.post("https://executive-app.herokuapp.com/login", {
       // Axios.post("http://localhost:3001/login", {
@@ -73,6 +116,7 @@ function App() {
               height: "50px",
               width: "350px",
             }}
+            className="loginStatus"
           >
             <Link
               style={{
@@ -80,7 +124,7 @@ function App() {
               }}
               to="/adminDashBoard"
             >
-              Success!, go to dashboard.
+              Success! CLICK HERE TO CONTINUE.
             </Link>
           </button>
         );
@@ -102,9 +146,8 @@ function App() {
               backgroundColor: "black",
               borderRadius: "5px",
               borderColor: "red",
-              height: "50px",
-              width: "350px",
             }}
+            className="loginStatus"
           >
             <Link
               style={{
@@ -112,7 +155,7 @@ function App() {
               }}
               to="/storeFront"
             >
-              Success!, click to create user.
+              Success! CLICK HERE TO CONTINUE.
             </Link>
           </button>
         );
@@ -121,6 +164,7 @@ function App() {
       } else {
         setLoginStatus(
           <p
+            className="loginStatus"
             style={{
               backgroundColor: "black",
               borderRadius: "5px",
@@ -170,9 +214,11 @@ function App() {
         </a> */}
             <LoginHeader />
             {/* </Container> */}
-            <div className="form">
-              <h3>login</h3>
+            <div className="mainform">
+              <p className="loginHeader">Login</p>
               <input
+                className="loginInput"
+                required
                 type="text"
                 placeholder="Email"
                 onChange={(e) => {
@@ -180,13 +226,27 @@ function App() {
                 }}
               ></input>
               <input
+                className="loginInput"
+                required
                 type="password"
                 placeholder="Password"
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
               ></input>
-              <button onClick={login}>Authenticate</button>
+              <br></br>
+              <button
+                className="validate"
+                onClick={() => {
+                  login();
+                  memberLogin();
+                  // clearInput();
+                }}
+              >
+                Validate Credentials
+              </button>
+              <br></br>
+              {/* <h3>{loginStatus}</h3> */}
               {/* <button
                 onClick={() => {
                   setIsAuth(true);
@@ -231,10 +291,11 @@ function App() {
           component={StoreFront}
           isAuth={isAuth}
         />
-        <Route
-          path="/profile"
+        <ProtectedRoute
+          path="/profile/:id"
+          exact
           component={Profile}
-          //  isAuth={isAuth}
+          isAuth={isAuth}
         />
       </Switch>
     </Router>

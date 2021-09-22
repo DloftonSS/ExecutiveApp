@@ -6,10 +6,10 @@ function StoreHeader() {
   return (
     <div className="Navigation">
       <Container textAlign="center">
-        <h2>Welcome To</h2>{" "}
+        <h2>Welcome To</h2>
         <a href="/">
           {" "}
-          <img src={logo} style={{ height: "150px" }}></img>
+          <img src={logo}></img>
         </a>
       </Container>
 

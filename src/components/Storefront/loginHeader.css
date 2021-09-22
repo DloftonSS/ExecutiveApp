@@ -1,0 +1,25 @@
+.loginLogo {
+  width: 48%;
+}
+
+.line {
+  height: 5px;
+  background-color: rgb(192, 192, 192);
+  /* border: 2px solid white; */
+  width: 100%;
+}
+@media only screen and (max-width: 414px) {
+  .loginLogo {
+    width: 100%;
+  }
+  .line {
+    height: 5px;
+    background-color: rgb(192, 192, 192);
+    /* border: 2px solid white; */
+    width: 75%;
+    align-content: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

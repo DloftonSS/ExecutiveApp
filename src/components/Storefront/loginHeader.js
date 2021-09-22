@@ -1,4 +1,4 @@
-import "./header.css";
+import "./loginHeader.css";
 import logo from "../../Pages/images/ExecutiveAccess.png";
 import { Container, Icon } from "semantic-ui-react";
 
@@ -6,10 +6,11 @@ function LoginHeader() {
   return (
     <div className="Navigation">
       <Container textAlign="center">
-        <h2>Welcome To</h2>{" "}
+        <h2>Welcome To</h2>
+        <p className="line"></p>
         <a href="/">
           {" "}
-          <img src={logo} style={{ height: "150px" }}></img>
+          <img className="loginLogo" src={logo}></img>
         </a>
       </Container>
 

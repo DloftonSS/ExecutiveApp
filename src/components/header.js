@@ -13,7 +13,7 @@ function Header() {
         {" "}
         <a href="/adminDashBoard">
           {" "}
-          <img src={logo} style={{ height: "200px" }}></img>
+          <img src={logo} style={{ height: "100%", width: "45%" }}></img>
         </a>
       </Container>
 
@@ -51,6 +51,13 @@ function Header() {
             <a href="/addAdmin">
               {" "}
               <Icon disabled name="user plus"></Icon> Add Admin
+            </a>
+          </li>
+          <li>
+            {" "}
+            <a href="/">
+              {" "}
+              <Icon disabled name="sign out"></Icon> Sign Out
             </a>
           </li>
           <li> </li>

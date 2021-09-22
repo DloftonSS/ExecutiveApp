@@ -7,7 +7,7 @@ import DashboardNotes from "../components/DashboardNotes";
 import DashboardNewRequest from "../components/DashboardNewRequests";
 import OldestRequests from "../components/oldestRequests";
 import SideChat from "../components/SideChat";
-
+import "./CSS/dashboard.css";
 // import { useHistory } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
@@ -16,7 +16,7 @@ import SideChat from "../components/SideChat";
 
 function AdminDashBoard() {
   return (
-    <div>
+    <div className="main" style={{ backgroundColor: "black" }}>
       <Header />
 
       <div
@@ -31,6 +31,7 @@ function AdminDashBoard() {
             display: "flex",
             padding: ".5rem",
             alignItems: "top",
+            backgroundColor: "black",
           }}
         >
           <NewMembers />

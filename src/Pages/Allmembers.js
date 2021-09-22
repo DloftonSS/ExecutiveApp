@@ -22,13 +22,8 @@ function AllMembers() {
   const [open, setOpen] = React.useState(false);
   const [openTwo, setOpenTwo] = React.useState(false);
 
-  // const GetExpired = () => {
-  //   Axios.get("http://localhost:3001/expiredMembers").then((response) => {
-  //     setExpiredMembers(response.data);
-  //   });
-  // };
-
   useEffect(() => {
+    // GET ALL MEMBERS
     Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
@@ -36,12 +31,16 @@ function AllMembers() {
         // console.log(response.data);
       }
     );
+
+    // GET EXPIRED MEMBERS
     Axios.get("https://executive-app.herokuapp.com/expiredMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/expiredMembers").then((response) => {
         setExpiredMembers(response.data);
       }
     );
+
+    //GET EXPIRING MEMBERS
     Axios.get("https://executive-app.herokuapp.com/expiringMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/expiringMembers").then((response) => {

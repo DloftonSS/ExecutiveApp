@@ -100,7 +100,7 @@ function AllRequests(props) {
   }, []);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "black" }}>
       <Header />
       <Card fluid style={{ marginRight: "10px", height: "1300px" }}>
         <Card fluid style={{ marginRight: "10px", height: "50%" }}>
