@@ -85,7 +85,7 @@ function ExecutiveRequests(props) {
   }, []);
 
   return (
-    <div style={{ padding: "1%", width: "100%" }}>
+    <div style={{ padding: "1%", width: "100%", backgroundColor: "black" }}>
       <Card fluid style={{ marginRight: "10px", height: "550px" }}>
         <Card.Content>
           <Card.Header>Requests</Card.Header>
@@ -104,8 +104,11 @@ function ExecutiveRequests(props) {
               backgroundColor: "white",
               border: "none",
               padding: "0px",
-              marginLeft: "0",
-              width: "100%",
+              width: "50%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              alignItems: "center",
+              alignContent: "center",
             }}
           >
             <Form.Group widths="equal">
@@ -120,7 +123,7 @@ function ExecutiveRequests(props) {
                   setCategory(e.target.value.toUpperCase());
                 }}
                 style={{
-                  height: "60px",
+                  height: "40px",
                   width: "100%",
                   backgroundColor: "lightGrey",
                   borderRadius: "5px",
@@ -178,7 +181,7 @@ function ExecutiveRequests(props) {
                   setStatus(e.target.value.toUpperCase());
                 }}
                 style={{
-                  height: "60px",
+                  height: "40px",
                   width: "100%",
                   backgroundColor: "lightGrey",
                   borderRadius: "5px",
@@ -200,7 +203,17 @@ function ExecutiveRequests(props) {
               />
             </Form.Group>
 
-            <Button type="reset" onClick={submitRequest}>
+            <Button
+              type="reset"
+              onClick={submitRequest}
+              style={{
+                width: "100%",
+                marginLeft: "auto",
+                marginRight: "auto",
+                alignItems: "center",
+                alignContent: "center",
+              }}
+            >
               Submit Request
             </Button>
           </Form>

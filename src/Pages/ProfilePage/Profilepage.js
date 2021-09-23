@@ -19,7 +19,8 @@ import {
 } from "semantic-ui-react";
 
 import Axios from "axios";
-import Albert from "./profileImage.jpg";
+// import Albert from "./profileImage.jpg";
+import Albert from "./Albert.png";
 
 import "./Profilepage.css";
 
@@ -27,10 +28,12 @@ const Profile = (props) => {
   const [visible, setVisible] = React.useState(false);
   const [memberDetails, setMemberDetails] = useState("");
   const [newFirstName, setNewFirstName] = useState("");
+  const [newMiddleName, setNewMiddleName] = useState("");
   const [newLastName, setNewLastName] = useState("");
   const [newPhone, setNewPhone] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newAddress, setNewAddress] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [memberId, setMemberId] = useState("");
   const [requestList, setRequestList] = useState("");
   const [open, setOpen] = React.useState(false);
@@ -38,17 +41,20 @@ const Profile = (props) => {
   // const id = props.id;
   const { id } = useParams();
 
-  const UpdateDetails = (memberDetails) => {
+  const UpdateDetails = (id) => {
     Axios.get("https://executive-app.herokuapp.com/updateDetails", {
       // Axios.put("http://localhost:3001/updateDetails", {
       firstName: newFirstName,
+      middleName: newMiddleName,
       lastName: newLastName,
       phone: newPhone,
       email: newEmail,
       address: newAddress,
-      userID: memberDetails,
+      password: newPassword,
+      id: id,
     }).then((response) => {
-      console.log(response);
+      console.log(response.data);
+      console.log("completed");
     });
   };
 
@@ -60,7 +66,7 @@ const Profile = (props) => {
         const userID = response.data[id];
         setMemberDetails(userID);
         // console.log(response.data[id]);
-        console.log(response.data[id]);
+        // console.log(response.data[id]);
         // setMemberId(memberDetails.id);
         // console.log("member ID is" + " " + memberDetails.id);
       }
@@ -74,27 +80,51 @@ const Profile = (props) => {
   }, []);
 
   return (
-    <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
+    <div className="profileMain" style={{ padding: "1%", width: "100%" }}>
       <div className="tree">
-        <p className="slant"></p>
-        <p className="plant"></p>
+        {/* <h1 className="heading"> Welcome {memberDetails.first_name}</h1> */}
+        {/* <p className="slant"></p>
+        <p className="plant"></p> */}
       </div>
 
-      <Card className="main" className="ui container center aligned">
-        <Card.Header>Welcome {memberDetails.first_name}</Card.Header>
+      <Card
+        className="main"
+        className="ui container center aligned"
+        style={{
+          background: "rgba(255,255,255, 0.0)",
+          color: "white",
+          boxShadow: "none",
+          fontFamily: "Open Sans, sans-serif",
+          fontSize: "15px",
+        }}
+      >
+        <Card.Header style={{ background: "rgba(255,255,255, 0.5)" }}>
+          {/* Welcome {memberDetails.first_name} */}
+        </Card.Header>
         <Card.Content>
           <img src={Albert}></img>
+          {/* <p className="editImage">Edit</p> */}
         </Card.Content>
-        <Header>
+        <Header
+          style={{
+            color: "white",
+            fontFamily: "Open Sans, sans-serif",
+          }}
+        >
           {memberDetails.first_name} {memberDetails.last_name}
         </Header>
-        <Card.Meta>Member ID: {memberDetails.number}</Card.Meta>
+        <Card.Meta style={{ color: "white" }}>
+          Member ID: {memberDetails.number}
+        </Card.Meta>
+        <Card.Description>
+          Preferred Store: {memberDetails.preferredStore}
+        </Card.Description>
         <Card.Description>{memberDetails.address}</Card.Description>
         <Card.Description>{memberDetails.email}</Card.Description>
         <Card.Description>{memberDetails.phone}</Card.Description>
         <Card.Content>
           <span style={{ float: "right" }}>
-            <a style={{ color: "black" }} href="/">
+            <a style={{ color: "white" }} href="/">
               <Icon name="sign out alternate" size="large"></Icon>
             </a>
           </span>
@@ -134,37 +164,57 @@ const Profile = (props) => {
                   }}
                   placeholder="first name"
                   style={{ height: "30px", width: "300px" }}
-                ></input>
-                <Header>Last Name</Header>
+                >
+                  {/* {memberDetails.first_name} */}
+                </input>
+                <Header>Middle Name</Header>
                 <input
                   onChange={(e) => {
-                    setNewLastName(e.target.value);
+                    setNewMiddleName(e.target.value);
+                  }}
+                  placeholder="first name"
+                  style={{ height: "30px", width: "300px" }}
+                >
+                  {/* {memberDetails.first_name} */}
+                </input>
+                <Header>Last Name</Header>
+                <input
+                  onChange={(a) => {
+                    setNewLastName(a.target.value);
                   }}
                   placeholder="last name"
                   style={{ height: "30px", width: "300px" }}
                 ></input>
                 <Header>Email</Header>
                 <input
-                  onChange={(e) => {
-                    setNewEmail(e.target.value);
+                  onChange={(b) => {
+                    setNewEmail(b.target.value);
                   }}
                   placeholder="example@email.com"
                   style={{ height: "30px", width: "300px" }}
                 ></input>
                 <Header>Phone</Header>
                 <input
-                  onChange={(e) => {
-                    setNewPhone(e.target.value);
+                  onChange={(t) => {
+                    setNewPhone(t.target.value);
                   }}
                   placeholder="000-000-0000"
                   style={{ height: "30px", width: "300px" }}
                 ></input>
                 <Header>Address</Header>
                 <input
-                  onChange={(e) => {
-                    setNewAddress(e.target.value);
+                  onChange={(v) => {
+                    setNewAddress(v.target.value);
                   }}
                   placeholder="123 Main Street Orlando, FL 32808"
+                  style={{ height: "30px", width: "300px" }}
+                ></input>
+                <Header>Password</Header>
+                <input
+                  onChange={(k) => {
+                    setNewPassword(k.target.value);
+                  }}
+                  placeholder="********"
                   style={{ height: "30px", width: "300px" }}
                 ></input>
               </Modal.Content>
@@ -177,20 +227,13 @@ const Profile = (props) => {
                   labelPosition="right"
                   icon="checkmark"
                   onClick={() => {
-                    UpdateDetails(memberDetails);
+                    UpdateDetails(memberDetails.id);
                   }}
-                  onClick={() => setOpen(false)}
-                  positive
+                  // onClick={() => setOpen(false)}
+                  negative
                 />
               </Modal.Actions>
             </Modal>
-
-            {/* <Icon
-                style={{ float: "right" }}
-                color="red"
-                name="edit outline"
-              /> */}
-            {/* </Link> */}
           </span>
         </Card.Content>
       </Card>
@@ -204,7 +247,7 @@ const Profile = (props) => {
                 verticalAlign="middle"
               />
               <List.Content>
-                <List.Header as="a">Requests</List.Header>
+                <List.Header as="a">REQUESTS</List.Header>
                 <List.Description as="a">Updated 10 mins ago</List.Description>
               </List.Content>
             </List.Item>
@@ -215,7 +258,7 @@ const Profile = (props) => {
                 verticalAlign="middle"
               />
               <List.Content>
-                <List.Header as="a">Messages</List.Header>
+                <List.Header as="a">MESSAGES</List.Header>
                 <List.Description as="a">Updated 22 mins ago</List.Description>
               </List.Content>
             </List.Item>
@@ -226,7 +269,7 @@ const Profile = (props) => {
                 verticalAlign="middle"
               />
               <List.Content>
-                <List.Header as="a">Catalog</List.Header>
+                <List.Header as="a">CATALOG</List.Header>
                 <List.Description as="a">Updated 34 mins ago</List.Description>
               </List.Content>
             </List.Item>
@@ -235,9 +278,17 @@ const Profile = (props) => {
       </Card>
       <Card className="main" className="ui container center aligned">
         <Card.Content>
-          <Card.Header>My Requests</Card.Header>
+          <Card.Header style={{ fontFamily: "Open Sans, sans-serif" }}>
+            MY REQUESTS{" "}
+          </Card.Header>
         </Card.Content>
-        <Card.Content style={{ overflowY: "scroll", maxHeight: "400px" }}>
+        <Card.Content
+          style={{
+            overflowY: "scroll",
+            maxHeight: "400px",
+            fontFamily: "Open Sans, sans-serif",
+          }}
+        >
           <Table celled striped color="red">
             <Table.Header>
               {/* <Table.Row>
@@ -265,8 +316,8 @@ const Profile = (props) => {
         </Card.Content>
       </Card>
       <div className="tree">
-        <p className="spat"></p>
-        <p className="plat"></p>
+        {/* <p className="spat"></p>
+        <p className="plat"></p> */}
       </div>
     </div>
   );

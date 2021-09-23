@@ -1,4 +1,4 @@
-.form {
+.form-contents {
   background-color: gray;
   margin-left: 35%;
   margin-right: 35%;
@@ -8,12 +8,15 @@
   border-style: solid;
   margin-top: 5%;
 }
-
 label {
-  color: black;
+  width: 400px;
+  color: white;
 }
+/* 
+h1 {
+  color: blac;
+} */
 
-input {
-  border-radius: 5px;
-  width: 200px;
+footer {
+  height: 100px;
 }

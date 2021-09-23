@@ -44,7 +44,10 @@ function ExectuiveNotes(props) {
   }, []);
 
   return (
-    <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
+    <div
+      className="newMembers"
+      style={{ padding: "1%", width: "100%", backgroundColor: "black" }}
+    >
       <Card fluid style={{ height: "600px" }}>
         <Card.Content>
           <Card.Header>Executive Notes</Card.Header>

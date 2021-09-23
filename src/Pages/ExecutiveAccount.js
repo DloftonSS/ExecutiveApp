@@ -23,7 +23,7 @@ function ExecutiveAccount(props) {
   const id = props.match.params.id;
 
   return (
-    <div>
+    <div style={{ backgroundColor: "black" }}>
       <Header />
 
       <div

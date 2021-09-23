@@ -1,5 +1,20 @@
-.newMembers {
-  background-color: black;
+.profileMain {
+  /* background-color: black; */
+  background-image: url("EA_App_BG_V01.jpg");
+  background-attachment: fixed;
+}
+
+.editImage {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+}
+@media only screen and (max-width: 414px) {
+  .profileMain {
+    /* background-color: black; */
+    background-image: url("EA_App_BG_V01.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
 }
 .main {
   /* width: 100%; */
@@ -10,6 +25,7 @@
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  font-family: "Open Sans", sans-serif;
 }
 
 img {
@@ -18,7 +34,7 @@ img {
 }
 
 .slant {
-  border-bottom: 40px solid white;
+  border-bottom: 40px solid rgb(255, 255, 255);
   border-left: 290px solid rgba(0, 0, 0, 0);
   height: 0;
   line-height: 40px;
@@ -52,8 +68,9 @@ img {
 }
 
 .tree {
-  background-color: rgb(0, 0, 0);
-  border: 2px solid black;
+  height: 40px;
+  /* background-color: rgb(0, 0, 0);
+  border: 2px solid black; */
 }
 
 .table {
@@ -63,5 +80,12 @@ img {
 }
 
 .timeTable {
+  color: black;
+}
+
+.heading {
+  padding-top: 30px;
+  text-align: center;
+  font-size: xx-large;
   color: black;
 }

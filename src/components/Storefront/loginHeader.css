@@ -2,6 +2,10 @@
   width: 48%;
 }
 
+.Navigation {
+  height: 300px;
+}
+
 .line {
   height: 5px;
   background-color: rgb(192, 192, 192);
@@ -21,5 +25,9 @@
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .Navigation {
+    height: 250px !important;
   }
 }

@@ -41,6 +41,7 @@ function AddAdmin() {
         <Form.Field>
           <label>First Name</label>
           <Input
+            style={{ width: "90%" }}
             placeholder="First Name"
             type="text"
             onChange={(e) => {
@@ -51,6 +52,7 @@ function AddAdmin() {
         <Form.Field>
           <label>Last Name</label>
           <Input
+            style={{ width: "90%" }}
             placeholder="Last Name"
             type="text"
             onChange={(e) => {
@@ -61,6 +63,7 @@ function AddAdmin() {
         <Form.Field>
           <label>Email</label>
           <Input
+            style={{ width: "90%" }}
             placeholder="email"
             type="text"
             onChange={(e) => {
@@ -71,6 +74,7 @@ function AddAdmin() {
         <Form.Field>
           <label>Password</label>
           <Input
+            style={{ width: "90%" }}
             placeholder="Create Password"
             type="text"
             onChange={(e) => {

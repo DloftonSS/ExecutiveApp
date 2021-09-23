@@ -20,3 +20,7 @@ h1 {
 footer {
   height: 100px;
 }
+
+.Input {
+  width: 90%;
+}
