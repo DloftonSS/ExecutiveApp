@@ -111,7 +111,7 @@ const Profile = (props) => {
             fontFamily: "Open Sans, sans-serif",
           }}
         >
-          {memberDetails.first_name} {memberDetails.middle_name}
+          {memberDetails.first_name} {memberDetails.middle_name}{" "}
           {memberDetails.last_name}
         </Header>
         <Card.Meta style={{ color: "white" }}>
