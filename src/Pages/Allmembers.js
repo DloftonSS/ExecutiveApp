@@ -467,7 +467,7 @@ function AllMembers() {
                     if (
                       searchTermFour == "" ||
                       searchTermFour == null ||
-                      searchTermFour !== null
+                      searchTermFour != null
                     ) {
                       return member;
                     } else if (
