@@ -472,18 +472,21 @@ function AllMembers() {
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].last_name
                         .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].email
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].phone
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].number
-                        .toLowerCase()
                         .includes(searchTermFour.toLowerCase())
                     ) {
                       return member;
+
+                      //   memberList[member].email
+                      //     .toLowerCase()
+                      //     .includes(searchTermFour.toLowerCase()) ||
+                      //   memberList[member].phone
+                      //     .toLowerCase()
+                      //     .includes(searchTermFour.toLowerCase()) ||
+                      //   memberList[member].number
+                      //     .toLowerCase()
+                      //     .includes(searchTermFour.toLowerCase())
+                      // ) {
+                      //   return member;
                     }
                   })
                   .map((member, i) => {
