@@ -464,7 +464,11 @@ function AllMembers() {
               <Table.Body>
                 {Object.keys(memberList)
                   .filter((member) => {
-                    if (searchTermFour == "" || searchTermFour == null) {
+                    if (
+                      searchTermFour == "" ||
+                      searchTermFour == null ||
+                      searchTermFour !== null
+                    ) {
                       return member;
                     } else if (
                       memberList[member].first_name
