@@ -30,8 +30,8 @@ function ExecutiveData(props) {
   const id = props.id;
 
   const UpdateDetails = (memberDetails) => {
-    // Axios.get("https://executive-app.herokuapp.com/updateDetails", {
-    Axios.put("http://localhost:3001/updateDetails", {
+    Axios.get("https://executive-app.herokuapp.com/updateDetails", {
+      // Axios.put("http://localhost:3001/updateDetails", {
       firstName: newFirstName,
       lastName: newLastName,
       phone: newPhone,
