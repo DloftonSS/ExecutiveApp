@@ -75,7 +75,7 @@ function AllMembers() {
             <Card.Header>All Members</Card.Header>
             <Input
               type="text"
-              placeholder="Search First, Last, Phone, or Email"
+              placeholder="Search First or Last Name"
               style={{ width: "250px", height: "30px" }}
               onChange={(event) => {
                 setSearchTermFour(event.target.value);
@@ -339,7 +339,7 @@ function AllMembers() {
                 <Modal.Header>Expired Customers</Modal.Header>
                 <Input
                   type="text"
-                  placeholder="Search First, Last, Phone, or Email"
+                  placeholder="Search First or Last Name"
                   style={{ width: "250px", height: "30px", marginLeft: "2%" }}
                   onChange={(event) => {
                     setSearchTermTwo(event.target.value);

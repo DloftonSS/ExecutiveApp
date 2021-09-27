@@ -16,7 +16,13 @@ import "./CSS/dashboard.css";
 
 function AdminDashBoard() {
   return (
-    <div className="main" style={{ backgroundColor: "black" }}>
+    <div
+      className="main"
+      style={{
+        backgroundColor: "black",
+        fontFamily: "'Open Sans', sans-serif;",
+      }}
+    >
       <Header />
 
       <div
