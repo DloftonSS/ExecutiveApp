@@ -467,29 +467,24 @@ function AllMembers() {
                     if (searchTermFour == "" || searchTermFour == null) {
                       return member;
                     } else if (
-                      memberList[member].first_name
-                        .toString()
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].last_name
-                        .toString()
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase())
+                      memberList[member].first_name.includes(
+                        searchTermFour.toLowerCase()
+                      ) ||
+                      memberList[member].last_name.includes(
+                        searchTermFour.toLowerCase()
+                      )
                     ) {
                       return member;
                     } else if (
-                      memberList[member].email
-                        .toString()
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].phone
-                        .toString()
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].number
-                        .toString()
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase())
+                      memberList[member].email.includes(
+                        searchTermFour.toLowerCase()
+                      ) ||
+                      memberList[member].phone.includes(
+                        searchTermFour.toLowerCase()
+                      ) ||
+                      memberList[member].number.includes(
+                        searchTermFour.toLowerCase()
+                      )
                     ) {
                       return member;
                     }
