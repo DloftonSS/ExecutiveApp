@@ -372,18 +372,18 @@ function AllMembers() {
                               .includes(searchTermTwo.toLowerCase())
                           ) {
                             return exp;
-                          } else if (
-                            expiredMembers[exp].email
-                              .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase()) ||
-                            expiredMembers[exp].phone
-                              .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase()) ||
-                            expiredMembers[exp].number
-                              .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase())
-                          ) {
-                            return exp;
+                            // } else if (
+                            //   expiredMembers[exp].email
+                            //     .toLowerCase()
+                            //     .includes(searchTermTwo.toLowerCase()) ||
+                            //   expiredMembers[exp].phone
+                            //     .toLowerCase()
+                            //     .includes(searchTermTwo.toLowerCase()) ||
+                            //   expiredMembers[exp].number
+                            //     .toLowerCase()
+                            //     .includes(searchTermTwo.toLowerCase())
+                            // ) {
+                            //   return exp;
                           }
                         })
                         .map((exp, i) => {
@@ -467,24 +467,24 @@ function AllMembers() {
                     if (searchTermFour == "" || searchTermFour == null) {
                       return member;
                     } else if (
-                      memberList[member].first_name.includes(
-                        searchTermFour.toLowerCase()
-                      ) ||
-                      memberList[member].last_name.includes(
-                        searchTermFour.toLowerCase()
-                      )
+                      memberList[member].first_name
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase()) ||
+                      memberList[member].last_name
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase())
                     ) {
                       return member;
                     } else if (
-                      memberList[member].email.includes(
-                        searchTermFour.toLowerCase()
-                      ) ||
-                      memberList[member].phone.includes(
-                        searchTermFour.toLowerCase()
-                      ) ||
-                      memberList[member].number.includes(
-                        searchTermFour.toLowerCase()
-                      )
+                      memberList[member].email
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase()) ||
+                      memberList[member].phone
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase()) ||
+                      memberList[member].number
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase())
                     ) {
                       return member;
                     }
