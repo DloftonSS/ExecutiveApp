@@ -42,7 +42,7 @@ const Profile = (props) => {
   const { id } = useParams();
 
   const UpdateDetails = (id) => {
-    Axios.get("https://executive-app.herokuapp.com/updateDetails", {
+    Axios.put("https://executive-app.herokuapp.com/updateDetails", {
       // Axios.put("http://localhost:3001/updateDetails", {
       firstName: newFirstName,
       middleName: newMiddleName,
