@@ -462,33 +462,6 @@ function AllMembers() {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {/* {Object.keys(memberList)
-                  .filter((member) => {
-                    if (searchTermFour == "" || searchTermFour == null) {
-                      return member;
-                    } else if (
-                      memberList[member].first_name
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].last_name
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase())
-                    ) {
-                      return member;
-                    } else if (
-                      memberList[member].email
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].phone
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].number
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase())
-                    ) {
-                      return member;
-                    }
-                  }) */}
                 {Object.keys(memberList)
                   .filter((all) => {
                     if (searchTermFour == "" || searchTermFour == null) {
