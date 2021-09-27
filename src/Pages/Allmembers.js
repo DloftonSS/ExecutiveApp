@@ -464,29 +464,30 @@ function AllMembers() {
               <Table.Body>
                 {Object.keys(memberList)
                   .filter((member) => {
-                    if (
-                      searchTermFour == "" ||
-                      searchTermFour == null ||
-                      searchTermFour != null
-                    ) {
+                    if (searchTermFour == "" || searchTermFour == null) {
                       return member;
                     } else if (
                       memberList[member].first_name
+                        .toString()
                         .toLowerCase()
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].last_name
+                        .toString()
                         .toLowerCase()
                         .includes(searchTermFour.toLowerCase())
                     ) {
                       return member;
                     } else if (
                       memberList[member].email
+                        .toString()
                         .toLowerCase()
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].phone
+                        .toString()
                         .toLowerCase()
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].number
+                        .toString()
                         .toLowerCase()
                         .includes(searchTermFour.toLowerCase())
                     ) {
