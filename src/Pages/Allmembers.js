@@ -462,7 +462,7 @@ function AllMembers() {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {Object.keys(memberList)
+                {/* {Object.keys(memberList)
                   .filter((member) => {
                     if (searchTermFour == "" || searchTermFour == null) {
                       return member;
@@ -487,6 +487,33 @@ function AllMembers() {
                         .includes(searchTermFour.toLowerCase())
                     ) {
                       return member;
+                    }
+                  }) */}
+                {Object.keys(memberList)
+                  .filter((all) => {
+                    if (searchTermFour == "" || searchTermFour == null) {
+                      return all;
+                    } else if (
+                      memberList[all].first_name
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase()) ||
+                      memberList[all].last_name
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase())
+                    ) {
+                      return all;
+                    } else if (
+                      memberList[all].email
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase()) ||
+                      memberList[all].phone
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase()) ||
+                      memberList[all].number
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase())
+                    ) {
+                      return all;
                     }
                   })
                   .map((member, i) => {
