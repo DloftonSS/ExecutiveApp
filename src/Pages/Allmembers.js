@@ -372,10 +372,11 @@ function AllMembers() {
                               .includes(searchTermTwo.toLowerCase()) ||
                             expiredMembers[exp].email
                               .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase()) ||
-                            expiredMembers[exp].phone
-                              .toLowerCase()
                               .includes(searchTermTwo.toLowerCase())
+                            //   ||
+                            // expiredMembers[exp].phone
+                            //   .toLowerCase()
+                            //   .includes(searchTermTwo.toLowerCase())
                             // ||
                             // expiredMembers[exp].number
                             //   .toLowerCase()
@@ -473,10 +474,11 @@ function AllMembers() {
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].email
                         .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].phone
-                        .toLowerCase()
                         .includes(searchTermFour.toLowerCase())
+                      //   ||
+                      // memberList[member].phone
+                      //   .toLowerCase()
+                      //   .includes(searchTermFour.toLowerCase())
                       //   ||
                       // memberList[member].number
                       //   .toLowerCase()
