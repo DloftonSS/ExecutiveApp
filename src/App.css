@@ -81,6 +81,7 @@
   border: 2px solid red;
   font-family: "Tinos", serif;
   width: 400px;
+  background-color: white;
 }
 
 .loginStatus {
