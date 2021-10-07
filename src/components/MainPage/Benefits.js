@@ -32,7 +32,7 @@ function Benefits() {
           </Col>
           <Col className="BenCol">
             <h3>2</h3>
-            <p>NFA &amp; MEMBER ONLY ITEMS</p>
+            <p>NFA &amp; MEMBER ONLY ITEMS AVAILABLE</p>
           </Col>
         </Row>
         <Row>

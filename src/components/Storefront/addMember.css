@@ -24,3 +24,10 @@ footer {
 .Input {
   width: 90%;
 }
+
+.main-form {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5%;
+}

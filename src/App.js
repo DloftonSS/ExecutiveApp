@@ -45,8 +45,8 @@ function App(props) {
   // const [memberList, setMemberList] = useState("");
 
   const memberLogin = (props) => {
-    Axios.post("https://executive-app.herokuapp.com/memberLogin", {
-      // Axios.post("http://localhost:3001/memberLogin", {
+    // Axios.post("https://executive-app.herokuapp.com/memberLogin", {
+    Axios.post("http://localhost:3001/memberLogin", {
       email: email,
       password: password,
     }).then((response) => {
@@ -86,8 +86,8 @@ function App(props) {
     });
   };
   const login = (props) => {
-    Axios.post("https://executive-app.herokuapp.com/login", {
-      // Axios.post("http://localhost:3001/login", {
+    // Axios.post("https://executive-app.herokuapp.com/login", {
+    Axios.post("http://localhost:3001/login", {
       email: email,
       password: password,
     }).then((response) => {

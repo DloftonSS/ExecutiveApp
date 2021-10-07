@@ -60,7 +60,6 @@ function AllRequests(props) {
       sku: sku,
       note: note,
       memberName: memberName,
-      // theId: theId,
     }).then(() => {
       console.log("requested");
       GetAllRequests();

@@ -28,7 +28,7 @@ function ExecutiveRequests(props) {
   const [status, setStatus] = useState("");
   const [newStatus, setNewStatus] = useState("");
   const [sku, setSku] = useState("");
-
+  const [note, setNote] = useState("");
   const [newNote, setNewNote] = useState("");
   const [memberName, setMemberName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -65,14 +65,15 @@ function ExecutiveRequests(props) {
   const submitRequest = (e) => {
     Axios.post("http://executive-app.herokuapp.com/requsted", {
       // Axios.post("http://localhost:3001/requsted", {
-      //   category: category,
+      category: category,
       item: item,
       brand: brand,
       quantity: quantity,
       status: status,
       userId: userId,
       sku: sku,
-      // theId: theId,
+      newNote: newNote,
+      memberName: memberName,
     }).then(() => {
       console.log("requested");
       GetAllRequests();
