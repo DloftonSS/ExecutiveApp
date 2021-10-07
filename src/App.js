@@ -13,15 +13,20 @@ import AddAdmin from "./Pages/AddAdmin";
 import AllRequests from "./Pages/AllRequests";
 import ExecutiveAccount from "./Pages/ExecutiveAccount";
 import Catalog from "./Pages/Catalog";
+import MainPage from "./components/MainPage/MainPage";
+import Benefits from "./components/MainPage/Benefits";
 import StoreFront from "./Pages/StoreFront";
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import Profile from "./Pages/ProfilePage/Profilepage";
 import LoggingIn from "./Pages/login";
 import "./Pages/login.css";
 import Axios from "axios";
-import { Button, Table } from "semantic-ui-react";
-
+import { Button, Form, Header, Icon, Modal, Input } from "semantic-ui-react";
+import React from "react";
 import { useHistory } from "react-router-dom";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Container } from "react-bootstrap";
 
 import LoginHeader from "./components/Storefront/loginHeader";
 
@@ -35,6 +40,8 @@ function App(props) {
   const [loginStatus, setLoginStatus] = useState("");
   const [profileData, setProfileData] = useState("");
   const id = props.id;
+  const [open, setOpen] = React.useState(false);
+  const [openTwo, setOpenTwo] = React.useState(false);
   // const [memberList, setMemberList] = useState("");
 
   const memberLogin = (props) => {
@@ -43,37 +50,39 @@ function App(props) {
       email: email,
       password: password,
     }).then((response) => {
-      setIsAuth(true);
-      console.log(response.data[0]);
-      // const profileName = response.data[0].first_name;
-      setProfileData(response.data[0]);
-      const profileData = response.data[0];
-      // findMember();
-      // console.log("profile ID is" + " " + profileData.id);
-      setLoginStatus(
-        <button
-          onClick={() => {
-            setIsAuth(true);
-          }}
-          style={{
-            backgroundColor: "black",
-            borderRadius: "5px",
-            borderColor: "red",
-            height: "50px",
-            width: "350px",
-          }}
-          className="loginStatus"
-        >
-          <Link
-            style={{
-              color: "white",
+      if (response.data[0]) {
+        // console.log("your In");
+        setIsAuth(true);
+        // console.log(response.data[0]);
+        const profileName = response.data[0].first_name;
+        setProfileData(response.data[0]);
+        const profileData = response.data[0];
+        // // findMember();
+        // // console.log("profile ID is" + " " + profileData.id);
+        setLoginStatus(
+          <button
+            onClick={() => {
+              setIsAuth(true);
             }}
-            to={`/profile/${profileData.id}`}
+            className="loginStatus"
           >
-            Hello {profileData.first_name}, Click to view Profile.
-          </Link>
-        </button>
-      );
+            <Link
+              style={{
+                color: "black",
+              }}
+              to={`/profile/${profileData.id}`}
+            >
+              Welcome {profileData.first_name}, Click to view Profile.
+            </Link>
+          </button>
+        );
+      } else if (response.data.message) {
+        setLoginStatus(
+          <p className="incorrect-combo">
+            Incorrect UserName/Password Combination.
+          </p>
+        );
+      }
     });
   };
   const login = (props) => {
@@ -82,61 +91,35 @@ function App(props) {
       email: email,
       password: password,
     }).then((response) => {
-      // console.log(response);
-      // const manager = response.data[0].first_name;
-      // const admin = response.data[0].first_name;
-
-      // setLoginStatus("Correct passwor");
       if (response.data.message) {
-        // setIsAuth(true);
-        // console.log(response.data.message);
         setLoginStatus(
-          <p
-            style={{
-              backgroundColor: "black",
-              borderRadius: "5px",
-              borderColor: "red",
-              color: "white",
-            }}
-          >
+          <p className="incorrect-combo">
             Incorrect UserName/Password Combination.
           </p>
         );
       } else if (response.data[0].role == "admin") {
         setIsAuth(true);
+        const AdminName = response.data[0].first_name;
         setLoginStatus(
           <button
             onClick={() => {
               setIsAuth(true);
             }}
-            style={{
-              backgroundColor: "black",
-              borderRadius: "5px",
-              borderColor: "red",
-              height: "50px",
-              width: "350px",
-            }}
             className="loginStatus"
           >
             <Link
               style={{
-                color: "white",
+                color: "black",
               }}
               to="/adminDashBoard"
             >
-              Success! CLICK HERE TO CONTINUE.
+              Hello {AdminName}, CLICK HERE TO CONTINUE.
             </Link>
           </button>
         );
-        // history.push("/adminDashBoard");
-
-        // console.log(response.data[0].role == "admin");
-
-        // console.log("Admin " + admin + " logged in");
-        // setIsAuth(true);
       } else if (response.data[0].role == "manager") {
         setIsAuth(true);
-        // props.history.push("/storeFront");
+
         setLoginStatus(
           <button
             onClick={() => {
@@ -155,12 +138,25 @@ function App(props) {
               }}
               to="/storeFront"
             >
-              Success! CLICK HERE TO CONTINUE.
+              Hello! CLICK HERE TO CONTINUE.
             </Link>
           </button>
         );
         console.log(isAuth);
-        // console.log("manager " + manager + " logged in");
+      } else if (profileData.id === undefined) {
+        setLoginStatus(
+          <p
+            className="loginStatus"
+            style={{
+              backgroundColor: "black",
+              borderRadius: "5px",
+              borderColor: "red",
+              color: "white",
+            }}
+          >
+            You are not authorized to login here.
+          </p>
+        );
       } else {
         setLoginStatus(
           <p
@@ -182,90 +178,98 @@ function App(props) {
   return (
     <Router>
       <Switch>
-        <Route
-          path="/"
-          exact
-          // component={Login}
-        >
-          {/* <div>
-            <button
-              onClick={() => {
-                setIsAuth(true);
-              }}
-            >
-              LogIn
-            </button>
-            <button
-              onClick={() => {
-                setIsAuth(false);
-              }}
-            >
-              LogOut
-            </button>
-            <Link to="/storeFront">Store front</Link>
-          </div> */}
+        <Route path="/" exact>
           <div className="App">
             {" "}
-            {/* <Container textAlign="center"> */}
-            {/* {" "}
-        <a href="/adminDashBoard">
-          {" "}
-          <img src={logo} style={{ height: "150px" }}></img>
-        </a> */}
+            {/* TITLE OF THE PAGE WITH THE RED BACKGROUND GUN IMAGES */}
             <LoginHeader />
-            {/* </Container> */}
-            <div className="mainform">
-              <p className="loginHeader">Login</p>
-              <input
-                className="loginInput"
-                required
-                type="text"
-                placeholder="Email"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              ></input>
-              <input
-                className="loginInput"
-                required
-                type="password"
-                placeholder="Password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              ></input>
-              <br></br>
-              <button
-                className="validate"
-                onClick={() => {
-                  login();
-                  memberLogin();
-                  // clearInput();
-                }}
-              >
-                Validate Credentials
-              </button>
-              <br></br>
-              {/* <h3>{loginStatus}</h3> */}
-              {/* <button
-                onClick={() => {
-                  setIsAuth(true);
-                }}
-              >
-                test Login
-              </button>
-              <button
-                onClick={() => {
-                  setIsAuth(false);
-                }}
-              >
-                test logout
-              </button>
-              <Link to="/storeFront">Go to profile page</Link> */}
+            {/* HOME PAGE TITLE "AN EXCLUSIE BENEFITS..." */}
+            <MainPage />
+            {/* NEW LOGIN SCREEN */}
+            {/* LOGIN BUTTONS FOR MEMBERS AND ADMINS */}
+            <div className="Modals">
+              <Container>
+                <Row>
+                  <Col className="BenCol4">
+                    <p className="login-title">Member Login</p>
+                    <Input
+                      className="loginInput"
+                      required
+                      type="text"
+                      placeholder="Email"
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                    ></Input>
+                    <br></br>
+                    <Input
+                      className="loginInput"
+                      required
+                      type="password"
+                      placeholder="Password"
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                    ></Input>
+                    <br></br>
+                    <button
+                      className="validate"
+                      onClick={() => {
+                        memberLogin();
+                        // memberLogin();
+                        // clearInput();
+                      }}
+                    >
+                      Sign In
+                    </button>
+                  </Col>
+                  <Col className="BenCol4">
+                    <p className="login-title">Admin Login</p>
+                    <Input
+                      className="loginInput"
+                      required
+                      type="text"
+                      placeholder="Email"
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                    ></Input>
+                    <br></br>
+                    <Input
+                      className="loginInput"
+                      required
+                      type="password"
+                      placeholder="Password"
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                    ></Input>
+                    <br></br>
+                    <button
+                      className="validate"
+                      onClick={() => {
+                        login();
+                        // memberLogin();
+                        // clearInput();
+                      }}
+                    >
+                      Sign In
+                    </button>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Header icon>{loginStatus}</Header>
+                  </Col>
+                </Row>
+              </Container>
+              {/* </div> */}
             </div>
-            <h3>{loginStatus}</h3>
+            <Benefits />
           </div>
         </Route>
+
+        {/* PAGE ROUTES */}
 
         <Route path="/addMember" exact component={AddMember} />
         <Route path="/allMembers" exact component={AllMembers} />

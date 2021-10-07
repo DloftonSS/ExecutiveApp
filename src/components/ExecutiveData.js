@@ -16,10 +16,15 @@ import { useLocation } from "react-router-dom";
 function ExecutiveData(props) {
   const [memberDetails, setMemberDetails] = useState("");
   const [newFirstName, setNewFirstName] = useState("");
+  const [newMiddleName, setNewMiddleName] = useState("");
   const [newLastName, setNewLastName] = useState("");
   const [newPhone, setNewPhone] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newAddress, setNewAddress] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [newCardStatus, setNewCardStatus] = useState("");
+  const [newPreferredStore, setNewPreferredStore] = useState("");
+  const [newCommunication, setNewCommunication] = useState("");
 
   const [memberId, setMemberId] = useState("");
 
@@ -29,23 +34,8 @@ function ExecutiveData(props) {
 
   const id = props.id;
 
-  const UpdateDetails = (memberDetails) => {
-    Axios.get("https://executive-app.herokuapp.com/updateDetails", {
-      // Axios.put("http://localhost:3001/updateDetails", {
-      firstName: newFirstName,
-      lastName: newLastName,
-      phone: newPhone,
-      email: newEmail,
-      address: newAddress,
-      userID: memberDetails,
-    }).then((response) => {
-      console.log(response);
-    });
-  };
-  useEffect(() => {
-    // Axios.get(`http://localhost:3001/member/${id}`).then((response) => {
-    //   console.log(response);
-    // });
+  //GET MEMBER DETAILS
+  const getMemberInfo = () => {
     Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
       // Axios.get("http://localhost:3001/member").then((response) => {
       const userID = response.data[id];
@@ -54,6 +44,112 @@ function ExecutiveData(props) {
       setMemberId(memberDetails.id);
       // console.log("member ID is" + " " + memberDetails.id);
     });
+  };
+
+  //UPDATING MEMBER DETAILS
+  const ChangeFirst = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeFirst", {
+      // Axios.put("http://localhost:3001/changeFirst", {
+      firstName: newFirstName,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  const ChangeMiddle = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeMiddle", {
+      // Axios.put("http://localhost:3001/changeMiddle", {
+      middleName: newMiddleName,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  const ChangeLast = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeLast", {
+      // Axios.put("http://localhost:3001/changeLast", {
+      lastName: newLastName,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  const ChangeEmail = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeEmail", {
+      // Axios.put("http://localhost:3001/changeEmail", {
+      email: newEmail,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  const ChangePhone = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changePhone", {
+      // Axios.put("http://localhost:3001/changePhone", {
+      phone: newPhone,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  const ChangeAddress = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeAddress", {
+      // Axios.put("http://localhost:3001/changeAddress", {
+      address: newAddress,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  const ChangePassword = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changePassword", {
+      // Axios.put("http://localhost:3001/changePassword", {
+      password: newPassword,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  const ChangeCard = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeCard", {
+      // Axios.put("http://localhost:3001/changeCard", {
+      card: newCardStatus,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  const ChangeStore = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeStore", {
+      // Axios.put("http://localhost:3001/changeStore", {
+      store: newPreferredStore,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  const ChangeCommunication = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeCommunication", {
+      // Axios.put("http://localhost:3001/changeCommunication", {
+      communication: newCommunication,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+  //END UPDATING MEMBER DETAILS
+  useEffect(() => {
+    getMemberInfo();
   }, []);
 
   return (
@@ -70,95 +166,256 @@ function ExecutiveData(props) {
       >
         <Card.Content>
           <Card.Header>
-            {memberDetails.first_name} {memberDetails.last_name}{" "}
+            {memberDetails.first_name} {memberDetails.middle_name}{" "}
+            {memberDetails.last_name}{" "}
             <span style={{ position: "relative", float: "right" }}>
               <Modal
+                style={{ height: "700px", left: "25%", top: "10%" }}
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 open={open}
-                trigger={<Button>Edit Details</Button>}
+                trigger={
+                  <Icon
+                    name="edit"
+                    style={{ color: "black" }}
+                    size="large"
+                  ></Icon>
+                }
               >
-                <Modal.Header>Edit Customer Data</Modal.Header>
-                {/* <Modal.Content image>
-                  <Image
-                    size="medium"
-                    src="/images/avatar/large/rachel.png"
-                    wrapped
-                  />
-                  <Modal.Description>
-                    <Header>Default Profile Image</Header>
-                    <p>
-                      We've found the following gravatar image associated with
-                      your e-mail address.
-                    </p>
-                    <p>Is it okay to use this photo?</p>
-                  </Modal.Description>
-                </Modal.Content> */}
-                <Modal.Content style={{ float: "center" }}>
+                <Modal.Header>Edit Personal Details</Modal.Header>
+
+                <Modal.Content style={{ marginLeft: "50px" }}>
                   <Header>First Name</Header>
                   <input
                     onChange={(e) => {
                       setNewFirstName(e.target.value);
                     }}
                     placeholder="first name"
-                    style={{ height: "30px", width: "300px" }}
+                    Value={memberDetails.first_name}
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
                   ></input>
+                  <Button
+                    size="mini"
+                    color="black"
+                    onClick={() => {
+                      ChangeFirst(memberDetails.id);
+                    }}
+                  >
+                    Change First
+                  </Button>
+                  <Header>Middle Name</Header>
+                  <input
+                    onChange={(r) => {
+                      setNewMiddleName(r.target.value);
+                    }}
+                    placeholder="first name"
+                    Value={memberDetails.middle_name}
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
+                  ></input>
+                  <Button
+                    size="mini"
+                    color="black"
+                    onClick={() => {
+                      ChangeMiddle(memberDetails.id);
+                    }}
+                  >
+                    Change Middle
+                  </Button>
                   <Header>Last Name</Header>
                   <input
-                    onChange={(e) => {
-                      setNewLastName(e.target.value);
+                    onChange={(t) => {
+                      setNewLastName(t.target.value);
                     }}
                     placeholder="last name"
-                    style={{ height: "30px", width: "300px" }}
+                    Value={memberDetails.last_name}
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
                   ></input>
+                  <Button
+                    size="mini"
+                    color="black"
+                    onClick={() => {
+                      ChangeLast(memberDetails.id);
+                    }}
+                  >
+                    Change Last
+                  </Button>
                   <Header>Email</Header>
                   <input
-                    onChange={(e) => {
-                      setNewEmail(e.target.value);
+                    onChange={(y) => {
+                      setNewEmail(y.target.value);
                     }}
                     placeholder="example@email.com"
-                    style={{ height: "30px", width: "300px" }}
+                    Value={memberDetails.email}
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
                   ></input>
+                  <Button
+                    size="mini"
+                    color="black"
+                    onClick={() => {
+                      ChangeEmail(memberDetails.id);
+                    }}
+                  >
+                    Change Email
+                  </Button>
                   <Header>Phone</Header>
                   <input
-                    onChange={(e) => {
-                      setNewPhone(e.target.value);
+                    onChange={(u) => {
+                      setNewPhone(u.target.value);
                     }}
                     placeholder="000-000-0000"
-                    style={{ height: "30px", width: "300px" }}
+                    Value={memberDetails.phone}
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
                   ></input>
+                  <Button
+                    size="mini"
+                    color="black"
+                    onClick={() => {
+                      ChangePhone(memberDetails.id);
+                    }}
+                  >
+                    Change Phone
+                  </Button>
                   <Header>Address</Header>
                   <input
-                    onChange={(e) => {
-                      setNewAddress(e.target.value);
+                    onChange={(i) => {
+                      setNewAddress(i.target.value);
                     }}
                     placeholder="123 Main Street Orlando, FL 32808"
-                    style={{ height: "30px", width: "300px" }}
+                    Value={memberDetails.address}
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
                   ></input>
+                  <Button
+                    size="mini"
+                    color="black"
+                    onClick={() => {
+                      ChangeAddress(memberDetails.id);
+                    }}
+                  >
+                    Change Address
+                  </Button>
+                  <Header>Card</Header>
+                  <input
+                    onChange={(i) => {
+                      setNewCardStatus(i.target.value);
+                    }}
+                    placeholder="YES or NO"
+                    Value={memberDetails.card}
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
+                  ></input>
+                  <Button
+                    size="mini"
+                    color="black"
+                    onClick={() => {
+                      ChangeCard(memberDetails.id);
+                    }}
+                  >
+                    Change Card
+                  </Button>
+                  <Header>Preferred Store</Header>
+                  <input
+                    onChange={(i) => {
+                      setNewPreferredStore(i.target.value);
+                    }}
+                    placeholder="Apopka"
+                    Value={memberDetails.store}
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
+                  ></input>
+                  <Button
+                    size="mini"
+                    color="black"
+                    onClick={() => {
+                      ChangeStore(memberDetails.id);
+                    }}
+                  >
+                    Change Store
+                  </Button>
+                  <Header>Communication Method</Header>
+                  <input
+                    onChange={(i) => {
+                      setNewCommunication(i.target.value);
+                    }}
+                    placeholder="Email Only"
+                    Value={memberDetails.communication}
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
+                  ></input>
+                  <Button
+                    size="mini"
+                    color="black"
+                    onClick={() => {
+                      ChangeCommunication(memberDetails.id);
+                    }}
+                  >
+                    Change Communication
+                  </Button>
+                  <Header>Password</Header>
+                  <input
+                    onChange={(o) => {
+                      setNewPassword(o.target.value);
+                    }}
+                    placeholder="********"
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
+                  ></input>
+
+                  <Button
+                    size="mini"
+                    color="red"
+                    onClick={() => {
+                      ChangePassword(memberDetails.id);
+                    }}
+                  >
+                    Change Password
+                  </Button>
                 </Modal.Content>
                 <Modal.Actions>
-                  <Button color="black" onClick={() => setOpen(false)}>
-                    Cancel
-                  </Button>
                   <Button
-                    content="Submit Change"
+                    content="Done"
                     labelPosition="right"
                     icon="checkmark"
-                    onClick={() => {
-                      UpdateDetails(memberDetails);
-                    }}
                     onClick={() => setOpen(false)}
                     positive
                   />
                 </Modal.Actions>
               </Modal>
-
-              {/* <Icon
-                style={{ float: "right" }}
-                color="red"
-                name="edit outline"
-              /> */}
-              {/* </Link> */}
             </span>
           </Card.Header>
           <Card.Meta>{memberDetails.address} </Card.Meta>

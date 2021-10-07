@@ -4,6 +4,10 @@
   background-attachment: fixed;
 }
 
+.MemberPhoto {
+  border-radius: 100px;
+}
+
 .editImage {
   font-family: "Open Sans", sans-serif;
   font-size: 12px;

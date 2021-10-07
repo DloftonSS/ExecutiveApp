@@ -1,0 +1,38 @@
+.underline {
+  width: 70%;
+  height: 15px;
+  background-color: lightgray;
+}
+
+h1 {
+  width: 60%;
+}
+
+.titleDiv {
+  padding-left: 25%;
+  padding-bottom: 1%;
+}
+
+.MainContainer {
+  margin-top: 5%;
+}
+
+span {
+  color: rgb(233, 10, 42);
+}
+
+@media only screen and (max-width: 414px) {
+  h1 {
+    width: 70%;
+  }
+
+  .titleDiv {
+    padding-left: 25%;
+    padding-bottom: 1%;
+  }
+  .underline {
+    width: 75%;
+    height: 15px;
+    background-color: lightgray;
+  }
+}

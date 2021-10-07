@@ -1,0 +1,99 @@
+.underlineB {
+  width: 75%;
+  height: 15px;
+  background-color: lightgray;
+  float: right;
+}
+.underlineC {
+  width: 70%;
+  height: 15px;
+  background-color: lightgray;
+}
+.underlineD {
+  width: 75%;
+  height: 15px;
+  background-color: lightgray;
+  float: right;
+}
+
+h1 {
+  width: 60%;
+}
+
+.titleDiv {
+  padding-left: 25%;
+  padding-bottom: 1%;
+}
+
+.MainContainer {
+  margin-top: 5%;
+}
+
+.footer {
+  color: white;
+  background-color: black;
+  padding: 2%;
+}
+span {
+  color: rgb(233, 10, 42);
+}
+
+.BenCol {
+  background-color: black;
+  color: white;
+  margin: 5%;
+  height: 300px;
+  width: 300px;
+}
+
+.BenCol p {
+  float: left;
+  text-align: left;
+  font-size: xx-large;
+}
+.BenCol h3 {
+  float: left;
+  text-align: left;
+  color: lightgray;
+  font-size: 50px;
+}
+
+@media only screen and (max-width: 414px) {
+  h1 {
+    width: 70%;
+  }
+
+  .titleDiv {
+    padding-left: 25%;
+    padding-bottom: 1%;
+  }
+  .underline {
+    width: 75%;
+    height: 15px;
+    background-color: lightgray;
+  }
+
+  .BenCol {
+    background-color: black;
+    color: white;
+    margin: 5%;
+    height: 120px;
+    width: 100px;
+  }
+  .BenCol p {
+    float: left;
+    text-align: left;
+    font-size: medium;
+  }
+  .BenCol h3 {
+    float: left;
+    text-align: left;
+    color: lightgray;
+    font-size: 25px;
+  }
+  .footer {
+    color: white;
+    background-color: black;
+    padding: 4%;
+  }
+}

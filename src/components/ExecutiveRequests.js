@@ -32,16 +32,36 @@ function ExecutiveRequests(props) {
   const [newNote, setNewNote] = useState("");
   const [memberName, setMemberName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  // const [userId, setUserId] = useState("");
-  // const [theId, setTheId] = useState("");
 
-  // const options = [
-  //   { key: 1, text: "Pending ", value: 1 },
-  //   { key: 2, text: "On Hold", value: 2 },
-  //   { key: 3, text: "Returned", value: 3 },
-  //   { key: 4, text: "Completed", value: 4 },
-  // ];
+  // const { id } = useParams();
+  const GetAllRequests = () => {
+    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/newRequests").then((response) => {
+        const data = response.data;
+        console.log(userId);
+        if (data.id == userId) {
+          setRequestList(response.data);
+          console.log(requestList);
+        }
+        // setRequestList(response.data);
+        // console.log(response.data);
+        // WhereMember();
+      }
+    );
+  };
 
+  //GETTING SPECIFIC REQUESTS
+  // const WhereMember = () => {
+  //   // Axios.get("https://executive-app.herokuapp.com/membersRequests").then(
+  //   //   (response) => {
+  //   Axios.get("http://localhost:3001/membersRequests").then((response) => {
+  //     if (requestList.id == userId) {
+  //       setRequestList(response.data);
+  //       console.log(requestList);
+  //     }
+  //   });
+  // };
   const submitRequest = (e) => {
     Axios.post("http://executive-app.herokuapp.com/requsted", {
       // Axios.post("http://localhost:3001/requsted", {
@@ -55,6 +75,7 @@ function ExecutiveRequests(props) {
       // theId: theId,
     }).then(() => {
       console.log("requested");
+      GetAllRequests();
     });
   };
 
@@ -64,7 +85,9 @@ function ExecutiveRequests(props) {
       // Axios.put("http://localhost:3001/noteUpdate", {
       note: newNote,
       id: id,
-    }).then((response) => {});
+    }).then((response) => {
+      GetAllRequests();
+    });
   };
 
   const updateStatus = (id) => {
@@ -72,16 +95,13 @@ function ExecutiveRequests(props) {
       // Axios.put("http://localhost:3001/statusUpdate", {
       status: newStatus,
       id: id,
-    }).then((response) => {});
+    }).then((response) => {
+      GetAllRequests();
+    });
   };
   useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
-      (response) => {
-        // Axios.get("http://localhost:3001/newRequests").then((response) => {
-        setRequestList(response.data);
-        // console.log(response.data);
-      }
-    );
+    GetAllRequests();
+    // WhereMember();
   }, []);
 
   return (
@@ -137,12 +157,7 @@ function ExecutiveRequests(props) {
                 <option value="Scopes">Scopes</option>
                 <option value="Suppressors">Suppressors</option>
               </select>
-              {/* <Form.Input
-                  onChange={(e) => {
-                    setCategory(e.target.value.toUpperCase());
-                  }}
-                  placeholder="Category"
-                /> */}
+
               <Form.Input
                 onChange={(e) => {
                   setBrand(e.target.value.toUpperCase());
@@ -170,12 +185,6 @@ function ExecutiveRequests(props) {
                 placeholder="Quantity"
               />
 
-              {/* <Form.Input
-                  onChange={(e) => {
-                    setStatus(e.target.value.toUpperCase());
-                  }}
-                  placeholder="Status"
-                /> */}
               <select
                 onChange={(e) => {
                   setStatus(e.target.value.toUpperCase());
@@ -230,7 +239,7 @@ function ExecutiveRequests(props) {
                 <Table.HeaderCell>Status</Table.HeaderCell>
                 <Table.HeaderCell>Update Status</Table.HeaderCell>
                 <Table.HeaderCell>Note</Table.HeaderCell>
-                <Table.HeaderCell>Date Created</Table.HeaderCell>
+                <Table.HeaderCell>Update Note</Table.HeaderCell>
                 <Table.HeaderCell>Date Updated</Table.HeaderCell>
                 {/* <Table.HeaderCell>ID</Table.HeaderCell> */}
               </Table.Row>
@@ -253,47 +262,48 @@ function ExecutiveRequests(props) {
                   return (
                     <Table.Row key={request.id}>
                       <Table.Cell>{requestList[request].memberName}</Table.Cell>
-                      <Table.Cell>
-                        {/* <Link
-                          style={{ color: "black" }}
-                          to={`/executiveAccount/${requestList[request].id}`}
-                        > */}
-                        {requestList[request].category}
-                        {/* </Link> */}
-                      </Table.Cell>
+                      <Table.Cell>{requestList[request].category}</Table.Cell>
 
                       <Table.Cell>{requestList[request].item}</Table.Cell>
                       <Table.Cell>{requestList[request].sku}</Table.Cell>
                       <Table.Cell>{requestList[request].quantity}</Table.Cell>
+                      <Table.Cell> {requestList[request].status}</Table.Cell>
                       <Table.Cell>
-                        {" "}
-                        {requestList[request].status}
-                        {/* <Dropdown clearable options={options} selection />
-                      {requestList[request].status} */}
-                      </Table.Cell>
-                      <Table.Cell>
-                        <Input
-                          onChange={(e) => {
-                            setNewStatus(e.target.value.toUpperCase());
-                          }}
-                          placeholder="New Status"
-                          style={{ width: "100px" }}
-                        ></Input>
-
-                        <button
-                          onClick={() => {
-                            updateStatus(requestList[request].id);
-                          }}
-                          style={{ marginLeft: "20px" }}
+                        <Form.Group
+                          style={{ backgroundColor: "none", border: "none" }}
                         >
-                          Update
-                          <Icon
-                            // onClick={() => {
-                            //   updateStatus(requestList[request].id);
-                            // }}
-                            name="edit outline"
-                          ></Icon>
-                        </button>
+                          <select
+                            onChange={(e) => {
+                              setNewStatus(e.target.value.toUpperCase());
+                            }}
+                            style={{
+                              height: "35px",
+                              width: "100%",
+                              backgroundColor: "lightGrey",
+                              borderRadius: "5px",
+                              border: "none",
+                            }}
+                          >
+                            <option>Choose Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="On Hold">On Hold</option>
+                            <option value="Ordered">Ordered</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Canceled">Canceled</option>
+                          </select>
+                          <Button
+                            onClick={() => {
+                              updateStatus(requestList[request].id);
+                            }}
+                            style={{ width: "100%", marginTop: "10px" }}
+                          >
+                            Update
+                            <Icon
+                              style={{ marginLeft: "10px" }}
+                              name="edit outline"
+                            ></Icon>
+                          </Button>
+                        </Form.Group>{" "}
                       </Table.Cell>
                       <Table.Cell style={{ maxWidth: "300px" }}>
                         {" "}
@@ -305,26 +315,20 @@ function ExecutiveRequests(props) {
                             setNewNote(e.target.value);
                           }}
                           placeholder="Update Note"
-                          // style={{ marginLeft: "20px" }}
                         ></textarea>
-                        <button
+                        <Button
                           onClick={() => {
                             updateNote(requestList[request].id);
                           }}
                           style={{ marginLeft: "20px" }}
                         >
                           Update
-                          <Icon
-                            // onClick={() => {
-                            //   updateStatus(requestList[request].id);
-                            // }}
-                            name="edit outline"
-                          ></Icon>
-                        </button>
+                          <Icon name="edit outline"></Icon>
+                        </Button>
                       </Table.Cell>
 
                       <Table.Cell>
-                        {requestList[request].date_created}
+                        {requestList[request].date_updated}
                       </Table.Cell>
                       {/* <Table.Cell></Table.Cell> */}
                     </Table.Row>

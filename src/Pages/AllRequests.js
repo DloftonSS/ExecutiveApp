@@ -37,12 +37,16 @@ function AllRequests(props) {
   const [memberName, setMemberName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // const options = [
-  //   { key: 1, text: "Pending ", value: 1 },
-  //   { key: 2, text: "On Hold", value: 2 },
-  //   { key: 3, text: "Returned", value: 3 },
-  //   { key: 4, text: "Completed", value: 4 },
-  // ];
+  //GET ALL REQUESTS
+  const GetAllRequests = () => {
+    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/allRequests").then((response) => {
+        setRequestList(response.data);
+        // console.log(response.data);
+      }
+    );
+  };
   //NEW REQUEST
   const submitRequest = (e) => {
     Axios.post("https://executive-app.herokuapp.com/requsted", {
@@ -59,14 +63,7 @@ function AllRequests(props) {
       // theId: theId,
     }).then(() => {
       console.log("requested");
-    });
-  };
-
-  //CHANGE REQUEST DATE
-  const DateChange = (id) => {
-    Axios.put("https://executive-app.herokuapp.com/dateChange", {
-      // Axios.put("http://localhost:3001/dateChange", {
-      id: id,
+      GetAllRequests();
     });
   };
 
@@ -76,7 +73,9 @@ function AllRequests(props) {
       // Axios.put("http://localhost:3001/statusUpdate", {
       status: newStatus,
       id: id,
-    }).then((response) => {});
+    }).then((response) => {
+      GetAllRequests();
+    });
   };
   //UPDATE REQUEST NOTE
   const updateNote = (id) => {
@@ -86,17 +85,11 @@ function AllRequests(props) {
       id: id,
     }).then((response) => {
       // DateChange();
+      GetAllRequests();
     });
   };
   useEffect(() => {
-    //GET ALL REQUESTS
-    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
-      (response) => {
-        // Axios.get("http://localhost:3001/allRequests").then((response) => {
-        setRequestList(response.data);
-        // console.log(response.data);
-      }
-    );
+    GetAllRequests();
   }, []);
 
   return (
@@ -149,12 +142,7 @@ function AllRequests(props) {
                   <option value="Scopes">Scopes</option>
                   <option value="Suppressors">Suppressors</option>
                 </select>
-                {/* <Form.Input
-                  onChange={(e) => {
-                    setCategory(e.target.value.toUpperCase());
-                  }}
-                  placeholder="Category"
-                /> */}
+
                 <Form.Input
                   onChange={(e) => {
                     setBrand(e.target.value.toUpperCase());
@@ -182,12 +170,6 @@ function AllRequests(props) {
                   placeholder="Quantity"
                 />
 
-                {/* <Form.Input
-                  onChange={(e) => {
-                    setStatus(e.target.value.toUpperCase());
-                  }}
-                  placeholder="Status"
-                /> */}
                 <select
                   onChange={(e) => {
                     setStatus(e.target.value.toUpperCase());
@@ -219,7 +201,7 @@ function AllRequests(props) {
                 type="reset"
                 onClick={submitRequest}
                 style={{
-                  width: "%",
+                  width: "100%",
                   marginLeft: "auto",
                   marginRight: "auto",
                   alignItems: "center",
@@ -305,34 +287,11 @@ function AllRequests(props) {
                       <Table.Cell>{requestList[request].item}</Table.Cell>
                       <Table.Cell>{requestList[request].quantity}</Table.Cell>
 
+                      <Table.Cell> {requestList[request].status}</Table.Cell>
                       <Table.Cell>
-                        {" "}
-                        {requestList[request].status}
-                        {/* <Dropdown
-                          clearable
-                          onChange={(e) => {
-                            setNewStatus(e.target.value);
-                          }}
-                          options={options}
-                          selection
-                        /> */}
-                        {/* {requestList[request].status} */}
-                      </Table.Cell>
-                      <Table.Cell>
-                        {/* <Form> */}
                         <Form.Group
                           style={{ backgroundColor: "none", border: "none" }}
                         >
-                          {/* <Form.Input
-                            onChange={(e) => {
-                              setNewStatus(e.target.value.toUpperCase());
-                            }}
-                            placeholder="New Status"
-                            style={{
-                              width: "100px",
-                            }}
-                          ></Form.Input> */}
-
                           <select
                             onChange={(e) => {
                               setNewStatus(e.target.value.toUpperCase());
@@ -361,9 +320,6 @@ function AllRequests(props) {
                             Update
                             <Icon
                               style={{ marginLeft: "10px" }}
-                              // onClick={() => {
-                              //   updateStatus(requestList[request].id);
-                              // }}
                               name="edit outline"
                             ></Icon>
                           </Button>
@@ -376,7 +332,6 @@ function AllRequests(props) {
                             setNewNote(e.target.value);
                           }}
                           placeholder="Update Note"
-                          // style={{ marginLeft: "20px" }}
                         ></textarea>
                         <Button
                           onClick={() => {
@@ -385,12 +340,7 @@ function AllRequests(props) {
                           style={{ marginLeft: "20px" }}
                         >
                           Update
-                          <Icon
-                            // onClick={() => {
-                            //   updateStatus(requestList[request].id);
-                            // }}
-                            name="edit outline"
-                          ></Icon>
+                          <Icon name="edit outline"></Icon>
                         </Button>
                       </Table.Cell>
 

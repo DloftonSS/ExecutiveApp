@@ -1,5 +1,6 @@
 import { Card, Feed, Icon, Input, Button } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
+import "./DashNotes.css";
 import Axios from "axios";
 
 function DashboardNotes() {
@@ -17,16 +18,8 @@ function DashboardNotes() {
     });
   };
 
-  //DELETE NOTE
-  const Deletenote = (id) => {
-    Axios.delete(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
-      () => {
-        // Axios.delete(`http://localhost:3001/deleteNote/${id}`).then(() => {
-        console.log("deleted");
-      }
-    );
-  };
-  useEffect(() => {
+  //GET ALL THE NOTES
+  const GetNotes = () => {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
       (response) => {
         // Axios.get("http://localhost:3001/api/get").then((response) => {
@@ -34,10 +27,24 @@ function DashboardNotes() {
         // console.log(response.data);
       }
     );
+  };
+
+  //DELETE NOTE
+  const Deletenote = (id) => {
+    Axios.delete(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
+      () => {
+        // Axios.delete(`http://localhost:3001/deleteNote/${id}`).then(() => {
+        console.log("deleted");
+        GetNotes();
+      }
+    );
+  };
+  useEffect(() => {
+    GetNotes();
   }, []);
 
   return (
-    <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
+    <div className="allNotes" style={{ padding: "1%", width: "100%" }}>
       <Card fluid style={{ maxHeight: "660px" }}>
         <Card.Content>
           <Card.Header>All Notes</Card.Header>
@@ -72,7 +79,11 @@ function DashboardNotes() {
                     <Feed.Meta>
                       <Feed.User>{notesList[keyName].memberName}</Feed.User>
                     </Feed.Meta>
-                    <Feed.Extra style={{ width: "300px" }}>
+                    <Feed.Extra
+                      style={{
+                        width: "300px",
+                      }}
+                    >
                       {" "}
                       {notesList[keyName].note}
                     </Feed.Extra>

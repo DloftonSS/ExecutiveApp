@@ -20,7 +20,6 @@ function AdminDashBoard() {
       className="main"
       style={{
         backgroundColor: "black",
-        fontFamily: "'Open Sans', sans-serif;",
       }}
     >
       <Header />

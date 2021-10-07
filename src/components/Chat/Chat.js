@@ -8,8 +8,8 @@ function AdminChat() {
 
   //SUBMIT NOTE
   const submitChat = (e) => {
-    Axios.post("https://executive-app.herokuapp.com/postChat", {
-      // Axios.post("http://localhost:3001/postChat", {
+    // Axios.post("https://executive-app.herokuapp.com/postChat", {
+    Axios.post("http://localhost:3001/postChat", {
       chatTyped: chatTyped,
     }).then(() => {
       console.log("successful chat post");

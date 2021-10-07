@@ -90,6 +90,7 @@ function AllMembers() {
                 open={openThree}
                 trigger={<Button>Active</Button>}
                 style={{ width: "1100px" }}
+                style={{ height: "700px", left: "25%", top: "10%" }}
               >
                 <Modal.Header>Active Customers</Modal.Header>
                 <Input
@@ -213,6 +214,7 @@ function AllMembers() {
                 open={openTwo}
                 trigger={<Button>Expiring</Button>}
                 style={{ width: "1100px" }}
+                style={{ height: "700px", left: "25%", top: "10%" }}
               >
                 <Modal.Header>Expiring Customers</Modal.Header>
                 <Input
@@ -335,6 +337,7 @@ function AllMembers() {
                 open={open}
                 trigger={<Button>Expired</Button>}
                 style={{ width: "1100px" }}
+                style={{ height: "700px", left: "25%", top: "10%" }}
               >
                 <Modal.Header>Expired Customers</Modal.Header>
                 <Input
