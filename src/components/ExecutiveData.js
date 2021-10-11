@@ -149,11 +149,12 @@ function ExecutiveData(props) {
     });
   };
   //END UPDATING MEMBER DETAILS
+  //
   //RENEW MEMBERSHIP BUTTON
   const ChangeRenewal = (id) => {
     Axios.put("https://executive-app.herokuapp.com/changeRenewal", {
       // Axios.put("http://localhost:3001/changeRenewal", {
-      renewalDate: newRenewalDate,
+      // renewalDate: newRenewalDate,
       id: id,
     }).then((response) => {
       // console.log("completed");
