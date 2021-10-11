@@ -25,6 +25,7 @@ function ExecutiveData(props) {
   const [newCardStatus, setNewCardStatus] = useState("");
   const [newPreferredStore, setNewPreferredStore] = useState("");
   const [newCommunication, setNewCommunication] = useState("");
+  const [newRenewalDate, setNewRenewalDate] = useState("");
 
   const [memberId, setMemberId] = useState("");
 
@@ -148,6 +149,18 @@ function ExecutiveData(props) {
     });
   };
   //END UPDATING MEMBER DETAILS
+  //RENEW MEMBERSHIP BUTTON
+  const ChangeRenewal = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeRenewal", {
+      // Axios.put("http://localhost:3001/changeRenewal", {
+      renewalDate: newRenewalDate,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      getMemberInfo();
+    });
+  };
+
   useEffect(() => {
     getMemberInfo();
   }, []);
@@ -459,7 +472,14 @@ function ExecutiveData(props) {
                 </Table.Cell>
                 <Table.Cell>
                   {memberDetails.renewal_date}
-                  <Button style={{ float: "right" }}>Renew Now</Button>
+                  <Button
+                    onClick={() => {
+                      ChangeRenewal(memberDetails.id);
+                    }}
+                    style={{ float: "right" }}
+                  >
+                    Renew Now
+                  </Button>
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
