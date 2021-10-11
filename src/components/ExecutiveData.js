@@ -212,7 +212,7 @@ function ExecutiveData(props) {
                     onChange={(r) => {
                       setNewMiddleName(r.target.value);
                     }}
-                    placeholder="first name"
+                    placeholder="middle name"
                     Value={memberDetails.middle_name}
                     style={{
                       height: "30px",
@@ -457,7 +457,10 @@ function ExecutiveData(props) {
                   <Icon name="calendar check outline" />
                   Renewal Date
                 </Table.Cell>
-                <Table.Cell>{memberDetails.renewal_date}</Table.Cell>
+                <Table.Cell>
+                  {memberDetails.renewal_date}
+                  <Button style={{ float: "right" }}>Renew Now</Button>
+                </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
