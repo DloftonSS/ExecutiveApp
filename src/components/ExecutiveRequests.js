@@ -98,7 +98,7 @@ function ExecutiveRequests(props) {
   };
 
   const updateStatus = (id) => {
-    Axios.put("http://executive-app.herokuapp.com/statusUpdate", {
+    Axios.put("https://executive-app.herokuapp.com/statusUpdate", {
       // Axios.put("http://localhost:3001/statusUpdate", {
       status: newStatus,
       id: id,
