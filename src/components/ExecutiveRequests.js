@@ -12,6 +12,7 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import { useParams } from "react-router";
 
 // import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
@@ -33,35 +34,39 @@ function ExecutiveRequests(props) {
   const [memberName, setMemberName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // const { id } = useParams();
-  const GetAllRequests = () => {
-    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
+  const { id } = useParams();
+
+  // const GetAllRequests = () => {
+  //   // Axios.get("https://executive-app.herokuapp.com/newRequests").then(
+  //   //   (response) => {
+  //   Axios.get("http://localhost:3001/newRequests").then((response) => {
+  //     const data = response.data;
+  //     // console.log(userId);
+  //     if (data.id == userId) {
+  //       setRequestList(response.data);
+  //       // console.log(requestList);
+  //     }
+  //     // setRequestList(response.data);
+  //     // console.log(response.data);
+  //     // WhereMember();
+  //   });
+  // };
+
+  //GETTING SPECIFIC REQUESTS
+  const getMemberRequests = () => {
+    Axios.get("https://executive-app.herokuapp.com/membersRequests").then(
       (response) => {
-        // Axios.get("http://localhost:3001/newRequests").then((response) => {
-        const data = response.data;
-        console.log(userId);
-        if (data.id == userId) {
-          setRequestList(response.data);
-          console.log(requestList);
-        }
-        // setRequestList(response.data);
-        // console.log(response.data);
-        // WhereMember();
+        // Axios.get("http://localhost:3001/membersRequests").then((response) => {
+        const arrayRequests = response.data;
+        const result = arrayRequests.filter(
+          (arrayRequests) => arrayRequests.memberIdentity == id
+        );
+        setRequestList(result);
+        // console.log(result);
       }
     );
   };
 
-  //GETTING SPECIFIC REQUESTS
-  // const WhereMember = () => {
-  //   // Axios.get("https://executive-app.herokuapp.com/membersRequests").then(
-  //   //   (response) => {
-  //   Axios.get("http://localhost:3001/membersRequests").then((response) => {
-  //     if (requestList.id == userId) {
-  //       setRequestList(response.data);
-  //       console.log(requestList);
-  //     }
-  //   });
-  // };
   const submitRequest = (e) => {
     Axios.post("http://executive-app.herokuapp.com/requsted", {
       // Axios.post("http://localhost:3001/requsted", {
@@ -74,9 +79,10 @@ function ExecutiveRequests(props) {
       sku: sku,
       newNote: newNote,
       memberName: memberName,
+      id: id,
     }).then(() => {
-      console.log("requested");
-      GetAllRequests();
+      // console.log("requested");
+      getMemberRequests();
     });
   };
 
@@ -87,7 +93,7 @@ function ExecutiveRequests(props) {
       note: newNote,
       id: id,
     }).then((response) => {
-      GetAllRequests();
+      getMemberRequests();
     });
   };
 
@@ -97,12 +103,13 @@ function ExecutiveRequests(props) {
       status: newStatus,
       id: id,
     }).then((response) => {
-      GetAllRequests();
+      getMemberRequests();
     });
   };
   useEffect(() => {
-    GetAllRequests();
+    // GetAllRequests();
     // WhereMember();
+    getMemberRequests();
   }, []);
 
   return (
@@ -110,16 +117,8 @@ function ExecutiveRequests(props) {
       <Card fluid style={{ marginRight: "10px", height: "550px" }}>
         <Card.Content>
           <Card.Header>Requests</Card.Header>
-          <Input
-            type="text"
-            placeholder="Search Member Name"
-            style={{ width: "250px", height: "30px" }}
-            onChange={(event) => {
-              setSearchTerm(event.target.value);
-            }}
-          ></Input>
         </Card.Content>
-        <Card.Content style={{ marginTop: "-5%" }}>
+        <Card.Content>
           <Form
             style={{
               backgroundColor: "white",
@@ -247,94 +246,90 @@ function ExecutiveRequests(props) {
             </Table.Header>
 
             <Table.Body>
-              {Object.keys(requestList)
-                .filter((request) => {
-                  if (searchTerm == "") {
-                    return "";
-                  } else if (
-                    requestList[request].memberName
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase())
-                  ) {
-                    return request;
-                  }
-                })
-                .map((request, i) => {
-                  return (
-                    <Table.Row key={request.id}>
-                      <Table.Cell>{requestList[request].memberName}</Table.Cell>
-                      <Table.Cell>{requestList[request].category}</Table.Cell>
+              {Object.keys(requestList).map((request, i) => {
+                let created = new Date(requestList[request].date_created)
+                  .toUTCString()
+                  .split(" ")
+                  .slice(0, 4)
+                  .join(" ");
+                let update = new Date(requestList[request].date_updated)
+                  .toUTCString()
+                  .split(" ")
+                  .slice(0, 4)
+                  .join(" ");
+                return (
+                  <Table.Row key={request.id}>
+                    <Table.Cell>{requestList[request].memberName}</Table.Cell>
+                    <Table.Cell>{requestList[request].category}</Table.Cell>
 
-                      <Table.Cell>{requestList[request].item}</Table.Cell>
-                      <Table.Cell>{requestList[request].sku}</Table.Cell>
-                      <Table.Cell>{requestList[request].quantity}</Table.Cell>
-                      <Table.Cell> {requestList[request].status}</Table.Cell>
-                      <Table.Cell>
-                        <Form.Group
-                          style={{ backgroundColor: "none", border: "none" }}
-                        >
-                          <select
-                            onChange={(e) => {
-                              setNewStatus(e.target.value.toUpperCase());
-                            }}
-                            style={{
-                              height: "35px",
-                              width: "100%",
-                              backgroundColor: "lightGrey",
-                              borderRadius: "5px",
-                              border: "none",
-                            }}
-                          >
-                            <option>Choose Status</option>
-                            <option value="Pending">Pending</option>
-                            <option value="On Hold">On Hold</option>
-                            <option value="Ordered">Ordered</option>
-                            <option value="Completed">Completed</option>
-                            <option value="Canceled">Canceled</option>
-                          </select>
-                          <Button
-                            onClick={() => {
-                              updateStatus(requestList[request].id);
-                            }}
-                            style={{ width: "100%", marginTop: "10px" }}
-                          >
-                            Update
-                            <Icon
-                              style={{ marginLeft: "10px" }}
-                              name="edit outline"
-                            ></Icon>
-                          </Button>
-                        </Form.Group>{" "}
-                      </Table.Cell>
-                      <Table.Cell style={{ maxWidth: "300px" }}>
-                        {" "}
-                        {requestList[request].note}
-                      </Table.Cell>
-                      <Table.Cell>
-                        <textarea
+                    <Table.Cell>{requestList[request].item}</Table.Cell>
+                    <Table.Cell>{requestList[request].sku}</Table.Cell>
+                    <Table.Cell>{requestList[request].quantity}</Table.Cell>
+                    <Table.Cell> {requestList[request].status}</Table.Cell>
+                    <Table.Cell>
+                      <Form.Group
+                        style={{ backgroundColor: "none", border: "none" }}
+                      >
+                        <select
                           onChange={(e) => {
-                            setNewNote(e.target.value);
+                            setNewStatus(e.target.value.toUpperCase());
                           }}
-                          placeholder="Update Note"
-                        ></textarea>
+                          style={{
+                            height: "35px",
+                            width: "100%",
+                            backgroundColor: "lightGrey",
+                            borderRadius: "5px",
+                            border: "none",
+                          }}
+                        >
+                          <option>Choose Status</option>
+                          <option value="Pending">Pending</option>
+                          <option value="On Hold">On Hold</option>
+                          <option value="Ordered">Ordered</option>
+                          <option value="Completed">Completed</option>
+                          <option value="Canceled">Canceled</option>
+                        </select>
                         <Button
                           onClick={() => {
-                            updateNote(requestList[request].id);
+                            updateStatus(requestList[request].id);
                           }}
-                          style={{ marginLeft: "20px" }}
+                          style={{ width: "100%", marginTop: "10px" }}
                         >
                           Update
-                          <Icon name="edit outline"></Icon>
+                          <Icon
+                            style={{ marginLeft: "10px" }}
+                            name="edit outline"
+                          ></Icon>
                         </Button>
-                      </Table.Cell>
+                      </Form.Group>{" "}
+                    </Table.Cell>
+                    <Table.Cell style={{ maxWidth: "300px" }}>
+                      {" "}
+                      {requestList[request].note}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <textarea
+                        onChange={(e) => {
+                          setNewNote(e.target.value);
+                        }}
+                        placeholder="Update Note"
+                      ></textarea>
+                      <Button
+                        onClick={() => {
+                          updateNote(requestList[request].id);
+                        }}
+                        style={{ marginLeft: "20px" }}
+                      >
+                        Update
+                        <Icon name="edit outline"></Icon>
+                      </Button>
+                    </Table.Cell>
 
-                      <Table.Cell>
-                        {requestList[request].date_updated}
-                      </Table.Cell>
-                      {/* <Table.Cell></Table.Cell> */}
-                    </Table.Row>
-                  );
-                })}
+                    <Table.Cell>{update}</Table.Cell>
+                    {/* <Table.Cell></Table.Cell> */}
+                  </Table.Row>
+                );
+              })}
             </Table.Body>
           </Table>
         </Card.Content>

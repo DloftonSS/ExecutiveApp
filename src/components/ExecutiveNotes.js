@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import { useParams } from "react-router";
 import { Card, Feed, Icon, Input, Button, Form } from "semantic-ui-react";
 
 function ExectuiveNotes(props) {
@@ -9,7 +10,23 @@ function ExectuiveNotes(props) {
   const [notesList, setNotesList] = useState("");
 
   const [searchTerm, setSearchTerm] = useState("");
-  const name = props.id;
+
+  const { id } = useParams();
+
+  //GET USER NOTES
+  const getMemberNotes = () => {
+    Axios.get("https://executive-app.herokuapp.com/userNotes").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/userNotes").then((response) => {
+        const arrayNotes = response.data;
+        const result = arrayNotes.filter(
+          (arrayNotes) => arrayNotes.memberIdentity == id
+        );
+        setNotesList(result);
+        // console.log(result);
+      }
+    );
+  };
 
   //SUBMIT NOTE
   const submitNote = (e) => {
@@ -18,29 +35,24 @@ function ExectuiveNotes(props) {
       noteTyped: noteTyped,
       adminName: adminName,
       memberName: memberName,
+      id: id,
     }).then(() => {
-      // console.log("successful note posted");
-      // reloadPage();
+      getMemberNotes();
     });
   };
-  //dfjtupd
+
   //DELETE NOTE
-  useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/userNotes").then(
-      (response) => {
-        // Axios.get("http://localhost:3001/userNotes").then((response) => {
-        // if (response.data)
-        const userID = response.data;
-        setNotesList(userID);
-
-        // console.log(name);
-
-        // console.log(response);
-        // console.log(props.memberDetails.first_name);
-        // console.log("current member name is" + " " + currentName);
-        // console.log(response.data);
+  const Deletenote = (id) => {
+    Axios.delete(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
+      () => {
+        // Axios.delete(`http://localhost:3001/deleteNote/${id}`).then(() => {
+        getMemberNotes();
       }
     );
+  };
+
+  useEffect(() => {
+    getMemberNotes();
   }, []);
 
   return (
@@ -50,18 +62,8 @@ function ExectuiveNotes(props) {
     >
       <Card fluid style={{ height: "600px" }}>
         <Card.Content>
-          <Card.Header>Executive Notes</Card.Header>
-
-          <Input
-            type="text"
-            placeholder="Search Admin or Customer Name"
-            style={{ width: "250px", height: "30px" }}
-            onChange={(event) => {
-              setSearchTerm(event.target.value);
-            }}
-          ></Input>
+          <Card.Header>Notes</Card.Header>
         </Card.Content>
-
         <Card.Content
           style={{
             overflowY: "scroll",
@@ -72,58 +74,46 @@ function ExectuiveNotes(props) {
           }}
         >
           <Feed>
-            {Object.keys(notesList)
-              .filter((keyName) => {
-                if (searchTerm == "") {
-                  return "";
-                } else if (
-                  notesList[keyName].adminName
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase()) ||
-                  notesList[keyName].memberName
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase())
-                ) {
-                  return keyName;
-                }
-              })
-              .map((keyName, i) => {
-                return (
-                  // <p>{notesList[keyName].note}</p>;
+            {Object.keys(notesList).map((keyName, i) => {
+              let date = new Date(notesList[keyName].createdAt)
+                .toUTCString()
+                .split(" ")
+                .slice(0, 4)
+                .join(" ");
+              return (
+                <Feed.Event>
+                  <Feed.Label>
+                    <Icon name="user circle" />
+                  </Feed.Label>
 
-                  <Feed.Event>
-                    <Feed.Label>
-                      <Icon name="user circle" />
-                    </Feed.Label>
-
-                    <Feed.Content style={{ color: "red" }}>
-                      <Feed.Summary>
-                        <Feed.User
-                          style={{ cursor: "default", color: "#DB2828" }}
-                        >
-                          {notesList[keyName].adminName}
-                        </Feed.User>
-                        <Feed.Date>{notesList[keyName].createdAt}</Feed.Date>
-                      </Feed.Summary>
-                      <Feed.Meta>
-                        <Feed.User> {notesList[keyName].memberName}</Feed.User>
-                      </Feed.Meta>
-                      <Feed.Extra style={{ width: "300px" }}>
-                        {" "}
-                        {notesList[keyName].note}
-                      </Feed.Extra>
-                      ________________________________________________________________{" "}
-                      <Icon
-                        name="x"
-                        style={{ marginRight: "0px" }}
-                        // onClick={() => {
-                        //   deleteNote(keyName.note);
-                        // }}
-                      />{" "}
-                    </Feed.Content>
-                  </Feed.Event>
-                );
-              })}
+                  <Feed.Content style={{ color: "red" }}>
+                    <Feed.Summary>
+                      <Feed.User
+                        style={{ cursor: "default", color: "#DB2828" }}
+                      >
+                        {notesList[keyName].adminName}
+                      </Feed.User>
+                      <Feed.Date>{date}</Feed.Date>
+                    </Feed.Summary>
+                    <Feed.Meta>
+                      <Feed.User> {notesList[keyName].memberName}</Feed.User>
+                    </Feed.Meta>
+                    <Feed.Extra style={{ width: "300px" }}>
+                      {" "}
+                      {notesList[keyName].note}
+                    </Feed.Extra>
+                    ________________________________________________________________{" "}
+                    <Icon
+                      name="x"
+                      style={{ marginRight: "0px" }}
+                      onClick={() => {
+                        Deletenote(notesList[keyName].id);
+                      }}
+                    />{" "}
+                  </Feed.Content>
+                </Feed.Event>
+              );
+            })}
           </Feed>
         </Card.Content>
 

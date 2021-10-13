@@ -1,5 +1,6 @@
-import React from "react";
-import Header from "../components/header";
+import React, { useState, useEffect, Input, Form } from "react";
+import { useParams } from "react-router";
+import AdminHeader from "../components/header";
 // import Navigation from "../components/navigation";
 import { Route, Redirect, withRouter } from "react-router-dom";
 import NewMembers from "../components/newMembers";
@@ -8,6 +9,8 @@ import DashboardNewRequest from "../components/DashboardNewRequests";
 import OldestRequests from "../components/oldestRequests";
 import SideChat from "../components/SideChat";
 import "./CSS/dashboard.css";
+import Axios from "axios";
+import { Header, Icon, Modal, Button } from "semantic-ui-react";
 // import { useHistory } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
@@ -15,6 +18,77 @@ import "./CSS/dashboard.css";
 // import axios from "axios";
 
 function AdminDashBoard() {
+  // const [newFirstName, setNewFirstName] = useState("");
+  // const [newLastName, setNewLastName] = useState("");
+  // const [newEmail, setNewEmail] = useState("");
+  // const [newPassword, setNewPassword] = useState("");
+  // const [open, setOpen] = React.useState(false);
+  // //GETTING DETAILS
+  // const [adminDetails, setAdminDetails] = useState("");
+  // const { id } = useParams();
+  // const getAdminInfo = () => {
+  //   // Axios.get("https://executive-app.herokuapp.com/adminData").then(
+  //   //   (response) => {
+  //   Axios.get("http://localhost:3001/adminData").then((response) => {
+  //     const adminID = response.data[id];
+  //     // console.log(id);
+  //     // console.log(adminID);
+  //     setAdminDetails(adminID);
+  //   });
+  // };
+
+  // //CHANGE FIRST
+
+  // const ChangeFirst = (id) => {
+  //   // Axios.put("https://executive-app.herokuapp.com/changeAdminFirst", {
+  //   Axios.put("http://localhost:3001/changeAdminFirst", {
+  //     firstName: newFirstName,
+  //     id: id,
+  //   }).then((response) => {
+  //     // console.log("completed");
+  //     getAdminInfo();
+  //   });
+  // };
+
+  // //CHANGE LAST
+  // const ChangeLast = (id) => {
+  //   // Axios.put("https://executive-app.herokuapp.com/changeAdminLast", {
+  //   Axios.put("http://localhost:3001/changeAdminLast", {
+  //     lastName: newLastName,
+  //     id: id,
+  //   }).then((response) => {
+  //     // console.log("completed");
+  //     getAdminInfo();
+  //   });
+  // };
+  // //CHANGE EMAIL
+  // const ChangeEmail = (id) => {
+  //   // Axios.put("https://executive-app.herokuapp.com/changeAdminEmail", {
+  //   Axios.put("http://localhost:3001/changeAdminEmail", {
+  //     email: newEmail,
+  //     id: id,
+  //   }).then((response) => {
+  //     // console.log("completed");
+  //     getAdminInfo();
+  //   });
+  // };
+  // //CHAGNE PASSWORD
+  // const ChangePassword = (id) => {
+  //   // Axios.put("https://executive-app.herokuapp.com/changeAdminPassword", {
+  //   Axios.put("http://localhost:3001/changeAdminPassword", {
+  //     password: newPassword,
+  //     id: id,
+  //   }).then((response) => {
+  //     // console.log("completed");
+  //     getAdminInfo();
+  //   });
+  // };
+
+  useEffect(() => {
+    //LOAD ADMIN DATA
+    // getAdminInfo();
+  }, []);
+
   return (
     <div
       className="main"
@@ -22,8 +96,134 @@ function AdminDashBoard() {
         backgroundColor: "black",
       }}
     >
-      <Header />
+      {/* HOLDING THE INFO FOR EDITING AND SHOWING ADMIN NAME */}
+      {/* START EDIT ADMIN PROFILE */}
+      {/* <div className="admin-info">
+        <h3 style={{ float: "right", color: "white" }}>
+          {adminDetails.first_name} {""} {adminDetails.last_name}
+        </h3>
+        <span
+          style={{
+            position: "relative",
+            float: "right",
+          }}
+        >
+          <Modal
+            onClose={() => setOpen(false)}
+            onOpen={() => setOpen(true)}
+            open={open}
+            trigger={
+              <Icon name="edit" style={{ color: "white" }} size="large"></Icon>
+            }
+          >
+            <Modal.Header>Edit Personal Details</Modal.Header>
 
+            <Modal.Content style={{ float: "center" }}>
+              <Header>First Name</Header>
+              <input
+                onChange={(e) => {
+                  setNewFirstName(e.target.value);
+                }}
+                placeholder="first name"
+                Value={adminDetails.first_name}
+                style={{
+                  height: "30px",
+                  width: "300px",
+                  marginBottom: "5px",
+                }}
+              ></input>
+              <Button
+                size="mini"
+                color="black"
+                onClick={() => {
+                  ChangeFirst(adminDetails.id);
+                }}
+              >
+                Change First
+              </Button>
+
+              <Header>Last Name</Header>
+              <input
+                onChange={(t) => {
+                  setNewLastName(t.target.value);
+                }}
+                placeholder="last name"
+                Value={adminDetails.last_name}
+                style={{
+                  height: "30px",
+                  width: "300px",
+                  marginBottom: "5px",
+                }}
+              ></input>
+              <Button
+                size="mini"
+                color="black"
+                onClick={() => {
+                  ChangeLast(adminDetails.id);
+                }}
+              >
+                Change Last
+              </Button>
+              <Header>Email</Header>
+              <input
+                onChange={(y) => {
+                  setNewEmail(y.target.value);
+                }}
+                placeholder="example@email.com"
+                Value={adminDetails.email}
+                style={{
+                  height: "30px",
+                  width: "300px",
+                  marginBottom: "5px",
+                }}
+              ></input>
+              <Button
+                size="mini"
+                color="black"
+                onClick={() => {
+                  ChangeEmail(adminDetails.id);
+                }}
+              >
+                Change Email
+              </Button>
+
+              <Header>Password</Header>
+              <input
+                onChange={(o) => {
+                  setNewPassword(o.target.value);
+                }}
+                placeholder="********"
+                style={{
+                  height: "30px",
+                  width: "300px",
+                  marginBottom: "5px",
+                }}
+              ></input>
+
+              <Button
+                size="mini"
+                color="black"
+                onClick={() => {
+                  ChangePassword(adminDetails.id);
+                }}
+              >
+                Change Password
+              </Button>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button
+                content="Done"
+                labelPosition="right"
+                icon="checkmark"
+                onClick={() => setOpen(false)}
+                positive
+              />
+            </Modal.Actions>
+          </Modal>
+        </span>
+      </div> */}
+      {/* END EDIT ADMIN PROFILE */}
+      <AdminHeader />
       <div
         style={{
           width: "100%",
@@ -51,7 +251,6 @@ function AdminDashBoard() {
           <OldestRequests />
         </div>
       </div>
-
       {/* <Header /> */}
       {/* {/* <Navigation /> */}
       {/* <NewMembers /> */}

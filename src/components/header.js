@@ -1,12 +1,35 @@
 import "./header.css";
 // import { Link } from "react-router-dom";
 import logo from "../Pages/images/ExecutiveAccess.png";
-import { Container, Icon } from "semantic-ui-react";
+// import { Container, Icon } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import SideChat from "../components/SideChat";
+import React, { useState, useEffect, Input, Form } from "react";
+import {
+  Card,
+  Container,
+  Checkbox,
+  Grid,
+  Header,
+  List,
+  Icon,
+  Table,
+  Link,
+  Menu,
+  Segment,
+  Sidebar,
+  Dropdown,
+  Modal,
+  Button,
+  Feed,
+} from "semantic-ui-react";
+import { useParams } from "react-router";
+import Axios from "axios";
 
-function Header() {
+function AdminHeader() {
   let history = useHistory();
+
+  useEffect(() => {}, []);
   return (
     <div className="Navigation">
       <Container textAlign="center">
@@ -84,4 +107,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default AdminHeader;

@@ -39,6 +39,7 @@ function App(props) {
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
   const [profileData, setProfileData] = useState("");
+  const [adminData, setAdminData] = useState("");
   const id = props.id;
   const [open, setOpen] = React.useState(false);
   const [openTwo, setOpenTwo] = React.useState(false);
@@ -99,7 +100,9 @@ function App(props) {
         );
       } else if (response.data[0].role == "admin") {
         setIsAuth(true);
-        const AdminName = response.data[0].first_name;
+        setAdminData(response.data[0]);
+        const adminData = response.data[0];
+        console.log(adminData);
         setLoginStatus(
           <button
             onClick={() => {
@@ -111,9 +114,10 @@ function App(props) {
               style={{
                 color: "black",
               }}
-              to="/adminDashBoard"
+              // to={`/adminDashboard/${adminData.id}`}
+              to="adminDashboard"
             >
-              Hello {AdminName}, CLICK HERE TO CONTINUE.
+              Hello {adminData.first_name}, CLICK HERE TO CONTINUE.
             </Link>
           </button>
         );

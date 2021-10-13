@@ -7,6 +7,8 @@ import {
   Button,
   Image,
   Header,
+  Popup,
+  Grid,
 } from "semantic-ui-react";
 import React, { useState, useEffect, Input, Form } from "react";
 import Axios from "axios";
@@ -25,7 +27,6 @@ function ExecutiveData(props) {
   const [newCardStatus, setNewCardStatus] = useState("");
   const [newPreferredStore, setNewPreferredStore] = useState("");
   const [newCommunication, setNewCommunication] = useState("");
-  const [newRenewalDate, setNewRenewalDate] = useState("");
 
   const [memberId, setMemberId] = useState("");
 
@@ -154,10 +155,9 @@ function ExecutiveData(props) {
   const ChangeRenewal = (id) => {
     Axios.put("https://executive-app.herokuapp.com/changeRenewal", {
       // Axios.put("http://localhost:3001/changeRenewal", {
-      // renewalDate: newRenewalDate,
       id: id,
     }).then((response) => {
-      // console.log("completed");
+      // console.log(response);
       getMemberInfo();
     });
   };
@@ -473,14 +473,31 @@ function ExecutiveData(props) {
                 </Table.Cell>
                 <Table.Cell>
                   {memberDetails.renewal_date}
-                  <Button
+
+                  <Popup
+                    trigger={
+                      <Button
+                        color="yellow"
+                        content="Renew Now"
+                        style={{ float: "right" }}
+                        onClick={() => {
+                          ChangeRenewal(memberDetails.id);
+                        }}
+                      />
+                    }
+                    content="This Action can NOT be undone."
+                    position="top right"
+                    size="tiny"
+                    inverted
+                  />
+                  {/* <Button
                     onClick={() => {
                       ChangeRenewal(memberDetails.id);
                     }}
                     style={{ float: "right" }}
                   >
                     Renew Now
-                  </Button>
+                  </Button> */}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
