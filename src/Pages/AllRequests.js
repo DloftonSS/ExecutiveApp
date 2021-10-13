@@ -95,15 +95,15 @@ function AllRequests(props) {
     <div style={{ backgroundColor: "black" }}>
       <Header />
       <Card fluid style={{ marginRight: "10px", height: "1300px" }}>
-        <Card fluid style={{ marginRight: "10px", height: "50%" }}>
-          {" "}
-          <Card.Content>
-            {/* <Card.Header style={{ alignItems: "center" }}>
+        {/* <Card fluid style={{ marginRight: "10px", height: "50%" }}>
+          {" "} */}
+        {/* <Card.Content> */}
+        {/* <Card.Header style={{ alignItems: "center" }}>
               Create Request
             </Card.Header> */}
-          </Card.Content>
-          <Card.Content style={{ marginTop: "-5%" }}>
-            {/* <Form
+        {/* </Card.Content> */}
+        {/* <Card.Content style={{ marginTop: "-5%" }}> */}
+        {/* <Form
               style={{
                 backgroundColor: "white",
                 border: "none",
@@ -210,8 +210,8 @@ function AllRequests(props) {
                 Submit Request
               </Button>
             </Form> */}
-          </Card.Content>
-        </Card>
+        {/* </Card.Content>
+        </Card> */}
 
         <Card.Content>
           <Card.Header>All Requests</Card.Header>
