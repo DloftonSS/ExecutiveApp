@@ -68,7 +68,7 @@ function ExecutiveRequests(props) {
   };
 
   const submitRequest = (e) => {
-    Axios.post("http://executive-app.herokuapp.com/requsted", {
+    Axios.post("https://executive-app.herokuapp.com/requsted", {
       // Axios.post("http://localhost:3001/requsted", {
       category: category,
       item: item,
