@@ -45,11 +45,11 @@ function ExecutiveData(props) {
       // console.log(response.data);
       setMemberId(memberDetails.id);
       // console.log("member ID is" + " " + memberDetails.id);
-      let date = new Date(memberDetails.dateJoined)
-        .toUTCString()
-        .split(" ")
-        .slice(0, 4)
-        .join(" ");
+      //  let date = new Date(memberDetails.date)
+      //    .toUTCString()
+      //    .split(" ")
+      //    .slice(0, 4)
+      //    .join(" ");
     });
   };
 
@@ -468,7 +468,7 @@ function ExecutiveData(props) {
                 <Table.Cell>
                   <Icon name="calendar check outline" /> Join Date
                 </Table.Cell>
-                <Table.Cell>{date}</Table.Cell>
+                <Table.Cell>{memberDetails.dateJoined}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
