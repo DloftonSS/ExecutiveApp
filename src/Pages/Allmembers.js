@@ -149,6 +149,16 @@ function AllMembers() {
                           }
                         })
                         .map((act, i) => {
+                          let joindate = new Date(activeList[act].dateJoined)
+                            .toUTCString()
+                            .split(" ")
+                            .slice(0, 4)
+                            .join(" ");
+                          let expiredate = new Date(activeList[act].expiring)
+                            .toUTCString()
+                            .split(" ")
+                            .slice(0, 4)
+                            .join(" ");
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll" }}
@@ -179,12 +189,8 @@ function AllMembers() {
                                 </a>
                               </Table.Cell>
                               <Table.Cell>{activeList[act].address}</Table.Cell>
-                              <Table.Cell>
-                                {activeList[act].dateJoined}
-                              </Table.Cell>
-                              <Table.Cell>
-                                {activeList[act].expiring}
-                              </Table.Cell>
+                              <Table.Cell>{joindate}</Table.Cell>
+                              <Table.Cell>{expiredate}</Table.Cell>
                             </Table.Row>
                           );
                         })}
@@ -270,6 +276,13 @@ function AllMembers() {
                           }
                         })
                         .map((ing, i) => {
+                          let expiredate2 = new Date(
+                            expiringMembers[ing].expiring
+                          )
+                            .toUTCString()
+                            .split(" ")
+                            .slice(0, 4)
+                            .join(" ");
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll", width: "100%" }}
@@ -306,9 +319,7 @@ function AllMembers() {
                               <Table.Cell>
                                 {expiringMembers[ing].address}
                               </Table.Cell>
-                              <Table.Cell>
-                                {expiringMembers[ing].expiring}
-                              </Table.Cell>
+                              <Table.Cell>{expiredate2}</Table.Cell>
                             </Table.Row>
                           );
                         })}
@@ -390,6 +401,13 @@ function AllMembers() {
                           }
                         })
                         .map((exp, i) => {
+                          let expiredate3 = new Date(
+                            expiredMembers[exp].expiring
+                          )
+                            .toUTCString()
+                            .split(" ")
+                            .slice(0, 4)
+                            .join(" ");
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll" }}
@@ -426,9 +444,7 @@ function AllMembers() {
                               <Table.Cell>
                                 {expiredMembers[exp].address}
                               </Table.Cell>
-                              <Table.Cell>
-                                {expiredMembers[exp].expiring}
-                              </Table.Cell>
+                              <Table.Cell>{expiredate3}</Table.Cell>
                             </Table.Row>
                           );
                         })}
@@ -493,6 +509,11 @@ function AllMembers() {
                     }
                   })
                   .map((member, i) => {
+                    let joindate1 = new Date(memberList[member].dateJoined)
+                      .toUTCString()
+                      .split(" ")
+                      .slice(0, 4)
+                      .join(" ");
                     return (
                       <Table.Row
                         style={{ overflowY: "scroll", width: "100%" }}
@@ -523,7 +544,7 @@ function AllMembers() {
                           </a>
                         </Table.Cell>
                         <Table.Cell>{memberList[member].address}</Table.Cell>
-                        <Table.Cell>{memberList[member].dateJoined}</Table.Cell>
+                        <Table.Cell>{joindate1}</Table.Cell>
                       </Table.Row>
                     );
                   })}
