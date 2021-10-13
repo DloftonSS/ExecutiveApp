@@ -48,23 +48,23 @@ function AllRequests(props) {
     );
   };
   //NEW REQUEST
-  const submitRequest = (e) => {
-    Axios.post("https://executive-app.herokuapp.com/requsted", {
-      // Axios.post("http://localhost:3001/requsted", {
-      category: category,
-      item: item,
-      brand: brand,
-      quantity: quantity,
-      status: status,
-      userId: userId,
-      sku: sku,
-      note: note,
-      memberName: memberName,
-    }).then(() => {
-      console.log("requested");
-      GetAllRequests();
-    });
-  };
+  // const submitRequest = (e) => {
+  //   Axios.post("https://executive-app.herokuapp.com/requsted", {
+  //     // Axios.post("http://localhost:3001/requsted", {
+  //     category: category,
+  //     item: item,
+  //     brand: brand,
+  //     quantity: quantity,
+  //     status: status,
+  //     userId: userId,
+  //     sku: sku,
+  //     note: note,
+  //     memberName: memberName,
+  //   }).then(() => {
+  //     console.log("requested");
+  //     GetAllRequests();
+  //   });
+  // };
 
   //UPDATE REQUEST STATUS
   const updateStatus = (id) => {
@@ -98,12 +98,12 @@ function AllRequests(props) {
         <Card fluid style={{ marginRight: "10px", height: "50%" }}>
           {" "}
           <Card.Content>
-            <Card.Header style={{ alignItems: "center" }}>
+            {/* <Card.Header style={{ alignItems: "center" }}>
               Create Request
-            </Card.Header>
+            </Card.Header> */}
           </Card.Content>
           <Card.Content style={{ marginTop: "-5%" }}>
-            <Form
+            {/* <Form
               style={{
                 backgroundColor: "white",
                 border: "none",
@@ -209,7 +209,7 @@ function AllRequests(props) {
               >
                 Submit Request
               </Button>
-            </Form>
+            </Form> */}
           </Card.Content>
         </Card>
 
