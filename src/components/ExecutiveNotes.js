@@ -23,7 +23,7 @@ function ExectuiveNotes(props) {
           (arrayNotes) => arrayNotes.memberIdentity == id
         );
         setNotesList(result);
-        // console.log(result);
+        console.log(result);
       }
     );
   };

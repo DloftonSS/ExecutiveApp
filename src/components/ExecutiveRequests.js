@@ -31,6 +31,7 @@ function ExecutiveRequests(props) {
   const [sku, setSku] = useState("");
   const [note, setNote] = useState("");
   const [newNote, setNewNote] = useState("");
+  const [newSource, setNewSource] = useState("");
   const [memberName, setMemberName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -78,6 +79,7 @@ function ExecutiveRequests(props) {
       userId: userId,
       sku: sku,
       newNote: newNote,
+      newSource: newSource,
       memberName: memberName,
       id: id,
     }).then(() => {
@@ -91,6 +93,15 @@ function ExecutiveRequests(props) {
     Axios.put("https://executive-app.herokuapp.com/noteUpdate", {
       // Axios.put("http://localhost:3001/noteUpdate", {
       note: newNote,
+      id: id,
+    }).then((response) => {
+      getMemberRequests();
+    });
+  };
+  const updateSource = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/sourceUpdate", {
+      // Axios.put("http://localhost:3001/sourceUpdate", {
+      source: newSource,
       id: id,
     }).then((response) => {
       getMemberRequests();
@@ -153,22 +164,22 @@ function ExecutiveRequests(props) {
                 <option>Category</option>
                 <option value="Accessories">Accessories</option>
                 <option value="Ammunition">Ammunition</option>
+                <option value="Class 3">Class 3</option>
                 <option value="Firearms">Firearms</option>
-                <option value="Scopes">Scopes</option>
-                <option value="Suppressors">Suppressors</option>
+                {/* <option value="Scopes">Scopes</option> */}
               </select>
 
               <Form.Input
                 onChange={(e) => {
                   setBrand(e.target.value.toUpperCase());
                 }}
-                placeholder="Brand"
+                placeholder="Make"
               />
               <Form.Input
                 onChange={(e) => {
                   setItem(e.target.value.toUpperCase());
                 }}
-                placeholder="Item"
+                placeholder="Model"
               />
             </Form.Group>
             <Form.Group widths="equal" style={{ height: "50px" }}>
@@ -201,6 +212,7 @@ function ExecutiveRequests(props) {
                 <option value="Pending">Pending</option>
                 <option value="On Hold">On Hold</option>
                 <option value="Ordered">Ordered</option>
+                <option value="Back Order">Back Order</option>
                 <option value="Completed">Completed</option>
                 <option value="Canceled">Canceled</option>
               </select>
@@ -240,6 +252,8 @@ function ExecutiveRequests(props) {
                 <Table.HeaderCell>Update Status</Table.HeaderCell>
                 <Table.HeaderCell>Note</Table.HeaderCell>
                 <Table.HeaderCell>Update Note</Table.HeaderCell>
+                <Table.HeaderCell>Source</Table.HeaderCell>
+                <Table.HeaderCell>Update Source</Table.HeaderCell>
                 <Table.HeaderCell>Date Updated</Table.HeaderCell>
                 {/* <Table.HeaderCell>ID</Table.HeaderCell> */}
               </Table.Row>
@@ -285,6 +299,7 @@ function ExecutiveRequests(props) {
                           <option>Choose Status</option>
                           <option value="Pending">Pending</option>
                           <option value="On Hold">On Hold</option>
+                          <option value="Back Order">Back Order</option>
                           <option value="Ordered">Ordered</option>
                           <option value="Completed">Completed</option>
                           <option value="Canceled">Canceled</option>
@@ -317,6 +332,24 @@ function ExecutiveRequests(props) {
                       <Button
                         onClick={() => {
                           updateNote(requestList[request].id);
+                        }}
+                        style={{ marginLeft: "20px" }}
+                      >
+                        Update
+                        <Icon name="edit outline"></Icon>
+                      </Button>
+                    </Table.Cell>
+                    <Table.Cell>{requestList[request].source}</Table.Cell>
+                    <Table.Cell>
+                      <textarea
+                        onChange={(e) => {
+                          setNewSource(e.target.value);
+                        }}
+                        placeholder="Update Source"
+                      ></textarea>
+                      <Button
+                        onClick={() => {
+                          updateSource(requestList[request].id);
                         }}
                         style={{ marginLeft: "20px" }}
                       >

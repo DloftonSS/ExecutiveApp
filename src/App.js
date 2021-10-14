@@ -123,7 +123,9 @@ function App(props) {
         );
       } else if (response.data[0].role == "manager") {
         setIsAuth(true);
-
+        setAdminData(response.data[0]);
+        const adminData = response.data[0];
+        console.log(adminData);
         setLoginStatus(
           <button
             onClick={() => {
@@ -140,13 +142,14 @@ function App(props) {
               style={{
                 color: "white",
               }}
-              to="/storeFront"
+              // to="/storeFront"
+              to={`/storeFront/${adminData.id}`}
             >
-              Hello! CLICK HERE TO CONTINUE.
+              Hello! {adminData.first_name} CLICK HERE TO CONTINUE.
             </Link>
           </button>
         );
-        console.log(isAuth);
+        // console.log(isAuth);
       } else if (profileData.id === undefined) {
         setLoginStatus(
           <p
@@ -295,7 +298,7 @@ function App(props) {
           isAuth={isAuth}
         />
         <ProtectedRoute
-          path="/storeFront"
+          path="/storeFront/:id"
           component={StoreFront}
           isAuth={isAuth}
         />

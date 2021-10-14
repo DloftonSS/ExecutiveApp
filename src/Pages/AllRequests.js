@@ -34,12 +34,13 @@ function AllRequests(props) {
   const [sku, setSku] = useState("");
   const [note, setNote] = useState("");
   const [newNote, setNewNote] = useState("");
+  const [newSource, setNewSource] = useState("");
   const [memberName, setMemberName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   //GET ALL REQUESTS
   const GetAllRequests = () => {
-    Axios.get("https://executive-app.herokuapp.com/newRequests").then(
+    Axios.get("https://executive-app.herokuapp.com/allRequests").then(
       (response) => {
         // Axios.get("http://localhost:3001/allRequests").then((response) => {
         setRequestList(response.data);
@@ -47,24 +48,6 @@ function AllRequests(props) {
       }
     );
   };
-  //NEW REQUEST
-  // const submitRequest = (e) => {
-  //   Axios.post("https://executive-app.herokuapp.com/requsted", {
-  //     // Axios.post("http://localhost:3001/requsted", {
-  //     category: category,
-  //     item: item,
-  //     brand: brand,
-  //     quantity: quantity,
-  //     status: status,
-  //     userId: userId,
-  //     sku: sku,
-  //     note: note,
-  //     memberName: memberName,
-  //   }).then(() => {
-  //     console.log("requested");
-  //     GetAllRequests();
-  //   });
-  // };
 
   //UPDATE REQUEST STATUS
   const updateStatus = (id) => {
@@ -87,6 +70,16 @@ function AllRequests(props) {
       GetAllRequests();
     });
   };
+  //UPDATE SOURCE
+  const updateSource = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/sourceUpdate", {
+      // Axios.put("http://localhost:3001/sourceUpdate", {
+      source: newSource,
+      id: id,
+    }).then((response) => {
+      GetAllRequests();
+    });
+  };
   useEffect(() => {
     GetAllRequests();
   }, []);
@@ -95,124 +88,6 @@ function AllRequests(props) {
     <div style={{ backgroundColor: "black" }}>
       <Header />
       <Card fluid style={{ marginRight: "10px", height: "1300px" }}>
-        {/* <Card fluid style={{ marginRight: "10px", height: "50%" }}>
-          {" "} */}
-        {/* <Card.Content> */}
-        {/* <Card.Header style={{ alignItems: "center" }}>
-              Create Request
-            </Card.Header> */}
-        {/* </Card.Content> */}
-        {/* <Card.Content style={{ marginTop: "-5%" }}> */}
-        {/* <Form
-              style={{
-                backgroundColor: "white",
-                border: "none",
-                padding: "0px",
-                width: "50%",
-                marginLeft: "auto",
-                marginRight: "auto",
-                alignItems: "center",
-                alignContent: "center",
-              }}
-            >
-              <Form.Group widths="equal">
-                <Form.Input
-                  onChange={(e) => {
-                    setMemberName(e.target.value.toUpperCase());
-                  }}
-                  placeholder="Member Name"
-                />
-                <select
-                  onChange={(e) => {
-                    setCategory(e.target.value.toUpperCase());
-                  }}
-                  style={{
-                    height: "40px",
-                    width: "100%",
-                    backgroundColor: "lightGrey",
-                    borderRadius: "5px",
-                    border: "none",
-                  }}
-                >
-                  <option>Category</option>
-                  <option value="Accessories">Accessories</option>
-                  <option value="Firearms">Firearms</option>
-                  <option value="Ammunition">Ammunition</option>
-                  <option value="Scopes">Scopes</option>
-                  <option value="Suppressors">Suppressors</option>
-                </select>
-
-                <Form.Input
-                  onChange={(e) => {
-                    setBrand(e.target.value.toUpperCase());
-                  }}
-                  placeholder="Brand"
-                />
-                <Form.Input
-                  onChange={(e) => {
-                    setItem(e.target.value.toUpperCase());
-                  }}
-                  placeholder="Item"
-                />
-              </Form.Group>
-              <Form.Group widths="equal" style={{ height: "50px" }}>
-                <Form.Input
-                  onChange={(e) => {
-                    setSku(e.target.value.toUpperCase());
-                  }}
-                  placeholder="UPC / SKU"
-                />
-                <Form.Input
-                  onChange={(e) => {
-                    setQuantity(e.target.value);
-                  }}
-                  placeholder="Quantity"
-                />
-
-                <select
-                  onChange={(e) => {
-                    setStatus(e.target.value.toUpperCase());
-                  }}
-                  style={{
-                    height: "40px",
-                    width: "100%",
-                    backgroundColor: "lightGrey",
-                    borderRadius: "5px",
-                    border: "none",
-                  }}
-                >
-                  <option> Status</option>
-                  <option value="Pending">Pending</option>
-                  <option value="On Hold">On Hold</option>
-                  <option value="Ordered">Ordered</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Canceled">Canceled</option>
-                </select>
-                <Form.Input
-                  onChange={(e) => {
-                    setNote(e.target.value);
-                  }}
-                  placeholder="Note"
-                />
-              </Form.Group>
-
-              <Button
-                type="reset"
-                onClick={submitRequest}
-                style={{
-                  width: "100%",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  alignItems: "center",
-                  alignContent: "center",
-                }}
-              >
-                Submit Request
-              </Button>
-            </Form> */}
-        {/* </Card.Content>
-        </Card> */}
-
         <Card.Content>
           <Card.Header>All Requests</Card.Header>
           <input
@@ -237,7 +112,9 @@ function AllRequests(props) {
                 <Table.HeaderCell>Status</Table.HeaderCell>
                 <Table.HeaderCell>Change Status</Table.HeaderCell>
                 <Table.HeaderCell>Note</Table.HeaderCell>
+                <Table.HeaderCell>Source</Table.HeaderCell>
                 <Table.HeaderCell>Edit Note</Table.HeaderCell>
+                <Table.HeaderCell>Update Source</Table.HeaderCell>
                 <Table.HeaderCell>Date Created</Table.HeaderCell>
                 <Table.HeaderCell>Date Updated</Table.HeaderCell>
               </Table.Row>
@@ -306,6 +183,7 @@ function AllRequests(props) {
                             <option>Choose Status</option>
                             <option value="Pending">Pending</option>
                             <option value="On Hold">On Hold</option>
+                            <option value="Back Order">Back Order</option>
                             <option value="Ordered">Ordered</option>
                             <option value="Completed">Completed</option>
                             <option value="Canceled">Canceled</option>
@@ -325,6 +203,7 @@ function AllRequests(props) {
                         </Form.Group>{" "}
                       </Table.Cell>
                       <Table.Cell>{requestList[request].note}</Table.Cell>
+                      <Table.Cell>{requestList[request].source}</Table.Cell>
                       <Table.Cell>
                         <textarea
                           onChange={(e) => {
@@ -342,7 +221,25 @@ function AllRequests(props) {
                           <Icon name="edit outline"></Icon>
                         </Button>
                       </Table.Cell>
-
+                      {/* <Table.Cell>{requestList[request].source}</Table.Cell> */}
+                      <Table.Cell>
+                        <textarea
+                          onChange={(e) => {
+                            setNewSource(e.target.value);
+                          }}
+                          placeholder="Update Source"
+                        ></textarea>
+                        <Button
+                          type="reset"
+                          onClick={() => {
+                            updateSource(requestList[request].id);
+                          }}
+                          style={{ marginLeft: "20px" }}
+                        >
+                          Update
+                          <Icon name="edit outline"></Icon>
+                        </Button>
+                      </Table.Cell>
                       <Table.Cell>
                         {requestList[request].date_created}
                       </Table.Cell>

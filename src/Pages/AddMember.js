@@ -19,8 +19,8 @@ function AddMember() {
   const [memberNumber, setMemberNumber] = useState("");
 
   const submitNewCustomer = () => {
-    Axios.post("https://executive-app.herokuapp.com/addMember", {
-      // Axios.post("http://localhost:3001/addMember", {
+    // Axios.post("https://executive-app.herokuapp.com/addMember", {
+    Axios.post("http://localhost:3001/addMember", {
       customerFirst: customerFirst,
       customerMiddle: customerMiddle,
       customerLast: customerLast,
