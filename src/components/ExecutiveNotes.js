@@ -101,6 +101,13 @@ function ExectuiveNotes(props) {
                     <Feed.Extra style={{ width: "300px" }}>
                       {" "}
                       {notesList[keyName].note}
+                      <p
+                        style={{
+                          textAlign: "right",
+                        }}
+                      >
+                        {notesList[keyName].requestNote}
+                      </p>
                     </Feed.Extra>
                     ________________________________________________________________{" "}
                     <Icon

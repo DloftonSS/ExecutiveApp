@@ -15,12 +15,17 @@ function AddMember() {
   const [customerAddress, setCustomerAddress] = useState("");
   const [communication, setCommunication] = useState("");
   const [preferredStore, setPreferredStore] = useState("");
-  const [card, setCard] = useState("");
-  const [memberNumber, setMemberNumber] = useState("");
+  const [placeBorn, setPlaceBorn] = useState("");
+  const [dob, setDob] = useState("");
+  const [ssn, setSsn] = useState("");
+  const [ethnicity, setEthnicity] = useState("");
+  const [race, setRace] = useState("");
+  const [associate, setAssociate] = useState("");
+  const [clerk, setClerk] = useState("");
 
   const submitNewCustomer = () => {
-    // Axios.post("https://executive-app.herokuapp.com/addMember", {
-    Axios.post("http://localhost:3001/addMember", {
+    Axios.post("https://executive-app.herokuapp.com/addMember", {
+      // Axios.post("http://localhost:3001/adminAddMember", {
       customerFirst: customerFirst,
       customerMiddle: customerMiddle,
       customerLast: customerLast,
@@ -29,17 +34,19 @@ function AddMember() {
       customerAddress: customerAddress,
       communication: communication,
       preferredStore: preferredStore,
-      card: card,
-      memberNumber: memberNumber,
+      ssn: ssn,
+      placeBorn: placeBorn,
+      dob: dob,
+      ethnicity: ethnicity,
+      race: race,
     })
       .then((response, error) => {
-        // console.log(response);
+        console.log("submited");
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   return (
     <div className="newMember">
       <Header />
@@ -47,7 +54,9 @@ function AddMember() {
       {/* <div>This will be for adding the members to the Database.</div> */}
 
       {/* NEW ADD MEMBER FORM */}
-      <Form className="main-form">
+      <Form className="main-form" style={{ marginTop: "-3%" }}>
+        {" "}
+        <h1>Registration</h1>
         <Form.Group widths="equal">
           <Form.Field>
             <label>First name</label>
@@ -80,7 +89,6 @@ function AddMember() {
             />
           </Form.Field>
         </Form.Group>
-
         <Form.Group widths="equal">
           <Form.Field>
             <label>Email</label>
@@ -103,7 +111,6 @@ function AddMember() {
             />
           </Form.Field>
         </Form.Group>
-
         <Form.Group widths="equal">
           <Form.Field width={4}>
             <label>Phone</label>
@@ -116,7 +123,7 @@ function AddMember() {
             />
           </Form.Field>
           <Form.Field width={2}>
-            <label>Communication Style</label>
+            <label>Contact</label>
             <Input
               fluid
               placeholder="Phone, Email, Both"
@@ -125,7 +132,7 @@ function AddMember() {
               }}
             />
           </Form.Field>
-          <Form.Field width={4}>
+          <Form.Field width={3}>
             <label>Preferred Store</label>
             <Input
               fluid
@@ -135,7 +142,7 @@ function AddMember() {
               }}
             />
           </Form.Field>
-          <Form.Field width={2}>
+          {/* <Form.Field width={2}>
             <label>Card</label>
             <Input
               fluid
@@ -144,8 +151,8 @@ function AddMember() {
                 setCard(e.target.value);
               }}
             />
-          </Form.Field>
-          <Form.Field width={4}>
+          </Form.Field> */}
+          {/* <Form.Field width={3}>
             <label>Member Number</label>
             <Input
               fluid
@@ -154,8 +161,76 @@ function AddMember() {
                 setMemberNumber(e.target.value);
               }}
             />
+          </Form.Field> */}
+          <Form.Field width={4}>
+            <label>Place of Birth</label>
+            <Input
+              fluid
+              placeholder="Orlando, FL USA"
+              onChange={(e) => {
+                setPlaceBorn(e.target.value);
+              }}
+            />
           </Form.Field>
         </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Field width={4}>
+            <label>D.O.B.</label>
+            <Input
+              fluid
+              placeholder="July, 4th 1776 "
+              onChange={(e) => {
+                setDob(e.target.value);
+              }}
+            />
+          </Form.Field>
+          <Form.Field width={4}>
+            <label>SSN</label>
+            <Input
+              fluid
+              type="password"
+              placeholder=" Optional ***-**-****"
+              onChange={(e) => {
+                setSsn(e.target.value);
+              }}
+            />
+          </Form.Field>
+          <Form.Field width={4}>
+            <label>Ethnicity</label>
+            <Input
+              fluid
+              placeholder="Japanese American, Cuban American, European"
+              onChange={(e) => {
+                setEthnicity(e.target.value);
+              }}
+            />
+          </Form.Field>
+          <Form.Field width={4}>
+            <label>Race</label>
+            <Input
+              fluid
+              placeholder="Black, Hispanic, White"
+              onChange={(e) => {
+                setRace(e.target.value);
+              }}
+            />
+          </Form.Field>
+        </Form.Group>
+        {/* <Form.Group>
+          <Form.Field width={4}>
+            <label>Clerk</label>
+            <Input
+              fluid
+              // Value={managerDetails.first_name}
+              placeholder={
+                managerDetails.first_name + " " + managerDetails.last_name
+              }
+              onChange={(e) => {
+                setClerk(e.target.value);
+              }}
+            />
+          </Form.Field>
+        </Form.Group> */}
         <Button type="reset" onClick={submitNewCustomer}>
           Register Executive
         </Button>

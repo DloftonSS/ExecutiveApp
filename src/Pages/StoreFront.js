@@ -8,6 +8,7 @@ import {
   Icon,
   Modal,
   Header,
+  Popup,
 } from "semantic-ui-react";
 import Axios from "axios";
 import StoreHeader from "../components/Storefront/header";
@@ -26,8 +27,8 @@ function StoreFront() {
   // const [card, setCard] = useState("");
   // const [memberNumber, setMemberNumber] = useState("");
   const [placeBorn, setPlaceBorn] = useState("");
-  const [dob, setDOB] = useState("");
-  const [ssn, setSSN] = useState("");
+  const [dob, setDob] = useState("");
+  const [ssn, setSsn] = useState("");
   const [ethnicity, setEthnicity] = useState("");
   const [race, setRace] = useState("");
   const [associate, setAssociate] = useState("");
@@ -37,7 +38,7 @@ function StoreFront() {
 
   const [memberList, setMemberList] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   //LOGGED IN USER
   const { id } = useParams();
@@ -70,8 +71,6 @@ function StoreFront() {
       dob: dob,
       ethnicity: ethnicity,
       race: race,
-      associate: associate,
-      clerk: clerk,
     })
       .then((response, error) => {
         console.log("submited");
@@ -227,7 +226,7 @@ function StoreFront() {
               fluid
               placeholder="July, 4th 1776 "
               onChange={(e) => {
-                setDOB(e.target.value);
+                setDob(e.target.value);
               }}
             />
           </Form.Field>
@@ -238,7 +237,7 @@ function StoreFront() {
               type="password"
               placeholder=" Optional ***-**-****"
               onChange={(e) => {
-                setSSN(e.target.value);
+                setSsn(e.target.value);
               }}
             />
           </Form.Field>
@@ -351,15 +350,16 @@ function StoreFront() {
                       <Table.Cell>
                         {" "}
                         <Modal
-                          onClose={() => setOpen(false)}
-                          onOpen={() => setOpen(true)}
-                          open={open}
-                          trigger={<Button>Edit</Button>}
-                          style={{
-                            marginLeft: "25%",
-                            height: "70%",
-                            marginTop: "5%",
-                          }}
+                          trigger={
+                            <Button
+                              color="gray"
+                              content="View"
+                              style={{ float: "left" }}
+                              // onClick={() => {
+                              //   ChangeRenewal(memberDetails.id);
+                              // }}
+                            />
+                          }
                         >
                           <Modal.Header>
                             Member Number: {memberList[member].number}

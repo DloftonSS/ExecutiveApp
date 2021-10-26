@@ -467,7 +467,7 @@ function AllMembers() {
               </Modal>
             </span>
           </Card.Content>
-          <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
+          <Card.Content style={{ overflowY: "scroll", height: "1000px" }}>
             <Table celled striped color="red">
               <Table.Header>
                 <Table.Row>

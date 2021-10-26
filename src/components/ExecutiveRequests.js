@@ -37,22 +37,6 @@ function ExecutiveRequests(props) {
 
   const { id } = useParams();
 
-  // const GetAllRequests = () => {
-  //   // Axios.get("https://executive-app.herokuapp.com/newRequests").then(
-  //   //   (response) => {
-  //   Axios.get("http://localhost:3001/newRequests").then((response) => {
-  //     const data = response.data;
-  //     // console.log(userId);
-  //     if (data.id == userId) {
-  //       setRequestList(response.data);
-  //       // console.log(requestList);
-  //     }
-  //     // setRequestList(response.data);
-  //     // console.log(response.data);
-  //     // WhereMember();
-  //   });
-  // };
-
   //GETTING SPECIFIC REQUESTS
   const getMemberRequests = () => {
     Axios.get("https://executive-app.herokuapp.com/membersRequests").then(
@@ -63,7 +47,7 @@ function ExecutiveRequests(props) {
           (arrayRequests) => arrayRequests.memberIdentity == id
         );
         setRequestList(result);
-        // console.log(result);
+        console.log(result);
       }
     );
   };
@@ -96,6 +80,7 @@ function ExecutiveRequests(props) {
       id: id,
     }).then((response) => {
       getMemberRequests();
+      requestNote();
     });
   };
   const updateSource = (id) => {
@@ -116,6 +101,14 @@ function ExecutiveRequests(props) {
     }).then((response) => {
       getMemberRequests();
     });
+  };
+  //SUBMIT REQUEST NOTE
+  const requestNote = (id) => {
+    Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
+      // Axios.post("http://localhost:3001/requestNote", {
+      note: newNote,
+      id: id,
+    }).then(() => {});
   };
   useEffect(() => {
     // GetAllRequests();
@@ -367,68 +360,6 @@ function ExecutiveRequests(props) {
           </Table>
         </Card.Content>
       </Card>
-      {/* <div>
-        <Card fluid style={{ marginRight: "10px", height: "350px" }}>
-          {" "}
-          <Card.Content>
-            <Card.Header>Create Request</Card.Header>
-          </Card.Content>
-          <Card.Content style={{ height: "100px" }}>
-            <Input
-              onChange={(e) => {
-                setMemberName(e.target.value.toUpperCase());
-              }}
-              placeholder="Member Name"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setCategory(e.target.value.toUpperCase());
-              }}
-              placeholder="Category"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setBrand(e.target.value.toUpperCase());
-              }}
-              placeholder="Brand"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setItem(e.target.value.toUpperCase());
-              }}
-              placeholder="Item"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setSku(e.target.value.toUpperCase());
-              }}
-              placeholder="UPC / SKU"
-            ></Input>
-
-            <Input
-              onChange={(e) => {
-                setQuantity(e.target.value);
-              }}
-              placeholder="Quantity"
-            ></Input>
-            <Input
-              onChange={(e) => {
-                setStatus(e.target.value.toUpperCase());
-              }}
-              placeholder="Status"
-            ></Input>
-
-            <Input
-              onChange={(e) => {
-                setNewNote(e.target.value);
-              }}
-              placeholder="Note"
-            ></Input>
-
-            <Button onClick={submitRequest}>Submit Request</Button>
-          </Card.Content>
-        </Card>
-      </div> */}
     </div>
   );
 }

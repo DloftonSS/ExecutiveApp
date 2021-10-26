@@ -37,6 +37,9 @@ const Profile = (props) => {
   const [memberId, setMemberId] = useState("");
   const [requestList, setRequestList] = useState("");
   const [open, setOpen] = React.useState(false);
+  const [item, setItem] = useState("");
+  const [status, setStatus] = useState("");
+  const [dateUpdated, setDateUpdated] = useState("");
   // const id = props.match.params.id;
   // const id = props.id;
   const { id } = useParams();
@@ -45,8 +48,14 @@ const Profile = (props) => {
     Axios.get("https://executive-app.herokuapp.com/memberProfile").then(
       (response) => {
         // Axios.get("http://localhost:3001/memberProfile").then((response) => {
-        const userID = response.data[id];
-        setMemberDetails(userID);
+        // const userID = response.data[id];
+        // setMemberDetails(userID);
+        const arrayMembers = response.data;
+        const result = arrayMembers.filter(
+          (arrayMembers) => arrayMembers.id == id
+        );
+        setMemberDetails(result[0]);
+        // console.log(result[0]);
       }
     );
   };
@@ -121,16 +130,34 @@ const Profile = (props) => {
       getMemberInfo();
     });
   };
+  //GETTING SPECIFIC REQUESTS
+  const getMemberRequests = () => {
+    Axios.get("https://executive-app.herokuapp.com/membersRequests").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/membersRequests").then((response) => {
+        const arrayRequests = response.data;
+        const result = arrayRequests.filter(
+          (arrayRequests) => arrayRequests.memberIdentity == id
+        );
+        setRequestList(result);
+      }
+    );
+  };
 
+  const LoadPage = () => {
+    getMemberRequests();
+    getMemberInfo();
+  };
   useEffect(() => {
     //LOAD PROFILE DATA
     getMemberInfo();
+    getMemberRequests();
 
     // GET CUSTOMER REQUESTS
-    Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
-      // Axios.get("http://localhost:3001/member").then((response) => {
-      setRequestList(response.data);
-    });
+    // Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
+    // Axios.get("http://localhost:3001/member").then((response) => {
+    //   setRequestList(response.data);
+    // });
   }, []);
 
   return (
@@ -156,7 +183,13 @@ const Profile = (props) => {
           {/* Welcome {memberDetails.first_name} */}
         </Card.Header>
         <Card.Content>
-          <img style={{ borderRadius: "100px" }} src={Albert}></img>
+          <img
+            onClick={() => {
+              LoadPage();
+            }}
+            style={{ borderRadius: "100px" }}
+            src={Albert}
+          ></img>
           {/* <p className="editImage">Edit</p> */}
         </Card.Content>
         <Header
@@ -165,8 +198,8 @@ const Profile = (props) => {
             fontFamily: "Open Sans, sans-serif",
           }}
         >
-          {memberDetails.first_name} {memberDetails.middle_name}{" "}
-          {memberDetails.last_name}
+          {memberDetails.suffix} {memberDetails.first_name}{" "}
+          {memberDetails.middle_name} {memberDetails.last_name}
         </Header>
         <Card.Meta style={{ color: "white" }}>
           Member ID: {memberDetails.number}
@@ -204,7 +237,7 @@ const Profile = (props) => {
               <Modal.Header>Edit Personal Details</Modal.Header>
 
               <Modal.Content style={{ float: "center" }}>
-                <Header>First Name</Header>
+                {/* <Header>First Name</Header>
                 <input
                   onChange={(e) => {
                     setNewFirstName(e.target.value);
@@ -269,7 +302,7 @@ const Profile = (props) => {
                   }}
                 >
                   Change Last
-                </Button>
+                </Button> */}
                 <Header>Email</Header>
                 <input
                   onChange={(y) => {
@@ -433,23 +466,24 @@ const Profile = (props) => {
         >
           <Table celled striped color="red">
             <Table.Header>
-              {/* <Table.Row>
+              <Table.Row>
                 <Table.HeaderCell>Item</Table.HeaderCell>
                 <Table.HeaderCell>status</Table.HeaderCell>
-                <Table.HeaderCell>Date</Table.HeaderCell>
-              </Table.Row> */}
+                <Table.HeaderCell>Modified</Table.HeaderCell>
+              </Table.Row>
             </Table.Header>
             <Table.Body>
               {Object.keys(requestList).map((request, i) => {
+                let update = new Date(requestList[request].date_updated)
+                  .toUTCString()
+                  .split(" ")
+                  .slice(0, 4)
+                  .join(" ");
                 return (
                   <Table.Row key={request.id}>
-                    <Table.Cell>{requestList[request].item}some gun</Table.Cell>
-                    <Table.Cell>
-                      {requestList[request].status} PENDING
-                    </Table.Cell>
-                    <Table.Cell>
-                      {requestList[request].date_updated} 2021/02/20 17:15;15
-                    </Table.Cell>
+                    <Table.Cell>{requestList[request].item}</Table.Cell>
+                    <Table.Cell>{requestList[request].status}</Table.Cell>
+                    <Table.Cell>{update}</Table.Cell>
                   </Table.Row>
                 );
               })}
@@ -457,6 +491,8 @@ const Profile = (props) => {
           </Table>
         </Card.Content>
       </Card>
+      {/* new card */}
+
       <div className="tree">
         {/* <p className="spat"></p>
         <p className="plat"></p> */}

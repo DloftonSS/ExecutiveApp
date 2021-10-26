@@ -9,12 +9,9 @@ import {
   Input,
   Icon,
   Form,
-  Popup,
-  Grid,
-  Select,
-  MenuItem,
+  Modal,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Axios from "axios";
 import Header from "../components/header";
 
@@ -37,6 +34,10 @@ function AllRequests(props) {
   const [newSource, setNewSource] = useState("");
   const [memberName, setMemberName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [mostRecent, setMostRecent] = useState("");
+  const noteHeader = "Request Note";
+
+  const { id } = useParams();
 
   //GET ALL REQUESTS
   const GetAllRequests = () => {
@@ -68,6 +69,8 @@ function AllRequests(props) {
     }).then((response) => {
       // DateChange();
       GetAllRequests();
+      requestNote(id);
+      console.log("this is the id " + id);
     });
   };
   //UPDATE SOURCE
@@ -80,6 +83,16 @@ function AllRequests(props) {
       GetAllRequests();
     });
   };
+  //SUBMIT REQUEST NOTE TO THE DASHBOARD NOTES
+  const requestNote = (id) => {
+    Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
+      // Axios.post("http://localhost:3001/requestNote", {
+      note: newNote,
+      noteHeader: noteHeader,
+      id: id,
+    }).then(() => {});
+  };
+
   useEffect(() => {
     GetAllRequests();
   }, []);
@@ -99,10 +112,12 @@ function AllRequests(props) {
             }}
           ></input>
         </Card.Content>
+
         <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
           <Table celled striped color="red">
             <Table.Header>
               <Table.Row>
+                <Table.HeaderCell>Request #</Table.HeaderCell>
                 <Table.HeaderCell>Member Name</Table.HeaderCell>
                 <Table.HeaderCell>Category</Table.HeaderCell>
                 <Table.HeaderCell>Brand</Table.HeaderCell>
@@ -148,6 +163,7 @@ function AllRequests(props) {
                 .map((request, i) => {
                   return (
                     <Table.Row key={request.id}>
+                      <Table.Cell>{requestList[request].id}</Table.Cell>
                       <Table.Cell>{requestList[request].memberName}</Table.Cell>
                       <Table.Cell>
                         {/* <Link

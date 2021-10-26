@@ -73,11 +73,15 @@ function DashboardNotes() {
                         style={{ cursor: "default", color: "#DB2828" }}
                       >
                         {notesList[keyName].adminName}
+                        {notesList[keyName].noteHeader}
                       </Feed.User>
                       <Feed.Date>{notesList[keyName].createdAt}</Feed.Date>
                     </Feed.Summary>
                     <Feed.Meta>
-                      <Feed.User>{notesList[keyName].memberName}</Feed.User>
+                      <Feed.User>
+                        {notesList[keyName].memberName} {""}
+                        {/* {notesList[keyName].memberIdentity} */}
+                      </Feed.User>
                     </Feed.Meta>
                     <Feed.Extra
                       style={{
@@ -86,6 +90,13 @@ function DashboardNotes() {
                     >
                       {" "}
                       {notesList[keyName].note}
+                      <p
+                        style={{
+                          color: "gray",
+                        }}
+                      >
+                        {notesList[keyName].requestNote}
+                      </p>
                     </Feed.Extra>
                     ____________________________________________________________________________________________{" "}
                     {/* Delete */}

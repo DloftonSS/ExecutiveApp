@@ -18,6 +18,7 @@ import { Header, Icon, Modal, Button } from "semantic-ui-react";
 // import axios from "axios";
 
 function AdminDashBoard() {
+  const [open, setOpen] = React.useState(false);
   // const [newFirstName, setNewFirstName] = useState("");
   // const [newLastName, setNewLastName] = useState("");
   // const [newEmail, setNewEmail] = useState("");
@@ -96,6 +97,55 @@ function AdminDashBoard() {
         backgroundColor: "black",
       }}
     >
+      {/* WHATS NEW MODAL */}
+      <Modal
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+        open={open}
+        trigger={<Button>Notifications</Button>}
+        style={{ height: "400px" }}
+      >
+        <Modal.Header>What's New!</Modal.Header>
+        <Modal.Content>
+          <Modal.Description>
+            <Header>Update: October 26, 2021</Header>
+            <h3>Member Account</h3>
+
+            <p>. When creating a note the customer's name auto fills.</p>
+            <p>. Hovering Customer Image reveals demographics.</p>
+
+            <p>
+              . Member Numbers can now be added manually on the member account
+              page
+            </p>
+            <h3>Requests</h3>
+            <p>
+              . You can now specify the source a requested item is coming from.
+            </p>
+            <p>
+              . A request note that is updated on the members account page will
+              auto fill customer's name.
+            </p>
+            <h3>Customer Portal</h3>
+            <p>
+              . Customer can now see their requests, item, status, and last date
+              modified.
+            </p>
+          </Modal.Description>
+        </Modal.Content>
+        <Modal.Actions>
+          {/* <Button color="black" onClick={() => setOpen(false)}>
+            Nope
+          </Button> */}
+          <Button
+            content="OK , got it."
+            labelPosition="right"
+            icon="checkmark"
+            onClick={() => setOpen(false)}
+            positive
+          />
+        </Modal.Actions>
+      </Modal>
       {/* HOLDING THE INFO FOR EDITING AND SHOWING ADMIN NAME */}
       {/* START EDIT ADMIN PROFILE */}
       {/* <div className="admin-info">
