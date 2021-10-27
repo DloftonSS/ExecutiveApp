@@ -1,6 +1,7 @@
 import "./header.css";
 import logo from "../../Pages/images/ExecutiveAccess.png";
 import { Container, Icon } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
 
 function StoreHeader() {
   return (

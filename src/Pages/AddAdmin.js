@@ -13,6 +13,7 @@ function AddAdmin() {
   const [firstnameReg, setFirstNameReg] = useState("");
   const [lastnameReg, setLastNameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
+  const [roleReg, setRoleReg] = useState("");
   const [emailReg, setEmailReg] = useState("");
 
   //   const [username, setUsername] = useState("");
@@ -25,6 +26,7 @@ function AddAdmin() {
       lastName: lastnameReg,
       email: emailReg,
       password: passwordReg,
+      role: roleReg,
     })
       .then((response, error) => {
         // console.log(response);
@@ -65,7 +67,7 @@ function AddAdmin() {
           </Form.Field>
         </Form.Group>
         <Form.Group widths="equal">
-          <Form.Field>
+          <Form.Field width={4}>
             <label>Email</label>
             <Input
               fluid
@@ -75,13 +77,23 @@ function AddAdmin() {
               }}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field width={4}>
             <label>Password</label>
             <Input
               fluid
               placeholder="Password"
               onChange={(e) => {
                 setPasswordReg(e.target.value);
+              }}
+            />
+          </Form.Field>
+          <Form.Field width={4}>
+            <label>Role</label>
+            <Input
+              fluid
+              placeholder="manager or admin"
+              onChange={(e) => {
+                setRoleReg(e.target.value);
               }}
             />
           </Form.Field>

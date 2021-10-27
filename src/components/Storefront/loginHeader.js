@@ -1,6 +1,7 @@
 import "./loginHeader.css";
 import logo from "../../Pages/images/ExecutiveAccess.png";
 import Banner from "../../Pages/images/EAAppBanner.jpg";
+import React, { useState, useEffect } from "react";
 import { Container, Icon } from "semantic-ui-react";
 
 function LoginHeader() {

@@ -103,7 +103,7 @@ function AdminDashBoard() {
         onOpen={() => setOpen(true)}
         open={open}
         trigger={<Button>Notifications</Button>}
-        style={{ height: "400px" }}
+        style={{ height: "400px", marginTop: "15px", marginLeft: "15px" }}
       >
         <Modal.Header>What's New!</Modal.Header>
         <Modal.Content>

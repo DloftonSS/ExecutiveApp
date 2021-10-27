@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Button,
   Form,
@@ -14,6 +14,9 @@ import Axios from "axios";
 import StoreHeader from "../components/Storefront/header";
 import { useParams } from "react-router";
 import "../components/Storefront/addMember.css";
+import emailjs from "emailjs-com";
+import { init } from "emailjs-com";
+init("user_9MrgO9HIeQQan5hAG15a2");
 
 function StoreFront() {
   const [customerFirst, setCustomerFirst] = useState("");
@@ -33,7 +36,8 @@ function StoreFront() {
   const [race, setRace] = useState("");
   const [associate, setAssociate] = useState("");
   const [clerk, setClerk] = useState("");
-
+  const [store, setStore] = useState("");
+  const form = useRef();
   // FIND ALL MEMBERS
 
   const [memberList, setMemberList] = useState("");
@@ -47,10 +51,12 @@ function StoreFront() {
     Axios.get("https://executive-app.herokuapp.com/managerData").then(
       (response) => {
         // Axios.get("http://localhost:3001/managerData").then((response) => {
-        const userID = response.data[id];
-        setManagerDetails(userID);
-        setClerk(userID.first_name);
-        console.log(clerk);
+        const userID = response.data;
+        const result = userID.filter((userID) => userID.id == id);
+        setManagerDetails(result[0]);
+        setClerk(result[0].first_name + " " + result[0].last_name);
+        setStore(result[0].store);
+        // console.log(result);
       }
     );
   };
@@ -71,6 +77,7 @@ function StoreFront() {
       dob: dob,
       ethnicity: ethnicity,
       race: race,
+      clerk: clerk,
     })
       .then((response, error) => {
         console.log("submited");
@@ -80,12 +87,34 @@ function StoreFront() {
       });
   };
 
+  //SENDING EMAIL NOTIFICATION OF EXEC SIGN UP
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_gt7pfpe",
+        "template_u1hvb2j",
+        form.current,
+        "user_9MrgO9HIeQQan5hAG15a2"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
+  };
   // GET ALL MEMBERS
   Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
     (response) => {
       // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
       setMemberList(response.data);
       // console.log(response.data);
+      // console.log(id);
     }
   );
 
@@ -99,14 +128,311 @@ function StoreFront() {
       {/* <div>This will be for adding the members to the Database.</div> */}
 
       {/* NEW STORE FRONT ADD MEMBER */}
-      <h1 style={{ marginLeft: "10%" }}>Hello {managerDetails.first_name}</h1>
-      <Form className="main-form" style={{ marginTop: "-3%" }}>
+      <h1 style={{ marginLeft: "10%" }}>Hello {clerk}</h1>
+
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        style={{ marginLeft: "10%", marginRigth: "10%", width: "1500px" }}
+      >
+        {" "}
+        <h2>Sign Up Form</h2>
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="First name"
+          name="user_name"
+          onChange={(e) => {
+            setCustomerFirst(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Middle name"
+          name="user_middle"
+          onChange={(e) => {
+            setCustomerMiddle(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          placeholder="Last name"
+          type="text"
+          name="user_last"
+          onChange={(e) => {
+            setCustomerLast(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          placeholder="Email"
+          type="email"
+          name="user_email"
+          onChange={(e) => {
+            setCustomerEmail(e.target.value);
+          }}
+        />
+        <br></br>
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Phone Number"
+          name="user_phone"
+          onChange={(e) => {
+            setCustomerPhone(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Address"
+          name="user_address"
+          onChange={(e) => {
+            setCustomerAddress(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Phone, Email, Both"
+          name="user_contact"
+          onChange={(e) => {
+            setCommunication(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Preferred Store: Apopka"
+          name="user_store"
+          onChange={(e) => {
+            setPreferredStore(e.target.value);
+          }}
+        />
+        <br></br>
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Place of Birth: Orlando, Florida USA"
+          name="user_birthPlace"
+          onChange={(e) => {
+            setPlaceBorn(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="D.O.B. July 4, 1977"
+          name="user_birth"
+          onChange={(e) => {
+            setDob(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="SSN: Optional"
+          name="user_ssn"
+          onChange={(e) => {
+            setSsn(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Ethnicity: Japanese American, African American, European"
+          name="user_ethnicity"
+          onChange={(e) => {
+            setEthnicity(e.target.value);
+          }}
+        />
+        <br></br>
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Race: Black, Hispanic, White"
+          name="user_race"
+          onChange={(e) => {
+            setRace(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          name="clerk"
+          value={clerk}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          name="store"
+          value={store}
+        />
+        <input
+          style={{
+            color: "black",
+            backgroundColor: "lightgreen",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px darkgreen",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="submit"
+          value="Register Customer"
+          onClick={submitNewCustomer}
+        />
+      </form>
+
+      {/* <Form
+        ref={form}
+        onSubmit={sendEmail}
+        className="main-form"
+        style={{ marginTop: "-3%" }}
+      >
         {" "}
         <h1>Registration</h1>
         <Form.Group widths="equal">
-          <Form.Field>
+          <Form.Field width={4}>
             <label>First name</label>
             <Input
+              name="name"
               fluid
               placeholder="First name"
               onChange={(e) => {
@@ -114,7 +440,7 @@ function StoreFront() {
               }}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field width={4}>
             <label>Middle name</label>
             <Input
               fluid
@@ -124,7 +450,7 @@ function StoreFront() {
               }}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field width={4}>
             <label>Last name</label>
             <Input
               fluid
@@ -139,6 +465,7 @@ function StoreFront() {
           <Form.Field>
             <label>Email</label>
             <Input
+              name="email"
               fluid
               placeholder="Email"
               onChange={(e) => {
@@ -188,26 +515,7 @@ function StoreFront() {
               }}
             />
           </Form.Field>
-          {/* <Form.Field width={2}>
-            <label>Card</label>
-            <Input
-              fluid
-              placeholder="Yes or No"
-              onChange={(e) => {
-                setCard(e.target.value);
-              }}
-            />
-          </Form.Field> */}
-          {/* <Form.Field width={3}>
-            <label>Member Number</label>
-            <Input
-              fluid
-              placeholder="123"
-              onChange={(e) => {
-                setMemberNumber(e.target.value);
-              }}
-            />
-          </Form.Field> */}
+         
           <Form.Field width={4}>
             <label>Place of Birth</label>
             <Input
@@ -262,25 +570,11 @@ function StoreFront() {
             />
           </Form.Field>
         </Form.Group>
-        {/* <Form.Group>
-          <Form.Field width={4}>
-            <label>Clerk</label>
-            <Input
-              fluid
-              // Value={managerDetails.first_name}
-              placeholder={
-                managerDetails.first_name + " " + managerDetails.last_name
-              }
-              onChange={(e) => {
-                setClerk(e.target.value);
-              }}
-            />
-          </Form.Field>
-        </Form.Group> */}
+       
         <Button type="reset" onClick={submitNewCustomer}>
           Register Executive
         </Button>
-      </Form>
+      </Form> */}
       {/* END REGISTRATION */}
       {/* START CUSTOMER LOOK UP */}
 
@@ -355,9 +649,7 @@ function StoreFront() {
                               color="gray"
                               content="View"
                               style={{ float: "left" }}
-                              // onClick={() => {
-                              //   ChangeRenewal(memberDetails.id);
-                              // }}
+                              onClick={() => setOpen(true)}
                             />
                           }
                         >

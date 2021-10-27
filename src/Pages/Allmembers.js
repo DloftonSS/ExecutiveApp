@@ -33,7 +33,7 @@ function AllMembers() {
       (response) => {
         // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
         setMemberList(response.data);
-        // console.log(response.data);
+        console.log(response.data.length);
       }
     );
 
@@ -89,10 +89,18 @@ function AllMembers() {
                 // onClick={() => GetExpired}
                 open={openThree}
                 trigger={<Button>Active</Button>}
-                style={{ width: "1100px" }}
-                style={{ height: "700px", left: "25%", top: "10%" }}
+                style={{
+                  width: "100%",
+                  height: "700px",
+                  width: "1500px",
+                  left: "5%",
+                  top: "10%",
+                }}
               >
-                <Modal.Header>Active Customers</Modal.Header>
+                <Modal.Header>Active Customers</Modal.Header> {""}
+                <p style={{ marginLeft: "25px" }}>
+                  Total Active Member: {memberList.length}
+                </p>
                 <Input
                   type="text"
                   placeholder="Search First, Last, Phone, or Email"
@@ -219,8 +227,13 @@ function AllMembers() {
                 // onClick={() => GetExpired}
                 open={openTwo}
                 trigger={<Button>Expiring</Button>}
-                style={{ width: "1100px" }}
-                style={{ height: "700px", left: "25%", top: "10%" }}
+                style={{
+                  width: "100%",
+                  height: "700px",
+                  width: "1500px",
+                  left: "5%",
+                  top: "10%",
+                }}
               >
                 <Modal.Header>Expiring Customers</Modal.Header>
                 <Input
@@ -347,8 +360,13 @@ function AllMembers() {
                 // onClick={() => GetExpired}
                 open={open}
                 trigger={<Button>Expired</Button>}
-                style={{ width: "1100px" }}
-                style={{ height: "700px", left: "25%", top: "10%" }}
+                style={{
+                  width: "100%",
+                  height: "700px",
+                  width: "1500px",
+                  left: "5%",
+                  top: "10%",
+                }}
               >
                 <Modal.Header>Expired Customers</Modal.Header>
                 <Input
