@@ -80,7 +80,7 @@ function StoreFront() {
       clerk: clerk,
     })
       .then((response, error) => {
-        console.log("submited");
+        // console.log("submited");
       })
       .catch((error) => {
         console.log(error);
@@ -100,10 +100,10 @@ function StoreFront() {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          // console.log(result.text);
         },
         (error) => {
-          console.log(error.text);
+          // console.log(error.text);
         }
       );
     e.target.reset();
