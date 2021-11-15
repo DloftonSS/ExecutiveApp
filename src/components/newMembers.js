@@ -7,12 +7,13 @@ function NewMembers() {
   const [memberList, setMemberList] = useState("");
 
   useEffect(() => {
-    // Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
-    //   (response) => {
-    Axios.get("http://localhost:3001/api/getMembers").then((response) => {
-      setMemberList(response.data);
-      // console.log(response.data);
-    });
+    Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/api/getMembers").then((response) => {
+        setMemberList(response.data);
+        // console.log(response.data);
+      }
+    );
   }, []);
 
   return (
