@@ -7,9 +7,20 @@ function NewMembers() {
   const [memberList, setMemberList] = useState("");
 
   useEffect(() => {
-    Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
+    //OLD NOT USING ON DASHBOARD
+
+    // Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
+    //   (response) => {
+    // Axios.get("http://localhost:3001/api/getMembers").then((response) => {
+    // setMemberList(response.data);
+    // console.log(response.data);
+    // });
+
+    //NEW PENDING CARD MEMBERS
+
+    Axios.get("https://executive-app.herokuapp.com/PendingCardMembers").then(
       (response) => {
-        // Axios.get("http://localhost:3001/api/getMembers").then((response) => {
+        // Axios.get("http://localhost:3001/PendingCardMembers").then((response) => {
         setMemberList(response.data);
         // console.log(response.data);
       }
@@ -20,7 +31,7 @@ function NewMembers() {
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
       <Card fluid style={{ marginRight: "10px", height: "670px" }}>
         <Card.Content>
-          <Card.Header>Newest Members</Card.Header>
+          <Card.Header>Pending Card</Card.Header>
         </Card.Content>
         <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
           <Table celled striped color="red">
@@ -30,6 +41,7 @@ function NewMembers() {
                 <Table.HeaderCell>Last Name</Table.HeaderCell>
                 <Table.HeaderCell>Phone</Table.HeaderCell>
                 <Table.HeaderCell>Email</Table.HeaderCell>
+                <Table.HeaderCell>Card</Table.HeaderCell>
                 <Table.HeaderCell>Date Joined</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -55,6 +67,7 @@ function NewMembers() {
                     </Table.Cell>
                     <Table.Cell>{memberList[member].phone}</Table.Cell>
                     <Table.Cell>{memberList[member].email}</Table.Cell>
+                    <Table.Cell>{memberList[member].card}</Table.Cell>
                     <Table.Cell>{memberList[member].dateJoined}</Table.Cell>
                   </Table.Row>
                 );

@@ -38,11 +38,12 @@ function StoreFront() {
   const [clerk, setClerk] = useState("");
   const [store, setStore] = useState("");
   const form = useRef();
+  const card = "Pending";
   // FIND ALL MEMBERS
 
   const [memberList, setMemberList] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   //LOGGED IN USER
   const { id } = useParams();
@@ -78,6 +79,7 @@ function StoreFront() {
       ethnicity: ethnicity,
       race: race,
       clerk: clerk,
+      card: card,
     })
       .then((response, error) => {
         // console.log("submited");
@@ -386,7 +388,8 @@ function StoreFront() {
             width: "350px",
           }}
           name="clerk"
-          value={clerk}
+          // value={clerk}
+          placeholder="Associate Name"
         />
         <input
           style={{
@@ -401,6 +404,9 @@ function StoreFront() {
           }}
           name="store"
           value={store}
+          onChange={(e) => {
+            setClerk(e.target.value);
+          }}
         />
         <input
           style={{
@@ -418,163 +424,10 @@ function StoreFront() {
           value="Register Customer"
           onClick={submitNewCustomer}
         />
+        <p>* Verify all information is correct. </p>
+        <p>* Clerk name required to receive credit for sign up. </p>
       </form>
 
-      {/* <Form
-        ref={form}
-        onSubmit={sendEmail}
-        className="main-form"
-        style={{ marginTop: "-3%" }}
-      >
-        {" "}
-        <h1>Registration</h1>
-        <Form.Group widths="equal">
-          <Form.Field width={4}>
-            <label>First name</label>
-            <Input
-              name="name"
-              fluid
-              placeholder="First name"
-              onChange={(e) => {
-                setCustomerFirst(e.target.value);
-              }}
-            />
-          </Form.Field>
-          <Form.Field width={4}>
-            <label>Middle name</label>
-            <Input
-              fluid
-              placeholder="Middle name"
-              onChange={(e) => {
-                setCustomerMiddle(e.target.value);
-              }}
-            />
-          </Form.Field>
-          <Form.Field width={4}>
-            <label>Last name</label>
-            <Input
-              fluid
-              placeholder="Last name"
-              onChange={(e) => {
-                setCustomerLast(e.target.value);
-              }}
-            />
-          </Form.Field>
-        </Form.Group>
-        <Form.Group widths="equal">
-          <Form.Field>
-            <label>Email</label>
-            <Input
-              name="email"
-              fluid
-              placeholder="Email"
-              onChange={(e) => {
-                setCustomerEmail(e.target.value);
-              }}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Address</label>
-            <Input
-              fluid
-              placeholder="Address"
-              onChange={(e) => {
-                setCustomerAddress(e.target.value);
-              }}
-            />
-          </Form.Field>
-        </Form.Group>
-        <Form.Group widths="equal">
-          <Form.Field width={4}>
-            <label>Phone</label>
-            <Input
-              fluid
-              placeholder="Phone"
-              onChange={(e) => {
-                setCustomerPhone(e.target.value);
-              }}
-            />
-          </Form.Field>
-          <Form.Field width={2}>
-            <label>Contact</label>
-            <Input
-              fluid
-              placeholder="Phone, Email, Both"
-              onChange={(e) => {
-                setCommunication(e.target.value);
-              }}
-            />
-          </Form.Field>
-          <Form.Field width={3}>
-            <label>Preferred Store</label>
-            <Input
-              fluid
-              placeholder="Apopka"
-              onChange={(e) => {
-                setPreferredStore(e.target.value);
-              }}
-            />
-          </Form.Field>
-         
-          <Form.Field width={4}>
-            <label>Place of Birth</label>
-            <Input
-              fluid
-              placeholder="Orlando, FL USA"
-              onChange={(e) => {
-                setPlaceBorn(e.target.value);
-              }}
-            />
-          </Form.Field>
-        </Form.Group>
-        <Form.Group widths="equal">
-          <Form.Field width={4}>
-            <label>D.O.B.</label>
-            <Input
-              fluid
-              placeholder="July, 4th 1776 "
-              onChange={(e) => {
-                setDob(e.target.value);
-              }}
-            />
-          </Form.Field>
-          <Form.Field width={4}>
-            <label>SSN</label>
-            <Input
-              fluid
-              type="password"
-              placeholder=" Optional ***-**-****"
-              onChange={(e) => {
-                setSsn(e.target.value);
-              }}
-            />
-          </Form.Field>
-          <Form.Field width={4}>
-            <label>Ethnicity</label>
-            <Input
-              fluid
-              placeholder="Japanese American, Cuban American, European"
-              onChange={(e) => {
-                setEthnicity(e.target.value);
-              }}
-            />
-          </Form.Field>
-          <Form.Field width={4}>
-            <label>Race</label>
-            <Input
-              fluid
-              placeholder="Black, Hispanic, White"
-              onChange={(e) => {
-                setRace(e.target.value);
-              }}
-            />
-          </Form.Field>
-        </Form.Group>
-       
-        <Button type="reset" onClick={submitNewCustomer}>
-          Register Executive
-        </Button>
-      </Form> */}
       {/* END REGISTRATION */}
       {/* START CUSTOMER LOOK UP */}
 
@@ -640,16 +493,22 @@ function StoreFront() {
                       style={{ overflowY: "scroll", width: "100%" }}
                       key={member.id}
                     >
-                      {/* <Table.Cell>{memberList[member].number}</Table.Cell> */}
                       <Table.Cell>
                         {" "}
                         <Modal
+                          onClose={() => setOpen(false)}
+                          onOpen={() => setOpen(true)}
+                          open={open}
+                          style={{
+                            marginLeft: "25%",
+                            height: "350px",
+                            marginTop: "10%",
+                          }}
                           trigger={
                             <Button
                               color="gray"
                               content="View"
-                              style={{ float: "left" }}
-                              onClick={() => setOpen(true)}
+                              style={{ float: "center" }}
                             />
                           }
                         >

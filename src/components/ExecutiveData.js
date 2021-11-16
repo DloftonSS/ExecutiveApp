@@ -563,7 +563,25 @@ function ExecutiveData(props) {
                         Change Address
                       </Button>
                       <Header>Card</Header>
-                      <input
+                      <select
+                        onChange={(i) => {
+                          setNewCardStatus(i.target.value);
+                        }}
+                        style={{
+                          height: "35px",
+                          width: "20%",
+                          backgroundColor: "lightGrey",
+                          borderRadius: "5px",
+                          border: "none",
+                        }}
+                      >
+                        <option>Choose Card Status</option>
+                        <option value="No Card">No Card</option>
+                        <option value="Yes Card">Yes Card</option>
+                        <option value="Card Ordered">Card Ordered</option>
+                        <option value="Card Expired">Card Expired</option>
+                      </select>
+                      {/* <input
                         onChange={(i) => {
                           setNewCardStatus(i.target.value);
                         }}
@@ -574,8 +592,9 @@ function ExecutiveData(props) {
                           width: "300px",
                           marginBottom: "5px",
                         }}
-                      ></input>
+                      ></input> */}
                       <Button
+                        style={{ margin: "10px" }}
                         size="mini"
                         color="black"
                         onClick={() => {

@@ -50,3 +50,14 @@ li a:hover {
   color: black;
   border-radius: 5px;
 }
+
+.logoutNow {
+  width: 100px;
+  background-color: red;
+  color: white;
+  height: 50px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  margin-top: -3%;
+  position: absolute;
+}

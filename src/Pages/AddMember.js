@@ -20,8 +20,10 @@ function AddMember() {
   const [ssn, setSsn] = useState("");
   const [ethnicity, setEthnicity] = useState("");
   const [race, setRace] = useState("");
+  const [memberNumber, setMemberNumber] = useState("");
   const [associate, setAssociate] = useState("");
   const [clerk, setClerk] = useState("");
+  const card = "Pending";
 
   const submitNewCustomer = () => {
     Axios.post("https://executive-app.herokuapp.com/addMember", {
@@ -39,6 +41,8 @@ function AddMember() {
       dob: dob,
       ethnicity: ethnicity,
       race: race,
+      memberNumber: memberNumber,
+      card: card,
     })
       .then((response, error) => {
         console.log("submited");
@@ -54,7 +58,7 @@ function AddMember() {
       {/* <div>This will be for adding the members to the Database.</div> */}
 
       {/* NEW ADD MEMBER FORM */}
-      <Form className="main-form" style={{ marginTop: "-3%" }}>
+      <Form className="main-form" style={{ marginTop: "3%" }}>
         {" "}
         <h1>Registration</h1>
         <Form.Group widths="equal">
@@ -174,7 +178,7 @@ function AddMember() {
           </Form.Field>
         </Form.Group>
         <Form.Group widths="equal">
-          <Form.Field width={4}>
+          <Form.Field width={3}>
             <label>D.O.B.</label>
             <Input
               fluid
@@ -184,7 +188,7 @@ function AddMember() {
               }}
             />
           </Form.Field>
-          <Form.Field width={4}>
+          <Form.Field width={3}>
             <label>SSN</label>
             <Input
               fluid
@@ -205,7 +209,7 @@ function AddMember() {
               }}
             />
           </Form.Field>
-          <Form.Field width={4}>
+          <Form.Field width={3}>
             <label>Race</label>
             <Input
               fluid
@@ -215,7 +219,21 @@ function AddMember() {
               }}
             />
           </Form.Field>
+          <Form.Field width={3}>
+            <label>Member ID *</label>
+            <Input
+              fluid
+              placeholder="1234"
+              onChange={(e) => {
+                setMemberNumber(e.target.value);
+              }}
+            />
+          </Form.Field>
         </Form.Group>
+        <p>
+          * If you are not sure what member number to enter, leave blank and
+          edit the customer number later from the profile page.
+        </p>
         {/* <Form.Group>
           <Form.Field width={4}>
             <label>Clerk</label>

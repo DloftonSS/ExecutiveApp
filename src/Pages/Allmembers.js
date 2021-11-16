@@ -42,7 +42,7 @@ function AllMembers() {
       (response) => {
         // Axios.get("http://localhost:3001/api/activeMembers").then((response) => {
         setActiveList(response.data);
-        // console.log(response.data);
+        console.log(response.data);
       }
     );
 
@@ -73,6 +73,9 @@ function AllMembers() {
         <Card fluid style={{ marginRight: "10px", height: "100%" }}>
           <Card.Content>
             <Card.Header>All Members</Card.Header>
+            <p style={{ marginLeft: "25px" }}>
+              Total Members: {memberList.length}
+            </p>
             <Input
               type="text"
               placeholder="Search First or Last Name"
@@ -99,7 +102,7 @@ function AllMembers() {
               >
                 <Modal.Header>Active Customers</Modal.Header> {""}
                 <p style={{ marginLeft: "25px" }}>
-                  Total Active Member: {memberList.length}
+                  Total Active Members: {activeList.length}
                 </p>
                 <Input
                   type="text"
@@ -125,6 +128,7 @@ function AllMembers() {
                         <Table.HeaderCell>Email</Table.HeaderCell>
                         <Table.HeaderCell>Address</Table.HeaderCell>
                         <Table.HeaderCell>Date Joined</Table.HeaderCell>
+                        <Table.HeaderCell>Card</Table.HeaderCell>
                         <Table.HeaderCell>Date Expiring</Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
@@ -149,7 +153,10 @@ function AllMembers() {
                             activeList[act].phone
                               .toLowerCase()
                               .includes(searchTerm.toLowerCase()) ||
-                            activeList[act].number
+                            activeList[act].address
+                              .toLowerCase()
+                              .includes(searchTerm.toLowerCase()) ||
+                            activeList[act].card
                               .toLowerCase()
                               .includes(searchTerm.toLowerCase())
                           ) {
@@ -198,6 +205,7 @@ function AllMembers() {
                               </Table.Cell>
                               <Table.Cell>{activeList[act].address}</Table.Cell>
                               <Table.Cell>{joindate}</Table.Cell>
+                              <Table.Cell>{activeList[act].card}</Table.Cell>
                               <Table.Cell>{expiredate}</Table.Cell>
                             </Table.Row>
                           );
@@ -236,6 +244,9 @@ function AllMembers() {
                 }}
               >
                 <Modal.Header>Expiring Customers</Modal.Header>
+                <p style={{ marginLeft: "25px" }}>
+                  Total Expiring Members: {expiringMembers.length}
+                </p>
                 <Input
                   type="text"
                   placeholder="Search First, Last, Phone, or Email"
@@ -254,6 +265,7 @@ function AllMembers() {
                         <Table.HeaderCell>Phone</Table.HeaderCell>
                         <Table.HeaderCell>Email</Table.HeaderCell>
                         <Table.HeaderCell>Address</Table.HeaderCell>
+                        <Table.HeaderCell>Card</Table.HeaderCell>
                         <Table.HeaderCell>Expiring</Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
@@ -281,7 +293,10 @@ function AllMembers() {
                             expiringMembers[ing].phone
                               .toLowerCase()
                               .includes(searchTermThree.toLowerCase()) ||
-                            expiringMembers[ing].number
+                            expiringMembers[ing].address
+                              .toLowerCase()
+                              .includes(searchTermThree.toLowerCase()) ||
+                            expiringMembers[ing].card
                               .toLowerCase()
                               .includes(searchTermThree.toLowerCase())
                           ) {
@@ -332,6 +347,9 @@ function AllMembers() {
                               <Table.Cell>
                                 {expiringMembers[ing].address}
                               </Table.Cell>
+                              <Table.Cell>
+                                {expiringMembers[ing].card}
+                              </Table.Cell>
                               <Table.Cell>{expiredate2}</Table.Cell>
                             </Table.Row>
                           );
@@ -369,6 +387,9 @@ function AllMembers() {
                 }}
               >
                 <Modal.Header>Expired Customers</Modal.Header>
+                <p style={{ marginLeft: "25px" }}>
+                  Total Expired Members: {expiredMembers.length}
+                </p>
                 <Input
                   type="text"
                   placeholder="Search First or Last Name"
@@ -387,6 +408,7 @@ function AllMembers() {
                         <Table.HeaderCell>Phone</Table.HeaderCell>
                         <Table.HeaderCell>Email</Table.HeaderCell>
                         <Table.HeaderCell>Address</Table.HeaderCell>
+                        <Table.HeaderCell>Card</Table.HeaderCell>
                         <Table.HeaderCell>Date Expired</Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
@@ -404,18 +426,21 @@ function AllMembers() {
                               .includes(searchTermTwo.toLowerCase())
                           ) {
                             return exp;
-                            // } else if (
-                            //   expiredMembers[exp].email
-                            //     .toLowerCase()
-                            //     .includes(searchTermTwo.toLowerCase()) ||
-                            //   expiredMembers[exp].phone
-                            //     .toLowerCase()
-                            //     .includes(searchTermTwo.toLowerCase()) ||
-                            //   expiredMembers[exp].number
-                            //     .toLowerCase()
-                            //     .includes(searchTermTwo.toLowerCase())
-                            // ) {
-                            //   return exp;
+                          } else if (
+                            expiredMembers[exp].email
+                              .toLowerCase()
+                              .includes(searchTermTwo.toLowerCase()) ||
+                            expiredMembers[exp].phone
+                              .toLowerCase()
+                              .includes(searchTermTwo.toLowerCase()) ||
+                            expiredMembers[exp].address
+                              .toLowerCase()
+                              .includes(searchTermTwo.toLowerCase()) ||
+                            expiredMembers[exp].card
+                              .toLowerCase()
+                              .includes(searchTermTwo.toLowerCase())
+                          ) {
+                            return exp;
                           }
                         })
                         .map((exp, i) => {
@@ -462,6 +487,9 @@ function AllMembers() {
                               <Table.Cell>
                                 {expiredMembers[exp].address}
                               </Table.Cell>
+                              <Table.Cell>
+                                {expiredMembers[exp].card}
+                              </Table.Cell>
                               <Table.Cell>{expiredate3}</Table.Cell>
                             </Table.Row>
                           );
@@ -495,6 +523,7 @@ function AllMembers() {
                   <Table.HeaderCell>Phone</Table.HeaderCell>
                   <Table.HeaderCell>Email</Table.HeaderCell>
                   <Table.HeaderCell>Address</Table.HeaderCell>
+                  <Table.HeaderCell>Card</Table.HeaderCell>
                   <Table.HeaderCell>Date Joined</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
@@ -512,18 +541,21 @@ function AllMembers() {
                         .includes(searchTermFour.toLowerCase())
                     ) {
                       return member;
-
-                      //   memberList[member].email
-                      //     .toLowerCase()
-                      //     .includes(searchTermFour.toLowerCase()) ||
-                      //   memberList[member].phone
-                      //     .toLowerCase()
-                      //     .includes(searchTermFour.toLowerCase()) ||
-                      //   memberList[member].number
-                      //     .toLowerCase()
-                      //     .includes(searchTermFour.toLowerCase())
-                      // ) {
-                      //   return member;
+                    } else if (
+                      memberList[member].email
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase()) ||
+                      memberList[member].phone
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase()) ||
+                      memberList[member].address
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase()) ||
+                      memberList[member].card
+                        .toLowerCase()
+                        .includes(searchTermFour.toLowerCase())
+                    ) {
+                      return member;
                     }
                   })
                   .map((member, i) => {
@@ -562,6 +594,7 @@ function AllMembers() {
                           </a>
                         </Table.Cell>
                         <Table.Cell>{memberList[member].address}</Table.Cell>
+                        <Table.Cell>{memberList[member].card}</Table.Cell>
                         <Table.Cell>{joindate1}</Table.Cell>
                       </Table.Row>
                     );

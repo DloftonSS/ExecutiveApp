@@ -40,7 +40,7 @@ function AddAdmin() {
     <div className="App">
       {/* <Header /> */}
       <HeaderMain />
-      <Form className="main-form" style={{ marginTop: "-3%" }}>
+      <Form className="main-form" style={{ marginTop: "3%" }}>
         {" "}
         <h1>Registration</h1>
         <Form.Group widths="equal">
@@ -101,6 +101,8 @@ function AddAdmin() {
         <Button type="reset" onClick={register}>
           Register Admin
         </Button>
+        <p>* Managers will have Store front access only.</p>
+        <p>* Admins will have backend access. </p>
       </Form>
     </div>
   );
