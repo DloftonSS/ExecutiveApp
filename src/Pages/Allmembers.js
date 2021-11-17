@@ -146,10 +146,10 @@ function AllMembers() {
                               .includes(searchTerm.toLowerCase()) ||
                             activeList[act].last_name
                               .toLowerCase()
-                              .includes(searchTerm.toLowerCase())
-                          ) {
-                            return act;
-                          } else if (
+                              .includes(searchTerm.toLowerCase()) ||
+                            // ) {
+                            //   return act;
+                            // } else if (
                             activeList[act].email
                               .toLowerCase()
                               .includes(searchTerm.toLowerCase()) ||
@@ -287,10 +287,10 @@ function AllMembers() {
                               .includes(searchTermThree.toLowerCase()) ||
                             expiringMembers[ing].last_name
                               .toLowerCase()
-                              .includes(searchTermThree.toLowerCase())
-                          ) {
-                            return ing;
-                          } else if (
+                              .includes(searchTermThree.toLowerCase()) ||
+                            // ) {
+                            //   return ing;
+                            // } else if (
                             expiringMembers[ing].email
                               .toLowerCase()
                               .includes(searchTermThree.toLowerCase()) ||
@@ -430,10 +430,10 @@ function AllMembers() {
                               .includes(searchTermTwo.toLowerCase()) ||
                             expiredMembers[exp].last_name
                               .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase())
-                          ) {
-                            return exp;
-                          } else if (
+                              .includes(searchTermTwo.toLowerCase()) ||
+                            // ) {
+                            //   return exp;
+                            // } else if (
                             expiredMembers[exp].email
                               .toLowerCase()
                               .includes(searchTermTwo.toLowerCase()) ||
@@ -548,10 +548,10 @@ function AllMembers() {
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].last_name
                         .toLowerCase()
-                        .includes(searchTermFour.toLowerCase())
-                    ) {
-                      return member;
-                    } else if (
+                        .includes(searchTermFour.toLowerCase()) ||
+                      // ) {
+                      //   return member;
+                      // } else if (
                       memberList[member].email
                         .toLowerCase()
                         .includes(searchTermFour.toLowerCase()) ||
