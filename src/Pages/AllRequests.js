@@ -265,33 +265,33 @@ function AllRequests(props) {
                         } else if (
                           pendingRequests[pending].status
                             .toLowerCase()
-                            .includes(searchTerm.toLowerCase()) ||
+                            .includes(searchTerm2.toLowerCase()) ||
                           pendingRequests[pending].category
                             .toLowerCase()
-                            .includes(searchTerm.toLowerCase()) ||
+                            .includes(searchTerm2.toLowerCase()) ||
                           // ) {
                           //   return request;
                           // } else if (
                           pendingRequests[pending].sku
                             .toLowerCase()
-                            .includes(searchTerm.toLowerCase()) ||
+                            .includes(searchTerm2.toLowerCase()) ||
                           pendingRequests[pending].memberName
                             .toLowerCase()
-                            .includes(searchTerm.toLowerCase()) ||
+                            .includes(searchTerm2.toLowerCase()) ||
                           pendingRequests[pending].brand
                             .toLowerCase()
-                            .includes(searchTerm.toLowerCase()) ||
+                            .includes(searchTerm2.toLowerCase()) ||
                           pendingRequests[pending].note
                             .toLowerCase()
-                            .includes(searchTerm.toLowerCase()) ||
+                            .includes(searchTerm2.toLowerCase()) ||
                           pendingRequests[pending].item
                             .toLowerCase()
-                            .includes(searchTerm.toLowerCase())
+                            .includes(searchTerm2.toLowerCase())
                           //****** SEARCH SOURCE *****/
                           //   ||
                           // requestList[request].source
                           //   .toLowerCase()
-                          //   .includes(searchTerm.toLowerCase())
+                          //   .includes(searchTerm2.toLowerCase())
                         ) {
                           return pending;
                         }
@@ -738,38 +738,38 @@ function AllRequests(props) {
                   <Table.Body>
                     {Object.keys(backorderRequest)
                       .filter((back) => {
-                        if (searchTerm3 == "") {
+                        if (searchTerm4 == "") {
                           return back;
                         } else if (
                           backorderRequest[back].status
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm4.toLowerCase()) ||
                           backorderRequest[back].category
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm4.toLowerCase()) ||
                           // ) {
                           //   return request;
                           // } else if (
                           backorderRequest[back].sku
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm4.toLowerCase()) ||
                           backorderRequest[back].memberName
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm4.toLowerCase()) ||
                           backorderRequest[back].brand
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm4.toLowerCase()) ||
                           backorderRequest[back].note
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm4.toLowerCase()) ||
                           backorderRequest[back].item
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase())
+                            .includes(searchTerm4.toLowerCase())
                           //****** SEARCH SOURCE *****/
                           //   ||
                           // requestList[request].source
                           //   .toLowerCase()
-                          //   .includes(searchTerm3.toLowerCase())
+                          //   .includes(searchTerm4.toLowerCase())
                         ) {
                           return back;
                         }
@@ -980,38 +980,38 @@ function AllRequests(props) {
                   <Table.Body>
                     {Object.keys(orderedRequest)
                       .filter((ordered) => {
-                        if (searchTerm3 == "") {
+                        if (searchTerm5 == "") {
                           return ordered;
                         } else if (
                           orderedRequest[ordered].status
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm5.toLowerCase()) ||
                           orderedRequest[ordered].category
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm5.toLowerCase()) ||
                           // ) {
                           //   return request;
                           // } else if (
                           orderedRequest[ordered].sku
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm5.toLowerCase()) ||
                           orderedRequest[ordered].memberName
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm5.toLowerCase()) ||
                           orderedRequest[ordered].brand
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm5.toLowerCase()) ||
                           orderedRequest[ordered].note
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm5.toLowerCase()) ||
                           orderedRequest[ordered].item
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase())
+                            .includes(searchTerm5.toLowerCase())
                           //****** SEARCH SOURCE *****/
                           //   ||
                           // requestList[request].source
                           //   .toLowerCase()
-                          //   .includes(searchTerm3.toLowerCase())
+                          //   .includes(searchTerm5.toLowerCase())
                         ) {
                           return ordered;
                         }
@@ -1192,7 +1192,7 @@ function AllRequests(props) {
                 placeholder="Search First, Last, Phone, or Email"
                 style={{ width: "250px", height: "30px", marginLeft: "2%" }}
                 onChange={(event) => {
-                  setSearchTerm5(event.target.value);
+                  setSearchTerm6(event.target.value);
                 }}
               ></Input>
               <Card.Content
@@ -1224,38 +1224,38 @@ function AllRequests(props) {
                   <Table.Body>
                     {Object.keys(completedRequest)
                       .filter((ordered) => {
-                        if (searchTerm3 == "") {
+                        if (searchTerm6 == "") {
                           return ordered;
                         } else if (
                           completedRequest[ordered].status
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm6.toLowerCase()) ||
                           completedRequest[ordered].category
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm6.toLowerCase()) ||
                           // ) {
                           //   return request;
                           // } else if (
                           completedRequest[ordered].sku
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm6.toLowerCase()) ||
                           completedRequest[ordered].memberName
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm6.toLowerCase()) ||
                           completedRequest[ordered].brand
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm6.toLowerCase()) ||
                           completedRequest[ordered].note
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm6.toLowerCase()) ||
                           completedRequest[ordered].item
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase())
+                            .includes(searchTerm6.toLowerCase())
                           //****** SEARCH SOURCE *****/
                           //   ||
                           // requestList[request].source
                           //   .toLowerCase()
-                          //   .includes(searchTerm3.toLowerCase())
+                          //   .includes(searchTerm6.toLowerCase())
                         ) {
                           return ordered;
                         }
@@ -1468,38 +1468,38 @@ function AllRequests(props) {
                   <Table.Body>
                     {Object.keys(canceledRequest)
                       .filter((canceled) => {
-                        if (searchTerm3 == "") {
+                        if (searchTerm7 == "") {
                           return canceled;
                         } else if (
                           canceledRequest[canceled].status
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm7.toLowerCase()) ||
                           canceledRequest[canceled].category
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm7.toLowerCase()) ||
                           // ) {
                           //   return request;
                           // } else if (
                           canceledRequest[canceled].sku
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm7.toLowerCase()) ||
                           canceledRequest[canceled].memberName
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm7.toLowerCase()) ||
                           canceledRequest[canceled].brand
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm7.toLowerCase()) ||
                           canceledRequest[canceled].note
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase()) ||
+                            .includes(searchTerm7.toLowerCase()) ||
                           canceledRequest[canceled].item
                             .toLowerCase()
-                            .includes(searchTerm3.toLowerCase())
+                            .includes(searchTerm7.toLowerCase())
                           //****** SEARCH SOURCE *****/
                           //   ||
                           // requestList[request].source
                           //   .toLowerCase()
-                          //   .includes(searchTerm3.toLowerCase())
+                          //   .includes(searchTerm7.toLowerCase())
                         ) {
                           return canceled;
                         }
