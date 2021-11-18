@@ -98,10 +98,11 @@ function StoreFront() {
 
     emailjs
       .sendForm(
-        "service_gt7pfpe",
-        "template_u1hvb2j",
+        // "service_gt7pfpe",
+        "service_640rs57",
+        "template_nvhp8i6",
         form.current,
-        "user_9MrgO9HIeQQan5hAG15a2"
+        "user_QGlVs4Qz8yzIHPSfomOw6"
       )
       .then(
         (result) => {
