@@ -135,10 +135,7 @@ function AllMembers() {
                     <Table.Body>
                       {Object.keys(activeList)
                         .filter((act) => {
-                          if (
-                            searchTerm == ""
-                            //  || searchTerm == null
-                          ) {
+                          if (searchTerm == "" || searchTerm == null) {
                             return act;
                           } else if (
                             activeList[act].first_name
@@ -277,9 +274,8 @@ function AllMembers() {
                       {Object.keys(expiringMembers)
                         .filter((ing) => {
                           if (
-                            searchTermThree == ""
-                            // ||
-                            // searchTermThree == null
+                            searchTermThree == "" ||
+                            searchTermThree == null
                           ) {
                             return ing;
                           } else if (
@@ -421,10 +417,7 @@ function AllMembers() {
                     <Table.Body>
                       {Object.keys(expiredMembers)
                         .filter((exp) => {
-                          if (
-                            searchTermTwo == ""
-                            // || searchTermTwo == null
-                          ) {
+                          if (searchTermTwo == "" || searchTermTwo == null) {
                             return exp;
                           } else if (
                             expiredMembers[exp].first_name
@@ -540,7 +533,7 @@ function AllMembers() {
               <Table.Body>
                 {Object.keys(memberList)
                   .filter((member) => {
-                    if (searchTermFour == "") {
+                    if (searchTermFour == "" || searchTermFour == null) {
                       return member;
                     } else if (
                       memberList[member].first_name
