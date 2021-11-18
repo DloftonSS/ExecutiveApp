@@ -508,7 +508,7 @@ function AllMembers() {
                       memberList[member].last_name
                         .toLowerCase()
                         .includes(searchTermFour.toLowerCase()) ||
-                      activeList[act].phone
+                      activeList[member].phone
                         .toLowerCase()
                         .includes(searchTerm.toLowerCase())
                     ) {
