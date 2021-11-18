@@ -99,6 +99,16 @@ function AddAdmin() {
               }}
             />
           </Form.Field>
+          <Form.Field width={4}>
+            <label>Store</label>
+            <Input
+              fluid
+              placeholder="Apopka, Sarasota, Ft. Lauderdale"
+              onChange={(e) => {
+                setStoreReg(e.target.value);
+              }}
+            />
+          </Form.Field>
         </Form.Group>
         <Button type="reset" onClick={register}>
           Register Admin
