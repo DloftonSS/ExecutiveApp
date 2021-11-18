@@ -9,7 +9,7 @@ import {
   Header,
   Input,
 } from "semantic-ui-react";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import HeaderMain from "../components/header";
 import { Link } from "react-router-dom";
