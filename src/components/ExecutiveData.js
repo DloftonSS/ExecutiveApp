@@ -11,7 +11,7 @@ import {
   Form,
   Image,
 } from "semantic-ui-react";
-import React, { useState, useEffect, Input } from "react";
+import React, { useState, useEffect, Input, Link } from "react";
 import Axios from "axios";
 import API from "../utils/API";
 import { useParams } from "react-router";
@@ -100,7 +100,14 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newFirst", {
+        // Axios.post("http://localhost:3001/newFirst", {
+        newFirstName: newFirstName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeMiddle = (id) => {
@@ -110,7 +117,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newMiddle", {
+        // Axios.post("http://localhost:3001/newMiddle", {
+        newMiddleName: newMiddleName,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeLast = (id) => {
@@ -120,7 +135,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newLast", {
+        // Axios.post("http://localhost:3001/newLast", {
+        newLastName: newLastName,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeMemId = (id) => {
@@ -130,7 +153,9 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeEmail = (id) => {
@@ -140,7 +165,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newEmail", {
+        // Axios.post("http://localhost:3001/newEmail", {
+        newEmail: newEmail,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangePhone = (id) => {
@@ -150,7 +183,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newPhone", {
+        // Axios.post("http://localhost:3001/newPhone", {
+        newPhone: newPhone,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeAddress = (id) => {
@@ -160,7 +201,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newAddress", {
+        // Axios.post("http://localhost:3001/newAddress", {
+        newAddress: newAddress,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangePassword = (id) => {
@@ -170,7 +219,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newPassword", {
+        // Axios.post("http://localhost:3001/newPassword", {
+        newPreferredStore: newPreferredStore,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeCard = (id) => {
@@ -180,7 +237,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newCard", {
+        // Axios.post("http://localhost:3001/newCard", {
+        newCardStatus: newCardStatus,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeStore = (id) => {
@@ -190,7 +255,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newStore", {
+        // Axios.post("http://localhost:3001/newStore", {
+        newPreferredStore: newPreferredStore,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeCommunication = (id) => {
@@ -200,7 +273,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newCommunication", {
+        // Axios.post("http://localhost:3001/newCommunication", {
+        newCommunication: newCommunication,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangePlaceBorn = (id) => {
@@ -210,7 +291,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newBorn", {
+        // Axios.post("http://localhost:3001/newBorn", {
+        newPlaceBorn: newPlaceBorn,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeDob = (id) => {
@@ -220,7 +309,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newDob", {
+        // Axios.post("http://localhost:3001/newDob", {
+        newDob: newDob,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeSsn = (id) => {
@@ -230,7 +327,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newSsn", {
+        // Axios.post("http://localhost:3001/newSsn", {
+        newSsn: newSsn,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeEthnicity = (id) => {
@@ -240,7 +345,15 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newEthnicity", {
+        // Axios.post("http://localhost:3001/newEthnicity", {
+        newEthnicity: newEthnicity,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      detailChange();
     });
   };
   const ChangeRace = (id) => {
@@ -250,7 +363,16 @@ function ExecutiveData(props) {
       id: id,
     }).then((response) => {
       // console.log("completed");
+      Axios.post("https://executive-app.herokuapp.com/newRace", {
+        // Axios.post("http://localhost:3001/newRace", {
+        newRace: newRace,
+        // adminName: adminName,
+        memberName: memberName,
+        id: id,
+      }).then(() => {});
       getMemberInfo();
+      getMemberNotes();
+      // detailChange();
     });
   };
   //END UPDATING MEMBER DETAILS
@@ -281,7 +403,32 @@ function ExecutiveData(props) {
       getMemberNotes();
     });
   };
-
+  //MEMBER DETAIL CHANGE
+  const detailChange = (e) => {
+    Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
+      // Axios.post("http://localhost:3001/detailChange", {
+      noteTyped: noteTyped,
+      memberName: memberName,
+      id: id,
+      // newFirstName: newFirstName,
+      // newMiddleName: newMiddleName,
+      // newLastName: newLastName,
+      // newPhone: newPhone,
+      // newEmail: newEmail,
+      // newAddress: newAddress,
+      // newPassword: newPassword,
+      // newCardStatus: newCardStatus,
+      // newPreferredStore: newPreferredStore,
+      // newCommunication: newCommunication,
+      // newPlaceBorn: newPlaceBorn,
+      // newDob: newDob,
+      // newSsn: newSsn,
+      // newEthnicity: newEthnicity,
+      // newRace: newRace,
+    }).then(() => {
+      getMemberNotes();
+    });
+  };
   //DELETE NOTE
   const Deletenote = (id) => {
     Axios.delete(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
@@ -576,7 +723,7 @@ function ExecutiveData(props) {
                         }}
                       >
                         <option>Choose Card Status</option>
-                        <option value="No Card">No Card</option>
+                        <option value="pending">Pending</option>
                         <option value="Yes Card">Yes Card</option>
                         <option value="Card Ordered">Card Ordered</option>
                         <option value="Card Expired">Card Expired</option>
@@ -1026,6 +1173,21 @@ function ExecutiveData(props) {
                         <Feed.Extra style={{ width: "300px" }}>
                           {" "}
                           {notesList[keyName].note}
+                          {notesList[keyName].newFirst}
+                          {notesList[keyName].newMiddle}
+                          {notesList[keyName].newLast}
+                          {notesList[keyName].newPhone}
+                          {notesList[keyName].newEmail}
+                          {notesList[keyName].newAddress}
+                          {notesList[keyName].newPassword}
+                          {notesList[keyName].newCard}
+                          {notesList[keyName].newStore}
+                          {notesList[keyName].newCommunication}
+                          {notesList[keyName].newBorn}
+                          {notesList[keyName].newDob}
+                          {notesList[keyName].newSsn}
+                          {notesList[keyName].newEthnicity}
+                          {notesList[keyName].newRace}
                           <p
                             style={{
                               textAlign: "right",
@@ -1259,7 +1421,22 @@ function ExecutiveData(props) {
                     .join(" ");
                   return (
                     <Table.Row key={request.id}>
-                      <Table.Cell>{requestList[request].memberName}</Table.Cell>
+                      {/* MEMBER REQUEST NAME */}
+                      {/* <Link
+                        style={{ color: "black" }}
+                        to={`/executiveAccount/${memberList[member].id}`}
+                      >
+                        {memberList[member].first_name}
+                      </Link> */}
+                      <Table.Cell>
+                        {" "}
+                        {/* <Link
+                          style={{ color: "black" }}
+                          to={`/executiveAccount/${requestList[request].id}`}
+                        > */}
+                        {requestList[request].memberName}
+                        {/* </Link> */}
+                      </Table.Cell>
                       <Table.Cell>{requestList[request].category}</Table.Cell>
 
                       <Table.Cell>{requestList[request].item}</Table.Cell>

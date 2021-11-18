@@ -1,10 +1,21 @@
-import { Card, Table, Button } from "semantic-ui-react";
+import { Card, Table, Button, Icon } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 
 function NewMembers() {
   const [memberList, setMemberList] = useState("");
+  const acknowledged = "Yes";
+
+  const Responded = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/adminResponded", {
+      // Axios.put("http://localhost:3001/adminResponded", {
+      acknowledged: acknowledged,
+      id: id,
+    }).then(() => {
+      // console.log("clicked");
+    });
+  };
 
   useEffect(() => {
     //OLD NOT USING ON DASHBOARD
@@ -37,6 +48,7 @@ function NewMembers() {
           <Table celled striped color="red">
             <Table.Header>
               <Table.Row>
+                <Table.HeaderCell>Initial Contact</Table.HeaderCell>
                 <Table.HeaderCell>First Name</Table.HeaderCell>
                 <Table.HeaderCell>Last Name</Table.HeaderCell>
                 <Table.HeaderCell>Phone</Table.HeaderCell>
@@ -49,6 +61,22 @@ function NewMembers() {
               {Object.keys(memberList).map((member, i) => {
                 return (
                   <Table.Row key={member.id}>
+                    <Table.Cell>
+                      <Button
+                        style={{
+                          width: "100px",
+                          heigth: "50px",
+                          backgroundColor: "#768D94",
+                          color: "white",
+                        }}
+                        onClick={() => {
+                          Responded(memberList[member].id);
+                        }}
+                      >
+                        {/* <Icon name="alarm"></Icon> */}
+                        {memberList[member].acknowledged}
+                      </Button>
+                    </Table.Cell>
                     <Table.Cell>
                       <Link
                         style={{ color: "black" }}

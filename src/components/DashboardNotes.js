@@ -79,6 +79,10 @@ function DashboardNotes() {
                     </Feed.Summary>
                     <Feed.Meta>
                       <Feed.User>
+                        {/* <Link
+                        style={{ color: "black" }}
+                        to={`/executiveAccount/${memberList[member].id}`}
+                      ></Link> */}
                         {notesList[keyName].memberName} {""}
                         {/* {notesList[keyName].memberIdentity} */}
                       </Feed.User>
@@ -90,6 +94,21 @@ function DashboardNotes() {
                     >
                       {" "}
                       {notesList[keyName].note}
+                      {notesList[keyName].newFirst}
+                      {notesList[keyName].newMiddle}
+                      {notesList[keyName].newLast}
+                      {notesList[keyName].newPhone}
+                      {notesList[keyName].newEmail}
+                      {notesList[keyName].newAddress}
+                      {notesList[keyName].newPassword}
+                      {notesList[keyName].newCard}
+                      {notesList[keyName].newStore}
+                      {notesList[keyName].newCommunication}
+                      {notesList[keyName].newBorn}
+                      {notesList[keyName].newDob}
+                      {notesList[keyName].newSsn}
+                      {notesList[keyName].newEthnicity}
+                      {notesList[keyName].newRace}
                       <p
                         style={{
                           color: "gray",

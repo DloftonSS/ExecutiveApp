@@ -102,35 +102,32 @@ function AdminDashBoard() {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button>Notifications</Button>}
-        style={{ height: "400px", marginTop: "15px", marginLeft: "15px" }}
+        trigger={
+          <Button style={{ margin: "25px", backgroundColor: "lightgreen" }}>
+            Notifications
+          </Button>
+        }
+        style={{ height: "400px", marginTop: "10%", marginLeft: "25%" }}
       >
         <Modal.Header>What's New!</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <Header>Update: October 26, 2021</Header>
-            <h3>Member Account</h3>
+            <Header>Update: November 18, 2021</Header>
+            <h3>Dashboard</h3>
 
-            <p>. When creating a note the customer's name auto fills.</p>
-            <p>. Hovering Customer Image reveals demographics.</p>
+            <p>. Dashboard now shows Pending Card Customers.</p>
+            <p>. Notes will show if a customer has a name change.</p>
 
             <p>
               . Member Numbers can now be added manually on the member account
-              page
+              page.
             </p>
-            <h3>Requests</h3>
-            <p>
-              . You can now specify the source a requested item is coming from.
-            </p>
-            <p>
-              . A request note that is updated on the members account page will
-              auto fill customer's name.
-            </p>
-            <h3>Customer Portal</h3>
-            <p>
-              . Customer can now see their requests, item, status, and last date
-              modified.
-            </p>
+            <h3>All Requests</h3>
+            <p>. More search options and specific status type pages.</p>
+            <p></p>
+            <h3>All Members</h3>
+            <p>. Now shows card status.</p>
+            <p>. More search options.</p>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>

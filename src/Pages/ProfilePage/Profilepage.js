@@ -60,8 +60,8 @@ const Profile = (props) => {
   };
 
   const ChangeFirst = (id) => {
-    // Axios.put("https://executive-app.herokuapp.com/changeFirst", {
-    Axios.put("http://localhost:3001/changeFirst", {
+    Axios.put("https://executive-app.herokuapp.com/changeFirst", {
+      // Axios.put("http://localhost:3001/changeFirst", {
       firstName: newFirstName,
       id: id,
     }).then((response) => {
@@ -70,8 +70,8 @@ const Profile = (props) => {
     });
   };
   const ChangeMiddle = (id) => {
-    // Axios.put("https://executive-app.herokuapp.com/changeMiddle", {
-    Axios.put("http://localhost:3001/changeMiddle", {
+    Axios.put("https://executive-app.herokuapp.com/changeMiddle", {
+      // Axios.put("http://localhost:3001/changeMiddle", {
       middleName: newMiddleName,
       id: id,
     }).then((response) => {
@@ -80,8 +80,8 @@ const Profile = (props) => {
     });
   };
   const ChangeLast = (id) => {
-    // Axios.put("https://executive-app.herokuapp.com/changeLast", {
-    Axios.put("http://localhost:3001/changeLast", {
+    Axios.put("https://executive-app.herokuapp.com/changeLast", {
+      // Axios.put("http://localhost:3001/changeLast", {
       lastName: newLastName,
       id: id,
     }).then((response) => {
@@ -90,8 +90,8 @@ const Profile = (props) => {
     });
   };
   const ChangeEmail = (id) => {
-    // Axios.put("https://executive-app.herokuapp.com/changeEmail", {
-    Axios.put("http://localhost:3001/changeEmail", {
+    Axios.put("https://executive-app.herokuapp.com/changeEmail", {
+      // Axios.put("http://localhost:3001/changeEmail", {
       email: newEmail,
       id: id,
     }).then((response) => {
@@ -100,8 +100,8 @@ const Profile = (props) => {
     });
   };
   const ChangePhone = (id) => {
-    // Axios.put("https://executive-app.herokuapp.com/changePhone", {
-    Axios.put("http://localhost:3001/changePhone", {
+    Axios.put("https://executive-app.herokuapp.com/changePhone", {
+      // Axios.put("http://localhost:3001/changePhone", {
       phone: newPhone,
       id: id,
     }).then((response) => {
@@ -110,8 +110,8 @@ const Profile = (props) => {
     });
   };
   const ChangeAddress = (id) => {
-    // Axios.put("https://executive-app.herokuapp.com/changeAddress", {
-    Axios.put("http://localhost:3001/changeAddress", {
+    Axios.put("https://executive-app.herokuapp.com/changeAddress", {
+      // Axios.put("http://localhost:3001/changeAddress", {
       address: newAddress,
       id: id,
     }).then((response) => {
@@ -120,8 +120,8 @@ const Profile = (props) => {
     });
   };
   const ChangePassword = (id) => {
-    // Axios.put("https://executive-app.herokuapp.com/changePassword", {
-    Axios.put("http://localhost:3001/changePassword", {
+    Axios.put("https://executive-app.herokuapp.com/changePassword", {
+      // Axios.put("http://localhost:3001/changePassword", {
       password: newPassword,
       id: id,
     }).then((response) => {
@@ -131,15 +131,16 @@ const Profile = (props) => {
   };
   //GETTING SPECIFIC REQUESTS
   const getMemberRequests = () => {
-    // Axios.get("https://executive-app.herokuapp.com/membersRequests").then(
-    //   (response) => {
-    Axios.get("http://localhost:3001/membersRequests").then((response) => {
-      const arrayRequests = response.data;
-      const result = arrayRequests.filter(
-        (arrayRequests) => arrayRequests.memberIdentity == id
-      );
-      setRequestList(result);
-    });
+    Axios.get("https://executive-app.herokuapp.com/membersRequests").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/membersRequests").then((response) => {
+        const arrayRequests = response.data;
+        const result = arrayRequests.filter(
+          (arrayRequests) => arrayRequests.memberIdentity == id
+        );
+        setRequestList(result);
+      }
+    );
   };
 
   const LoadPage = () => {

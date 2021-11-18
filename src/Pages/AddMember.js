@@ -24,6 +24,7 @@ function AddMember() {
   const [associate, setAssociate] = useState("");
   const [clerk, setClerk] = useState("");
   const card = "Pending";
+  const acknowledged = "No";
 
   const submitNewCustomer = () => {
     Axios.post("https://executive-app.herokuapp.com/addMember", {
@@ -43,6 +44,7 @@ function AddMember() {
       race: race,
       memberNumber: memberNumber,
       card: card,
+      acknowledged: acknowledged,
     })
       .then((response, error) => {
         console.log("submited");

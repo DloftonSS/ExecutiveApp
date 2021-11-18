@@ -39,6 +39,7 @@ function StoreFront() {
   const [store, setStore] = useState("");
   const form = useRef();
   const card = "Pending";
+  const acknowledged = "No";
   // FIND ALL MEMBERS
 
   const [memberList, setMemberList] = useState("");
@@ -80,9 +81,11 @@ function StoreFront() {
       race: race,
       clerk: clerk,
       card: card,
+      acknowledged: acknowledged,
     })
       .then((response, error) => {
         // console.log("submited");
+        GetAllmembers();
       })
       .catch((error) => {
         console.log(error);
@@ -111,17 +114,20 @@ function StoreFront() {
     e.target.reset();
   };
   // GET ALL MEMBERS
-  Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
-    (response) => {
-      // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
-      setMemberList(response.data);
-      // console.log(response.data);
-      // console.log(id);
-    }
-  );
+  const GetAllmembers = () => {
+    Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
+        setMemberList(response.data);
+        // console.log(response.data);
+        // console.log(id);
+      }
+    );
+  };
 
   useEffect(() => {
     getManager();
+    GetAllmembers();
   }, []);
 
   return (
