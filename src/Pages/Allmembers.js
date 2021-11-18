@@ -507,10 +507,7 @@ function AllMembers() {
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].last_name
                         .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      activeList[member].phone
-                        .toLowerCase()
-                        .includes(searchTerm.toLowerCase())
+                        .includes(searchTermFour.toLowerCase())
                     ) {
                       return member;
                     }
