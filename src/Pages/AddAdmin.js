@@ -15,6 +15,7 @@ function AddAdmin() {
   const [passwordReg, setPasswordReg] = useState("");
   const [roleReg, setRoleReg] = useState("");
   const [emailReg, setEmailReg] = useState("");
+  const [storeReg, setStoreReg] = useState("");
 
   //   const [username, setUsername] = useState("");
   //   const [password, setPassword] = useState("");
@@ -27,6 +28,7 @@ function AddAdmin() {
       email: emailReg,
       password: passwordReg,
       role: roleReg,
+      store: storeReg,
     })
       .then((response, error) => {
         // console.log(response);
