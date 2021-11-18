@@ -140,6 +140,18 @@ function AllMembers() {
                           } else if (
                             activeList[act].first_name
                               .toLowerCase()
+                              .includes(searchTerm.toLowerCase()) ||
+                            activeList[act].last_name
+                              .toLowerCase()
+                              .includes(searchTerm.toLowerCase()) ||
+                            activeList[act].phone
+                              .toLowerCase()
+                              .includes(searchTerm.toLowerCase()) ||
+                            activeList[act].email
+                              .toLowerCase()
+                              .includes(searchTerm.toLowerCase()) ||
+                            activeList[act].address
+                              .toLowerCase()
                               .includes(searchTerm.toLowerCase())
                           ) {
                             return act;
