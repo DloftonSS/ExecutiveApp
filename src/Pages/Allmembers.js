@@ -158,10 +158,11 @@ function AllMembers() {
                               .includes(searchTerm.toLowerCase()) ||
                             activeList[act].address
                               .toLowerCase()
-                              .includes(searchTerm.toLowerCase()) ||
-                            activeList[act].card
-                              .toLowerCase()
                               .includes(searchTerm.toLowerCase())
+                            //   ||
+                            // activeList[act].card
+                            //   .toLowerCase()
+                            //   .includes(searchTerm.toLowerCase())
                           ) {
                             return act;
                           }
@@ -299,10 +300,11 @@ function AllMembers() {
                               .includes(searchTermThree.toLowerCase()) ||
                             expiringMembers[ing].address
                               .toLowerCase()
-                              .includes(searchTermThree.toLowerCase()) ||
-                            expiringMembers[ing].card
-                              .toLowerCase()
                               .includes(searchTermThree.toLowerCase())
+                            //   ||
+                            // expiringMembers[ing].card
+                            //   .toLowerCase()
+                            //   .includes(searchTermThree.toLowerCase())
                           ) {
                             return ing;
                           }
@@ -442,10 +444,11 @@ function AllMembers() {
                               .includes(searchTermTwo.toLowerCase()) ||
                             expiredMembers[exp].address
                               .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase()) ||
-                            expiredMembers[exp].card
-                              .toLowerCase()
                               .includes(searchTermTwo.toLowerCase())
+                            //   ||
+                            // expiredMembers[exp].card
+                            //   .toLowerCase()
+                            //   .includes(searchTermTwo.toLowerCase())
                           ) {
                             return exp;
                           }
@@ -537,10 +540,7 @@ function AllMembers() {
               <Table.Body>
                 {Object.keys(memberList)
                   .filter((member) => {
-                    if (
-                      searchTermFour == ""
-                      // || searchTermFour == null
-                    ) {
+                    if (searchTermFour == "") {
                       return member;
                     } else if (
                       memberList[member].first_name
@@ -560,10 +560,11 @@ function AllMembers() {
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].address
                         .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].card
-                        .toLowerCase()
                         .includes(searchTermFour.toLowerCase())
+                      //   ||
+                      // memberList[member].card
+                      //   .toLowerCase()
+                      //   .includes(searchTermFour.toLowerCase())
                     ) {
                       return member;
                     }
