@@ -76,14 +76,14 @@ function AllMembers() {
             <p style={{ marginLeft: "25px" }}>
               Total Members: {memberList.length}
             </p>
-            <Input
+            <input
               type="text"
               placeholder="Search First or Last Name"
               style={{ width: "250px", height: "30px" }}
               onChange={(event) => {
                 setSearchTermFour(event.target.value);
               }}
-            ></Input>
+            ></input>
             <span style={{ position: "relative", float: "right" }}>
               {/* THIS IS WHERE THE ACTIVE ONLY MEMBERS MODAL STARTS */}
               <Modal
@@ -147,15 +147,17 @@ function AllMembers() {
                             // ) {
                             //   return act;
                             // } else if (
-                            activeList[act].email
-                              .toLowerCase()
-                              .includes(searchTerm.toLowerCase()) ||
-                            activeList[act].phone
-                              .toLowerCase()
-                              .includes(searchTerm.toLowerCase()) ||
-                            activeList[act].address
-                              .toLowerCase()
-                              .includes(searchTerm.toLowerCase())
+                            // activeList[act].email
+                            //   .toLowerCase()
+                            //   .includes(searchTerm.toLowerCase()) 
+                            //   ||
+                            // activeList[act].phone
+                            //   .toLowerCase()
+                            //   .includes(searchTerm.toLowerCase()) 
+                            //   ||
+                            // activeList[act].address
+                            //   .toLowerCase()
+                            //   .includes(searchTerm.toLowerCase())
                             //   ||
                             // activeList[act].card
                             //   .toLowerCase()
@@ -287,15 +289,16 @@ function AllMembers() {
                             // ) {
                             //   return ing;
                             // } else if (
-                            expiringMembers[ing].email
-                              .toLowerCase()
-                              .includes(searchTermThree.toLowerCase()) ||
-                            expiringMembers[ing].phone
-                              .toLowerCase()
-                              .includes(searchTermThree.toLowerCase()) ||
-                            expiringMembers[ing].address
-                              .toLowerCase()
-                              .includes(searchTermThree.toLowerCase())
+                            // expiringMembers[ing].email
+                              // .toLowerCase()
+                              // .includes(searchTermThree.toLowerCase()) 
+                            //   ||
+                            // expiringMembers[ing].phone
+                            //   .toLowerCase()
+                            //   .includes(searchTermThree.toLowerCase()) ||
+                            // expiringMembers[ing].address
+                            //   .toLowerCase()
+                            //   .includes(searchTermThree.toLowerCase())
                             //   ||
                             // expiringMembers[ing].card
                             //   .toLowerCase()
@@ -428,15 +431,16 @@ function AllMembers() {
                             // ) {
                             //   return exp;
                             // } else if (
-                            expiredMembers[exp].email
-                              .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase()) ||
-                            expiredMembers[exp].phone
-                              .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase()) ||
-                            expiredMembers[exp].address
-                              .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase())
+                            // expiredMembers[exp].email
+                            //   .toLowerCase()
+                            //   .includes(searchTermTwo.toLowerCase()) 
+                            //   ||
+                            // expiredMembers[exp].phone
+                            //   .toLowerCase()
+                            //   .includes(searchTermTwo.toLowerCase()) ||
+                            // expiredMembers[exp].address
+                            //   .toLowerCase()
+                            //   .includes(searchTermTwo.toLowerCase())
                             //   ||
                             // expiredMembers[exp].card
                             //   .toLowerCase()
@@ -544,15 +548,15 @@ function AllMembers() {
                       // ) {
                       //   return member;
                       // } else if (
-                      memberList[member].email
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].phone
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
-                      memberList[member].address
-                        .toLowerCase()
-                        .includes(searchTermFour.toLowerCase())
+                      // memberList[member].email
+                      //   .toLowerCase()
+                      //   .includes(searchTermFour.toLowerCase()) ||
+                      // memberList[member].phone
+                      //   .toLowerCase()
+                      //   .includes(searchTermFour.toLowerCase()) ||
+                      // memberList[member].address
+                      //   .toLowerCase()
+                      //   .includes(searchTermFour.toLowerCase())
                       //   ||
                       // memberList[member].card
                       //   .toLowerCase()
