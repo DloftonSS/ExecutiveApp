@@ -135,33 +135,12 @@ function AllMembers() {
                     <Table.Body>
                       {Object.keys(activeList)
                         .filter((act) => {
-                          if ((searchTerm === null || searchTerm) === "") {
+                          if (searchTerm == "") {
                             return act;
                           } else if (
                             activeList[act].first_name
                               .toLowerCase()
-                              .includes(searchTerm.toLowerCase()) ||
-                            activeList[act].last_name
-                              .toLowerCase()
-                              .includes(searchTerm.toLowerCase()) ||
-                            // ) {
-                            //   return act;
-                            // } else if (
-                            // activeList[act].email
-                            //   .toLowerCase()
-                            //   .includes(searchTerm.toLowerCase()) 
-                            //   ||
-                            // activeList[act].phone
-                            //   .toLowerCase()
-                            //   .includes(searchTerm.toLowerCase()) 
-                            //   ||
-                            // activeList[act].address
-                            //   .toLowerCase()
-                            //   .includes(searchTerm.toLowerCase())
-                            //   ||
-                            // activeList[act].card
-                            //   .toLowerCase()
-                            //   .includes(searchTerm.toLowerCase())
+                              .includes(searchTerm.toLowerCase())
                           ) {
                             return act;
                           }
@@ -275,9 +254,7 @@ function AllMembers() {
                     <Table.Body>
                       {Object.keys(expiringMembers)
                         .filter((ing) => {
-                          if (
-                            (searchTermThree === null || searchTermThree) === ""
-                          ) {
+                          if (searchTermThree == "") {
                             return ing;
                           } else if (
                             expiringMembers[ing].first_name
@@ -285,24 +262,7 @@ function AllMembers() {
                               .includes(searchTermThree.toLowerCase()) ||
                             expiringMembers[ing].last_name
                               .toLowerCase()
-                              .includes(searchTermThree.toLowerCase()) ||
-                            // ) {
-                            //   return ing;
-                            // } else if (
-                            // expiringMembers[ing].email
-                              // .toLowerCase()
-                              // .includes(searchTermThree.toLowerCase()) 
-                            //   ||
-                            // expiringMembers[ing].phone
-                            //   .toLowerCase()
-                            //   .includes(searchTermThree.toLowerCase()) ||
-                            // expiringMembers[ing].address
-                            //   .toLowerCase()
-                            //   .includes(searchTermThree.toLowerCase())
-                            //   ||
-                            // expiringMembers[ing].card
-                            //   .toLowerCase()
-                            //   .includes(searchTermThree.toLowerCase())
+                              .includes(searchTermThree.toLowerCase())
                           ) {
                             return ing;
                           }
@@ -419,7 +379,7 @@ function AllMembers() {
                     <Table.Body>
                       {Object.keys(expiredMembers)
                         .filter((exp) => {
-                          if (searchTermTwo === null || searchTermTwo === "") {
+                          if (searchTermTwo == "") {
                             return exp;
                           } else if (
                             expiredMembers[exp].first_name
@@ -427,13 +387,13 @@ function AllMembers() {
                               .includes(searchTermTwo.toLowerCase()) ||
                             expiredMembers[exp].last_name
                               .toLowerCase()
-                              .includes(searchTermTwo.toLowerCase()) ||
+                              .includes(searchTermTwo.toLowerCase())
                             // ) {
                             //   return exp;
                             // } else if (
                             // expiredMembers[exp].email
                             //   .toLowerCase()
-                            //   .includes(searchTermTwo.toLowerCase()) 
+                            //   .includes(searchTermTwo.toLowerCase())
                             //   ||
                             // expiredMembers[exp].phone
                             //   .toLowerCase()
@@ -536,7 +496,7 @@ function AllMembers() {
               <Table.Body>
                 {Object.keys(memberList)
                   .filter((member) => {
-                    if (searchTermFour === null || searchTermFour === "") {
+                    if (searchTermFour == "") {
                       return member;
                     } else if (
                       memberList[member].first_name
@@ -544,7 +504,7 @@ function AllMembers() {
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].last_name
                         .toLowerCase()
-                        .includes(searchTermFour.toLowerCase()) ||
+                        .includes(searchTermFour.toLowerCase())
                       // ) {
                       //   return member;
                       // } else if (
