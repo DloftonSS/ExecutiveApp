@@ -143,15 +143,6 @@ function AllMembers() {
                               .includes(searchTerm.toLowerCase()) ||
                             activeList[act].last_name
                               .toLowerCase()
-                              .includes(searchTerm.toLowerCase()) ||
-                            activeList[act].phone
-                              .toLowerCase()
-                              .includes(searchTerm.toLowerCase()) ||
-                            activeList[act].email
-                              .toLowerCase()
-                              .includes(searchTerm.toLowerCase()) ||
-                            activeList[act].address
-                              .toLowerCase()
                               .includes(searchTerm.toLowerCase())
                           ) {
                             return act;
@@ -516,23 +507,10 @@ function AllMembers() {
                         .includes(searchTermFour.toLowerCase()) ||
                       memberList[member].last_name
                         .toLowerCase()
-                        .includes(searchTermFour.toLowerCase())
-                      // ) {
-                      //   return member;
-                      // } else if (
-                      // memberList[member].email
-                      //   .toLowerCase()
-                      //   .includes(searchTermFour.toLowerCase()) ||
-                      // memberList[member].phone
-                      //   .toLowerCase()
-                      //   .includes(searchTermFour.toLowerCase()) ||
-                      // memberList[member].address
-                      //   .toLowerCase()
-                      //   .includes(searchTermFour.toLowerCase())
-                      //   ||
-                      // memberList[member].card
-                      //   .toLowerCase()
-                      //   .includes(searchTermFour.toLowerCase())
+                        .includes(searchTermFour.toLowerCase()) ||
+                      activeList[act].phone
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase())
                     ) {
                       return member;
                     }
