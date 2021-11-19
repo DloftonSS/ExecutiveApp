@@ -405,7 +405,7 @@ function ExecutiveData(props) {
   };
   //MEMBER DETAIL CHANGE
   const detailChange = (e) => {
-    Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
+    Axios.post("https://executive-app.herokuapp.com/detailChange", {
       // Axios.post("http://localhost:3001/detailChange", {
       noteTyped: noteTyped,
       memberName: memberName,
@@ -497,15 +497,15 @@ function ExecutiveData(props) {
       requestNote();
     });
   };
-  // const updateSource = (id) => {
-  //   // Axios.put("https://executive-app.herokuapp.com/sourceUpdate", {
-  //   Axios.put("http://localhost:3001/sourceUpdate", {
-  //     source: newSource,
-  //     id: id,
-  //   }).then((response) => {
-  //     getMemberRequests();
-  //   });
-  // };
+  const updateSource = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/sourceUpdate", {
+      // Axios.put("http://localhost:3001/sourceUpdate", {
+      source: newSource,
+      id: id,
+    }).then((response) => {
+      getMemberRequests();
+    });
+  };
 
   const updateStatus = (id) => {
     Axios.put("https://executive-app.herokuapp.com/statusUpdate", {
@@ -518,7 +518,7 @@ function ExecutiveData(props) {
   };
   //SUBMIT REQUEST NOTE
   const requestNote = (id) => {
-    Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
+    Axios.post("https://executive-app.herokuapp.com/requestNote", {
       // Axios.post("http://localhost:3001/requestNote", {
       note: newNote,
       memberName: memberName,
