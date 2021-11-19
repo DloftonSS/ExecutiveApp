@@ -151,10 +151,10 @@ function AllMembers() {
                           } else if (
                             decendingList[decending].first_name
                               .toLowerCase()
-                              .includes(searchTerm.toLowerCase()) ||
+                              .includes(searchTerm3.toLowerCase()) ||
                             decendingList[decending].last_name
                               .toLowerCase()
-                              .includes(searchTerm.toLowerCase())
+                              .includes(searchTerm3.toLowerCase())
                           ) {
                             return decending;
                           }
