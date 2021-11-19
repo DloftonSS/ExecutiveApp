@@ -146,7 +146,7 @@ function AllMembers() {
                     <Table.Body>
                       {Object.keys(decendingList)
                         .filter((decending) => {
-                          if (searchTerm == "") {
+                          if (searchTerm3 == "") {
                             return decending;
                           } else if (
                             decendingList[decending].first_name
