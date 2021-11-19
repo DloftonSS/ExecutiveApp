@@ -147,7 +147,7 @@ function ExecutiveData(props) {
     });
   };
   const ChangeMemId = (id) => {
-    Axios.put("https://executive-app.herokuapp.com/changeMembId", {
+    Axios.put("https://executive-app.herokuapp.com/changeMemId", {
       // Axios.put("http://localhost:3001/changeMemId", {
       memId: newMemId,
       id: id,
