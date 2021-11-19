@@ -1503,7 +1503,7 @@ function ExecutiveData(props) {
                           <Icon name="edit outline"></Icon>
                         </Button>
                       </Table.Cell>
-                      {/* <Table.Cell>
+                      <Table.Cell>
                         <textarea
                           onChange={(e) => {
                             setNewSource(e.target.value);
@@ -1519,7 +1519,7 @@ function ExecutiveData(props) {
                           Update
                           <Icon name="edit outline"></Icon>
                         </Button>
-                      </Table.Cell> */}
+                      </Table.Cell>
 
                       <Table.Cell>{update}</Table.Cell>
                       {/* <Table.Cell></Table.Cell> */}
