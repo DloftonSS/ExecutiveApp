@@ -497,15 +497,15 @@ function ExecutiveData(props) {
       requestNote();
     });
   };
-  const updateSource = (id) => {
-    Axios.put("https://executive-app.herokuapp.com/sourceUpdate", {
-      // Axios.put("http://localhost:3001/sourceUpdate", {
-      source: newSource,
-      id: id,
-    }).then((response) => {
-      getMemberRequests();
-    });
-  };
+  // const updateSource = (id) => {
+  //   Axios.put("https://executive-app.herokuapp.com/sourceUpdate", {
+  //     // Axios.put("http://localhost:3001/sourceUpdate", {
+  //     source: newSource,
+  //     id: id,
+  //   }).then((response) => {
+  //     getMemberRequests();
+  //   });
+  // };
 
   const updateStatus = (id) => {
     Axios.put("https://executive-app.herokuapp.com/statusUpdate", {
@@ -1503,7 +1503,7 @@ function ExecutiveData(props) {
                           <Icon name="edit outline"></Icon>
                         </Button>
                       </Table.Cell>
-                      <Table.Cell>
+                      {/* <Table.Cell>
                         <textarea
                           onChange={(e) => {
                             setNewSource(e.target.value);
@@ -1519,7 +1519,7 @@ function ExecutiveData(props) {
                           Update
                           <Icon name="edit outline"></Icon>
                         </Button>
-                      </Table.Cell>
+                      </Table.Cell> */}
 
                       <Table.Cell>{update}</Table.Cell>
                       {/* <Table.Cell></Table.Cell> */}
