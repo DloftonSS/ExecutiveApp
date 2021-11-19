@@ -44,7 +44,7 @@ function AllMembers() {
       (response) => {
         // Axios.get("http://localhost:3001/getAllMembersDesc").then((response) => {
         setDecendingList(response.data);
-        console.log(response.data.length);
+        console.log(response);
       }
     );
 
