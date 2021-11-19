@@ -98,8 +98,8 @@ function AllMembers() {
             <span style={{ position: "relative", float: "right" }}>
               {/* START OF THE DECENDING LIST */}
               <Modal
-                onClose={() => openFive(false)}
-                onOpen={() => openFive(true)}
+                onClose={() => setOpenFive(false)}
+                onOpen={() => setOpenFive(true)}
                 // onClick={() => GetExpired}
                 open={openFive}
                 trigger={<Button>Decending Order</Button>}
