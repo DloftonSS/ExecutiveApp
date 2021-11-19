@@ -16,16 +16,19 @@ import { Link } from "react-router-dom";
 
 function AllMembers() {
   const [memberList, setMemberList] = useState("");
+  const [decendingList, setDecendingList] = useState("");
   const [activeList, setActiveList] = useState("");
   const [expiredMembers, setExpiredMembers] = useState("");
   const [expiringMembers, setExpiringMembers] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm3, setSearchTerm3] = useState("");
   const [searchTermTwo, setSearchTermTwo] = useState("");
   const [searchTermThree, setSearchTermThree] = useState("");
   const [searchTermFour, setSearchTermFour] = useState("");
   const [open, setOpen] = React.useState(false);
   const [openTwo, setOpenTwo] = React.useState(false);
   const [openThree, setOpenThree] = React.useState(false);
+  const [openFive, setOpenFive] = React.useState(false);
 
   useEffect(() => {
     // GET ALL MEMBERS
@@ -33,6 +36,14 @@ function AllMembers() {
       (response) => {
         // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
         setMemberList(response.data);
+        // console.log(response.data.length);
+      }
+    );
+    // GET ALL MEMBERS DECENDING
+    Axios.get("https://executive-app.herokuapp.com/getAllMembersDesc").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/getAllMembersDesc").then((response) => {
+        setDecendingList(response.data);
         console.log(response.data.length);
       }
     );
@@ -42,7 +53,7 @@ function AllMembers() {
       (response) => {
         // Axios.get("http://localhost:3001/api/activeMembers").then((response) => {
         setActiveList(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       }
     );
 
@@ -85,6 +96,145 @@ function AllMembers() {
               }}
             ></input>
             <span style={{ position: "relative", float: "right" }}>
+              {/* START OF THE DECENDING LIST */}
+              <Modal
+                onClose={() => openFive(false)}
+                onOpen={() => openFive(true)}
+                // onClick={() => GetExpired}
+                open={openFive}
+                trigger={<Button>Decending Order</Button>}
+                style={{
+                  width: "100%",
+                  height: "700px",
+                  width: "1500px",
+                  left: "5%",
+                  top: "10%",
+                }}
+              >
+                <Modal.Header>All Customer Decending</Modal.Header> {""}
+                <p style={{ marginLeft: "25px" }}>
+                  Total Members: {decendingList.length}
+                </p>
+                <Input
+                  type="text"
+                  placeholder="Search First, Last, Phone, or Email"
+                  style={{ width: "250px", height: "30px", marginLeft: "2%" }}
+                  onChange={(event) => {
+                    setSearchTerm3(event.target.value);
+                  }}
+                ></Input>
+                <Card.Content
+                  style={{
+                    overflowY: "scroll",
+                    height: "500px",
+                  }}
+                >
+                  <Table celled striped color="red">
+                    <Table.Header>
+                      <Table.Row>
+                        <Table.HeaderCell>#</Table.HeaderCell>
+                        <Table.HeaderCell>First Name</Table.HeaderCell>
+                        <Table.HeaderCell>Last Name</Table.HeaderCell>
+                        <Table.HeaderCell>Phone</Table.HeaderCell>
+                        <Table.HeaderCell>Email</Table.HeaderCell>
+                        <Table.HeaderCell>Address</Table.HeaderCell>
+                        <Table.HeaderCell>Date Joined</Table.HeaderCell>
+                        <Table.HeaderCell>Card</Table.HeaderCell>
+                        <Table.HeaderCell>Date Expiring</Table.HeaderCell>
+                      </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                      {Object.keys(decendingList)
+                        .filter((decending) => {
+                          if (searchTerm == "") {
+                            return decending;
+                          } else if (
+                            decendingList[decending].first_name
+                              .toLowerCase()
+                              .includes(searchTerm.toLowerCase()) ||
+                            decendingList[decending].last_name
+                              .toLowerCase()
+                              .includes(searchTerm.toLowerCase())
+                          ) {
+                            return decending;
+                          }
+                        })
+                        .map((decending, i) => {
+                          let joindate = new Date(
+                            decendingList[decending].dateJoined
+                          )
+                            .toUTCString()
+                            .split(" ")
+                            .slice(0, 4)
+                            .join(" ");
+                          let expiredate = new Date(
+                            decendingList[decending].expiring
+                          )
+                            .toUTCString()
+                            .split(" ")
+                            .slice(0, 4)
+                            .join(" ");
+                          return (
+                            <Table.Row
+                              style={{ overflowY: "scroll" }}
+                              key={decending.id}
+                            >
+                              <Table.Cell>
+                                {decendingList[decending].number}
+                              </Table.Cell>
+                              <Table.Cell>
+                                <Link
+                                  style={{ color: "black" }}
+                                  to={`/executiveAccount/${decendingList[decending].id}`}
+                                >
+                                  {decendingList[decending].first_name}
+                                </Link>
+                              </Table.Cell>
+                              <Table.Cell>
+                                {" "}
+                                <Link
+                                  style={{ color: "black" }}
+                                  to={`/executiveAccount/${decendingList[decending].id}`}
+                                >
+                                  {decendingList[decending].last_name}
+                                </Link>
+                              </Table.Cell>
+                              <Table.Cell>
+                                {decendingList[decending].phone}
+                              </Table.Cell>
+                              <Table.Cell>
+                                <a style={{ color: "black" }} href="mailto:">
+                                  {decendingList[decending].email}
+                                </a>
+                              </Table.Cell>
+                              <Table.Cell>
+                                {decendingList[decending].address}
+                              </Table.Cell>
+                              <Table.Cell>{joindate}</Table.Cell>
+                              <Table.Cell>
+                                {decendingList[decending].card}
+                              </Table.Cell>
+                              <Table.Cell>{expiredate}</Table.Cell>
+                            </Table.Row>
+                          );
+                        })}
+                    </Table.Body>
+                  </Table>
+                </Card.Content>
+                <Modal.Content style={{ float: "center" }}></Modal.Content>
+                <Modal.Actions>
+                  <Button color="black" onClick={() => setOpenFive(false)}>
+                    Done
+                  </Button>
+                  {/* <Button
+                    content="Submit Change"
+                    labelPosition="right"
+                    icon="checkmark"
+                    onClick={() => setOpen(false)}
+                    positive
+                  /> */}
+                </Modal.Actions>
+              </Modal>
               {/* THIS IS WHERE THE ACTIVE ONLY MEMBERS MODAL STARTS */}
               <Modal
                 onClose={() => setOpenThree(false)}
