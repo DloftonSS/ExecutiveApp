@@ -155,7 +155,7 @@ function ExecutiveData(props) {
       // console.log("completed");
 
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangeEmail = (id) => {
@@ -173,7 +173,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangePhone = (id) => {
@@ -191,7 +191,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangeAddress = (id) => {
@@ -209,7 +209,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangePassword = (id) => {
@@ -227,7 +227,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangeCard = (id) => {
@@ -245,7 +245,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangeStore = (id) => {
@@ -263,7 +263,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangeCommunication = (id) => {
@@ -281,7 +281,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangePlaceBorn = (id) => {
@@ -299,7 +299,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangeDob = (id) => {
@@ -317,7 +317,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangeSsn = (id) => {
@@ -335,7 +335,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangeEthnicity = (id) => {
@@ -353,7 +353,7 @@ function ExecutiveData(props) {
         id: id,
       }).then(() => {});
       getMemberInfo();
-      detailChange();
+      // detailChange();
     });
   };
   const ChangeRace = (id) => {
