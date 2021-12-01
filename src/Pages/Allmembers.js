@@ -701,7 +701,7 @@ function AllMembers() {
                         <Table.Cell>{memberList[member].address}</Table.Cell>
                         <Table.Cell>{memberList[member].card}</Table.Cell>
                         <Table.Cell>
-                          <button>coming soon</button>
+                          <button>coming soon!</button>
                         </Table.Cell>
                         <Table.Cell>{expiredate}</Table.Cell>
                       </Table.Row>
