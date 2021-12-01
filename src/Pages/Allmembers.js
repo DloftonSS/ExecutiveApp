@@ -117,7 +117,7 @@ function AllMembers() {
                 </p>
                 <Input
                   type="text"
-                  placeholder="Search First, Last, Phone, or Email"
+                  placeholder="Search First or Last name"
                   style={{ width: "250px", height: "30px", marginLeft: "2%" }}
                   onChange={(event) => {
                     setSearchTerm3(event.target.value);
@@ -643,7 +643,7 @@ function AllMembers() {
                   <Table.HeaderCell>Email</Table.HeaderCell>
                   <Table.HeaderCell>Address</Table.HeaderCell>
                   <Table.HeaderCell>Card</Table.HeaderCell>
-                  <Table.HeaderCell>Date Joined</Table.HeaderCell>
+                  <Table.HeaderCell>Date Expiring</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -699,7 +699,7 @@ function AllMembers() {
                         </Table.Cell>
                         <Table.Cell>{memberList[member].address}</Table.Cell>
                         <Table.Cell>{memberList[member].card}</Table.Cell>
-                        <Table.Cell>{joindate1}</Table.Cell>
+                        <Table.Cell>{expiredate}</Table.Cell>
                       </Table.Row>
                     );
                   })}
