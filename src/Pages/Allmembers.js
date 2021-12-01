@@ -643,6 +643,7 @@ function AllMembers() {
                   <Table.HeaderCell>Email</Table.HeaderCell>
                   <Table.HeaderCell>Address</Table.HeaderCell>
                   <Table.HeaderCell>Card</Table.HeaderCell>
+                  <Table.HeaderCell>UpDate Card</Table.HeaderCell>
                   <Table.HeaderCell>Date Expiring</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
@@ -699,6 +700,9 @@ function AllMembers() {
                         </Table.Cell>
                         <Table.Cell>{memberList[member].address}</Table.Cell>
                         <Table.Cell>{memberList[member].card}</Table.Cell>
+                        <Table.Cell>
+                          <button>coming soon</button>
+                        </Table.Cell>
                         <Table.Cell>{expiredate}</Table.Cell>
                       </Table.Row>
                     );
