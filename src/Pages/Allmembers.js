@@ -669,7 +669,7 @@ function AllMembers() {
                       .split(" ")
                       .slice(0, 4)
                       .join(" ");
-                    let expiredate = new Date(decendingList[decending].expiring)
+                    let expiredate = new Date(memberList[member].expiring)
                       .toUTCString()
                       .split(" ")
                       .slice(0, 4)
