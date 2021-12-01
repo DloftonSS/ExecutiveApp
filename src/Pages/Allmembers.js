@@ -669,6 +669,11 @@ function AllMembers() {
                       .split(" ")
                       .slice(0, 4)
                       .join(" ");
+                    let expiredate = new Date(decendingList[decending].expiring)
+                      .toUTCString()
+                      .split(" ")
+                      .slice(0, 4)
+                      .join(" ");
                     return (
                       <Table.Row
                         style={{ overflowY: "scroll", width: "100%" }}
