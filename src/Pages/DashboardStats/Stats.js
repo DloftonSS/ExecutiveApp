@@ -19,17 +19,17 @@ import { useParams } from "react-router";
 import { useLocation } from "react-router-dom";
 
 function Stats() {
-  const [memberList, setMemberList] = useState("");
+  const [activeList, setActiveList] = useState("");
   const [requestList, setRequestList] = useState("");
   const [expiringMembers, setExpiringMembers] = useState("");
 
-  const getMemberInfo = () => {
-    // GET ALL MEMBERS
-    Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
+  //GET ACTIVE ONLY MEMBERS
+  const ActiveMembers = () => {
+    Axios.get("https://executive-app.herokuapp.com/api/activeMembers").then(
       (response) => {
-        // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
-        setMemberList(response.data);
-        // console.log(response.data.length);
+        // Axios.get("http://localhost:3001/api/activeMembers").then((response) => {
+        setActiveList(response.data);
+        // console.log(response.data);
       }
     );
   };
@@ -44,7 +44,7 @@ function Stats() {
   };
 
   useEffect(() => {
-    getMemberInfo();
+    ActiveMembers();
     GetAllRequests();
     //GET EXPIRING MEMBERS
     Axios.get("https://executive-app.herokuapp.com/expiringMembers").then(
@@ -119,7 +119,7 @@ function Stats() {
                     padding: "5%",
                   }}
                 >
-                  {memberList.length}
+                  {activeList.length}
                 </h2>
               </div>
             </div>
