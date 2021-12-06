@@ -47,7 +47,7 @@ function ExecutiveRequests(props) {
           (arrayRequests) => arrayRequests.memberIdentity == id
         );
         setRequestList(result);
-        console.log(result);
+        // console.log(result);
       }
     );
   };

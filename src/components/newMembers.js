@@ -1,4 +1,4 @@
-import { Card, Table, Button, Icon } from "semantic-ui-react";
+import { Card, Table, Button, Icon, Segment } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
@@ -14,10 +14,22 @@ function NewMembers() {
       id: id,
     }).then(() => {
       // console.log("clicked");
+      getPending();
     });
   };
 
+  //NEW PENDING CARD MEMBERS
+  const getPending = () => {
+    Axios.get("https://executive-app.herokuapp.com/PendingCardMembers").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/PendingCardMembers").then((response) => {
+        setMemberList(response.data);
+        // console.log(response.data);
+      }
+    );
+  };
   useEffect(() => {
+    getPending();
     //OLD NOT USING ON DASHBOARD
 
     // Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
@@ -26,21 +38,90 @@ function NewMembers() {
     // setMemberList(response.data);
     // console.log(response.data);
     // });
-
-    //NEW PENDING CARD MEMBERS
-
-    Axios.get("https://executive-app.herokuapp.com/PendingCardMembers").then(
-      (response) => {
-        // Axios.get("http://localhost:3001/PendingCardMembers").then((response) => {
-        setMemberList(response.data);
-        // console.log(response.data);
-      }
-    );
   }, []);
 
   return (
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
-      <Card fluid style={{ marginRight: "10px", height: "670px" }}>
+      <Segment
+        style={{
+          overflow: "auto",
+          maxHeight: "500px",
+          width: "500px",
+
+          boxShadow: "5px 10px 8px gray",
+        }}
+      >
+        {" "}
+        {Object.keys(memberList).map((member, i) => {
+          return (
+            <Card
+              style={{
+                width: "500px",
+                boxShadow: "5px 10px 8px black",
+                backgroundColor: "#7B1719",
+                border: "1px solid #7B1719",
+              }}
+            >
+              <Card.Content>
+                <h2 style={{ color: "black" }}>
+                  <Link
+                    style={{ color: "black" }}
+                    to={`/executiveAccount/${memberList[member].id}`}
+                  >
+                    {" "}
+                    {memberList[member].first_name +
+                      " " +
+                      memberList[member].last_name}
+                  </Link>
+                </h2>
+                <Card.Meta style={{ color: "white" }}>
+                  {" "}
+                  Phone: {memberList[member].phone}
+                </Card.Meta>
+                <Card.Description style={{ color: "lightgray" }}>
+                  {" "}
+                  Email: {memberList[member].email}
+                </Card.Description>
+                <Card.Meta style={{ color: "white" }}>
+                  {" "}
+                  Card Status: {memberList[member].card}
+                </Card.Meta>
+                <Card.Description style={{ color: "lightgray" }}>
+                  {" "}
+                  Joined: {memberList[member].dateJoined}
+                </Card.Description>
+                <div
+                  style={{
+                    backgroundColor: "white",
+                    borderRadius: "5px",
+                    padding: "5px",
+                    opacity: ".7",
+                    marginTop: "10px",
+                  }}
+                >
+                  <Card.Header style={{ marginTop: "2%" }}>
+                    Initial Contact
+                  </Card.Header>
+                  <Button
+                    style={{
+                      width: "100px",
+                      heigth: "50px",
+                      backgroundColor: "black",
+                      color: "white",
+                    }}
+                    onClick={() => {
+                      Responded(memberList[member].id);
+                    }}
+                  >
+                    {memberList[member].acknowledged}
+                  </Button>
+                </div>
+              </Card.Content>
+            </Card>
+          );
+        })}
+      </Segment>
+      {/* <Card fluid style={{ marginRight: "10px", height: "670px" }}>
         <Card.Content>
           <Card.Header>Pending Card</Card.Header>
         </Card.Content>
@@ -73,7 +154,6 @@ function NewMembers() {
                           Responded(memberList[member].id);
                         }}
                       >
-                        {/* <Icon name="alarm"></Icon> */}
                         {memberList[member].acknowledged}
                       </Button>
                     </Table.Cell>
@@ -103,7 +183,7 @@ function NewMembers() {
             </Table.Body>
           </Table>
         </Card.Content>
-      </Card>
+      </Card> */}
     </div>
   );
 }

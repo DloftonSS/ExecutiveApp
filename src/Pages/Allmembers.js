@@ -29,8 +29,30 @@ function AllMembers() {
   const [openTwo, setOpenTwo] = React.useState(false);
   const [openThree, setOpenThree] = React.useState(false);
   const [openFive, setOpenFive] = React.useState(false);
+  const [newCardStatus, setNewCardStatus] = useState("");
+  const [memberName, setMemberName] = useState("");
 
-  useEffect(() => {
+  // CHANGE CARD STATUS
+  const ChangeCard = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/cardStatusChange", {
+      // Axios.put("http://localhost:3001/cardStatusChange", {
+      card: newCardStatus,
+      id: id,
+    }).then((response) => {
+      // console.log(response);
+      // // Axios.post("https://executive-app.herokuapp.com/newCard", {
+      // Axios.post("http://localhost:3001/newCard", {
+      //   newCardStatus: newCardStatus,
+      //   // adminName: adminName,
+      //   memberName: memberName,
+      //   id: id,
+      // }).then(() => {});
+      getMemberInfo();
+      // detailChange();
+    });
+  };
+
+  const getMemberInfo = () => {
     // GET ALL MEMBERS
     Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
       (response) => {
@@ -39,12 +61,16 @@ function AllMembers() {
         // console.log(response.data.length);
       }
     );
+  };
+  useEffect(() => {
+    // GET ALL MEMBERS
+    getMemberInfo();
     // GET ALL MEMBERS DECENDING
     Axios.get("https://executive-app.herokuapp.com/getAllMembersDesc").then(
       (response) => {
         // Axios.get("http://localhost:3001/getAllMembersDesc").then((response) => {
         setDecendingList(response.data);
-        console.log(response);
+        // console.log(response);
       }
     );
 
@@ -706,7 +732,35 @@ function AllMembers() {
                         <Table.Cell>{memberList[member].address}</Table.Cell>
                         <Table.Cell>{memberList[member].card}</Table.Cell>
                         <Table.Cell>
-                          <button>coming soon!</button>
+                          <select
+                            onChange={(i) => {
+                              setNewCardStatus(i.target.value);
+                            }}
+                            style={{
+                              height: "35px",
+                              width: "50%",
+                              backgroundColor: "lightGrey",
+                              borderRadius: "5px",
+                              border: "none",
+                            }}
+                          >
+                            <option>Choose Card Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="Yes Card">Yes Card</option>
+                            <option value="Card Ordered">Card Ordered</option>
+                            <option value="Card Expired">Card Expired</option>
+                          </select>
+                          {/* <br></br> */}
+                          <Button
+                            style={{ margin: "10px" }}
+                            size="mini"
+                            color="black"
+                            onClick={() => {
+                              ChangeCard(memberList[member].id);
+                            }}
+                          >
+                            Change Card
+                          </Button>
                         </Table.Cell>
                         <Table.Cell>{expiredate}</Table.Cell>
                       </Table.Row>

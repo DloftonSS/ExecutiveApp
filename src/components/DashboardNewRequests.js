@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 // import API from "../../utils/API";
-import { Card, Table } from "semantic-ui-react";
+import { Card, Table, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import NewMembers from "../components/newMembers";
 
 // import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
 function DashboardNewRequest() {
   const [requestList, setRequestList] = useState("");
-
+  const [requestListOld, setRequestListOld] = useState("");
   useEffect(() => {
     Axios.get("https://executive-app.herokuapp.com/newRequests").then(
       (response) => {
@@ -18,55 +19,133 @@ function DashboardNewRequest() {
         // console.log(response.data);
       }
     );
+
+    Axios.get("https://executive-app.herokuapp.com/oldRequests").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/oldRequests").then((response) => {
+        setRequestListOld(response.data);
+        // console.log(response.data);
+      }
+    );
   }, []);
 
   return (
-    <Card
-      fluid
-      style={{ marginRight: "10px", height: "350px", marginBottom: "2%" }}
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gridGap: 20,
+        backgroundColor: "white",
+        width: "100%",
+        margin: "1%",
+        padding: "1%",
+        borderRadius: "5px",
+      }}
     >
-      <Card.Content>
-        <Card.Header>Newest Requests</Card.Header>
-      </Card.Content>
+      <div>
+        {" "}
+        <h3>Pending Card</h3>
+        <NewMembers />
+      </div>
+      <div style={{ border: "none" }}>
+        {" "}
+        <h3>Newest Requests</h3>
+        <Segment
+          style={{
+            overflow: "auto",
+            maxHeight: "500px",
+            width: "500px",
 
-      <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
-        <Table celled striped color="red">
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Executive Name</Table.HeaderCell>
-              {/* <Table.HeaderCell>Category</Table.HeaderCell> */}
-              <Table.HeaderCell>Item</Table.HeaderCell>
-              {/* <Table.HeaderCell>sku</Table.HeaderCell> */}
-              <Table.HeaderCell>status</Table.HeaderCell>
-              <Table.HeaderCell>Date</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
+            boxShadow: "5px 10px 8px gray",
+          }}
+        >
+          {" "}
+          {Object.keys(requestList).map((request, i) => {
+            return (
+              <Card
+                style={{
+                  width: "500px",
+                  boxShadow: "5px 10px 8px black",
+                  backgroundColor: "#7B1719",
+                  border: "1px solid #7B1719",
+                }}
+              >
+                <Card.Content>
+                  <h2 style={{ color: "black" }}>
+                    {requestList[request].memberName}
+                  </h2>
+                  <Card.Meta style={{ color: "white" }}>
+                    {" "}
+                    Item: {requestList[request].item}
+                  </Card.Meta>
+                  <Card.Description style={{ color: "lightgray" }}>
+                    {" "}
+                    Sku: {requestList[request].sku}
+                  </Card.Description>
+                  <Card.Meta style={{ color: "white" }}>
+                    {" "}
+                    Status: {requestList[request].status}
+                  </Card.Meta>
+                  <Card.Description style={{ color: "lightgray" }}>
+                    {" "}
+                    Created: {requestList[request].date_created}
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            );
+          })}
+        </Segment>
+      </div>
+      <div>
+        {" "}
+        <h3>Oldest Requests</h3>
+        <Segment
+          style={{
+            overflow: "auto",
+            maxHeight: "500px",
+            width: "500px",
 
-          <Table.Body>
-            {Object.keys(requestList).map((request, i) => {
-              return (
-                <Table.Row key={request.id}>
-                  <Table.Cell>
-                    <Link
-                      style={{ color: "black" }}
-                      // to={`/executiveAccount/${requestList[request].id}`}
-                    >
-                      {requestList[request].memberName}
-                    </Link>
-                  </Table.Cell>
-
-                  {/* <Table.Cell>{requestList[request].category}</Table.Cell> */}
-                  <Table.Cell>{requestList[request].item}</Table.Cell>
-                  {/* <Table.Cell>{requestList[request].sku}</Table.Cell> */}
-                  <Table.Cell>{requestList[request].status}</Table.Cell>
-                  <Table.Cell>{requestList[request].date_created}</Table.Cell>
-                </Table.Row>
-              );
-            })}
-          </Table.Body>
-        </Table>
-      </Card.Content>
-    </Card>
+            boxShadow: "5px 10px 8px gray",
+          }}
+        >
+          {" "}
+          {Object.keys(requestListOld).map((old, i) => {
+            return (
+              <Card
+                style={{
+                  width: "500px",
+                  boxShadow: "5px 10px 8px black",
+                  backgroundColor: "#7B1719",
+                  border: "1px solid #7B1719",
+                }}
+              >
+                <Card.Content>
+                  <h2 style={{ color: "black" }}>
+                    {requestListOld[old].memberName}
+                  </h2>
+                  <Card.Meta style={{ color: "white" }}>
+                    {" "}
+                    Item: {requestListOld[old].item}
+                  </Card.Meta>
+                  <Card.Description style={{ color: "lightgray" }}>
+                    {" "}
+                    Sku: {requestListOld[old].sku}
+                  </Card.Description>
+                  <Card.Meta style={{ color: "white" }}>
+                    {" "}
+                    Status: {requestListOld[old].status}
+                  </Card.Meta>
+                  <Card.Description style={{ color: "lightgray" }}>
+                    {" "}
+                    Created: {requestListOld[old].date_created}
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+            );
+          })}
+        </Segment>
+      </div>
+    </div>
   );
 }
 

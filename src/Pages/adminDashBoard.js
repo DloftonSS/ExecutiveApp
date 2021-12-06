@@ -6,6 +6,8 @@ import { Route, Redirect, withRouter } from "react-router-dom";
 import NewMembers from "../components/newMembers";
 import DashboardNotes from "../components/DashboardNotes";
 import DashboardNewRequest from "../components/DashboardNewRequests";
+import Stats from "../Pages/DashboardStats/Stats";
+import AdminChat from "../components/Chat/Chat";
 import OldestRequests from "../components/oldestRequests";
 import SideChat from "../components/SideChat";
 import "./CSS/dashboard.css";
@@ -95,6 +97,7 @@ function AdminDashBoard() {
       className="main"
       style={{
         backgroundColor: "black",
+        // backgroundColor: "#CAD5E2",
       }}
     >
       {/* WHATS NEW MODAL */}
@@ -115,19 +118,21 @@ function AdminDashBoard() {
             <Header>Update: November 18, 2021</Header>
             <h3>Dashboard</h3>
 
-            <p>. Dashboard now shows Pending Card Customers.</p>
-            <p>. Notes will show if a customer has a name change.</p>
+            <p>. Dashboard new Look</p>
+            <p>. Admin Chat Coming soon.</p>
 
+            <p>. Quantity totals at top of page for easy reference.</p>
+            <h3>Store Front</h3>
             <p>
-              . Member Numbers can now be added manually on the member account
-              page.
+              . Store front page allows for submitting new members and renewing
+              memberships.
             </p>
-            <h3>All Requests</h3>
-            <p>. More search options and specific status type pages.</p>
+            {/* <h3>All Requests</h3>
+            <p>. New Status option "Offered".</p>
             <p></p>
             <h3>All Members</h3>
-            <p>. Now shows card status.</p>
-            <p>. More search options.</p>
+            <p>. Now shows card status and can update it.</p>
+            <p></p> */}
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
@@ -145,130 +150,7 @@ function AdminDashBoard() {
       </Modal>
       {/* HOLDING THE INFO FOR EDITING AND SHOWING ADMIN NAME */}
       {/* START EDIT ADMIN PROFILE */}
-      {/* <div className="admin-info">
-        <h3 style={{ float: "right", color: "white" }}>
-          {adminDetails.first_name} {""} {adminDetails.last_name}
-        </h3>
-        <span
-          style={{
-            position: "relative",
-            float: "right",
-          }}
-        >
-          <Modal
-            onClose={() => setOpen(false)}
-            onOpen={() => setOpen(true)}
-            open={open}
-            trigger={
-              <Icon name="edit" style={{ color: "white" }} size="large"></Icon>
-            }
-          >
-            <Modal.Header>Edit Personal Details</Modal.Header>
 
-            <Modal.Content style={{ float: "center" }}>
-              <Header>First Name</Header>
-              <input
-                onChange={(e) => {
-                  setNewFirstName(e.target.value);
-                }}
-                placeholder="first name"
-                Value={adminDetails.first_name}
-                style={{
-                  height: "30px",
-                  width: "300px",
-                  marginBottom: "5px",
-                }}
-              ></input>
-              <Button
-                size="mini"
-                color="black"
-                onClick={() => {
-                  ChangeFirst(adminDetails.id);
-                }}
-              >
-                Change First
-              </Button>
-
-              <Header>Last Name</Header>
-              <input
-                onChange={(t) => {
-                  setNewLastName(t.target.value);
-                }}
-                placeholder="last name"
-                Value={adminDetails.last_name}
-                style={{
-                  height: "30px",
-                  width: "300px",
-                  marginBottom: "5px",
-                }}
-              ></input>
-              <Button
-                size="mini"
-                color="black"
-                onClick={() => {
-                  ChangeLast(adminDetails.id);
-                }}
-              >
-                Change Last
-              </Button>
-              <Header>Email</Header>
-              <input
-                onChange={(y) => {
-                  setNewEmail(y.target.value);
-                }}
-                placeholder="example@email.com"
-                Value={adminDetails.email}
-                style={{
-                  height: "30px",
-                  width: "300px",
-                  marginBottom: "5px",
-                }}
-              ></input>
-              <Button
-                size="mini"
-                color="black"
-                onClick={() => {
-                  ChangeEmail(adminDetails.id);
-                }}
-              >
-                Change Email
-              </Button>
-
-              <Header>Password</Header>
-              <input
-                onChange={(o) => {
-                  setNewPassword(o.target.value);
-                }}
-                placeholder="********"
-                style={{
-                  height: "30px",
-                  width: "300px",
-                  marginBottom: "5px",
-                }}
-              ></input>
-
-              <Button
-                size="mini"
-                color="black"
-                onClick={() => {
-                  ChangePassword(adminDetails.id);
-                }}
-              >
-                Change Password
-              </Button>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button
-                content="Done"
-                labelPosition="right"
-                icon="checkmark"
-                onClick={() => setOpen(false)}
-                positive
-              />
-            </Modal.Actions>
-          </Modal>
-        </span>
-      </div> */}
       {/* END EDIT ADMIN PROFILE */}
       <AdminHeader />
       <div
@@ -278,6 +160,8 @@ function AdminDashBoard() {
           scrollbarWidth: "1px",
         }}
       >
+        {" "}
+        <Stats />
         <div
           style={{
             display: "flex",
@@ -286,16 +170,18 @@ function AdminDashBoard() {
             backgroundColor: "black",
           }}
         >
-          <NewMembers />
-          <DashboardNotes />
+          {/* <NewMembers /> */}
+
+          <DashboardNewRequest />
           {/* <SideChat /> */}
         </div>
         {/* Row Two */}
         <div style={{ display: "flex", padding: ".5rem", alignItems: "top" }}>
-          <DashboardNewRequest />
+          <DashboardNotes />
+          <AdminChat />
         </div>
         <div style={{ display: "flex", padding: ".5rem", alignItems: "top" }}>
-          <OldestRequests />
+          {/* <OldestRequests /> */}
         </div>
       </div>
       {/* <Header /> */}

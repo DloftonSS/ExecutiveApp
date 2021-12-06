@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 function AdminChat() {
-  const [chatTyped, setchatTyped] = useState("");
+  const [chatTyped, setChatTyped] = useState("");
   const [chatList, setchatList] = useState("");
 
   //SUBMIT NOTE
@@ -12,22 +12,26 @@ function AdminChat() {
       // Axios.post("http://localhost:3001/postChat", {
       chatTyped: chatTyped,
     }).then(() => {
+      GetChat();
       console.log("successful chat post");
       // reloadPage();
     });
   };
 
-  useEffect(() => {
+  const GetChat = () => {
     Axios.get("https://executive-app.herokuapp.com/chat").then((response) => {
       // Axios.get("http://localhost:3001/chat").then((response) => {
       setchatList(response.data);
       // console.log(response.data);
     });
+  };
+  useEffect(() => {
+    GetChat();
   }, []);
 
   return (
     <div className="newMembers" style={{ padding: "1%", width: "100%" }}>
-      <Card fluid style={{ height: "520px" }}>
+      <Card fluid style={{ height: "600px" }}>
         <Card.Content>
           <Card.Header>Admin Chat</Card.Header>
         </Card.Content>
@@ -90,12 +94,12 @@ function AdminChat() {
           display: "flex",
           padding: ".5rem",
           alignItems: "top",
-          marginTop: "-5%",
+          marginTop: "-2%",
         }}
       >
         <Input
           onChange={(e) => {
-            setchatTyped(e.target.value);
+            setChatTyped(e.target.value);
           }}
           style={{ margin: "1rem", width: "90%" }}
           icon="talk"
@@ -104,21 +108,10 @@ function AdminChat() {
         />
         {/* <Button type="reset" secondary onClick={submitChat}>
           Submit{" "} */}
-        <Icon
-          onClick={submitChat}
-          name="arrow alternate circle up outline"
-          size="big"
-          style={{ color: "white", marginTop: "5%" }}
-        ></Icon>
-        {/* </Button> */}
+        <Button type="reset" onClick={submitChat}>
+          Submit
+        </Button>
       </div>
-      {/* </Card.Content> */}
-      {/* <Card.Content> */}
-      {/* <Button type="reset" secondary onClick={submitChat}>
-            Submit Note
-          </Button> */}
-      {/* </Card.Content> */}
-      {/* </Card> */}
     </div>
   );
 }

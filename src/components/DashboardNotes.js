@@ -44,7 +44,10 @@ function DashboardNotes() {
   }, []);
 
   return (
-    <div className="allNotes" style={{ padding: "1%", width: "100%" }}>
+    <div
+      className="allNotes"
+      style={{ padding: "1%", width: "100%", backgroundColor: "black" }}
+    >
       <Card fluid style={{ maxHeight: "660px" }}>
         <Card.Content>
           <Card.Header>All Notes</Card.Header>

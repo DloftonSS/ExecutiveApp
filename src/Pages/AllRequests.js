@@ -43,6 +43,7 @@ function AllRequests(props) {
 
   const [mostRecent, setMostRecent] = useState("");
   const noteHeader = "Request Note";
+  const rNoteName = requestList.memberName;
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm2, setSearchTerm2] = useState("");
@@ -67,7 +68,6 @@ function AllRequests(props) {
       (response) => {
         // Axios.get("http://localhost:3001/allRequests").then((response) => {
         setRequestList(response.data);
-        // console.log(response.data);
       }
     );
   };
@@ -165,15 +165,17 @@ function AllRequests(props) {
       GetAllRequests();
     });
   };
+  //****** DISALBED TILL FURTHER NOTICE  ******/
   //SUBMIT REQUEST NOTE TO THE DASHBOARD NOTES
-  const requestNote = (id) => {
-    Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
-      // Axios.post("http://localhost:3001/requestNote", {
-      note: newNote,
-      noteHeader: noteHeader,
-      id: id,
-    }).then(() => {});
-  };
+  // const requestNote = (id) => {
+  //   // Axios.post("https://executive-app.herokuapp.com/newDashboardNote", {
+  //   Axios.post("http://localhost:3001/requestNote", {
+  //     note: newNote,
+  //     memberName: rNoteName,
+  //     noteHeader: noteHeader,
+  //     id: id,
+  //   }).then(() => {});
+  // };
 
   useEffect(() => {
     GetAllRequests();
@@ -360,6 +362,7 @@ function AllRequests(props) {
                                   <option value="Ordered">Ordered</option>
                                   <option value="Completed">Completed</option>
                                   <option value="Canceled">Canceled</option>
+                                  <option value="Offered">Offered</option>
                                 </select>
                                 <Button
                                   onClick={() => {
@@ -596,6 +599,7 @@ function AllRequests(props) {
                                   <option value="Ordered">Ordered</option>
                                   <option value="Completed">Completed</option>
                                   <option value="Canceled">Canceled</option>
+                                  <option value="Offered">Offered</option>
                                 </select>
                                 <Button
                                   onClick={() => {
@@ -836,6 +840,7 @@ function AllRequests(props) {
                                   <option value="Ordered">Ordered</option>
                                   <option value="Completed">Completed</option>
                                   <option value="Canceled">Canceled</option>
+                                  <option value="Offered">Offered</option>
                                 </select>
                                 <Button
                                   onClick={() => {
@@ -1080,6 +1085,7 @@ function AllRequests(props) {
                                   <option value="Ordered">Ordered</option>
                                   <option value="Completed">Completed</option>
                                   <option value="Canceled">Canceled</option>
+                                  <option value="Offered">Offered</option>
                                 </select>
                                 <Button
                                   onClick={() => {
@@ -1324,6 +1330,7 @@ function AllRequests(props) {
                                   <option value="Ordered">Ordered</option>
                                   <option value="Completed">Completed</option>
                                   <option value="Canceled">Canceled</option>
+                                  <option value="Offered">Offered</option>
                                 </select>
                                 <Button
                                   onClick={() => {
@@ -1568,6 +1575,7 @@ function AllRequests(props) {
                                   <option value="Ordered">Ordered</option>
                                   <option value="Completed">Completed</option>
                                   <option value="Canceled">Canceled</option>
+                                  <option value="Offered">Offered</option>
                                 </select>
                                 <Button
                                   onClick={() => {
@@ -1760,6 +1768,7 @@ function AllRequests(props) {
                             <option value="Ordered">Ordered</option>
                             <option value="Completed">Completed</option>
                             <option value="Canceled">Canceled</option>
+                            <option value="Offered">Offered</option>
                           </select>
                           <Button
                             onClick={() => {

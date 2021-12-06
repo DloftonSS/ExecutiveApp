@@ -36,6 +36,7 @@ function ExecutiveData(props) {
   const [newSsn, setNewSsn] = useState("");
   const [newEthnicity, setNewEthnicity] = useState("");
   const [newRace, setNewRace] = useState("");
+  const [membershipDate, setMembershipDate] = useState("");
 
   const [newMemId, setNewMemId] = useState("");
   // VARIABLES FOR THE NOTES
@@ -375,6 +376,19 @@ function ExecutiveData(props) {
       // detailChange();
     });
   };
+  const ChangeMembershipDate = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeMemDate", {
+      // Axios.put("http://localhost:3001/changeMemDate", {
+      membershipDate: membershipDate,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+
+      getMemberInfo();
+      getMemberNotes();
+      // detailChange();
+    });
+  };
   //END UPDATING MEMBER DETAILS
 
   //GET USER NOTES
@@ -576,6 +590,54 @@ function ExecutiveData(props) {
                   >
                     <Modal.Header>Edit Personal Details</Modal.Header>
                     {/* MODAL CONENT COLLAPSE  */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        marginLeft: "65%",
+                        marginRight: "5%",
+                        marginTop: "5%",
+                        border: "solid 2px black",
+                        padding: "10px",
+                        borderRadius: "5px",
+                        backgroundColor: "black",
+                        color: "white",
+                      }}
+                    >
+                      {" "}
+                      <h2 style={{ textAlign: "center" }}>
+                        Renew Subscription
+                      </h2>
+                      <p style={{ textAlign: "center" }}>
+                        This will change the date to 1 year from now.
+                      </p>
+                      <Popup
+                        trigger={
+                          <Button
+                            color="yellow"
+                            content="Renew Now"
+                            style={{
+                              marginLeft: "25%",
+                            }}
+                            onClick={() => {
+                              ChangeRenewal(memberDetails.id);
+                            }}
+                          />
+                        }
+                        content="This Action can NOT be undone."
+                        position="top right"
+                        size="tiny"
+                        inverted
+                      />
+                    </div>
+                    {/* <Button
+                    onClick={() => {
+                      ChangeRenewal(memberDetails.id);
+                    }}
+                    style={{ float: "right" }}
+                  >
+                    Renew Now
+                  </Button> */}
+                    <h2 style={{ marginLeft: "75px" }}>Personal Data</h2>
                     <Modal.Content style={{ marginLeft: "50px" }}>
                       <Header>First Name</Header>
                       <input
@@ -728,18 +790,7 @@ function ExecutiveData(props) {
                         <option value="Card Ordered">Card Ordered</option>
                         <option value="Card Expired">Card Expired</option>
                       </select>
-                      {/* <input
-                        onChange={(i) => {
-                          setNewCardStatus(i.target.value);
-                        }}
-                        placeholder="YES or NO"
-                        Value={memberDetails.card}
-                        style={{
-                          height: "30px",
-                          width: "300px",
-                          marginBottom: "5px",
-                        }}
-                      ></input> */}
+
                       <Button
                         style={{ margin: "10px" }}
                         size="mini"
@@ -926,6 +977,28 @@ function ExecutiveData(props) {
                       >
                         Change Race
                       </Button>
+                      <Header>Membership Date</Header>
+                      <input
+                        onChange={(o) => {
+                          setMembershipDate(o.target.value);
+                        }}
+                        placeholder="2021-12-25"
+                        style={{
+                          height: "30px",
+                          width: "300px",
+                          marginBottom: "5px",
+                        }}
+                      ></input>
+
+                      <Button
+                        size="mini"
+                        color="red"
+                        onClick={() => {
+                          ChangeMembershipDate(memberDetails.id);
+                        }}
+                      >
+                        Change Expiring Date
+                      </Button>
                       <Header>Member ID</Header>
                       <input
                         onChange={(o) => {
@@ -1032,34 +1105,7 @@ function ExecutiveData(props) {
                       <Icon name="calendar check outline" />
                       Renewal Date
                     </Table.Cell>
-                    <Table.Cell>
-                      {memberDetails.renewal_date}
-
-                      <Popup
-                        trigger={
-                          <Button
-                            color="yellow"
-                            content="Renew Now"
-                            style={{ float: "right" }}
-                            onClick={() => {
-                              ChangeRenewal(memberDetails.id);
-                            }}
-                          />
-                        }
-                        content="This Action can NOT be undone."
-                        position="top right"
-                        size="tiny"
-                        inverted
-                      />
-                      {/* <Button
-                    onClick={() => {
-                      ChangeRenewal(memberDetails.id);
-                    }}
-                    style={{ float: "right" }}
-                  >
-                    Renew Now
-                  </Button> */}
-                    </Table.Cell>
+                    <Table.Cell>{memberDetails.renewal_date}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>
@@ -1222,14 +1268,33 @@ function ExecutiveData(props) {
                 }}
               >
                 <Form.Group widths="equal" style={{ height: "50px" }}>
-                  <Form.Input
+                  {/* <Form.Input
                     onChange={(e) => {
                       setAdminName(e.target.value);
                     }}
                     icon="user circle"
                     iconPosition="left"
                     placeholder="Admin Frist and Last"
-                  />
+                  /> */}
+                  <select
+                    onChange={(e) => {
+                      setAdminName(e.target.value);
+                    }}
+                    style={{
+                      height: "40px",
+                      width: "100%",
+                      backgroundColor: "lightGrey",
+                      borderRadius: "5px",
+                      border: "none",
+                    }}
+                  >
+                    <option>Admin Name</option>
+                    <option value="Dillon H.">Dillon H.</option>
+                    <option value="Jose R. ">Jose R. </option>
+                    <option value="Derek L.">Derek L.</option>
+                    <option value="Chris A.">Chris A.</option>
+                    {/* <option value="Scopes">Scopes</option> */}
+                  </select>
                   {/* <Form.Input
                     onChange={(e) => {
                       setMemberName(e.target.value);
@@ -1466,6 +1531,7 @@ function ExecutiveData(props) {
                             <option value="Ordered">Ordered</option>
                             <option value="Completed">Completed</option>
                             <option value="Canceled">Canceled</option>
+                            <option value="Offered">Offered</option>
                           </select>
                           <Button
                             onClick={() => {
