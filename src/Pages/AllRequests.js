@@ -151,7 +151,7 @@ function AllRequests(props) {
     }).then((response) => {
       // DateChange();
       GetAllRequests();
-      requestNote(id);
+      // requestNote(id);
       console.log("this is the id " + id);
     });
   };
