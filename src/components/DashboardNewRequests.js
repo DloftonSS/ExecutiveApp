@@ -56,7 +56,7 @@ function DashboardNewRequest() {
             maxHeight: "500px",
             width: "500px",
 
-            boxShadow: "5px 10px 8px gray",
+            boxShadow: "5px 10px 8px #F3F3FC",
           }}
         >
           {" "}
@@ -66,12 +66,12 @@ function DashboardNewRequest() {
                 style={{
                   width: "500px",
                   boxShadow: "5px 10px 8px black",
-                  backgroundColor: "#7B1719",
-                  border: "1px solid #7B1719",
+                  backgroundColor: "black",
+                  border: "1px solid black",
                 }}
               >
                 <Card.Content>
-                  <h2 style={{ color: "black" }}>
+                  <h2 style={{ color: "white" }}>
                     {requestList[request].memberName}
                   </h2>
                   <Card.Meta style={{ color: "white" }}>
@@ -105,7 +105,7 @@ function DashboardNewRequest() {
             maxHeight: "500px",
             width: "500px",
 
-            boxShadow: "5px 10px 8px gray",
+            boxShadow: "5px 10px 8px #F3F3FC",
           }}
         >
           {" "}
@@ -115,12 +115,12 @@ function DashboardNewRequest() {
                 style={{
                   width: "500px",
                   boxShadow: "5px 10px 8px black",
-                  backgroundColor: "#7B1719",
-                  border: "1px solid #7B1719",
+                  backgroundColor: "black",
+                  border: "1px solid black",
                 }}
               >
                 <Card.Content>
-                  <h2 style={{ color: "black" }}>
+                  <h2 style={{ color: "white" }}>
                     {requestListOld[old].memberName}
                   </h2>
                   <Card.Meta style={{ color: "white" }}>

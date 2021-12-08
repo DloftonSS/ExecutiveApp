@@ -44,6 +44,11 @@ function AdminHeader() {
         {" "}
         <ul>
           <li>
+            <a href="/adminDashboard">
+              <Icon disabled name="home"></Icon> Home
+            </a>
+          </li>
+          <li>
             <a href="/addMember">
               <Icon disabled name="user plus"></Icon> Add Executive
             </a>

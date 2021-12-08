@@ -48,7 +48,7 @@ function NewMembers() {
           maxHeight: "500px",
           width: "500px",
 
-          boxShadow: "5px 10px 8px gray",
+          boxShadow: "5px 10px 8px #F3F3FC",
         }}
       >
         {" "}
@@ -58,14 +58,14 @@ function NewMembers() {
               style={{
                 width: "500px",
                 boxShadow: "5px 10px 8px black",
-                backgroundColor: "#7B1719",
-                border: "1px solid #7B1719",
+                backgroundColor: "black",
+                border: "1px solid black",
               }}
             >
               <Card.Content>
-                <h2 style={{ color: "black" }}>
+                <h2 style={{ color: "white" }}>
                   <Link
-                    style={{ color: "black" }}
+                    style={{ color: "white" }}
                     to={`/executiveAccount/${memberList[member].id}`}
                   >
                     {" "}
@@ -92,7 +92,7 @@ function NewMembers() {
                 </Card.Description>
                 <div
                   style={{
-                    backgroundColor: "white",
+                    backgroundColor: "red",
                     borderRadius: "5px",
                     padding: "5px",
                     opacity: ".7",

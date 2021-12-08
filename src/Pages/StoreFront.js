@@ -212,7 +212,7 @@ function StoreFront(props) {
   }, []);
 
   return (
-    <div className="newMember">
+    <div className="newMember" style={{ backgroundColor: "#F3F3FC" }}>
       <StoreHeader />
       {/* <div>This will be for adding the members to the Database.</div> */}
 
@@ -221,9 +221,9 @@ function StoreFront(props) {
 
       <div
         style={{
-          backgroundColor: "red",
-          boxShadow: "1px 5px 3px 5px black",
-          border: "2px solid red",
+          backgroundColor: "white",
+          boxShadow: "1px 2px 3px 2px black",
+          border: "2px solid white",
           borderRadius: "5px",
           marign: "5%",
           marginLeft: "10%",
@@ -243,7 +243,8 @@ function StoreFront(props) {
                 width: "200px",
                 marginTop: "50px",
                 marginBottom: "50px",
-                boxShadow: "1px 5px 3px 5px black",
+                boxShadow: "1px 2px 3px 2px black",
+                backgroundColor: "#F3F3FC",
               }}
             >
               Member Registration Form
@@ -266,7 +267,7 @@ function StoreFront(props) {
                   border: "1px solid",
                   borderRadius: "5px",
                   padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
+                  boxShadow: "1px 2px 3px 2px #888888",
                   marginBottom: "30px",
                   marginRight: "10px",
                   width: "350px",
@@ -590,7 +591,8 @@ function StoreFront(props) {
                 width: "200px",
                 marginTop: "50px",
                 marginBottom: "50px",
-                boxShadow: "1px 5px 3px 5px black",
+                backgroundColor: "#F3F3FC",
+                boxShadow: "1px 2px 3px 2px black",
               }}
             >
               Renew Membership
@@ -684,6 +686,8 @@ function StoreFront(props) {
                                     content="View"
                                     style={{
                                       float: "center",
+                                      backgroundColor: "#F3F3FC",
+                                      color: "black",
                                       boxShadow: "1px 2px 1px 2px black",
                                     }}
                                   />
@@ -754,7 +758,7 @@ function StoreFront(props) {
                                           border: "1px solid",
                                           borderRadius: "5px",
                                           padding: "10px",
-                                          boxShadow: "1px 5px 3px 5px black",
+                                          boxShadow: "1px 2px 3px 2px black",
                                           marginBottom: "30px",
                                           marginRight: "10px",
                                           width: "200px",
@@ -849,7 +853,7 @@ function StoreFront(props) {
                                           border: "1px solid  #BF3312",
                                           borderRadius: "5px",
                                           padding: "10px",
-                                          boxShadow: "1px 5px 3px 5px #BF3312",
+                                          boxShadow: "1px 2px 3px 2px #BF3312",
                                           marginBottom: "30px",
                                           marginRight: "10px",
                                           width: "200px",
@@ -863,7 +867,7 @@ function StoreFront(props) {
                                           <input
                                             style={{
                                               color: "black",
-                                              backgroundColor: "yellow",
+                                              backgroundColor: "#F3F3FC",
                                               border: "1px solid black",
                                               borderRadius: "5px",
                                               padding: "10px",
@@ -871,11 +875,11 @@ function StoreFront(props) {
                                               marginBottom: "30px",
                                               marginRight: "10px",
                                               boxShadow:
-                                                "1px 5px 3px 5px black",
-                                              width: "150px",
+                                                "1px 2px 3px 2px black",
+                                              width: "230px",
                                             }}
                                             type="submit"
-                                            value="Renew Customer"
+                                            value="Renew Customer Membership"
                                             onClick={() => {
                                               ChangeRenewal(
                                                 memberList[member].id
@@ -956,12 +960,21 @@ function StoreFront(props) {
           width: "250px",
           height: "40px",
           marginLeft: "10%",
+          boxShadow: "1px 2px 3px 2px black",
+          borderRadius: "5px",
         }}
         onChange={(event) => {
           setSearchTerm(event.target.value);
         }}
       ></Input>
-      <Card style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
+      <Card
+        style={{
+          width: "80%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          boxShadow: "1px 2px 3px 2px black",
+        }}
+      >
         <Card.Content
           style={{ overflowY: "scroll", height: "200px", marginBottom: "5%" }}
         >
@@ -1027,6 +1040,8 @@ function StoreFront(props) {
                               content="View"
                               style={{
                                 float: "center",
+                                backgroundColor: "#F3F3FC",
+                                color: "black",
                                 boxShadow: "1px 2px 1px 2px black",
                               }}
                             />

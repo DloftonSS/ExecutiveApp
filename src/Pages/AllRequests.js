@@ -368,7 +368,12 @@ function AllRequests(props) {
                                   onClick={() => {
                                     updateStatus(pendingRequests[pending].id);
                                   }}
-                                  style={{ width: "100%", marginTop: "10px" }}
+                                  style={{
+                                    width: "100%",
+                                    marginTop: "10px",
+                                    color: "white",
+                                    backgroundColor: "black",
+                                  }}
                                 >
                                   Update
                                   <Icon
@@ -395,7 +400,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateNote(pendingRequests[pending].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -414,7 +423,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateSource(pendingRequests[pending].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -605,7 +618,12 @@ function AllRequests(props) {
                                   onClick={() => {
                                     updateStatus(onholdRequest[hold].id);
                                   }}
-                                  style={{ width: "100%", marginTop: "10px" }}
+                                  style={{
+                                    width: "100%",
+                                    marginTop: "10px",
+                                    color: "white",
+                                    backgroundColor: "black",
+                                  }}
                                 >
                                   Update
                                   <Icon
@@ -630,7 +648,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateNote(onholdRequest[hold].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -649,7 +671,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateSource(onholdRequest[hold].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -846,7 +872,12 @@ function AllRequests(props) {
                                   onClick={() => {
                                     updateStatus(backorderRequest[back].id);
                                   }}
-                                  style={{ width: "100%", marginTop: "10px" }}
+                                  style={{
+                                    width: "100%",
+                                    marginTop: "10px",
+                                    color: "white",
+                                    backgroundColor: "black",
+                                  }}
                                 >
                                   Update
                                   <Icon
@@ -873,7 +904,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateNote(backorderRequest[back].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -892,7 +927,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateSource(backorderRequest[back].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -1091,7 +1130,12 @@ function AllRequests(props) {
                                   onClick={() => {
                                     updateStatus(orderedRequest[ordered].id);
                                   }}
-                                  style={{ width: "100%", marginTop: "10px" }}
+                                  style={{
+                                    width: "100%",
+                                    marginTop: "10px",
+                                    color: "white",
+                                    backgroundColor: "black",
+                                  }}
                                 >
                                   Update
                                   <Icon
@@ -1118,7 +1162,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateNote(orderedRequest[ordered].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -1137,7 +1185,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateSource(orderedRequest[ordered].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -1336,7 +1388,12 @@ function AllRequests(props) {
                                   onClick={() => {
                                     updateStatus(completedRequest[ordered].id);
                                   }}
-                                  style={{ width: "100%", marginTop: "10px" }}
+                                  style={{
+                                    width: "100%",
+                                    marginTop: "10px",
+                                    color: "white",
+                                    backgroundColor: "black",
+                                  }}
                                 >
                                   Update
                                   <Icon
@@ -1363,7 +1420,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateNote(completedRequest[ordered].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -1382,7 +1443,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateSource(completedRequest[ordered].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -1581,7 +1646,12 @@ function AllRequests(props) {
                                   onClick={() => {
                                     updateStatus(canceledRequest[canceled].id);
                                   }}
-                                  style={{ width: "100%", marginTop: "10px" }}
+                                  style={{
+                                    width: "100%",
+                                    marginTop: "10px",
+                                    color: "white",
+                                    backgroundColor: "black",
+                                  }}
                                 >
                                   Update
                                   <Icon
@@ -1608,7 +1678,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateNote(canceledRequest[canceled].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -1627,7 +1701,11 @@ function AllRequests(props) {
                                 onClick={() => {
                                   updateSource(canceledRequest[canceled].id);
                                 }}
-                                style={{ marginLeft: "20px" }}
+                                style={{
+                                  marginLeft: "20px",
+                                  color: "white",
+                                  backgroundColor: "black",
+                                }}
                               >
                                 Update
                                 <Icon name="edit outline"></Icon>
@@ -1774,7 +1852,12 @@ function AllRequests(props) {
                             onClick={() => {
                               updateStatus(requestList[request].id);
                             }}
-                            style={{ width: "100%", marginTop: "10px" }}
+                            style={{
+                              width: "100%",
+                              marginTop: "10px",
+                              backgroundColor: "black",
+                              color: "white",
+                            }}
                           >
                             Update
                             <Icon
@@ -1797,7 +1880,11 @@ function AllRequests(props) {
                           onClick={() => {
                             updateNote(requestList[request].id);
                           }}
-                          style={{ marginLeft: "20px" }}
+                          style={{
+                            marginLeft: "20px",
+                            color: "white",
+                            backgroundColor: "black",
+                          }}
                         >
                           Update
                           <Icon name="edit outline"></Icon>
@@ -1816,7 +1903,11 @@ function AllRequests(props) {
                           onClick={() => {
                             updateSource(requestList[request].id);
                           }}
-                          style={{ marginLeft: "20px" }}
+                          style={{
+                            marginLeft: "20px",
+                            color: "white",
+                            backgroundColor: "black",
+                          }}
                         >
                           Update
                           <Icon name="edit outline"></Icon>

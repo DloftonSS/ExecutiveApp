@@ -96,7 +96,7 @@ function AdminDashBoard() {
     <div
       className="main"
       style={{
-        backgroundColor: "black",
+        backgroundColor: "#F3F3FC",
         // backgroundColor: "#CAD5E2",
       }}
     >
@@ -120,12 +120,18 @@ function AdminDashBoard() {
 
             <p>. Dashboard new Look</p>
             <p>. Admin Chat Coming soon.</p>
+            <p>
+              . Initial contact click "no" to change to "yes" once completed.
+            </p>
 
             <p>. Quantity totals at top of page for easy reference.</p>
             <h3>Store Front</h3>
             <p>
               . Store front page allows for submitting new members and renewing
               memberships.
+            </p>
+            <p>
+              . Stores will be able to see requests and status, coming soon.
             </p>
             {/* <h3>All Requests</h3>
             <p>. New Status option "Offered".</p>
@@ -167,7 +173,7 @@ function AdminDashBoard() {
             display: "flex",
             padding: ".5rem",
             alignItems: "top",
-            backgroundColor: "black",
+            backgroundColor: "#F3F3FC",
           }}
         >
           {/* <NewMembers /> */}

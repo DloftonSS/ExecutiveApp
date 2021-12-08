@@ -1,19 +1,21 @@
-import { Card, Feed, Icon, Input, Button } from "semantic-ui-react";
+import { Card, Feed, Icon, Input, Button, Form } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 function AdminChat() {
   const [chatTyped, setChatTyped] = useState("");
   const [chatList, setchatList] = useState("");
+  const [adminName, setAdminName] = useState("");
 
   //SUBMIT NOTE
   const submitChat = (e) => {
     Axios.post("https://executive-app.herokuapp.com/postChat", {
       // Axios.post("http://localhost:3001/postChat", {
       chatTyped: chatTyped,
+      adminName: adminName,
     }).then(() => {
       GetChat();
-      console.log("successful chat post");
+      // console.log("successful chat post");
       // reloadPage();
     });
   };
@@ -24,6 +26,17 @@ function AdminChat() {
       setchatList(response.data);
       // console.log(response.data);
     });
+  };
+
+  //DELETE NOTE
+  const DeleteChat = (id) => {
+    Axios.delete(`https://executive-app.herokuapp.com/deleteChat/${id}`).then(
+      () => {
+        // Axios.delete(`http://localhost:3001/deleteChat/${id}`).then(() => {
+        console.log("deleted");
+        GetChat();
+      }
+    );
   };
   useEffect(() => {
     GetChat();
@@ -52,9 +65,9 @@ function AdminChat() {
               marginBottom: "8%",
             }}
           >
-            {Object.keys(chatList).map((adminChat, i) => {
+            {Object.keys(chatList).map((keyName, i) => {
               return (
-                // <p>{chatList[adminChat].note}</p>;
+                // <p>{chatList[keyName].note}</p>;
                 <Feed.Event>
                   <Feed.Label>
                     <Icon name="user circle" />
@@ -65,18 +78,25 @@ function AdminChat() {
                       <Feed.User
                         style={{ cursor: "default", color: "#DB2828" }}
                       >
-                        Name of Admin
+                        {chatList[keyName].adminName}
                       </Feed.User>
-                      <Feed.Date>{chatList[adminChat].createdAt}</Feed.Date>
+                      <Feed.Date>{chatList[keyName].createdAt}</Feed.Date>
                     </Feed.Summary>
                     {/* <Feed.Meta>
                       <Feed.User>Name of Customer</Feed.User>
                     </Feed.Meta> */}
                     <Feed.Extra style={{ width: "300px" }}>
                       {" "}
-                      {chatList[adminChat].expression}
+                      {chatList[keyName].expression}
                     </Feed.Extra>
                     _____________________________________________________________{" "}
+                    <Icon
+                      onClick={() => {
+                        DeleteChat(chatList[keyName].id);
+                      }}
+                      name="x"
+                      style={{ marginRight: "0px" }}
+                    />{" "}
                   </Feed.Content>
                 </Feed.Event>
               );
@@ -84,12 +104,8 @@ function AdminChat() {
           </Feed>
         </Card.Content>
       </Card>
-      {/* <Card fluid>
-        <Card.Content>
-          <Card.Header>Chat</Card.Header>
-        </Card.Content> */}
-      {/* <Card.Content fluid> */}
-      <div
+
+      <Form
         style={{
           display: "flex",
           padding: ".5rem",
@@ -97,6 +113,25 @@ function AdminChat() {
           marginTop: "-2%",
         }}
       >
+        <select
+          onChange={(e) => {
+            setAdminName(e.target.value);
+          }}
+          style={{
+            height: "40px",
+            width: "100%",
+            backgroundColor: "lightGrey",
+            borderRadius: "5px",
+            border: "none",
+          }}
+        >
+          <option>Admin Name</option>
+          <option value="Dillon H.">Dillon H.</option>
+          <option value="Jose R. ">Jose R. </option>
+          <option value="Derek L.">Derek L.</option>
+          <option value="Chris A.">Chris A.</option>
+          {/* <option value="Scopes">Scopes</option> */}
+        </select>
         <Input
           onChange={(e) => {
             setChatTyped(e.target.value);
@@ -106,12 +141,15 @@ function AdminChat() {
           iconPosition="left"
           placeholder="Add Chat..."
         />
-        {/* <Button type="reset" secondary onClick={submitChat}>
-          Submit{" "} */}
-        <Button type="reset" onClick={submitChat}>
+
+        <Button
+          type="reset"
+          onClick={submitChat}
+          style={{ height: "40px", marginTop: "2%" }}
+        >
           Submit
         </Button>
-      </div>
+      </Form>
     </div>
   );
 }

@@ -48,7 +48,7 @@ function OldestRequests() {
                 <Table.Row key={request.id}>
                   <Table.Cell>
                     <Link
-                      style={{ color: "black" }}
+                      style={{ color: "white" }}
                       // to={`/executiveAccount/${requestList[request].id}`}
                     >
                       {requestList[request].memberName}

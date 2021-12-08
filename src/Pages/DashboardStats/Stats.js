@@ -61,7 +61,7 @@ function Stats() {
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gridGap: 20,
-        backgroundColor: "white",
+        backgroundColor: "#F3F3FC",
         width: "98%",
         margin: "1%",
         padding: "1%",
@@ -73,8 +73,8 @@ function Stats() {
           style={{
             width: "500px",
             boxShadow: "5px 10px 8px black",
-            backgroundColor: "#7B1719",
-            border: "1px solid #7B1719",
+            backgroundColor: "white",
+            border: "1px solid white",
           }}
         >
           <Card.Content>
@@ -83,7 +83,7 @@ function Stats() {
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
                 gridGap: 20,
-                backgroundColor: "#7B1719",
+                backgroundColor: "black",
                 width: "100%",
                 margin: "1%",
                 padding: "1%",
@@ -93,8 +93,8 @@ function Stats() {
               <div>
                 <Icon
                   name="user circle"
-                  size="huge"
-                  style={{ color: "white", float: "left", marginTop: "1%" }}
+                  size="big"
+                  style={{ color: "white", float: "left", marginTop: "10%" }}
                 >
                   {" "}
                 </Icon>
@@ -132,8 +132,8 @@ function Stats() {
           style={{
             width: "500px",
             boxShadow: "5px 10px 8px black",
-            backgroundColor: "#7B1719",
-            border: "1px solid #7B1719",
+            backgroundColor: "#F3F3FC",
+            border: "1px solid #F3F3FC",
           }}
         >
           <Card.Content>
@@ -142,7 +142,7 @@ function Stats() {
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
                 gridGap: 20,
-                backgroundColor: "#7B1719",
+                backgroundColor: "black",
                 width: "100%",
                 margin: "1%",
                 padding: "1%",
@@ -152,8 +152,8 @@ function Stats() {
               <div>
                 <Icon
                   name="list"
-                  size="huge"
-                  style={{ color: "white", float: "left", marginTop: "1%" }}
+                  size="big"
+                  style={{ color: "white", float: "left", marginTop: "10%" }}
                 >
                   {" "}
                 </Icon>
@@ -186,8 +186,8 @@ function Stats() {
           style={{
             width: "500px",
             boxShadow: "5px 10px 8px black",
-            backgroundColor: "#7B1719",
-            border: "1px solid #7B1719",
+            backgroundColor: "#F3F3FC",
+            border: "1px solid #F3F3FC",
           }}
         >
           <Card.Content>
@@ -196,7 +196,7 @@ function Stats() {
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
                 gridGap: 20,
-                backgroundColor: "#7B1719",
+                backgroundColor: "black",
                 width: "100%",
                 margin: "1%",
                 padding: "1%",
@@ -206,8 +206,8 @@ function Stats() {
               <div>
                 <Icon
                   name="exclamation circle"
-                  size="huge"
-                  style={{ color: "white", float: "left", marginTop: "1%" }}
+                  size="big"
+                  style={{ color: "white", float: "left", marginTop: "10%" }}
                 >
                   {" "}
                 </Icon>
