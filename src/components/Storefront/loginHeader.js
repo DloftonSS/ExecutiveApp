@@ -13,7 +13,7 @@ function LoginHeader() {
       {/* <a href="/">
           {" "} */}
 
-      <div
+      {/* <div
         style={{
           width: "900px",
           height: "300px",
@@ -22,9 +22,9 @@ function LoginHeader() {
           marginLeft: "25%",
           marginRight: "25%",
         }}
-      >
-        <img className="loginLogo" src={Banner}></img>
-      </div>
+      > */}
+      <img className="loginLogo" src={Banner}></img>
+      {/* </div> */}
 
       {/* </a> */}
       {/* </Container> */}
