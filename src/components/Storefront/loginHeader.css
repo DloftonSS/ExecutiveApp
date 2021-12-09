@@ -1,5 +1,5 @@
 .loginLogo {
-  width: 60%;
+  width: 100%;
   height: 100%;
 }
 
@@ -33,7 +33,7 @@ img {
 
 @media only screen and (max-width: 414px) {
   .loginLogo {
-    width: 80%;
+    width: 100%;
   }
   .line {
     height: 5px;

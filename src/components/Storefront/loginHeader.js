@@ -13,7 +13,9 @@ function LoginHeader() {
       {/* <a href="/">
           {" "} */}
 
-      <img className="loginLogo" src={Banner}></img>
+      <div styl={{ width: "900px", height: "100%", backgroundColor: "black" }}>
+        <img className="loginLogo" src={Banner}></img>
+      </div>
 
       {/* </a> */}
       {/* </Container> */}
