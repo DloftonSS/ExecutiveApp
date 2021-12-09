@@ -45,18 +45,19 @@ const Profile = (props) => {
   const { id } = useParams();
 
   const getMemberInfo = () => {
-    // Axios.get("https://executive-app.herokuapp.com/memberProfile").then(
-    //   (response) => {
-    Axios.get("http://localhost:3001/memberProfile").then((response) => {
-      // const userID = response.data[id];
-      // setMemberDetails(userID);
-      const arrayMembers = response.data;
-      const result = arrayMembers.filter(
-        (arrayMembers) => arrayMembers.id == id
-      );
-      setMemberDetails(result[0]);
-      // console.log(result[0]);
-    });
+    Axios.get("https://executive-app.herokuapp.com/memberProfile").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/memberProfile").then((response) => {
+        // const userID = response.data[id];
+        // setMemberDetails(userID);
+        const arrayMembers = response.data;
+        const result = arrayMembers.filter(
+          (arrayMembers) => arrayMembers.id == id
+        );
+        setMemberDetails(result[0]);
+        // console.log(result[0]);
+      }
+    );
   };
 
   const ChangeFirst = (id) => {
