@@ -16,9 +16,11 @@ function LoginHeader() {
       <div
         style={{
           width: "900px",
-          height: "220px",
+          height: "300px",
           backgroundColor: "black",
           alignContent: "center",
+          marginLeft: "25%",
+          marginRight: "25%",
         }}
       >
         <img className="loginLogo" src={Banner}></img>
