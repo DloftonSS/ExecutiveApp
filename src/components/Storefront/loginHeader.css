@@ -9,10 +9,9 @@
   margin-right: auto;
 }
 
-/* .Navtigation { */
-/* background-image: url("../../Pages/images//EAAppBanner.jpg"); */
-/* height: 250px !important; */
-/* } */
+.Navtigation {
+  height: 300px;
+}
 
 /* .Navigation { */
 /* /* background-image: url("EA_App_Banner_V01.jpg"); */
@@ -40,6 +39,12 @@ img {
 @media only screen and (max-width: 414px) {
   .loginLogo {
     width: 100%;
+    height: 100%;
+
+    background: black;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   .line {
     height: 5px;
