@@ -1,6 +1,6 @@
 import "./loginHeader.css";
 import logo from "../../Pages/images/ExecutiveAccess.png";
-import Banner from "../../Pages/images/EAAppBanner.jpg";
+import Banner from "../../Pages/images/ExecutiveAccessClub_Web.png";
 import React, { useState, useEffect } from "react";
 import { Container, Icon } from "semantic-ui-react";
 
