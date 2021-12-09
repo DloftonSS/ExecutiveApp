@@ -14,7 +14,12 @@ function LoginHeader() {
           {" "} */}
 
       <div
-        style={{ width: "900px", height: "110px", backgroundColor: "black" }}
+        style={{
+          width: "900px",
+          height: "220px",
+          backgroundColor: "black",
+          alignContent: "center",
+        }}
       >
         <img className="loginLogo" src={Banner}></img>
       </div>
