@@ -46,9 +46,10 @@ li a {
 }
 
 li a:hover {
-  background-color: white;
+  background-color: #f3f3fc;
   color: black;
   border-radius: 5px;
+  height: 50px;
 }
 
 .logoutNow {

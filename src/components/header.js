@@ -1,10 +1,10 @@
-import "./header.css";
+import "../Pages/CSS/dashboard.css";
 // import { Link } from "react-router-dom";
 import logo from "../Pages/images/ExecutiveAccess.png";
 // import { Container, Icon } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import SideChat from "../components/SideChat";
-import React, { useState, useEffect, Input, Form } from "react";
+import React, { useStat, useEffect, Input, Form } from "react";
 import {
   Card,
   Container,
@@ -31,7 +31,7 @@ function AdminHeader() {
 
   useEffect(() => {}, []);
   return (
-    <div className="Navigation">
+    <div className="Navigation" style={{ height: "250px" }}>
       <Container textAlign="center">
         {" "}
         <a href="/adminDashBoard">

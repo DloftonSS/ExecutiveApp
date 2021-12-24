@@ -10,12 +10,12 @@ function StoreHeader() {
         <h2>Welcome To</h2>
         <a href="/">
           {" "}
-          <img style={{ height: "150px", width: "300px" }} src={logo}></img>
+          <img style={{ height: "300px", width: "850px" }} src={logo}></img>
         </a>
       </Container>
 
       <Container textAlign="center">
-        <h3>Store Front Access</h3>
+        <h3>Store Access</h3>
       </Container>
       <Container textAlign="right">
         {" "}

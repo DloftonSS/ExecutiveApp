@@ -50,6 +50,7 @@ function ExecutiveData(props) {
   const [memberId, setMemberId] = useState("");
   //MODAL OPEN CLOSE
   const [open, setOpen] = React.useState(false);
+  const [openDelete, setOpenDelete] = React.useState(false);
   // VARIABLES FOR REQUESTS
   const [requestList, setRequestList] = useState("");
   const [category, setCategory] = useState("");
@@ -91,6 +92,24 @@ function ExecutiveData(props) {
       setMemberName(result[0].first_name + " " + result[0].last_name);
       // console.log(result[0].first_name + " " + result[0].last_name);
     });
+  };
+
+  //DELETE A MEMBER
+  //DELETE MEMBER
+  const DeleteMember = (id) => {
+    Axios.delete(`https://executive-app.herokuapp.com/deleteMember/${id}`).then(
+      () => {
+        // Axios.delete(`http://localhost:3001/deleteMember/${id}`).then(() => {
+        console.log("completed");
+        //make go to members page after deleted or dashboard
+        Axios.post("https://executive-app.herokuapp.com/deletedNotification", {
+          // Axios.post("http://localhost:3001/deletedNotification", {
+          // adminName: adminName,
+          memberName: memberName,
+          id: id,
+        }).then(() => {});
+      }
+    );
   };
 
   //UPDATING MEMBER DETAILS
@@ -1022,8 +1041,59 @@ function ExecutiveData(props) {
                         Change ID
                       </Button>
                     </Modal.Content>
+
                     <Modal.Actions>
-                      {/* END MODAL CONENT COLLAPSE  */}
+                      {/* END MODAL CONENT COLLAPSE  */}{" "}
+                      {/* DELETE CUSTOMER MODAL START */}
+                      <Modal
+                        style={{ marginLeft: "25%", marginTop: "10%" }}
+                        basic
+                        onClose={() => setOpen(false)}
+                        onOpen={() => setOpen(true)}
+                        openDelete={open}
+                        size="small"
+                        trigger={
+                          <Button
+                            color="red"
+                            inverted
+                            style={{ float: "left" }}
+                          >
+                            Delete Account
+                          </Button>
+                        }
+                      >
+                        <Header icon>
+                          <Icon name="archive" />
+                          ARE YOU SURE YOU WANT TO DELETE THIS ACCOUNT?
+                        </Header>
+                        <Modal.Content>
+                          <p>
+                            Deleting this account is a permanent action and will
+                            delete access to data pertaining to this account.
+                          </p>
+                        </Modal.Content>
+
+                        <Modal.Actions>
+                          <Button
+                            basic
+                            color="red"
+                            inverted
+                            onClick={() => {
+                              DeleteMember(memberDetails.id);
+                            }}
+                          >
+                            <Icon name="remove" /> Yes, Delete Account
+                          </Button>
+                          <Button
+                            color="green"
+                            inverted
+                            onClick={() => setOpen(false)}
+                          >
+                            <Icon name="checkmark" /> No, Keep Account
+                          </Button>
+                        </Modal.Actions>
+                      </Modal>
+                      {/* DELETE CUSTOMER MODAL END */}
                       <Button
                         content="Done"
                         labelPosition="right"

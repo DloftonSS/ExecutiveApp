@@ -64,7 +64,7 @@ function AddMember() {
         {" "}
         <h1>Registration</h1>
         <Form.Group widths="equal">
-          <Form.Field>
+          <Form.Field width={3}>
             <label>First name</label>
             <Input
               fluid
@@ -74,7 +74,7 @@ function AddMember() {
               }}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field width={3}>
             <label>Middle name</label>
             <Input
               fluid
@@ -84,7 +84,7 @@ function AddMember() {
               }}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field width={3}>
             <label>Last name</label>
             <Input
               fluid
@@ -96,7 +96,7 @@ function AddMember() {
           </Form.Field>
         </Form.Group>
         <Form.Group widths="equal">
-          <Form.Field>
+          <Form.Field width={2}>
             <label>Email</label>
             <Input
               fluid
@@ -106,7 +106,7 @@ function AddMember() {
               }}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field width={2}>
             <label>Address</label>
             <Input
               fluid

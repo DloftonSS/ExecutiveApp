@@ -38,6 +38,7 @@
   /* padding: 10px; */
   /* box-shadow: 5px 10px; */
   width: 250px;
+  margin: 5px;
   font-family: "Tinos", serif;
 }
 
@@ -47,9 +48,11 @@
   /* box-shadow: 5px 8px; */
   margin-top: 2%;
   border-radius: 100px;
+  border: none;
   font-family: "Tinos", serif;
   width: 200px;
   height: 30px;
+  box-shadow: 1px 2px 3px 2px black;
 }
 
 .login-title {
@@ -66,12 +69,15 @@
   color: black;
 }
 .BenCol4 {
-  background-color: lightgray;
+  background-color: #94989a;
+  /* background-color: black; */
   /* color: black; */
   margin: 5%;
   padding-top: 2%;
-  height: 180px;
+  height: 230px;
   width: 120px;
+  box-shadow: 1px 2px 3px 2px black;
+  border-radius: 5px;
 }
 .BenCol4 p {
   /* float: left; */
@@ -83,14 +89,21 @@
   border: 2px solid red;
   font-family: "Tinos", serif;
   width: 400px;
-  background-color: white;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  margin-top: 5px;
 }
 
 .loginStatus {
   border: 2px solid red;
   font-family: "Tinos", serif;
   width: 400px;
-  background-color: white;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
 }
 @media only screen and (max-width: 414px) {
   .mainform {

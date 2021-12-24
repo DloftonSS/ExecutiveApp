@@ -92,6 +92,7 @@ function StoreFront(props) {
       card: card,
       acknowledged: acknowledged,
     })
+
       .then((response, error) => {
         // console.log("submited");
         GetAllmembers();
@@ -119,7 +120,7 @@ function StoreFront(props) {
         acknowledged: acknowledged,
       }).then((response) => {
         console.log("completed");
-        // getMemberInfo();
+        GetAllmembers();
       });
     });
   };
@@ -376,7 +377,26 @@ function StoreFront(props) {
                   setCustomerAddress(e.target.value);
                 }}
               />
-              <input
+              <select
+                onChange={(e) => {
+                  setCommunication(e.target.value);
+                }}
+                style={{
+                  height: "40px",
+                  width: "350px",
+                  backgroundColor: "lightGrey",
+                  borderRadius: "5px",
+                  border: "none",
+                  marginRight: "10px",
+                  boxShadow: "1px 5px 3px 5px #888888",
+                }}
+              >
+                <option>Communication Style</option>
+                <option value="Phone only">Phone Only</option>
+                <option value="Email Only">Email Only</option>
+                <option value="Both">Both</option>
+              </select>
+              {/* <input
                 style={{
                   color: "black",
                   border: "1px solid",
@@ -393,8 +413,8 @@ function StoreFront(props) {
                 onChange={(e) => {
                   setCommunication(e.target.value);
                 }}
-              />
-              <input
+              /> */}
+              {/* <input
                 style={{
                   color: "black",
                   border: "1px solid",
@@ -411,7 +431,31 @@ function StoreFront(props) {
                 onChange={(e) => {
                   setPreferredStore(e.target.value);
                 }}
-              />
+              /> */}
+              <select
+                onChange={(e) => {
+                  setPreferredStore(e.target.value);
+                }}
+                style={{
+                  height: "40px",
+                  width: "350px",
+                  backgroundColor: "lightGrey",
+                  borderRadius: "5px",
+                  border: "none",
+                  boxShadow: "1px 5px 3px 5px #888888",
+                }}
+              >
+                <option>Preferred Store</option>
+                <option value="Apopka">Apopka</option>
+                <option value="Casselberry">Casselberry</option>
+                <option value="Clearwater">Clearwater</option>
+                <option value="Fort Lauderdale">Fort Lauderdale</option>
+                <option value="Fort Myers">Fort Myers</option>
+                <option value="Lakeland">Lakeland</option>
+                <option value="Sarasota">Sarasota</option>
+                <option value="Tampa">Tampa</option>
+                <option value="West Palm Beach">Clearwater</option>
+              </select>
               <br></br>
               <input
                 style={{
@@ -559,13 +603,12 @@ function StoreFront(props) {
               <p>* Associate name required to receive credit for sign up. </p>
               {/* <p>* Customer Demographics are not required fields. </p> */}
             </form>
-
-            {/* END REGISTRATION */}
           </Modal.Content>
           <Modal.Actions>
             {/* <Button color="black" onClick={() => setOpen2(false)}>
             Close
           </Button> */}
+            <p>New customers will appear the next time you sign in.</p>
             <Button
               content="Exit"
               labelPosition="right"
@@ -575,6 +618,7 @@ function StoreFront(props) {
             />
           </Modal.Actions>
         </Modal>
+        {/* END REGISTRATION */}
 
         {/* START RENEW SUBSCRIPTION BUTTON */}
 

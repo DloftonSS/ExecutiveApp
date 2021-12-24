@@ -8,6 +8,8 @@ import {
   Image,
   Header,
   Input,
+  Segment,
+  Grid,
 } from "semantic-ui-react";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
@@ -29,9 +31,18 @@ function AllMembers() {
   const [openTwo, setOpenTwo] = React.useState(false);
   const [openThree, setOpenThree] = React.useState(false);
   const [openFive, setOpenFive] = React.useState(false);
+  const [openControls, setOpenControls] = React.useState(false);
+  const [openControlsEdit, setOpenControlsEdit] = React.useState(false);
+  const [openControlsRenew, setOpenControlsRenew] = React.useState(false);
   const [newCardStatus, setNewCardStatus] = useState("");
   const [memberName, setMemberName] = useState("");
+  const [newMemId, setNewMemId] = useState("");
+  const [membershipDate, setMembershipDate] = useState("");
 
+  // RENEW MEMBERSHIP
+  const card = "Pending";
+  const acknowledged = "No";
+  //
   // CHANGE CARD STATUS
   const ChangeCard = (id) => {
     Axios.put("https://executive-app.herokuapp.com/cardStatusChange", {
@@ -39,19 +50,33 @@ function AllMembers() {
       card: newCardStatus,
       id: id,
     }).then((response) => {
-      // console.log(response);
-      // // Axios.post("https://executive-app.herokuapp.com/newCard", {
-      // Axios.post("http://localhost:3001/newCard", {
-      //   newCardStatus: newCardStatus,
-      //   // adminName: adminName,
-      //   memberName: memberName,
-      //   id: id,
-      // }).then(() => {});
       getMemberInfo();
-      // detailChange();
+      console.log("card updated" + id);
     });
   };
-
+  //
+  //
+  //RENEW CUSTOMER SET NEW DATE
+  const ChangeRenewal = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeRenewal", {
+      // Axios.put("http://localhost:3001/changeRenewal", {
+      id: id,
+    }).then((response) => {
+      getMemberInfo();
+      alert("Membership Renewal Completed");
+      // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
+      console.log(response);
+      Axios.put("https://executive-app.herokuapp.com/pendingCardRenew", {
+        // Axios.put("http://localhost:3001/pendingCardRenew", {
+        id: id,
+        card: card,
+        acknowledged: acknowledged,
+      }).then((response) => {
+        console.log("completed" + id);
+        getMemberInfo();
+      });
+    });
+  };
   const getMemberInfo = () => {
     // GET ALL MEMBERS
     Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
@@ -62,6 +87,55 @@ function AllMembers() {
       }
     );
   };
+
+  //DELETE MEMBER
+  const DeleteMember = (id) => {
+    Axios.delete(`https://executive-app.herokuapp.com/deleteMember/${id}`).then(
+      () => {
+        // Axios.delete(`http://localhost:3001/deleteMember/${id}`).then(() => {
+        // console.log("completed");
+        alert("Account Deletion Completed");
+        //make go to members page after deleted
+        Axios.post("https://executive-app.herokuapp.com/deletedNotification", {
+          // Axios.post("http://localhost:3001/deletedNotification", {
+          // adminName: adminName,
+          memberName: memberName,
+          id: id,
+        }).then(() => {});
+      }
+    );
+  };
+  //
+  //  UPDATE MEMBER ID
+  const ChangeMemId = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeMemId", {
+      // Axios.put("http://localhost:3001/changeMemId", {
+      memId: newMemId,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      alert("Member ID Changed");
+      getMemberInfo();
+      // detailChange();
+    });
+  };
+  //
+  // CHANGE MEMBERSHIP DATE
+  const ChangeMembershipDate = (id) => {
+    Axios.put("https://executive-app.herokuapp.com/changeMemDate", {
+      // Axios.put("http://localhost:3001/changeMemDate", {
+      membershipDate: membershipDate,
+      id: id,
+    }).then((response) => {
+      // console.log("completed");
+      alert("Member Expiration Date Changed");
+      getMemberInfo();
+      // getMemberNotes();
+      // detailChange();
+    });
+  };
+  //
+  //
   useEffect(() => {
     // GET ALL MEMBERS
     getMemberInfo();
@@ -105,13 +179,18 @@ function AllMembers() {
       <HeaderMain />
       <div
         className="newMembers"
-        style={{ padding: "1%", width: "100%", height: "100%" }}
+        style={{
+          padding: "1%",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#F3F3FC",
+        }}
       >
         <Card fluid style={{ marginRight: "10px", height: "100%" }}>
           <Card.Content>
-            <Card.Header>All Members</Card.Header>
+            <Card.Header>Active Members</Card.Header>
             <p style={{ marginLeft: "25px" }}>
-              Total Members: {memberList.length}
+              Total Members: {activeList.length}
             </p>
             <input
               type="text"
@@ -261,13 +340,13 @@ function AllMembers() {
                   /> */}
                 </Modal.Actions>
               </Modal>
-              {/* THIS IS WHERE THE ACTIVE ONLY MEMBERS MODAL STARTS */}
+              {/* THIS IS WHERE THE All  MEMBERS MODAL STARTS */}
               <Modal
                 onClose={() => setOpenThree(false)}
                 onOpen={() => setOpenThree(true)}
                 // onClick={() => GetExpired}
                 open={openThree}
-                trigger={<Button>Active</Button>}
+                trigger={<Button>All</Button>}
                 style={{
                   width: "100%",
                   height: "700px",
@@ -278,7 +357,7 @@ function AllMembers() {
               >
                 <Modal.Header>Active Customers</Modal.Header> {""}
                 <p style={{ marginLeft: "25px" }}>
-                  Total Active Members: {activeList.length}
+                  Total Active Members: {memberList.length}
                 </p>
                 <Input
                   type="text"
@@ -309,28 +388,28 @@ function AllMembers() {
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                      {Object.keys(activeList)
-                        .filter((act) => {
+                      {Object.keys(memberList)
+                        .filter((member) => {
                           if (searchTerm == "") {
-                            return act;
+                            return member;
                           } else if (
-                            activeList[act].first_name
+                            memberList[member].first_name
                               .toLowerCase()
                               .includes(searchTerm.toLowerCase()) ||
-                            activeList[act].last_name
+                            memberList[member].last_name
                               .toLowerCase()
                               .includes(searchTerm.toLowerCase())
                           ) {
-                            return act;
+                            return member;
                           }
                         })
-                        .map((act, i) => {
-                          let joindate = new Date(activeList[act].dateJoined)
+                        .map((member, i) => {
+                          let joindate = new Date(memberList[member].dateJoined)
                             .toUTCString()
                             .split(" ")
                             .slice(0, 4)
                             .join(" ");
-                          let expiredate = new Date(activeList[act].expiring)
+                          let expiredate = new Date(memberList[member].expiring)
                             .toUTCString()
                             .split(" ")
                             .slice(0, 4)
@@ -338,35 +417,41 @@ function AllMembers() {
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll" }}
-                              key={act.id}
+                              key={member.id}
                             >
-                              <Table.Cell>{activeList[act].number}</Table.Cell>
+                              <Table.Cell>
+                                {memberList[member].number}
+                              </Table.Cell>
                               <Table.Cell>
                                 <Link
                                   style={{ color: "black" }}
-                                  to={`/executiveAccount/${activeList[act].id}`}
+                                  to={`/executiveAccount/${memberList[member].id}`}
                                 >
-                                  {activeList[act].first_name}
+                                  {memberList[member].first_name}
                                 </Link>
                               </Table.Cell>
                               <Table.Cell>
                                 {" "}
                                 <Link
                                   style={{ color: "black" }}
-                                  to={`/executiveAccount/${activeList[act].id}`}
+                                  to={`/executiveAccount/${memberList[member].id}`}
                                 >
-                                  {activeList[act].last_name}
+                                  {memberList[member].last_name}
                                 </Link>
                               </Table.Cell>
-                              <Table.Cell>{activeList[act].phone}</Table.Cell>
+                              <Table.Cell>
+                                {memberList[member].phone}
+                              </Table.Cell>
                               <Table.Cell>
                                 <a style={{ color: "black" }} href="mailto:">
-                                  {activeList[act].email}
+                                  {memberList[member].email}
                                 </a>
                               </Table.Cell>
-                              <Table.Cell>{activeList[act].address}</Table.Cell>
+                              <Table.Cell>
+                                {memberList[member].address}
+                              </Table.Cell>
                               <Table.Cell>{joindate}</Table.Cell>
-                              <Table.Cell>{activeList[act].card}</Table.Cell>
+                              <Table.Cell>{memberList[member].card}</Table.Cell>
                               <Table.Cell>{expiredate}</Table.Cell>
                             </Table.Row>
                           );
@@ -658,7 +743,11 @@ function AllMembers() {
               </Modal>
             </span>
           </Card.Content>
-          <Card.Content style={{ overflowY: "scroll", height: "1000px" }}>
+          {/* 
+// 
+//  */}
+          {/* ACTIVE MEMBERS ONLY */}
+          {/* <Card.Content style={{ overflowY: "scroll", height: "1000px" }}>
             <Table celled striped color="red">
               <Table.Header>
                 <Table.Row>
@@ -669,6 +758,7 @@ function AllMembers() {
                   <Table.HeaderCell>Email</Table.HeaderCell>
                   <Table.HeaderCell>Address</Table.HeaderCell>
                   <Table.HeaderCell>Card</Table.HeaderCell>
+                  <Table.HeaderCell>Store</Table.HeaderCell>
                   <Table.HeaderCell>UpDate Card</Table.HeaderCell>
                   <Table.HeaderCell>Date Expiring</Table.HeaderCell>
                 </Table.Row>
@@ -705,7 +795,20 @@ function AllMembers() {
                         style={{ overflowY: "scroll", width: "100%" }}
                         key={member.id}
                       >
-                        <Table.Cell>{memberList[member].number}</Table.Cell>
+                        <Table.Cell>
+                          {memberList[member].number} */}
+
+          {/* <br></br>
+                          <Button
+                            color="red"
+                            inverted
+                            onClick={() => {
+                              DeleteMember(memberList[member].id);
+                            }}
+                          >
+                            Delete Account
+                          </Button> */}
+          {/* </Table.Cell>
                         <Table.Cell>
                           <Link
                             style={{ color: "black" }}
@@ -732,6 +835,9 @@ function AllMembers() {
                         <Table.Cell>{memberList[member].address}</Table.Cell>
                         <Table.Cell>{memberList[member].card}</Table.Cell>
                         <Table.Cell>
+                          {memberList[member].preferredStore}
+                        </Table.Cell>
+                        <Table.Cell>
                           <select
                             onChange={(i) => {
                               setNewCardStatus(i.target.value);
@@ -749,9 +855,9 @@ function AllMembers() {
                             <option value="Yes Card">Yes Card</option>
                             <option value="Card Ordered">Card Ordered</option>
                             <option value="Card Expired">Card Expired</option>
-                          </select>
-                          {/* <br></br> */}
-                          <Button
+                          </select> */}
+          {/* <br></br> */}
+          {/* <Button
                             style={{ margin: "10px" }}
                             size="mini"
                             color="black"
@@ -768,7 +874,371 @@ function AllMembers() {
                   })}
               </Table.Body>
             </Table>
-          </Card.Content>
+          </Card.Content> */}
+
+          {/* 
+          START NEW MEMBERS CARDS
+          */}
+          <Segment
+            style={{
+              overflow: "auto",
+              maxHeight: "1000px",
+              width: "100%",
+
+              boxShadow: "5px 10px 8px #F3F3FC",
+            }}
+          >
+            {Object.keys(activeList)
+              .filter((act) => {
+                if (searchTermFour == "") {
+                  return act;
+                } else if (
+                  activeList[act].first_name
+                    .toLowerCase()
+                    .includes(searchTermFour.toLowerCase()) ||
+                  activeList[act].last_name
+                    .toLowerCase()
+                    .includes(searchTermFour.toLowerCase())
+                ) {
+                  return act;
+                }
+              })
+              .map((act, i) => {
+                let joindate1 = new Date(activeList[act].dateJoined)
+                  .toUTCString()
+                  .split(" ")
+                  .slice(0, 4)
+                  .join(" ");
+                let expiredate = new Date(activeList[act].expiring)
+                  .toUTCString()
+                  .split(" ")
+                  .slice(0, 4)
+                  .join(" ");
+                return (
+                  <Card
+                    style={{
+                      width: "100%",
+                      boxShadow: "5px 10px 8px black",
+                      backgroundColor: "white",
+                      border: "1px solid black",
+                    }}
+                  >
+                    <Card.Content>
+                      <Grid divided="vertically">
+                        <Grid.Row columns={3}>
+                          <Grid.Column style={{ paddingLeft: "25px" }}>
+                            <h2 style={{ color: "black" }}>
+                              <Link
+                                style={{ color: "black" }}
+                                to={`/executiveAccount/${activeList[act].id}`}
+                              >
+                                {activeList[act].first_name}{" "}
+                                {activeList[act].last_name}
+                              </Link>
+                            </h2>
+                            <Card.Meta>
+                              {" "}
+                              Suffix: {" " + activeList[act].suffix}
+                            </Card.Meta>
+                            <Card.Meta style={{ color: "black" }}>
+                              {" "}
+                              <Icon name="target" />
+                              {" " + activeList[act].preferredStore}
+                            </Card.Meta>
+                            <Card.Meta>
+                              {" "}
+                              <Icon name="birthday cake" />{" "}
+                              {" " + activeList[act].DOB}
+                            </Card.Meta>
+                            <Card.Meta style={{ color: "black" }}>
+                              {" "}
+                              <Icon name="phone" /> {activeList[act].phone}
+                            </Card.Meta>
+                            <Card.Meta>
+                              {" "}
+                              <Icon name="mail" />
+                              {" " + activeList[act].email}
+                            </Card.Meta>
+                            <Card.Meta style={{ color: "black" }}>
+                              {" "}
+                              <Icon name="home" /> {activeList[act].address}
+                            </Card.Meta>
+                            <br></br>
+                          </Grid.Column>
+                          <Grid.Column>
+                            <h3 style={{ color: "black" }}>
+                              Membership Status
+                            </h3>
+                            <Card.Meta>
+                              {" "}
+                              Member Number: {activeList[act].number}
+                            </Card.Meta>
+                            <Card.Meta style={{ color: "black" }}>
+                              {" "}
+                              Card Status: {activeList[act].card}
+                            </Card.Meta>
+                            <Card.Meta>
+                              {" "}
+                              Initial Contact: {activeList[act].acknowledged}
+                            </Card.Meta>
+
+                            <select
+                              onChange={(i) => {
+                                setNewCardStatus(i.target.value);
+                              }}
+                              style={{
+                                height: "35px",
+                                width: "50%",
+                                backgroundColor: "lightGrey",
+                                borderRadius: "5px",
+                                border: "none",
+                              }}
+                            >
+                              <option>Choose Card Status</option>
+                              <option value="pending">Pending</option>
+                              <option value="Yes Card">Yes Card</option>
+                              <option value="Card Ordered">Card Ordered</option>
+                              <option value="Card Expired">Card Expired</option>
+                            </select>
+                            <Button
+                              style={{ margin: "10px" }}
+                              size="mini"
+                              color="black"
+                              onClick={() => {
+                                ChangeCard(activeList[act].id);
+                              }}
+                            >
+                              Change Card
+                            </Button>
+                            {/* 
+                            ACCOUNT CONTROLS SECTION
+                     */}
+                            <Card.Description>
+                              {" "}
+                              Date Joined: {joindate1}
+                            </Card.Description>
+                            <Card.Description>
+                              {" "}
+                              Date Expiring: {expiredate}
+                            </Card.Description>
+                          </Grid.Column>
+                          <Grid.Column>
+                            <h3 style={{ color: "black" }}>Account Controls</h3>
+
+                            <Modal
+                              style={{
+                                marginLeft: "25%",
+                                marginTop: "10%",
+                              }}
+                              basic
+                              onClose={() => setOpenControlsEdit(false)}
+                              onOpen={() => setOpenControlsEdit(true)}
+                              open={openControlsEdit[act]}
+                              size="small"
+                              trigger={
+                                <Button color="green" inverted>
+                                  Edit Account
+                                </Button>
+                              }
+                            >
+                              <Header icon>
+                                <Icon name="edit" />
+                                {/* ARE YOU SURE YOU WANT TO */}
+                                EDIT {activeList[act].first_name.toUpperCase()}
+                                'S ACCOUNT
+                              </Header>
+                              {/* 
+                              START EDIT DETAILS 
+                              */}
+                              <Header>Member ID</Header>
+                              <input
+                                onChange={(o) => {
+                                  setNewMemId(o.target.value);
+                                }}
+                                placeholder="1234"
+                                style={{
+                                  height: "30px",
+                                  width: "300px",
+                                  margin: "20px",
+                                }}
+                              ></input>
+
+                              <Button
+                                size="mini"
+                                color="red"
+                                inverted
+                                onClick={() => {
+                                  ChangeMemId(activeList[act].id);
+                                }}
+                              >
+                                Change ID
+                              </Button>
+                              <Header>Membership Expiration Date</Header>
+                              <input
+                                onChange={(o) => {
+                                  setMembershipDate(o.target.value);
+                                }}
+                                placeholder="2020-10-27 12:18:35"
+                                style={{
+                                  height: "30px",
+                                  width: "300px",
+                                  margin: "20px",
+                                }}
+                              ></input>
+
+                              <Button
+                                size="mini"
+                                color="red"
+                                inverted
+                                onClick={() => {
+                                  ChangeMembershipDate(activeList[act].id);
+                                }}
+                              >
+                                Change Expiring Date
+                              </Button>
+                              {/* 
+                              END EDIT DETAILS 
+                              */}
+                              <Modal.Actions>
+                                <a href="/allMembers">
+                                  <Button
+                                    color="green"
+                                    inverted
+                                    onClick={() => setOpenControlsEdit(false)}
+                                  >
+                                    <Icon name="checkmark" /> Done
+                                  </Button>
+                                </a>
+                              </Modal.Actions>
+                            </Modal>
+                            <Card.Meta
+                              style={{
+                                height: "20px",
+                                backgroundColor: "white",
+                              }}
+                            ></Card.Meta>
+                            <Modal
+                              style={{
+                                marginLeft: "25%",
+                                marginTop: "10%",
+                              }}
+                              basic
+                              onClose={() => setOpenControlsRenew(false)}
+                              onOpen={() => setOpenControlsRenew(true)}
+                              open={openControlsRenew[act]}
+                              size="small"
+                              trigger={
+                                <Button color="yellow" inverted>
+                                  Renew Membership
+                                </Button>
+                              }
+                            >
+                              <Header icon>
+                                <Icon name="redo" />
+                                RENEW {activeList[act].first_name.toUpperCase()}
+                                'S MEMBERSHIP?
+                              </Header>
+                              <Modal.Content>
+                                <p>
+                                  Renewing this account will change the card
+                                  status to "pending" and initial contact to
+                                  "no" and will change the renewal date starting
+                                  today.
+                                </p>
+                              </Modal.Content>
+
+                              <Modal.Actions>
+                                <a href="/allMembers">
+                                  <Button
+                                    basic
+                                    color="red"
+                                    inverted
+                                    onClick={() => {
+                                      ChangeRenewal(activeList[act].id);
+                                    }}
+                                  >
+                                    <Icon name="remove" /> Yes, Renew Membership
+                                  </Button>
+                                </a>
+                                <a href="/allMembers">
+                                  <Button
+                                    color="green"
+                                    inverted
+                                    onClick={() => setOpenControlsRenew(false)}
+                                  >
+                                    <Icon name="checkmark" /> No, Let Expire
+                                  </Button>
+                                </a>
+                              </Modal.Actions>
+                            </Modal>
+                            <Card.Meta
+                              style={{
+                                height: "20px",
+                                backgroundColor: "white",
+                              }}
+                            ></Card.Meta>
+                            {/* <Modal
+                              style={{
+                                marginLeft: "25%",
+                                marginTop: "10%",
+                              }}
+                              basic
+                              onClose={() => setOpenControls(false)}
+                              onOpen={() => setOpenControls(true)}
+                              open={openControls[act]}
+                              size="small"
+                              trigger={
+                                <Button color="red" inverted>
+                                  Delete Account
+                                </Button>
+                              }
+                            >
+                              <Header icon>
+                                <Icon name="user delete" />
+                                DELETE{" "}
+                                {activeList[act].first_name.toUpperCase()}'S
+                                ACCOUNT?
+                              </Header>
+                              <Modal.Content>
+                                <p>
+                                  Deleting this account is a permanent action
+                                  and will delete access to data pertaining to
+                                  this account.
+                                </p>
+                              </Modal.Content>
+
+                              <Modal.Actions>
+                                <a href="/allMembers">
+                                  <Button
+                                    basic
+                                    color="red"
+                                    inverted
+                                    onClick={() => {
+                                      DeleteMember(activeList[act].id);
+                                    }}
+                                  >
+                                    <Icon name="remove" /> Yes, Delete Account
+                                  </Button>
+                                </a>
+                                <a href="/allMembers">
+                                  <Button
+                                    color="green"
+                                    inverted
+                                    onClick={() => setOpenControls(false)}
+                                  >
+                                    <Icon name="checkmark" /> No, Keep Account{" "}
+                                  </Button>
+                                </a>
+                              </Modal.Actions>
+                            </Modal> */}
+                          </Grid.Column>
+                        </Grid.Row>
+                      </Grid>
+                    </Card.Content>
+                  </Card>
+                );
+              })}
+          </Segment>
         </Card>
       </div>
     </div>

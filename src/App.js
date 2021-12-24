@@ -69,7 +69,7 @@ function App(props) {
           >
             <Link
               style={{
-                color: "black",
+                color: "white",
               }}
               to={`/profile/${profileData.id}`}
             >
@@ -112,7 +112,7 @@ function App(props) {
           >
             <Link
               style={{
-                color: "black",
+                color: "white",
               }}
               // to={`/adminDashboard/${adminData.id}`}
               to="adminDashboard"

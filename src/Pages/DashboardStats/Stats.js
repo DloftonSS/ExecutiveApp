@@ -22,6 +22,7 @@ function Stats() {
   const [activeList, setActiveList] = useState("");
   const [requestList, setRequestList] = useState("");
   const [expiringMembers, setExpiringMembers] = useState("");
+  const [initialTotal, setInitalTotal] = useState("");
 
   //GET ACTIVE ONLY MEMBERS
   const ActiveMembers = () => {
@@ -30,6 +31,16 @@ function Stats() {
         // Axios.get("http://localhost:3001/api/activeMembers").then((response) => {
         setActiveList(response.data);
         // console.log(response.data);
+      }
+    );
+  };
+  //WITH INITIAL CONTACT
+  const InitialContact = () => {
+    Axios.get("https://executive-app.herokuapp.com/initialContact").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/initialContact").then((response) => {
+        setInitalTotal(response.data);
+        console.log(response.data);
       }
     );
   };
@@ -46,6 +57,7 @@ function Stats() {
   useEffect(() => {
     ActiveMembers();
     GetAllRequests();
+    InitialContact();
     //GET EXPIRING MEMBERS
     Axios.get("https://executive-app.herokuapp.com/expiringMembers").then(
       (response) => {
@@ -100,14 +112,23 @@ function Stats() {
                 </Icon>
               </div>
               <div>
-                <h2
-                  style={{
-                    color: "white",
-                    marginTop: "10%",
-                  }}
+                <Popup
+                  trigger={
+                    <h2
+                      style={{
+                        color: "white",
+                        marginTop: "10%",
+                      }}
+                    >
+                      All Active
+                    </h2>
+                  }
                 >
-                  Active Users
-                </h2>
+                  {" "}
+                  <Popup.Content>
+                    Members that require initial contact {initialTotal.length}
+                  </Popup.Content>
+                </Popup>
               </div>
               <div>
                 <h2

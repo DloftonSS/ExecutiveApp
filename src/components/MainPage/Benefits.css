@@ -1,18 +1,18 @@
 .underlineB {
   width: 75%;
   height: 15px;
-  background-color: lightgray;
+  background-color: #94989a;
   float: right;
 }
 .underlineC {
   width: 70%;
   height: 15px;
-  background-color: lightgray;
+  background-color: #94989a;
 }
 .underlineD {
   width: 75%;
   height: 15px;
-  background-color: lightgray;
+  background-color: #94989a;
   float: right;
 }
 
@@ -44,6 +44,8 @@ span {
   margin: 5%;
   height: 300px;
   width: 300px;
+  box-shadow: 1px 2px 3px 2px #94989a;
+  border-radius: 5px;
 }
 
 .BenCol p {
@@ -54,7 +56,7 @@ span {
 .BenCol h3 {
   float: left;
   text-align: left;
-  color: lightgray;
+  color: #94989a;
   font-size: 50px;
 }
 

@@ -10,7 +10,7 @@ import Stats from "../Pages/DashboardStats/Stats";
 import AdminChat from "../components/Chat/Chat";
 import OldestRequests from "../components/oldestRequests";
 import SideChat from "../components/SideChat";
-import "./CSS/dashboard.css";
+import "../Pages/CSS/dashboard.css";
 import Axios from "axios";
 import { Header, Icon, Modal, Button } from "semantic-ui-react";
 // import { useHistory } from "react-router-dom";
@@ -115,23 +115,24 @@ function AdminDashBoard() {
         <Modal.Header>What's New!</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <Header>Update: November 18, 2021</Header>
+            <Header>Update: December 24, 2021</Header>
             <h3>Dashboard</h3>
 
-            <p>. Dashboard new Look</p>
-            <p>. Admin Chat Coming soon.</p>
             <p>
-              . Initial contact click "no" to change to "yes" once completed.
+              . Hover over active users shows number needing initial contact
             </p>
+            <p> </p>
+            <h3>Members and Requests</h3>
+            <p>. New layout for members and requests.</p>
 
-            <p>. Quantity totals at top of page for easy reference.</p>
+            <p>. Quick edit for members account on All Members page.</p>
             <h3>Store Front</h3>
             <p>
-              . Store front page allows for submitting new members and renewing
-              memberships.
+              . Member registraction now has dropdowns for communication style
+              and preferred store.
             </p>
             <p>
-              . Stores will be able to see requests and status, coming soon.
+              . Warning to sign out and in to see newly registered customers
             </p>
             {/* <h3>All Requests</h3>
             <p>. New Status option "Offered".</p>

@@ -57,7 +57,7 @@ function Benefits() {
       <p style={{ height: "50px" }}></p>
 
       <div className="footer">
-        <h3>Shoot Straight Inc. Headquarters</h3>
+        <h2>Shoot Straight Inc. Headquarters</h2>
         <p>1349 South Orange Blossom Trail Apopka, FL 32703</p>
         <h2>Shoot-Straight.com</h2>
         <p>
