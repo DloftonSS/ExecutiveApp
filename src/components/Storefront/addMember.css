@@ -43,7 +43,7 @@ body {
   background-color: #f3f3fc;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 820px) {
   Modal {
     width: 80% !important;
   }
