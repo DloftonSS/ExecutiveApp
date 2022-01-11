@@ -17,6 +17,7 @@ import API from "../utils/API";
 import { useParams } from "react-router";
 import { useLocation } from "react-router-dom";
 import ProfileImage from "../Pages/ProfilePage/profileImage.jpg";
+import Moment from "moment";
 
 function ExecutiveData(props) {
   //EXECUTIVE DATA VARIABLES
@@ -68,7 +69,23 @@ function ExecutiveData(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const userId = props.id;
 
-  // const [customerFirst, setCustomerFirst] = useState("");
+  // RENEW MEMBERSHIP
+  const card = "Pending";
+  const acknowledged = "No";
+
+  // var [joinDate, setJoinDate] = useState("");
+  // var [renewalDate, setRenewalDate] = useState("");
+  // var [expDate, setExpDate] = useState("");
+
+  // joinDate = {
+  //   dateMDY: Moment(memberDetails.joinDate).format("MM-DD-YYYY"),
+  // };
+  // renewalDate = {
+  //   dateMDY: Moment().format("MM-DD-YYYY"),
+  // };
+  // expDate = {
+  //   dateMDY: Moment().format("MM-DD-YYYY"),
+  // };
 
   // const id = props.id;
   const { id } = useParams();
@@ -84,6 +101,10 @@ function ExecutiveData(props) {
         (arrayMembers) => arrayMembers.id == id
       );
       setMemberDetails(result[0]);
+      // setRenewalDate(result[0].renewal_date);
+      // console.log(result[0].expiring.format("mm-dd-yyy"));
+      // setExpDate(result[0].expiring);
+      // setJoinDate(result[0].joinDate);
       // console.log(result[0]);
       // const userID = response.data[id];
       // setMemberDetails(userID);
@@ -472,13 +493,34 @@ function ExecutiveData(props) {
     );
   };
   //RENEW MEMBERSHIP BUTTON
+  // const ChangeRenewal = (id) => {
+  // Axios.put("https://executive-app.herokuapp.com/changeRenewal", {
+  // Axios.put("http://localhost:3001/changeRenewal", {
+  //   id: id,
+  // }).then((response) => {
+  // console.log(response);
+  // getMemberInfo();
+  // });
+  // };
+  //RENEW CUSTOMER SET NEW DATE
   const ChangeRenewal = (id) => {
     Axios.put("https://executive-app.herokuapp.com/changeRenewal", {
       // Axios.put("http://localhost:3001/changeRenewal", {
       id: id,
     }).then((response) => {
-      // console.log(response);
       getMemberInfo();
+      alert("Membership Renewal Completed");
+      // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
+      console.log(response);
+      Axios.put("https://executive-app.herokuapp.com/pendingCardRenew", {
+        // Axios.put("http://localhost:3001/pendingCardRenew", {
+        id: id,
+        card: card,
+        acknowledged: acknowledged,
+      }).then((response) => {
+        console.log("completed" + id);
+        getMemberInfo();
+      });
     });
   };
   //
@@ -1175,7 +1217,11 @@ function ExecutiveData(props) {
                       <Icon name="calendar check outline" />
                       Renewal Date
                     </Table.Cell>
-                    <Table.Cell>{memberDetails.renewal_date}</Table.Cell>
+                    <Table.Cell>
+                      {/* {month + " " + day + " " + year} */}
+                      {/* {renewalDate.dateMDY} */}
+                      {memberDetails.renewal_date}
+                    </Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>
@@ -1264,6 +1310,10 @@ function ExecutiveData(props) {
                     .split(" ")
                     .slice(0, 4)
                     .join(" ");
+                  // var day = date.getDate();
+                  // var month = date.getMonth();
+                  // var year = date.getFullYear();
+
                   return (
                     <Feed.Event>
                       <Feed.Label>
@@ -1278,7 +1328,10 @@ function ExecutiveData(props) {
                             {notesList[keyName].adminName}
                             {/* {notesList[keyName].noteHeader} */}
                           </Feed.User>
-                          <Feed.Date>{date}</Feed.Date>
+                          <Feed.Date>
+                            {date}
+                            {/* {month + " " + day + " " + year} */}
+                          </Feed.Date>
                         </Feed.Summary>
                         <Feed.Meta>
                           <Feed.User>

@@ -33,8 +33,8 @@ function AddAdmin() {
   //   const [password, setPassword] = useState("");
 
   const register = (e) => {
-    // Axios.post("https://executive-app.herokuapp.com/register", {
-    Axios.post("http://localhost:3001/register", {
+    Axios.post("https://executive-app.herokuapp.com/register", {
+      // Axios.post("http://localhost:3001/register", {
       firstName: firstnameReg,
       lastName: lastnameReg,
       email: emailReg,

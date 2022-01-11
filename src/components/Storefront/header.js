@@ -10,7 +10,11 @@ function StoreHeader() {
         <h2>Welcome To</h2>
         <a href="/">
           {" "}
-          <img style={{ height: "300px", width: "850px" }} src={logo}></img>
+          <img
+            className="header-img"
+            style={{ height: "300px", width: "850px" }}
+            src={logo}
+          ></img>
         </a>
       </Container>
 

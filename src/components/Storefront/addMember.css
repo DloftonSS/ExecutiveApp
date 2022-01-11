@@ -42,3 +42,38 @@ body {
 .newMember {
   background-color: #f3f3fc;
 }
+
+@media only screen and (max-width: 780px) {
+  Modal {
+    width: 80%;
+  }
+  .register-modal {
+    background-color: pink;
+  }
+  form {
+    width: 750px !important;
+    margin-left: 5px !important;
+  }
+  .placeBorn {
+    margin-top: 30px !important;
+  }
+  .dob {
+    margin-top: 30px !important;
+  }
+  .modal-actions {
+    margin-right: 150px !important;
+  }
+  .renew-modal {
+    width: 90% !important;
+    height: 60% !important;
+    margin-left: 10px !important;
+  }
+  .members-info-modal {
+    margin-left: 3% !important;
+    height: 800px !important;
+    width: 700px !important;
+  }
+  .modal-button {
+    margin-left: 33% !important;
+  }
+}

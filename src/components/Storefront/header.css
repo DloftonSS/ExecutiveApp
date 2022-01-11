@@ -62,3 +62,13 @@ li a:hover {
   margin-top: -3%;
   position: absolute;
 }
+
+@media only screen and (max-width: 780px) {
+  .header-img {
+    width: 700px !important;
+    height: 250px !important;
+  }
+  .logoutNow {
+    margin-left: -100px !important;
+  }
+}
