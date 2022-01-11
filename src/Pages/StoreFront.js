@@ -477,6 +477,7 @@ function StoreFront(props) {
             */}
             {/* content below */}
             <form
+              className="register-modal"
               ref={form}
               onSubmit={sendEmail}
               style={{ marginLeft: "10%", marginRigth: "10%", width: "1500px" }}
