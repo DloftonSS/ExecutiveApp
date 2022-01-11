@@ -233,7 +233,12 @@ function StoreFront(props) {
       >
         <Modal
           className="register-modal"
-          style={{ width: "100%", height: "80%" }}
+          style={{
+            width: "100%",
+            height: "80%",
+            overflow: "scroll",
+            direction: "rtl",
+          }}
           onClose={() => setOpen2(false)}
           onOpen={() => setOpen2(true)}
           open={open2}
