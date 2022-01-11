@@ -48,7 +48,7 @@ body {
     width: 80%;
   }
   .register-modal {
-    background-color: pink;
+    width: 700px !important;
   }
   form {
     width: 750px !important;
