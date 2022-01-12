@@ -78,7 +78,7 @@ function AllMembers() {
       acknowledged: acknowledged,
     }).then((response) => {
       console.log("completed" + id);
-      getMemberInfo();
+      // getMemberInfo();
     });
   };
   const ChangeRenewal = (id) => {
