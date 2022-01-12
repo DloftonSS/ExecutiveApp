@@ -85,8 +85,10 @@ function AllMembers() {
     Axios.put("https://executive-app.herokuapp.com/changeRenewal", {
       // Axios.put("http://localhost:3001/changeRenewal", {
       id: id,
+      card: card,
+      acknowledged: acknowledged,
     }).then((response) => {
-      putPendingCard();
+      // putPendingCard();
       // getMemberInfo();
       // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
       // console.log(response);
