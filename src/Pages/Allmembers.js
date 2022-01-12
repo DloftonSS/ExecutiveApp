@@ -51,6 +51,7 @@ function AllMembers() {
       id: id,
     }).then((response) => {
       getMemberInfo();
+      alert("Card Status Updated");
       console.log("card updated" + id);
     });
   };
