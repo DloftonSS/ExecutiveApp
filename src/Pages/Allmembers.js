@@ -86,17 +86,17 @@ function AllMembers() {
       // Axios.put("http://localhost:3001/changeRenewal", {
       id: id,
     }).then((response) => {
-      getMemberInfo();
-      alert("Membership Renewal Completed");
+      // getMemberInfo();
       // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
-      console.log(response);
+      // console.log(response);
       Axios.put("https://executive-app.herokuapp.com/pendingCardRenew", {
         // Axios.put("http://localhost:3001/pendingCardRenew", {
         id: id,
         card: card,
         acknowledged: acknowledged,
       }).then((response) => {
-        console.log("completed" + id);
+        alert("Membership Renewal Completed");
+        // console.log("completed" + id);
         getMemberInfo();
       });
     });
