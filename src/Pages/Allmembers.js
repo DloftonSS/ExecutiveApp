@@ -50,8 +50,8 @@ function AllMembers() {
       card: newCardStatus,
       id: id,
     }).then((response) => {
-      getMemberInfo();
       alert("Card Status Updated");
+      getMemberInfo();
       console.log("card updated" + id);
     });
   };
@@ -98,7 +98,7 @@ function AllMembers() {
       //   card: card,
       //   acknowledged: acknowledged,
       // }).then((response) => {
-      //   alert("Membership Renewal Completed");
+      alert("Membership Renewal Completed");
       //   // console.log("completed" + id);
       //   getMemberInfo();
       // });
