@@ -69,7 +69,7 @@ function AllMembers() {
       // console.log(response);
     });
   };
-  const putPendingCard = () => {
+  const putPendingCard = (id) => {
     Axios.put("https://executive-app.herokuapp.com/pendingCardRenew", {
       // Axios.put("http://localhost:3001/pendingCardRenew", {
       id: id,
