@@ -511,6 +511,7 @@ function ExecutiveData(props) {
       putPendingCard();
       alert("Membership Renewal Completed");
       getMemberInfo();
+      //
       // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
       // console.log(response);
     });
