@@ -508,9 +508,9 @@ function ExecutiveData(props) {
       // Axios.put("http://localhost:3001/changeRenewal", {
       id: id,
     }).then((response) => {
-      getMemberInfo();
-      alert("Membership Renewal Completed");
       putPendingCard();
+      alert("Membership Renewal Completed");
+      getMemberInfo();
       // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
       // console.log(response);
     });
