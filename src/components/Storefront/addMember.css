@@ -49,6 +49,7 @@ body {
   }
   .register-modal {
     width: 700px !important;
+    margin-left: 5% !important;
   }
   form {
     width: 750px !important;
