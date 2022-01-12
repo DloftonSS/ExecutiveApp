@@ -64,19 +64,42 @@ function AllMembers() {
     }).then((response) => {
       getMemberInfo();
       alert("Membership Renewal Completed");
+      putPendingCard();
       // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
-      console.log(response);
-      Axios.put("https://executive-app.herokuapp.com/pendingCardRenew", {
-        // Axios.put("http://localhost:3001/pendingCardRenew", {
-        id: id,
-        card: card,
-        acknowledged: acknowledged,
-      }).then((response) => {
-        console.log("completed" + id);
-        getMemberInfo();
-      });
+      // console.log(response);
     });
   };
+  const putPendingCard = () => {
+    Axios.put("https://executive-app.herokuapp.com/pendingCardRenew", {
+      // Axios.put("http://localhost:3001/pendingCardRenew", {
+      id: id,
+      card: card,
+      acknowledged: acknowledged,
+    }).then((response) => {
+      console.log("completed" + id);
+      getMemberInfo();
+    });
+  };
+  // const ChangeRenewal = (id) => {
+  //   Axios.put("https://executive-app.herokuapp.com/changeRenewal", {
+  //     Axios.put("http://localhost:3001/changeRenewal", {
+  //     id: id,
+  //   }).then((response) => {
+  //     getMemberInfo();
+  //     alert("Membership Renewal Completed");
+  //     // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
+  //     console.log(response);
+  //     Axios.put("https://executive-app.herokuapp.com/pendingCardRenew", {
+  //       Axios.put("http://localhost:3001/pendingCardRenew", {
+  //       id: id,
+  //       card: card,
+  //       acknowledged: acknowledged,
+  //     }).then((response) => {
+  //       console.log("completed" + id);
+  //       getMemberInfo();
+  //     });
+  //   });
+  // };
   const getMemberInfo = () => {
     // GET ALL MEMBERS
     Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
