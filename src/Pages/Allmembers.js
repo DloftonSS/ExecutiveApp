@@ -100,7 +100,7 @@ function AllMembers() {
       // }).then((response) => {
       alert("Membership Renewal Completed");
       //   // console.log("completed" + id);
-      //   getMemberInfo();
+      getMemberInfo();
       // });
     });
   };

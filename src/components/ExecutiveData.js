@@ -507,13 +507,23 @@ function ExecutiveData(props) {
     Axios.put("https://executive-app.herokuapp.com/changeRenewal", {
       // Axios.put("http://localhost:3001/changeRenewal", {
       id: id,
+      card: card,
+      acknowledged: acknowledged,
     }).then((response) => {
-      putPendingCard();
-      alert("Membership Renewal Completed");
-      getMemberInfo();
-      //
+      // putPendingCard();
+      // getMemberInfo();
       // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
       // console.log(response);
+      // Axios.put("https://executive-app.herokuapp.com/pendingCardRenew", {
+      //   // Axios.put("http://localhost:3001/pendingCardRenew", {
+      //   id: id,
+      //   card: card,
+      //   acknowledged: acknowledged,
+      // }).then((response) => {
+      alert("Membership Renewal Completed");
+      //   // console.log("completed" + id);
+      getMemberInfo();
+      // });
     });
   };
   const putPendingCard = (id) => {
