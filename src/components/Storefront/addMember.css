@@ -52,7 +52,7 @@ body {
   }
   form {
     width: 750px !important;
-    margin-left: 5px !important;
+    margin-left: 5% !important;
   }
   .placeBorn {
     margin-top: 30px !important;
@@ -66,7 +66,7 @@ body {
   .renew-modal {
     width: 90% !important;
     height: 60% !important;
-    margin-left: 10px !important;
+    margin-left: 5% !important;
   }
   .members-info-modal {
     margin-left: 3% !important;
