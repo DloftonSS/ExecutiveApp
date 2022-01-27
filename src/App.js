@@ -6,6 +6,7 @@ import "./App.css";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 import AdminDashBoard from "./Pages/adminDashBoard";
+import AdminAccount from "./Pages/AdminDashBoard/AdminAccount";
 import Login from "./Pages/login";
 import AddMember from "./Pages/AddMember";
 import AllMembers from "./Pages/Allmembers";
@@ -52,14 +53,12 @@ function App(props) {
       password: password,
     }).then((response) => {
       if (response.data[0]) {
-        // console.log("your In");
         setIsAuth(true);
-        // console.log(response.data[0]);
+
         const profileName = response.data[0].first_name;
         setProfileData(response.data[0]);
         const profileData = response.data[0];
-        // // findMember();
-        // // console.log("profile ID is" + " " + profileData.id);
+
         setLoginStatus(
           <button
             onClick={() => {
@@ -197,7 +196,7 @@ function App(props) {
             <div className="Modals">
               <Container>
                 <Row>
-                  <Col className="BenCol4">
+                  {/* <Col className="BenCol4">
                     <p className="login-title">Member Login</p>
                     <Input
                       className="loginInput"
@@ -223,15 +222,13 @@ function App(props) {
                       className="validate"
                       onClick={() => {
                         memberLogin();
-                        // memberLogin();
-                        // clearInput();
                       }}
                     >
                       Sign In
                     </button>
-                  </Col>
+                  </Col> */}
                   <Col className="BenCol4">
-                    <p className="login-title">Admin Login</p>
+                    <p className="login-title">Login</p>
                     <Input
                       className="loginInput"
                       required
@@ -296,6 +293,12 @@ function App(props) {
           exact
           component={AdminDashBoard}
           isAuth={isAuth}
+        />
+        <Route
+          path="/adminAccount"
+          exact
+          component={AdminAccount}
+          // isAuth={isAuth}
         />
         <ProtectedRoute
           path="/storeFront/:id"

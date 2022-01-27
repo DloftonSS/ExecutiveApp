@@ -1,0 +1,217 @@
+body {
+}
+
+h1.stat-number {
+  float: right;
+  color: rgb(129, 0, 0);
+}
+li {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 20px;
+}
+.header-container {
+  /* width: 100%; */
+}
+
+.main-container {
+  background-color: black;
+  height: 100%;
+}
+
+.col-container {
+  /* width: 100%; */
+  /* height: 100%; */
+  /* margin: 1px; */
+  /* border: 1px solid black;
+  background-color: lightblue; */
+
+  background-color: #121212;
+}
+.img-container {
+  color: white;
+  background-color: #121212;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+.nav-main {
+  margin: auto;
+  justify-content: center;
+
+  background-color: #121212;
+}
+.hello-name {
+  /* border: 1px solid black; */
+  padding-top: 20px;
+  margin: auto;
+  color: white;
+  font-size: large;
+}
+
+.nav-search {
+  /* border: 1px solid black; */
+  margin: 10px;
+}
+
+.nav-notifications {
+  /* border: 1px solid black; */
+  padding-top: 20px;
+  margin: auto;
+  color: white;
+}
+.member-search {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  color: white;
+  background-color: rgb(60, 60, 60);
+  border-radius: 10px;
+}
+
+/* SIDE BAR NAVIGATION */
+.side-navigation {
+  background-color: #121212;
+  color: white;
+  box-shadow: 0px 0px 5px 3px rgb(129, 0, 0);
+  /* border: 1px solid black; */
+}
+.icon {
+}
+li {
+  list-style: none;
+  display: inline;
+}
+.nav-list {
+  height: 320px;
+  /* border: 1px solid black; */
+}
+.menu-item {
+  margin-top: 20px;
+  padding: 1px;
+}
+.middle-row {
+  margin-bottom: 10px;
+}
+/* MAIN DASHBOARD CONTENT */
+.main-dashboard {
+  background-color: #121212;
+  color: white;
+  box-shadow: 0px 0px 5px 3px rgb(129, 0, 0);
+}
+/* STATS BOXES  */
+.stats-box {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: #121212;
+  color: white;
+  box-shadow: 0px 0px 5px 3px rgb(60, 60, 60);
+}
+
+.stats-container {
+  margin: auto;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* DASH CONTENT RECENT AND PENDING */
+.dash-content {
+  margin: auto;
+  justify-content: center;
+
+  /* margin-bottom: 10px; */
+}
+.overflow {
+  overflow: scroll;
+  max-height: 640px;
+}
+
+.pending-card {
+  /* background-color: lightpink;
+  border: 1px solid black; */
+
+  overflow: scroll;
+  max-height: 680px;
+  background-color: #121212;
+
+  /* overflow: hidden; */
+  /* color: white;
+  box-shadow: 0px 0px 5px 3px rgb(129, 0, 0); */
+}
+
+.customer-card {
+  /* background-color: lime;
+  border: 1px solid black; */
+  height: 200px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #121212;
+  color: white;
+  box-shadow: 0px 0px 5px 3px rgb(60, 60, 60);
+}
+
+.recent-activity {
+  /* background-color: lightpink;
+  border: 1px solid black; */
+}
+
+.feed-container {
+}
+span.span {
+  color: white !important;
+  font-size: 32px;
+}
+.ra-title {
+  text-align: center;
+}
+h2.card-title {
+  text-align: left !important;
+}
+/* CHAT CONTAINER */
+.contains-nav-master-dash {
+  margin-bottom: 50px;
+}
+.chat-container {
+  /* background-color: lightpink;
+  border: 1px solid black; */
+
+  height: 370px;
+  background-color: #121212;
+  overflow: "scroll";
+  /* color: white;
+  box-shadow: 0px 0px 5px 3px rgb(129, 0, 0); */
+}
+.chat-div {
+  background-color: lime;
+  border: 1px solid black;
+}
+
+.chat-h3 {
+  margin-top: -80px;
+}
+
+.chat-line {
+  color: rgb(129, 0, 0);
+  margin-top: -20px;
+}
+
+.chat-input {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.chat-send-button {
+  width: 100%;
+}
+
+.below-pending {
+  background-color: #121212;
+  height: 50px;
+}

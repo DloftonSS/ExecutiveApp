@@ -57,11 +57,11 @@
 
 .login-title {
   font-family: "Tinos", serif;
+  /* font-size: 30px; */
 }
 
 .loginHeader {
   font-family: "Tinos", serif;
-  font-size: 30px;
 }
 
 .NewLogin {
@@ -93,7 +93,6 @@
   background-color: black;
   color: white;
   border-radius: 5px;
-  margin-top: 5px;
 }
 
 .loginStatus {

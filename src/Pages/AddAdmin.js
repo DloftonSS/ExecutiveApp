@@ -152,7 +152,7 @@ function AddAdmin() {
             <label>Role</label>
             <select
               onChange={(e) => {
-                setRoleReg(e.target.value.toUpperCase());
+                setRoleReg(e.target.value);
               }}
               style={{
                 height: "35px",

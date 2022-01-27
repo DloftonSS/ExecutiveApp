@@ -15,7 +15,7 @@ body {
 .Navigation {
   background-color: black;
   width: 100%;
-  height: 200px important!;
+  height: 200px;
   color: white;
   padding-top: 15px;
   /* position: sticky;

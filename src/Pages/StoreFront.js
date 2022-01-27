@@ -220,1010 +220,6 @@ function StoreFront(props) {
       {/* NEW STORE FRONT ADD MEMBER */}
       <h1 style={{ marginLeft: "10%" }}>Hello {clerk}</h1>
 
-      <div
-        style={{
-          backgroundColor: "white",
-          boxShadow: "1px 2px 3px 2px black",
-          border: "2px solid white",
-          borderRadius: "5px",
-          marign: "5%",
-          marginLeft: "10%",
-          marginRight: "10%",
-        }}
-      >
-        <Modal
-          className="register-modal"
-          style={{
-            width: "100%",
-            height: "80%",
-            overflow: "scroll",
-            direction: "rtl",
-          }}
-          onClose={() => setOpen2(false)}
-          onOpen={() => setOpen2(true)}
-          open={open2}
-          trigger={
-            <Button
-              className="modal-button"
-              style={{
-                marginLeft: "25%",
-                height: "100px",
-                width: "200px",
-                marginTop: "50px",
-                marginBottom: "50px",
-                boxShadow: "1px 2px 3px 2px black",
-                backgroundColor: "#F3F3FC",
-              }}
-            >
-              Member Registration Form
-            </Button>
-          }
-        >
-          <Modal.Header>New Member Registration Form</Modal.Header>
-          <Modal.Content>
-            {/* 
-            NEW FORM HERE
-             */}
-            {/* 
-            <Form className="main-form" style={{ marginTop: "3%" }}>
-              {" "}
-              <h1>Registration</h1>
-              <Form.Group widths="equal">
-                <Form.Field width={3}>
-                  <label>First name</label>
-                  <Input
-                    fluid
-                    placeholder="First name"
-                    onChange={(e) => {
-                      setCustomerFirst(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-                <Form.Field width={3}>
-                  <label>Middle name</label>
-                  <Input
-                    fluid
-                    placeholder="Middle name"
-                    onChange={(e) => {
-                      setCustomerMiddle(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-                <Form.Field width={3}>
-                  <label>Last name</label>
-                  <Input
-                    fluid
-                    placeholder="Last name"
-                    onChange={(e) => {
-                      setCustomerLast(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-              </Form.Group>
-              <Form.Group widths="equal">
-                <Form.Field width={2}>
-                  <label>Email</label>
-                  <Input
-                    fluid
-                    placeholder="Email"
-                    onChange={(e) => {
-                      setCustomerEmail(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-                <Form.Field width={2}>
-                  <label>Address</label>
-                  <Input
-                    fluid
-                    placeholder="Address"
-                    onChange={(e) => {
-                      setCustomerAddress(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-              </Form.Group>
-              <Form.Group widths="equal">
-                <Form.Field width={4}>
-                  <label>Phone</label>
-                  <Input
-                    fluid
-                    placeholder="Phone"
-                    onChange={(e) => {
-                      setCustomerPhone(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-                <Form.Field width={2}>
-                  <label>Contact</label>
-                  <Input
-                    fluid
-                    placeholder="Phone, Email, Both"
-                    onChange={(e) => {
-                      setCommunication(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-                <Form.Field width={3}>
-                  <label>Preferred Store</label>
-                  <Input
-                    fluid
-                    placeholder="Apopka"
-                    onChange={(e) => {
-                      setPreferredStore(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-                {/* <Form.Field width={2}>
-            <label>Card</label>
-            <Input
-              fluid
-              placeholder="Yes or No"
-              onChange={(e) => {
-                setCard(e.target.value);
-              }}
-            />
-          </Form.Field> */}
-            {/* <Form.Field width={3}>
-            <label>Member Number</label>
-            <Input
-              fluid
-              placeholder="123"
-              onChange={(e) => {
-                setMemberNumber(e.target.value);
-              }}
-            />
-          </Form.Field> */}
-            {/* <Form.Field width={4}>
-                  <label>Place of Birth</label>
-                  <Input
-                    fluid
-                    placeholder="Orlando, FL USA"
-                    onChange={(e) => {
-                      setPlaceBorn(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-              </Form.Group>
-              <Form.Group widths="equal">
-                <Form.Field width={3}>
-                  <label>D.O.B.</label>
-                  <Input
-                    fluid
-                    placeholder="July, 4th 1776 "
-                    onChange={(e) => {
-                      setDob(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-                <Form.Field width={3}>
-                  <label>SSN</label>
-                  <Input
-                    fluid
-                    type="password"
-                    placeholder=" Optional ***-**-****"
-                    onChange={(e) => {
-                      setSsn(e.target.value);
-                    }}
-                  />
-                </Form.Field>
-                <Form.Field width={4}>
-                  <label>Ethnicity</label>
-                  <Input
-                    fluid
-                    placeholder="Japanese American, Cuban American, European" */}
-            {/* onChange={(e) => { */}
-            {/* //       setEthnicity(e.target.value);
-                //     }}
-                //   />
-                // </Form.Field>
-                // <Form.Field width={3}>
-                //   <label>Race</label>
-                //   <Input */}
-            {/* //     fluid
-                //     placeholder="Black, Hispanic, White"
-                //     onChange={(e) => { */}
-            {/* //       setRace(e.target.value);
-                //     }}
-                //   />
-                // </Form.Field>
-                // <Form.Field width={3}>
-                //   <label>Associate Name *</label>
-                //   <Input */}
-            {/* //     fluid
-                //     name="clerk"
-                    // value={store}
-                    // onChange={(e) => { */}
-            {/* //   setClerk(e.target.value);
-                    // }}
-              //     />
-              //   </Form.Field>
-              //   <Form.Field width={3}>
-              //     <label>Store *</label>
-              //     <Input */}
-            {/* //       fluid
-              //       name="store"
-              //       value={store}
-              //       onChange={(e) => { */}
-            {/* //         setClerk(e.target.value);
-              //       }}
-              //     />
-              //   </Form.Field>
-              // </Form.Group>
-              // <p>
-              //   * If you are not sure what member number to enter, leave blank
-              //   and edit the customer number later from the profile page.
-              // </p> */}
-            {/* <Form.Group>
-          <Form.Field width={4}>
-            <label>Clerk</label>
-            <Input
-              fluid
-              // Value={managerDetails.first_name}
-              placeholder={
-                managerDetails.first_name + " " + managerDetails.last_name
-              }
-              onChange={(e) => {
-                setClerk(e.target.value);
-              }}
-            />
-          </Form.Field>
-        </Form.Group> */}
-            {/* <Button type="reset" onClick={submitNewCustomer}>
-                Register Executive
-              </Button>
-            </Form> */}
-            {/* 
-            OLD FORM BELOW
-            */}
-            {/* content below */}
-            <form
-              className="register-modal"
-              ref={form}
-              onSubmit={sendEmail}
-              style={{ marginLeft: "10%", marginRigth: "10%", width: "1500px" }}
-            >
-              {" "}
-              {/* <h2>Sign Up Form</h2> */}
-              <input
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 2px 3px 2px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                required
-                type="text"
-                placeholder=" * First name"
-                name="user_name"
-                onChange={(e) => {
-                  setCustomerFirst(e.target.value);
-                }}
-              />
-              <input
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                required
-                type="text"
-                placeholder=" * Middle name"
-                name="user_middle"
-                onChange={(e) => {
-                  setCustomerMiddle(e.target.value);
-                }}
-              />
-              <input
-                required
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                placeholder=" * Last name"
-                type="text"
-                name="user_last"
-                onChange={(e) => {
-                  setCustomerLast(e.target.value);
-                }}
-              />
-              <input
-                required
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                placeholder=" * Email"
-                type="email"
-                name="user_email"
-                onChange={(e) => {
-                  setCustomerEmail(e.target.value);
-                }}
-              />
-              <br></br>
-              <input
-                required
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="text"
-                placeholder=" * Phone Number"
-                name="user_phone"
-                onChange={(e) => {
-                  setCustomerPhone(e.target.value);
-                }}
-              />
-              <input
-                required
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="text"
-                placeholder=" * Address"
-                name="user_address"
-                onChange={(e) => {
-                  setCustomerAddress(e.target.value);
-                }}
-              />
-              <select
-                onChange={(e) => {
-                  setCommunication(e.target.value);
-                }}
-                style={{
-                  height: "40px",
-                  width: "350px",
-                  backgroundColor: "lightGrey",
-                  borderRadius: "5px",
-                  border: "none",
-                  marginRight: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                }}
-              >
-                <option>Communication Style</option>
-                <option value="Phone only">Phone Only</option>
-                <option value="Email Only">Email Only</option>
-                <option value="Both">Both</option>
-              </select>
-              {/* <input
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="text"
-                placeholder="Phone, Email, Both"
-                name="user_contact"
-                onChange={(e) => {
-                  setCommunication(e.target.value);
-                }}
-              /> */}
-              {/* <input
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="text"
-                placeholder="Preferred Store: Apopka"
-                name="user_store"
-                onChange={(e) => {
-                  setPreferredStore(e.target.value);
-                }}
-              /> */}
-              <select
-                onChange={(e) => {
-                  setPreferredStore(e.target.value);
-                }}
-                style={{
-                  height: "40px",
-                  width: "350px",
-                  backgroundColor: "lightGrey",
-                  borderRadius: "5px",
-                  border: "none",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                }}
-              >
-                <option>Preferred Store</option>
-                <option value="Apopka">Apopka</option>
-                <option value="Casselberry">Casselberry</option>
-                <option value="Clearwater">Clearwater</option>
-                <option value="Fort Lauderdale">Fort Lauderdale</option>
-                <option value="Fort Myers">Fort Myers</option>
-                <option value="Lakeland">Lakeland</option>
-                <option value="Sarasota">Sarasota</option>
-                <option value="Tampa">Tampa</option>
-                <option value="West Palm Beach">Clearwater</option>
-              </select>
-              <br></br>
-              <input
-                className="placeBorn"
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="text"
-                placeholder="Place of Birth: Orlando, Florida USA"
-                name="user_birthPlace"
-                onChange={(e) => {
-                  setPlaceBorn(e.target.value);
-                }}
-              />
-              <input
-                className="dob"
-                required
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="text"
-                placeholder=" * D.O.B. July 4, 1977"
-                name="user_birth"
-                onChange={(e) => {
-                  setDob(e.target.value);
-                }}
-              />
-              <input
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="text"
-                placeholder="SSN: Optional"
-                name="user_ssn"
-                onChange={(e) => {
-                  setSsn(e.target.value);
-                }}
-              />
-              <input
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="text"
-                placeholder="Ethnicity: Japanese American, African American, European"
-                name="user_ethnicity"
-                onChange={(e) => {
-                  setEthnicity(e.target.value);
-                }}
-              />
-              <br></br>
-              <input
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="text"
-                placeholder="Race: Black, Hispanic, White"
-                name="user_race"
-                onChange={(e) => {
-                  setRace(e.target.value);
-                }}
-              />
-              <input
-                required
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                name="clerk"
-                // value={clerk}
-                placeholder=" * Associate Name"
-              />
-              <input
-                style={{
-                  color: "black",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px #888888",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                name="store"
-                value={store}
-                onChange={(e) => {
-                  setClerk(e.target.value);
-                }}
-              />
-              <input
-                style={{
-                  color: "black",
-                  backgroundColor: "lightgreen",
-                  border: "1px solid",
-                  borderRadius: "5px",
-                  padding: "10px",
-                  boxShadow: "1px 5px 3px 5px darkgreen",
-                  marginBottom: "30px",
-                  marginRight: "10px",
-                  width: "350px",
-                }}
-                type="submit"
-                value="Register Customer"
-                onClick={submitNewCustomer}
-              />
-              <p>* required fields are labeled with a Star - * </p>
-              <p>* Verify all information is correct. </p>
-              <p>* Associate name required to receive credit for sign up. </p>
-              {/* <p>* Customer Demographics are not required fields. </p> */}
-            </form>
-          </Modal.Content>
-          <Modal.Actions>
-            {/* <Button color="black" onClick={() => setOpen2(false)}>
-            Close
-          </Button> */}
-            <p className="modal-actions">
-              New customers will appear the next time you sign in.
-            </p>
-            <Button
-              className="modal-actions"
-              content="Exit"
-              labelPosition="right"
-              icon="checkmark"
-              onClick={() => setOpen2(false)}
-              positive
-            />
-          </Modal.Actions>
-        </Modal>
-        {/* END REGISTRATION */}
-
-        {/* START RENEW SUBSCRIPTION BUTTON */}
-
-        <Modal
-          className="renew-modal"
-          style={{ width: "100%", height: "80%" }}
-          onClose={() => setOpen3(false)}
-          onOpen={() => setOpen3(true)}
-          open={open3}
-          trigger={
-            <Button
-              className="modal-button"
-              style={{
-                marginLeft: "25%",
-                height: "100px",
-                width: "200px",
-                marginTop: "50px",
-                marginBottom: "50px",
-                backgroundColor: "#F3F3FC",
-                boxShadow: "1px 2px 3px 2px black",
-              }}
-            >
-              Renew Membership
-            </Button>
-          }
-        >
-          <Modal.Header>Renew Membership</Modal.Header>
-          <Modal.Content>
-            <h1 style={{ marginLeft: "10%" }}>Search For Customer to Renew</h1>
-            <Input
-              type="text"
-              placeholder="Search First or Last Name"
-              style={{
-                width: "250px",
-                height: "40px",
-                marginLeft: "10%",
-              }}
-              onChange={(event) => {
-                setSearchTerm1(event.target.value);
-              }}
-            ></Input>
-            <Card
-              style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}
-            >
-              <Card.Content
-                style={{
-                  overflowY: "scroll",
-                  height: "200px",
-                  marginBottom: "5%",
-                }}
-              >
-                <Table celled striped color="red">
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell>Details</Table.HeaderCell>
-                      <Table.HeaderCell>First Name</Table.HeaderCell>
-                      <Table.HeaderCell>Last Name</Table.HeaderCell>
-                      {/* <Table.HeaderCell>Phone</Table.HeaderCell> */}
-                      {/* <Table.HeaderCell>Email</Table.HeaderCell> */}
-                      {/* <Table.HeaderCell>Address</Table.HeaderCell> */}
-                      <Table.HeaderCell>Date Joined</Table.HeaderCell>
-                      <Table.HeaderCell>Date Expiring</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    {Object.keys(memberList)
-                      .filter((member) => {
-                        if (searchTerm1 == "" || searchTerm1 == null) {
-                          return "";
-                        } else if (
-                          memberList[member].first_name
-                            .toLowerCase()
-                            .includes(searchTerm1.toLowerCase()) ||
-                          memberList[member].last_name
-                            .toLowerCase()
-                            .includes(searchTerm1.toLowerCase())
-                        ) {
-                          return member;
-                        }
-                      })
-                      .map((member, i) => {
-                        let joindate1 = new Date(memberList[member].dateJoined)
-                          .toUTCString()
-                          .split(" ")
-                          .slice(0, 4)
-                          .join(" ");
-                        let expiring = new Date(memberList[member].expiring)
-                          .toUTCString()
-                          .split(" ")
-                          .slice(0, 4)
-                          .join(" ");
-                        return (
-                          <Table.Row
-                            style={{ overflowY: "scroll", width: "100%" }}
-                            key={member.id}
-                          >
-                            <Table.Cell>
-                              {" "}
-                              <Modal
-                                className="members-info-modal"
-                                onClose={() => setOpen4(false)}
-                                onOpen={() => setOpen4(true)}
-                                open={open4[member]}
-                                style={{
-                                  marginLeft: "25%",
-                                  height: "500px",
-                                  marginTop: "10%",
-                                }}
-                                trigger={
-                                  <Button
-                                    color="gray"
-                                    content="View"
-                                    style={{
-                                      float: "center",
-                                      backgroundColor: "#F3F3FC",
-                                      color: "black",
-                                      boxShadow: "1px 2px 1px 2px black",
-                                    }}
-                                  />
-                                }
-                              >
-                                <Modal.Header>
-                                  Member Number: {memberList[member].number}
-                                </Modal.Header>
-                                <Modal.Content image>
-                                  <Modal.Description>
-                                    <Header>
-                                      {memberList[member].first_name}{" "}
-                                      {memberList[member].last_name}
-                                    </Header>
-                                    <p>{memberList[member].phone}</p>
-                                    <p>{memberList[member].email}</p>
-                                    <p>{memberList[member].address}</p>
-                                    <p>Date Joined: {joindate1}</p>
-                                    <p>Date Expiring: {expiring}</p>
-                                  </Modal.Description>
-                                </Modal.Content>
-
-                                {/* <Modal.Actions>
-                                <Button
-                                  color="yellow"
-                                  style={{ float: "left" }}
-                                  // onClick={() => setOpen(false)}
-                                >
-                                  Renew
-                                </Button>
-
-                                <Button
-                                  content="Done"
-                                  labelPosition="right"
-                                  icon="checkmark"
-                                  onClick={() => setOpen4(false)}
-                                  positive
-                                />
-                              </Modal.Actions> */}
-                                <Modal.Header>
-                                  Renew Member Subscription
-                                </Modal.Header>
-                                <Modal.Content
-                                  style={{
-                                    marginBottom: "30px",
-                                  }}
-                                >
-                                  <Modal.Description>
-                                    <h4>Associate Name *</h4>
-
-                                    <form
-                                      ref={form}
-                                      onSubmit={sendRenewEmail}
-                                      style={{
-                                        marginRigth: "10%",
-                                        width: "1500px",
-                                      }}
-                                    >
-                                      <input
-                                        required
-                                        name="clerkRenew"
-                                        onChange={(e) => {
-                                          setClerkRenew(e.target.value);
-                                        }}
-                                        placeholder="First and Last Name"
-                                        style={{
-                                          color: "black",
-                                          border: "1px solid",
-                                          borderRadius: "5px",
-                                          padding: "10px",
-                                          boxShadow: "1px 2px 3px 2px black",
-                                          marginBottom: "30px",
-                                          marginRight: "10px",
-                                          width: "200px",
-                                        }}
-                                      ></input>
-                                      <p>* Name REQUIRED for renewal credit.</p>
-                                      {/* <p>
-                                        * Do not change input Values below. *
-                                      </p> */}
-                                      <input
-                                        name="user_name"
-                                        value={memberList[member].first_name}
-                                        style={{
-                                          color: "black",
-                                          border: "1px solid  #BF3312",
-                                          borderRadius: "5px",
-                                          padding: "10px",
-                                          boxShadow: "1px 5px 3px 5px #BF3312",
-                                          marginBottom: "30px",
-                                          marginRight: "10px",
-                                          width: "200px",
-                                          display: "none",
-                                        }}
-                                      ></input>
-                                      <input
-                                        name="user_middle"
-                                        value={memberList[member].middle_name}
-                                        style={{
-                                          color: "black",
-                                          border: "1px solid  #BF3312",
-                                          borderRadius: "5px",
-                                          padding: "10px",
-                                          boxShadow: "1px 5px 3px 5px #BF3312",
-                                          marginBottom: "30px",
-                                          marginRight: "10px",
-                                          width: "200px",
-                                          display: "none",
-                                        }}
-                                      ></input>
-                                      <br></br>
-                                      <input
-                                        name="user_last"
-                                        value={memberList[member].last_name}
-                                        style={{
-                                          color: "black",
-                                          border: "1px solid  #BF3312",
-                                          borderRadius: "5px",
-                                          padding: "10px",
-                                          boxShadow: "1px 5px 3px 5px #BF3312",
-                                          marginBottom: "30px",
-                                          marginRight: "10px",
-                                          width: "200px",
-                                          display: "none",
-                                        }}
-                                      ></input>
-                                      <input
-                                        name="user_email"
-                                        value={memberList[member].email}
-                                        style={{
-                                          color: "black",
-                                          border: "1px solid  #BF3312",
-                                          borderRadius: "5px",
-                                          padding: "10px",
-                                          boxShadow: "1px 5px 3px 5px #BF3312",
-                                          marginBottom: "30px",
-                                          marginRight: "10px",
-                                          width: "200px",
-                                          display: "none",
-                                        }}
-                                      ></input>
-                                      <br></br>
-                                      <input
-                                        name="user_phone"
-                                        value={memberList[member].phone}
-                                        style={{
-                                          color: "black",
-                                          border: "1px solid  #BF3312",
-                                          borderRadius: "5px",
-                                          padding: "10px",
-                                          boxShadow: "1px 5px 3px 5px #BF3312",
-                                          marginBottom: "30px",
-                                          marginRight: "10px",
-                                          width: "200px",
-                                          display: "none",
-                                        }}
-                                      ></input>
-                                      <input
-                                        name="store"
-                                        value={store}
-                                        style={{
-                                          color: "black",
-                                          border: "1px solid  #BF3312",
-                                          borderRadius: "5px",
-                                          padding: "10px",
-                                          boxShadow: "1px 2px 3px 2px #BF3312",
-                                          marginBottom: "30px",
-                                          marginRight: "10px",
-                                          width: "200px",
-                                          display: "none",
-                                        }}
-                                      ></input>
-                                      <br></br>
-                                      <Popup
-                                        content="This Action Can NOT be undone."
-                                        trigger={
-                                          <input
-                                            style={{
-                                              color: "black",
-                                              backgroundColor: "#F3F3FC",
-                                              border: "1px solid black",
-                                              borderRadius: "5px",
-                                              padding: "10px",
-
-                                              marginBottom: "30px",
-                                              marginRight: "10px",
-                                              boxShadow:
-                                                "1px 2px 3px 2px black",
-                                              width: "230px",
-                                            }}
-                                            type="submit"
-                                            value="Renew Customer Membership"
-                                            onClick={() => {
-                                              ChangeRenewal(
-                                                memberList[member].id
-                                              );
-                                            }}
-                                          />
-                                        }
-                                      ></Popup>
-                                    </form>
-                                  </Modal.Description>
-                                  <Modal.Actions style={{ marginTop: "30px" }}>
-                                    {/* <Button
-                                    color="yellow"
-                                    type="submit"
-                                    style={{ float: "left" }}
-                                    // onClick={submitNewCustomer(memberList.id)}
-                                    onClick={() => {
-                                      ChangeRenewal(memberList[member].id);
-                                    }}
-                                    // onClick={() => setOpen(false)}
-                                  >
-                                    Renew
-                                  </Button> */}
-
-                                    {/* <Button
-                                    Float="right"
-                                    content="Cancel"
-                                    labelPosition="right"
-                                    icon="cancel"
-                                    onClick={() => setOpen4(false)}
-                                    negative
-                                  /> */}
-                                    <h1>Click outside of the box to close.</h1>
-                                  </Modal.Actions>
-                                </Modal.Content>
-                              </Modal>
-                            </Table.Cell>
-                            <Table.Cell>
-                              {memberList[member].first_name}
-                            </Table.Cell>
-
-                            <Table.Cell>
-                              {" "}
-                              {memberList[member].last_name}
-                            </Table.Cell>
-
-                            <Table.Cell>{joindate1}</Table.Cell>
-                            <Table.Cell>{expiring}</Table.Cell>
-                          </Table.Row>
-                        );
-                      })}
-                  </Table.Body>
-                </Table>
-              </Card.Content>
-            </Card>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button color="black" onClick={() => setOpen3(false)}>
-              Cancel
-            </Button>
-            <Button
-              content="Done"
-              labelPosition="right"
-              icon="checkmark"
-              onClick={() => setOpen3(false)}
-              positive
-            />
-          </Modal.Actions>
-        </Modal>
-      </div>
       {/* START CUSTOMER LOOK UP */}
 
       <h1 style={{ marginLeft: "10%" }}>Customer Look up</h1>
@@ -1405,6 +401,159 @@ function StoreFront(props) {
                                 </Table.Body>
                               </Table>
                             </Card.Content>
+                            <br></br>
+                            <div className="renew-div">
+                              <h1>Renew Membership</h1>
+                              <h4>Associate Name *</h4>
+
+                              <form
+                                ref={form}
+                                onSubmit={sendRenewEmail}
+                                style={{
+                                  marginRigth: "10%",
+                                  width: "1500px",
+                                }}
+                              >
+                                <input
+                                  required
+                                  name="clerkRenew"
+                                  onChange={(e) => {
+                                    setClerkRenew(e.target.value);
+                                  }}
+                                  placeholder="First and Last Name"
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 2px 3px 2px black",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                  }}
+                                ></input>
+                                <p>* Name REQUIRED for renewal credit.</p>
+                                {/* VALUES BELOW ARE HIDEN SO THAT USERS DO NOT CHANGE THEM. THESE VALUES ARE 
+                             SENT USING EMAIL.JS TO NOTIFY OFFICE THAT MEMBERSHIP HAS BEEN REMREWED.  */}
+                                <input
+                                  name="user_name"
+                                  value={memberList[member].first_name}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <input
+                                  name="user_middle"
+                                  value={memberList[member].middle_name}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <br></br>
+                                <input
+                                  name="user_last"
+                                  value={memberList[member].last_name}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <input
+                                  name="user_email"
+                                  value={memberList[member].email}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <br></br>
+                                <input
+                                  name="user_phone"
+                                  value={memberList[member].phone}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <input
+                                  name="store"
+                                  value={store}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 2px 3px 2px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <br></br>
+                                <Popup
+                                  content="This Action Can NOT be undone."
+                                  trigger={
+                                    <input
+                                      style={{
+                                        color: "black",
+                                        backgroundColor: "#F3F3FC",
+                                        border: "1px solid black",
+                                        borderRadius: "5px",
+                                        padding: "10px",
+
+                                        marginBottom: "30px",
+                                        marginRight: "10px",
+                                        boxShadow: "1px 2px 3px 2px black",
+                                        width: "230px",
+                                      }}
+                                      type="submit"
+                                      value="Renew Customer Membership"
+                                      onClick={() => {
+                                        ChangeRenewal(memberList[member].id);
+                                      }}
+                                    />
+                                  }
+                                ></Popup>
+                              </form>
+                            </div>
                           </Modal.Content>
 
                           <Modal.Actions>
@@ -1441,6 +590,608 @@ function StoreFront(props) {
         </Card.Content>
       </Card>
       <br></br>
+      {/* RENEW CUSTOMER  OLD MODAL*/}
+      {/* <h1 style={{ marginLeft: "10%" }}>Renew Customer</h1>
+      <Input
+        type="text"
+        placeholder="Search First or Last Name"
+        style={{
+          width: "250px",
+          height: "40px",
+          marginLeft: "10%",
+          boxShadow: "1px 2px 3px 2px black",
+          borderRadius: "5px",
+        }}
+        onChange={(event) => {
+          setSearchTerm1(event.target.value);
+        }}
+      ></Input>
+      <Card style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
+        <Card.Content
+          style={{
+            overflowY: "scroll",
+            height: "200px",
+            marginBottom: "5%",
+          }}
+        >
+          <Table celled striped color="red">
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Details</Table.HeaderCell>
+                <Table.HeaderCell>First Name</Table.HeaderCell>
+                <Table.HeaderCell>Last Name</Table.HeaderCell>
+                <Table.HeaderCell>Date Joined</Table.HeaderCell>
+                <Table.HeaderCell>Date Expiring</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {Object.keys(memberList)
+                .filter((member) => {
+                  if (searchTerm1 == "" || searchTerm1 == null) {
+                    return "";
+                  } else if (
+                    memberList[member].first_name
+                      .toLowerCase()
+                      .includes(searchTerm1.toLowerCase()) ||
+                    memberList[member].last_name
+                      .toLowerCase()
+                      .includes(searchTerm1.toLowerCase())
+                  ) {
+                    return member;
+                  }
+                })
+                .map((member, i) => {
+                  let joindate1 = new Date(memberList[member].dateJoined)
+                    .toUTCString()
+                    .split(" ")
+                    .slice(0, 4)
+                    .join(" ");
+                  let expiring = new Date(memberList[member].expiring)
+                    .toUTCString()
+                    .split(" ")
+                    .slice(0, 4)
+                    .join(" ");
+                  return (
+                    <Table.Row
+                      style={{ overflowY: "scroll", width: "100%" }}
+                      key={member.id}
+                    >
+                      <Table.Cell>
+                        {" "}
+                        <Modal
+                          className="members-info-modal"
+                          onClose={() => setOpen4(false)}
+                          onOpen={() => setOpen4(true)}
+                          open={open4[member]}
+                          style={{
+                            marginLeft: "25%",
+                            height: "500px",
+                            marginTop: "10%",
+                          }}
+                          trigger={
+                            <Button
+                              color="gray"
+                              content="View"
+                              style={{
+                                float: "center",
+                                backgroundColor: "#F3F3FC",
+                                color: "black",
+                                boxShadow: "1px 2px 1px 2px black",
+                              }}
+                            />
+                          }
+                        >
+                          <Modal.Header>
+                            Member Number: {memberList[member].number}
+                          </Modal.Header>
+                          <Modal.Content image>
+                            <Modal.Description>
+                              <Header>
+                                {memberList[member].first_name}{" "}
+                                {memberList[member].last_name}
+                              </Header>
+                              <p>{memberList[member].phone}</p>
+                              <p>{memberList[member].email}</p>
+                              <p>{memberList[member].address}</p>
+                              <p>Date Joined: {joindate1}</p>
+                              <p>Date Expiring: {expiring}</p>
+                            </Modal.Description>
+                          </Modal.Content>
+
+                       
+                          <Modal.Header>Renew Member Subscription</Modal.Header>
+                          <Modal.Content
+                            style={{
+                              marginBottom: "30px",
+                            }}
+                          >
+                            <Modal.Description>
+                              <h4>Associate Name *</h4>
+
+                              <form
+                                ref={form}
+                                onSubmit={sendRenewEmail}
+                                style={{
+                                  marginRigth: "10%",
+                                  width: "1500px",
+                                }}
+                              >
+                                <input
+                                  required
+                                  name="clerkRenew"
+                                  onChange={(e) => {
+                                    setClerkRenew(e.target.value);
+                                  }}
+                                  placeholder="First and Last Name"
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 2px 3px 2px black",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                  }}
+                                ></input>
+                                <p>* Name REQUIRED for renewal credit.</p>
+                             
+                                <input
+                                  name="user_name"
+                                  value={memberList[member].first_name}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <input
+                                  name="user_middle"
+                                  value={memberList[member].middle_name}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <br></br>
+                                <input
+                                  name="user_last"
+                                  value={memberList[member].last_name}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <input
+                                  name="user_email"
+                                  value={memberList[member].email}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <br></br>
+                                <input
+                                  name="user_phone"
+                                  value={memberList[member].phone}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 5px 3px 5px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <input
+                                  name="store"
+                                  value={store}
+                                  style={{
+                                    color: "black",
+                                    border: "1px solid  #BF3312",
+                                    borderRadius: "5px",
+                                    padding: "10px",
+                                    boxShadow: "1px 2px 3px 2px #BF3312",
+                                    marginBottom: "30px",
+                                    marginRight: "10px",
+                                    width: "200px",
+                                    display: "none",
+                                  }}
+                                ></input>
+                                <br></br>
+                                <Popup
+                                  content="This Action Can NOT be undone."
+                                  trigger={
+                                    <input
+                                      style={{
+                                        color: "black",
+                                        backgroundColor: "#F3F3FC",
+                                        border: "1px solid black",
+                                        borderRadius: "5px",
+                                        padding: "10px",
+
+                                        marginBottom: "30px",
+                                        marginRight: "10px",
+                                        boxShadow: "1px 2px 3px 2px black",
+                                        width: "230px",
+                                      }}
+                                      type="submit"
+                                      value="Renew Customer Membership"
+                                      onClick={() => {
+                                        ChangeRenewal(memberList[member].id);
+                                      }}
+                                    />
+                                  }
+                                ></Popup>
+                              </form>
+                            </Modal.Description>
+                            <Modal.Actions style={{ marginTop: "30px" }}>
+                            
+                              <h1>Click outside of the box to close.</h1>
+                            </Modal.Actions>
+                          </Modal.Content>
+                        </Modal>
+                      </Table.Cell>
+                      <Table.Cell>{memberList[member].first_name}</Table.Cell>
+
+                      <Table.Cell> {memberList[member].last_name}</Table.Cell>
+
+                      <Table.Cell>{joindate1}</Table.Cell>
+                      <Table.Cell>{expiring}</Table.Cell>
+                    </Table.Row>
+                  );
+                })}
+            </Table.Body>
+          </Table>
+        </Card.Content>
+      </Card> */}
+      <br></br>
+      {/* REGISTER NEW CUSTOMER */}
+      <form
+        className="register-modal"
+        ref={form}
+        onSubmit={sendEmail}
+        // style={{ marginLeft: "10%", marginRigth: "10%", width: "1500px" }}
+      >
+        {" "}
+        <h2>Sign Up Form</h2>
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 2px 3px 2px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          required
+          type="text"
+          placeholder=" * First name"
+          name="user_name"
+          onChange={(e) => {
+            setCustomerFirst(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          required
+          type="text"
+          placeholder=" * Middle name"
+          name="user_middle"
+          onChange={(e) => {
+            setCustomerMiddle(e.target.value);
+          }}
+        />
+        <input
+          required
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          placeholder=" * Last name"
+          type="text"
+          name="user_last"
+          onChange={(e) => {
+            setCustomerLast(e.target.value);
+          }}
+        />
+        <input
+          required
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          placeholder=" * Email"
+          type="email"
+          name="user_email"
+          onChange={(e) => {
+            setCustomerEmail(e.target.value);
+          }}
+        />
+        <br></br>
+        <input
+          required
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder=" * Phone Number"
+          name="user_phone"
+          onChange={(e) => {
+            setCustomerPhone(e.target.value);
+          }}
+        />
+        <input
+          required
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder=" * Address"
+          name="user_address"
+          onChange={(e) => {
+            setCustomerAddress(e.target.value);
+          }}
+        />
+        <select
+          onChange={(e) => {
+            setCommunication(e.target.value);
+          }}
+          style={{
+            height: "40px",
+            width: "350px",
+            backgroundColor: "lightGrey",
+            borderRadius: "5px",
+            border: "none",
+            marginRight: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+          }}
+        >
+          <option>Communication Style</option>
+          <option value="Phone only">Phone Only</option>
+          <option value="Email Only">Email Only</option>
+          <option value="Both">Both</option>
+        </select>
+        <select
+          onChange={(e) => {
+            setPreferredStore(e.target.value);
+          }}
+          style={{
+            height: "40px",
+            width: "350px",
+            backgroundColor: "lightGrey",
+            borderRadius: "5px",
+            border: "none",
+            boxShadow: "1px 5px 3px 5px #888888",
+          }}
+        >
+          <option>Preferred Store</option>
+          <option value="Apopka">Apopka</option>
+          <option value="Casselberry">Casselberry</option>
+          <option value="Clearwater">Clearwater</option>
+          <option value="Fort Lauderdale">Fort Lauderdale</option>
+          <option value="Fort Myers">Fort Myers</option>
+          <option value="Lakeland">Lakeland</option>
+          <option value="Sarasota">Sarasota</option>
+          <option value="Tampa">Tampa</option>
+          <option value="West Palm Beach">West Palm Beach</option>
+        </select>
+        <br></br>
+        <input
+          className="placeBorn"
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Place of Birth: Orlando, Florida USA"
+          name="user_birthPlace"
+          onChange={(e) => {
+            setPlaceBorn(e.target.value);
+          }}
+        />
+        <input
+          className="dob"
+          required
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder=" * D.O.B. July 4, 1977"
+          name="user_birth"
+          onChange={(e) => {
+            setDob(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="SSN: Optional"
+          name="user_ssn"
+          onChange={(e) => {
+            setSsn(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Ethnicity: Japanese American, African American, European"
+          name="user_ethnicity"
+          onChange={(e) => {
+            setEthnicity(e.target.value);
+          }}
+        />
+        <br></br>
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="text"
+          placeholder="Race: Black, Hispanic, White"
+          name="user_race"
+          onChange={(e) => {
+            setRace(e.target.value);
+          }}
+        />
+        <input
+          required
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          name="clerk"
+          // value={clerk}
+          placeholder=" * Associate Name"
+        />
+        <input
+          style={{
+            color: "black",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px #888888",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          name="store"
+          value={store}
+          onChange={(e) => {
+            setClerk(e.target.value);
+          }}
+        />
+        <input
+          style={{
+            color: "black",
+            backgroundColor: "lightgreen",
+            border: "1px solid",
+            borderRadius: "5px",
+            padding: "10px",
+            boxShadow: "1px 5px 3px 5px darkgreen",
+            marginBottom: "30px",
+            marginRight: "10px",
+            width: "350px",
+          }}
+          type="submit"
+          value="Register Customer"
+          onClick={submitNewCustomer}
+        />
+        <p>* required fields are labeled with a Star - * </p>
+        <p>* Verify all information is correct. </p>
+        <p>* Associate name required to receive credit for sign up. </p>
+      </form>
+      <footer></footer>
     </div>
   );
 }
