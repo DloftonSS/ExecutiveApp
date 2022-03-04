@@ -44,6 +44,12 @@ function OldestRequests() {
 
           <Table.Body>
             {Object.keys(requestList).map((request, i) => {
+              let created = new Date(requestList[request].date_created)
+
+                .toUTCString()
+                .split(" ")
+                .slice(1, 4)
+                .join(" ");
               return (
                 <Table.Row key={request.id}>
                   <Table.Cell>
@@ -59,7 +65,7 @@ function OldestRequests() {
                   <Table.Cell>{requestList[request].item}</Table.Cell>
                   {/* <Table.Cell>{requestList[request].sku}</Table.Cell> */}
                   <Table.Cell>{requestList[request].status}</Table.Cell>
-                  <Table.Cell>{requestList[request].date_created}</Table.Cell>
+                  <Table.Cell>{created}</Table.Cell>
                 </Table.Row>
               );
             })}

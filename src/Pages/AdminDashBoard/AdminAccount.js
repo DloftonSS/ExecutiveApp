@@ -21,60 +21,123 @@ import Axios from "axios";
 // import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import "./AdminAccount.css";
 import Logo from "../images/ExecutiveAccess.png";
+import MembersDashboard from "../MembersDashBoard/MembersDashboard";
+import RequestDashboard from "../RequestsDashBoard/RequestDashboard";
+import AddNewMember from "../AddMember/AddMember";
+import AddAdminDashboard from "../AddAdmin/AddAdminDashboard";
+import CatalogDashboard from "../CatalogDashboard/CatalogDashboard";
+// import AllMembers from "../Allmembers";
 
 // CHANGE DARK MODE
 
 function AdminAccount() {
   //PENDING CARD FUNCTIONS
-  const [memberList, setMemberList] = useState("");
+  const [pendingCardList, setPendingCardList] = useState("");
+  const [contactNeeded, setContactNeeded] = useState("");
+  const [decendingList, setDecendingList] = useState("");
+  const [activeList, setActiveList] = useState("");
+  const [requestList, setRequestList] = useState("");
+  const [expiringMembers, setExpiringMembers] = useState("");
+
+  const [notesList, setNotesList] = useState("");
   const acknowledged = "Yes";
 
   //
   const Responded = (id) => {
-    // Axios.put("https://executive-app.herokuapp.com/adminResponded", {
-    Axios.put("http://localhost:3001/adminResponded", {
+    Axios.put("https://executive-app.herokuapp.com/adminResponded", {
+      // Axios.put("http://localhost:3001/adminResponded", {
       acknowledged: acknowledged,
       id: id,
     }).then(() => {
       // console.log("clicked");
+      // Alert("Initial Contact Changed");
       getPending();
+      GetChat();
+      ActiveOnly();
+      GetAllRequests();
+      getExpiringnumber();
+      NeedContact();
+      GetNotes();
     });
   };
 
   //NEW PENDING CARD MEMBERS
   const getPending = () => {
-    // Axios.get("https://executive-app.herokuapp.com/PendingCardMembers").then(
-    //   (response) => {
-    Axios.get("http://localhost:3001/PendingCardMembers").then((response) => {
-      setMemberList(response.data);
-      // console.log(response.data);
-    });
+    Axios.get("https://executive-app.herokuapp.com/PendingCardMembers").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/PendingCardMembers").then((response) => {
+        setPendingCardList(response.data);
+        // console.log(response.data);
+      }
+    );
+  };
+
+  //GET CUSTOMER WHO NEED TO BE CONTACTED
+  const NeedContact = () => {
+    Axios.get("https://executive-app.herokuapp.com/getNeedContact").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/getNeedContact").then((response) => {
+        setContactNeeded(response.data);
+        // console.log(response.data);
+      }
+    );
+  };
+
+  //GET EXPIRING MEMBERS
+  const getExpiringnumber = () => {
+    Axios.get("https://executive-app.herokuapp.com/expiringMembers").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/expiringMembers").then((response) => {
+        setExpiringMembers(response.data);
+      }
+    );
+  };
+
+  //GET ALL THE NOTES
+  const GetNotes = () => {
+    Axios.get("https://executive-app.herokuapp.com/api/get").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/api/get").then((response) => {
+        setNotesList(response.data);
+        // console.log(response.data);
+      }
+    );
+  };
+  //DELETE NOTE
+  const Deletenote = (id) => {
+    Axios.delete(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
+      () => {
+        // Axios.delete(`http://localhost:3001/deleteNote/${id}`).then(() => {
+        console.log("deleted");
+        GetNotes();
+      }
+    );
   };
 
   //CHAT FUNCTIONS
   const [chatTyped, setChatTyped] = useState("");
   const [chatList, setchatList] = useState("");
+
   const [adminName, setAdminName] = useState("");
 
-  //SUBMIT NOTE
+  //SUBMIT chat
   const submitChat = (e) => {
-    // Axios.post("https://executive-app.herokuapp.com/postChat", {
-    Axios.post("http://localhost:3001/postChat", {
+    Axios.post("https://executive-app.herokuapp.com/postChat", {
+      // Axios.post("http://localhost:3001/postChat", {
       chatTyped: chatTyped,
       adminName: adminName,
     }).then(() => {
-      GetChat();
-      // console.log("successful chat post");
+      alert("sumbited");
       // reloadPage();
     });
   };
 
   const GetChat = () => {
-    // Axios.get("https://executive-app.herokuapp.com/chat").then((response) => {
-    Axios.get("http://localhost:3001/chat").then((response) => {
+    Axios.get("https://executive-app.herokuapp.com/chat").then((response) => {
+      // Axios.get("http://localhost:3001/chat").then((response) => {
       setchatList(response.data);
       // console.log(response.data);
     });
@@ -82,16 +145,102 @@ function AdminAccount() {
 
   //DELETE NOTE
   const DeleteChat = (id) => {
-    // Axios.delete(`https://executive-app.herokuapp.com/deleteChat/${id}`).then(
-    //   () => {
-    Axios.delete(`http://localhost:3001/deleteChat/${id}`).then(() => {
-      console.log("deleted");
-      GetChat();
-    });
+    Axios.delete(`https://executive-app.herokuapp.com/deleteChat/${id}`).then(
+      () => {
+        // Axios.delete(`http://localhost:3001/deleteChat/${id}`).then(() => {
+        console.log("deleted");
+        GetChat();
+      }
+    );
   };
+  //
+  //
+  //
+  //GET ACTIVE ONLY MEMBERS
+  const ActiveOnly = () => {
+    Axios.get("https://executive-app.herokuapp.com/api/activeMembers").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/api/activeMembers").then((response) => {
+        setActiveList(response.data);
+        // console.log(response.data);
+      }
+    );
+  };
+  //GET ALL ACTIVE REQUESTS
+  const GetAllRequests = () => {
+    Axios.get("https://executive-app.herokuapp.com/allRequests").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/allRequests").then((response) => {
+        setRequestList(response.data);
+      }
+    );
+  };
+  //
+  //
+  //
+  // CONTROLLING THE SHOW / HIDE FEATURE OF THE NAV
+  //
+  //
+  const ShowDashboard = () => {
+    document.getElementById("dashboard-content").style.display = "block";
+    document.getElementById("requests-content").style.display = "none";
+    document.getElementById("members-content").style.display = "none";
+    document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("addMember-content").style.display = "none";
+    document.getElementById("addAdmin-content").style.display = "none";
+  };
+  const ShowMembers = () => {
+    document.getElementById("members-content").style.display = "block";
+    document.getElementById("dashboard-content").style.display = "none";
+    document.getElementById("requests-content").style.display = "none";
+    document.getElementById("addMember-content").style.display = "none";
+    document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("addAdmin-content").style.display = "none";
+  };
+  const ShowRequests = () => {
+    document.getElementById("requests-content").style.display = "block";
+    document.getElementById("dashboard-content").style.display = "none";
+    document.getElementById("members-content").style.display = "none";
+    document.getElementById("addMember-content").style.display = "none";
+    document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("addAdmin-content").style.display = "none";
+  };
+  const ShowCatalog = () => {
+    document.getElementById("requests-content").style.display = "none";
+    document.getElementById("dashboard-content").style.display = "none";
+    document.getElementById("members-content").style.display = "none";
+    document.getElementById("addMember-content").style.display = "none";
+    document.getElementById("catalog-content").style.display = "block";
+    document.getElementById("addAdmin-content").style.display = "none";
+  };
+  const AddMember = () => {
+    document.getElementById("requests-content").style.display = "none";
+    document.getElementById("dashboard-content").style.display = "none";
+    document.getElementById("members-content").style.display = "none";
+    document.getElementById("addMember-content").style.display = "block";
+    document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("addAdmin-content").style.display = "none";
+  };
+  const AddAdmin = () => {
+    document.getElementById("requests-content").style.display = "none";
+    document.getElementById("dashboard-content").style.display = "none";
+    document.getElementById("members-content").style.display = "none";
+    document.getElementById("addMember-content").style.display = "none";
+    document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("addAdmin-content").style.display = "block";
+  };
+
+  //
+  //
+  //
   useEffect(() => {
     getPending();
     GetChat();
+    ActiveOnly();
+    GetAllRequests();
+    getExpiringnumber();
+    NeedContact();
+    GetNotes();
   }, []);
 
   return (
@@ -105,7 +254,7 @@ function AdminAccount() {
             {/* sm=8 */}
             <Row className="nav-main">
               <Col sm={2} className="hello-name">
-                Hello Derek
+                HELLO
               </Col>
               <Col sm={6} className="nav-search">
                 <input
@@ -116,10 +265,27 @@ function AdminAccount() {
               <Col sm={2} className="nav-notifications">
                 <Row>
                   <Col sm={4}>
-                    <Icon name="bell outline" size="large"></Icon>Alert
+                    <Popup
+                      trigger={
+                        <div>
+                          {" "}
+                          <Icon name="bell outline" size="large"></Icon>Alert
+                        </div>
+                      }
+                      content={
+                        <div>
+                          Welcome to the new Shoot Straight Executive Access
+                          Admin Dashboard!
+                        </div>
+                      }
+                      position="bottom center"
+                      inverted
+                    />
                   </Col>
                   <Col sm={4}>
-                    <Icon name="sign-out" size="large"></Icon>Exit
+                    <a href="/" style={{ color: "white" }}>
+                      <Icon name="sign-out" size="large"></Icon>Exit
+                    </a>
                   </Col>
                 </Row>
                 {/* <p>.nav-notification</p> */}
@@ -135,28 +301,33 @@ function AdminAccount() {
           <Col sm={2} className="side-navigation">
             {/* .side-navigation */}
             <List className="nav-list">
-              <List.Item className="menu-item">
+              <List.Item
+                className="menu-item"
+                id="dashy"
+                onClick={ShowDashboard}
+              >
                 <Icon className="icon" name="home"></Icon>DASHBOARD
               </List.Item>
-              <List.Item className="menu-item">
+              <List.Item className="menu-item" onClick={ShowMembers}>
                 <Icon className="icon" name="users"></Icon>MEMBERS
               </List.Item>
-              <List.Item className="menu-item">
-                <Icon className="icon" name="heart"></Icon>REQUESTS
+              <List.Item className="menu-item" onClick={ShowRequests}>
+                <Icon className="icon" name="heart"></Icon>
+                REQUESTS
               </List.Item>
-              <List.Item className="menu-item">
+              <List.Item className="menu-item" onClick={ShowCatalog}>
                 <Icon className="icon" name="list"></Icon>CATALOG
               </List.Item>
-              <List.Item className="menu-item">
+              <List.Item className="menu-item" onClick={AddMember}>
                 <Icon className="icon" name="user plus"></Icon>ADD MEMBER
               </List.Item>
-              <List.Item className="menu-item">
+              <List.Item className="menu-item" onClick={AddAdmin}>
                 <Icon className="icon" name="user plus"></Icon>ADD ADMIN
               </List.Item>
             </List>
             {/* CHAT BELOW NAVIGATIONS */}
             <h3 className="chat-h3">
-              <h2 className="ra-title">
+              <h2 className="chat-title">
                 <Icon name="chat"></Icon> <span className="span">C</span>hat
               </h2>
             </h3>
@@ -197,7 +368,7 @@ function AdminAccount() {
                         <Feed.User
                           style={{
                             cursor: "default",
-                            color: " rgb(129, 0, 0)",
+                            color: " white",
                             fontSize: "15px",
                           }}
                         >
@@ -220,7 +391,7 @@ function AdminAccount() {
                         {" "}
                         {chatList[keyName].expression}
                       </Feed.Extra>
-                      __________________________{" "}
+                      _______________________{" "}
                       <Icon
                         onClick={() => {
                           DeleteChat(chatList[keyName].id);
@@ -236,13 +407,14 @@ function AdminAccount() {
             </Container>
             <Form>
               {" "}
-              <Input
+              <input
+                style={{ color: "white", backgroundColor: "rgb(60, 60, 60)" }}
                 className="chat-input"
-                placeholder="message "
+                placeholder="message"
                 onChange={(e) => {
                   setChatTyped(e.target.value);
                 }}
-              ></Input>
+              ></input>
               <select
                 onChange={(e) => {
                   setAdminName(e.target.value);
@@ -270,14 +442,98 @@ function AdminAccount() {
                 inverted
                 color="gray"
                 className="chat-send-button"
-                onClick={submitChat}
+                // onClick={submitChat}
+                onClick={() => {
+                  submitChat();
+                }}
               >
                 Send
               </Button>
             </Form>
           </Col>
-          {/* MAIN DASH WITH STATS */}
-          <Col sm={10} className="main-dashboard">
+          {/* ****************************************************************************************************/}
+          {/*  */}
+          {/* 
+          THIS WILL CONSTANTLY CHANGE
+          DEPENDING ON WHAT NAV MENU IS SELECTED.
+          USING ID TAGS TO SHOW / HIDE DIFFERENT SECTIONS */}
+          {/*  */}
+          {/* ****************************************************************************************************/}
+          <Col
+            sm={10}
+            id="members-content"
+            style={{
+              height: "100% !important",
+              color: "black",
+              backgroundColor: "white",
+              boxShadow: "0px 0px 5px 3px rgb(129, 0, 0)",
+            }}
+            className="main-members"
+          >
+            <MembersDashboard />
+            {/* <AllMembers /> */}
+            {/* This is new info will be members page */}
+          </Col>
+          <Col
+            sm={10}
+            id="requests-content"
+            style={{
+              height: "100% !important",
+              color: "black",
+              backgroundColor: "white",
+              boxShadow: "0px 0px 5px 3px rgb(129, 0, 0)",
+            }}
+            className="main-requests"
+          >
+            <RequestDashboard />
+          </Col>
+          <Col
+            sm={10}
+            id="catalog-content"
+            style={{
+              height: "100% !important",
+              color: "black",
+              backgroundColor: "white",
+              boxShadow: "0px 0px 5px 3px rgb(129, 0, 0)",
+            }}
+            className="main-catalog"
+          >
+            <CatalogDashboard />
+          </Col>
+          <Col
+            sm={10}
+            id="addMember-content"
+            style={{
+              height: "100% !important",
+              color: "black",
+              backgroundColor: "white",
+              boxShadow: "0px 0px 5px 3px rgb(129, 0, 0)",
+            }}
+            className="main-addMember"
+          >
+            <AddNewMember />
+          </Col>
+          <Col
+            sm={10}
+            id="addAdmin-content"
+            style={{
+              height: "100% !important",
+              color: "black",
+              backgroundColor: "white",
+              boxShadow: "0px 0px 5px 3px rgb(129, 0, 0)",
+            }}
+            className="main-addAdmin"
+          >
+            <AddAdminDashboard />
+          </Col>
+
+          {/* ****************************************************************************************************/}
+          {/*  */}
+          {/* MAIN DASH WITH STATS
+           */}
+          {/*  */}
+          {/* ****************************************************************************************************/}
+          <Col sm={10} id="dashboard-content" className="main-dashboard">
             {/* master Dash .main-dashboard */}
             <Row>
               <Col sm={2} className="stats-container">
@@ -285,11 +541,11 @@ function AdminAccount() {
                 <Popup
                   trigger={
                     <div className="stats-box">
-                      <h1 className="stat-number">373</h1>
+                      <h1 className="stat-number">{activeList.length}</h1>
                       <p>Members</p>
                     </div>
                   }
-                  content="How many have expired this month"
+                  content="Total number of Active Members"
                   position="bottom center"
                   inverted
                 />
@@ -300,38 +556,56 @@ function AdminAccount() {
                   trigger={
                     <div className="stats-box">
                       {" "}
-                      <h1 className="stat-number">37</h1>
+                      <h1 className="stat-number">{requestList.length}</h1>
                       <p>Requests</p>
                     </div>
                   }
-                  content="This will show active requests"
+                  content="Total number of Active Requests"
                   position="bottom center"
                   inverted
                 />
               </Col>
               <Col sm={2} className="stats-container">
                 {/* .stats-container */}
-                <div className="stats-box">
-                  <h1 className="stat-number">81</h1>
-                  <p>Expiring</p>
-                </div>
+                <Popup
+                  trigger={
+                    <div className="stats-box">
+                      {" "}
+                      <h1 className="stat-number">{expiringMembers.length}</h1>
+                      <p>Expiring</p>
+                    </div>
+                  }
+                  content="Members Expiring in 30 or less"
+                  position="bottom center"
+                  inverted
+                />
               </Col>
               <Col sm={2} className="stats-container">
                 {/* .stats-container */}
                 <Popup
                   trigger={
                     <div className="stats-box">
-                      <h1 className="stat-number">5</h1>
+                      <h1 className="stat-number">{pendingCardList.length}</h1>
                       <p>Pending Card</p>
                     </div>
                   }
                   content={
                     <ul>
-                      <li>Juan</li>
-                      <li>Hank</li>
-                      <li>Diana</li>
-                      <li>Mark</li>
-                      <li>George</li>
+                      <p>Card NOT made.</p>
+                      <p style={{ color: "rgb(129, 0, 0)" }}>
+                        ________________________________
+                      </p>
+                      {Object.keys(pendingCardList).map((pendingCard, i) => {
+                        return (
+                          <ul key={pendingCard.id}>
+                            <li>
+                              {pendingCardList[pendingCard].first_name +
+                                " " +
+                                pendingCardList[pendingCard].last_name}
+                            </li>
+                          </ul>
+                        );
+                      })}
                     </ul>
                   }
                   position="bottom center"
@@ -343,11 +617,29 @@ function AdminAccount() {
                 <Popup
                   trigger={
                     <div className="stats-box">
-                      <h1 className="stat-number">6</h1>
+                      <h1 className="stat-number">{contactNeeded.length}</h1>
                       <p>Contact Req.</p>
                     </div>
                   }
-                  content="I am positioned to the bottom center"
+                  content={
+                    <ul>
+                      <p>Have NOT been contacted</p>
+                      <p style={{ color: "rgb(129, 0, 0)" }}>
+                        ________________________________
+                      </p>
+                      {Object.keys(contactNeeded).map((ContactIsNo, i) => {
+                        return (
+                          <ul key={ContactIsNo.id}>
+                            <li>
+                              {contactNeeded[ContactIsNo].first_name +
+                                " " +
+                                contactNeeded[ContactIsNo].last_name}
+                            </li>
+                          </ul>
+                        );
+                      })}
+                    </ul>
+                  }
                   position="bottom center"
                   inverted
                 />
@@ -372,7 +664,7 @@ function AdminAccount() {
                 <div className="customer-card">
                   Customer Info .customer-card
                 </div> */}{" "}
-                {Object.keys(memberList).map((member, i) => {
+                {Object.keys(pendingCardList).map((member, i) => {
                   return (
                     <Card
                       style={{
@@ -380,47 +672,46 @@ function AdminAccount() {
                         width: "100%",
                         marginTop: "20px",
                         marginBottom: "20px",
-                        backgroundColor: "#121212",
                         borderRadius: "10px",
-                        color: "white",
+                        color: "black",
                         boxShadow: "0px 0px 5px 3px rgb(60, 60, 60)",
                       }}
                     >
                       <Card.Content>
                         <Row>
                           <Col>
-                            <h2 style={{ color: "white" }}>
+                            <h2 style={{ color: "black" }}>
                               <Link
-                                style={{ color: "white" }}
-                                to={`/executiveAccount/${memberList[member].id}`}
+                                style={{ color: "black" }}
+                                to={`/executiveAccount/${pendingCardList[member].id}`}
                               >
                                 {" "}
-                                {memberList[member].first_name +
+                                {pendingCardList[member].first_name +
                                   " " +
-                                  memberList[member].last_name}
+                                  pendingCardList[member].last_name}
                               </Link>
                             </h2>
-                            <Card.Meta style={{ color: "white" }}>
+                            <Card.Meta style={{ color: "black" }}>
                               {" "}
-                              Phone: {memberList[member].phone}
+                              Phone: {pendingCardList[member].phone}
                             </Card.Meta>
-                            <Card.Description style={{ color: "lightgray" }}>
+                            <Card.Description style={{ color: "darkGray" }}>
                               {" "}
-                              Email: {memberList[member].email}
+                              Email: {pendingCardList[member].email}
                             </Card.Description>
-                            <Card.Meta style={{ color: "white" }}>
+                            <Card.Meta style={{ color: "black" }}>
                               {" "}
-                              Card Status: {memberList[member].card}
+                              Card Status: {pendingCardList[member].card}
                             </Card.Meta>
-                            <Card.Description style={{ color: "lightgray" }}>
+                            <Card.Description style={{ color: "darkGray" }}>
                               {" "}
-                              Joined: {memberList[member].dateJoined}
+                              Joined: {pendingCardList[member].dateJoined}
                             </Card.Description>
                           </Col>
                           <Col>
                             <div
                               style={{
-                                backgroundColor: "#121212",
+                                backgroundColor: "white",
                                 color: "rgb(129, 0, 0)",
                                 boxShadow: "0px 0px 5px 3px rgb(60, 60, 60)",
                                 borderRadius: "10px",
@@ -443,12 +734,12 @@ function AdminAccount() {
                               </Card.Header>
                               <Button
                                 style={{ width: "100%", marginTop: "25px" }}
-                                inverted
+                                // inverted
                                 onClick={() => {
-                                  Responded(memberList[member].id);
+                                  Responded(pendingCardList[member].id);
                                 }}
                               >
-                                {memberList[member].acknowledged}
+                                {pendingCardList[member].acknowledged}
                               </Button>
                             </div>
                           </Col>
@@ -466,13 +757,111 @@ function AdminAccount() {
                 <p className="chat-line">
                   _____________________________________________________________
                 </p>
-                <div className="feed-container"></div>
+                <div className="feed-container">
+                  <Container
+                    className="recent-activity-container"
+                    style={{
+                      overflowY: "scroll",
+                      scrollbarWidth: "1px",
+                      width: "100%",
+                      maxHeight: "600px",
+                      display: "flex",
+                      flexDirection: "column-reverse",
+                      marginBottom: "8%",
+                    }}
+                  >
+                    {Object.keys(notesList).map((reActivity, i) => {
+                      let created = new Date(notesList[reActivity].createdAt)
+
+                        .toUTCString()
+                        .split(" ")
+                        .slice(1, 4)
+                        .join(" ");
+                      return (
+                        <Feed.Event>
+                          <Feed.Label>
+                            {/* <Icon name="user circle" /> */}
+                          </Feed.Label>
+
+                          <Feed.Content style={{ color: " rgb(129, 0, 0)" }}>
+                            <Feed.Summary>
+                              <Feed.User
+                                style={{
+                                  cursor: "default",
+                                  color: " black",
+                                  fontSize: "15px",
+                                }}
+                              >
+                                <Icon name="user circle" />{" "}
+                                {notesList[reActivity].adminName}
+                                {notesList[reActivity].noteHeader}
+                              </Feed.User>
+                              <Feed.Date>{created}</Feed.Date>
+                            </Feed.Summary>
+                            <Feed.Meta>
+                              <Feed.User
+                                style={{
+                                  width: "300px",
+                                  color: "black",
+                                }}
+                              >
+                                {notesList[reActivity].memberName} {""}
+                              </Feed.User>
+                            </Feed.Meta>
+                            <Feed.Extra
+                              style={{
+                                width: "300px",
+                                color: "black",
+                              }}
+                            >
+                              {" "}
+                              {notesList[reActivity].note}
+                              {notesList[reActivity].newFirst}
+                              {notesList[reActivity].newMiddle}
+                              {notesList[reActivity].newLast}
+                              {notesList[reActivity].newPhone}
+                              {notesList[reActivity].newEmail}
+                              {notesList[reActivity].newAddress}
+                              {notesList[reActivity].newPassword}
+                              {notesList[reActivity].newCard}
+                              {notesList[reActivity].newStore}
+                              {notesList[reActivity].newCommunication}
+                              {notesList[reActivity].newBorn}
+                              {notesList[reActivity].newDob}
+                              {notesList[reActivity].newSsn}
+                              {notesList[reActivity].newEthnicity}
+                              {notesList[reActivity].newRace}
+                              <p
+                                style={{
+                                  color: "gray",
+                                }}
+                              >
+                                {notesList[reActivity].requestNote}
+                              </p>
+                            </Feed.Extra>
+                            ________________________________________________{" "}
+                            <Icon
+                              onClick={() => {
+                                Deletenote(notesList[reActivity].id);
+                              }}
+                              name="x"
+                              style={{ marginRight: "0px" }}
+                            />{" "}
+                          </Feed.Content>
+                        </Feed.Event>
+                      );
+                    })}
+                  </Container>
+                </div>
               </Col>
             </Row>
             <Row className="below-pending"></Row>
           </Col>
         </Row>
       </Container>
+      <div
+        style={{ width: "100%", height: "1px", backgroundColor: "black" }}
+      ></div>
     </div>
   );
 }

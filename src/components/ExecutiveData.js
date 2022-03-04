@@ -73,6 +73,11 @@ function ExecutiveData(props) {
   const card = "Pending";
   const acknowledged = "No";
 
+  //MEMBER MESSAGES
+  const [memberMessage, setMemberMessage] = useState("");
+  const [senderName, setSenderName] = useState("");
+  const [messageTyped, setMessageTyped] = useState("");
+
   // var [joinDate, setJoinDate] = useState("");
   // var [renewalDate, setRenewalDate] = useState("");
   // var [expDate, setExpDate] = useState("");
@@ -457,6 +462,32 @@ function ExecutiveData(props) {
       getMemberNotes();
     });
   };
+  //GET USER MESSAGES
+  const getMemberMessages = () => {
+    Axios.get("https://executive-app.herokuapp.com/getMessagesMembers").then(
+      (response) => {
+        // Axios.get("http://localhost:3001/getMessagesMembers").then((response) => {
+        const arrayNotes = response.data;
+        const returned = arrayNotes.filter(
+          (arrayNotes) => arrayNotes.memberIdentity == id
+        );
+        setMemberMessage(returned);
+        // console.log(returned);
+      }
+    );
+  };
+  //SUBMIT MESSAGE
+  const submitMessage = (e) => {
+    Axios.post("https://executive-app.herokuapp.com/sendMessageProfile", {
+      // Axios.post("http://localhost:3001/sendMessageProfile", {
+      messageTyped: messageTyped,
+      senderName: senderName,
+
+      id: id,
+    }).then(() => {
+      // getMemberMessages();
+    });
+  };
   //MEMBER DETAIL CHANGE
   const detailChange = (e) => {
     Axios.post("https://executive-app.herokuapp.com/detailChange", {
@@ -621,6 +652,7 @@ function ExecutiveData(props) {
     getMemberInfo();
     getMemberNotes();
     getMemberRequests();
+    getMemberMessages();
   }, []);
 
   return (
@@ -1458,6 +1490,169 @@ function ExecutiveData(props) {
             </Card.Content>
           </Card>
         </div>
+        {/************************************  START OF THE MESSAGES PANEL **********************************/}
+        <div
+          style={{
+            display: "flex",
+            width: "50%",
+            padding: ".5rem",
+            alignItems: "top",
+          }}
+        >
+          <Card fluid style={{ height: "600px" }}>
+            <Card.Content>
+              <Card.Header>Messages</Card.Header>
+            </Card.Content>
+            <Card.Content
+              style={{
+                overflowY: "scroll",
+                scrollbarWidth: "1px",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column-reverse",
+              }}
+            >
+              <Feed>
+                {Object.keys(memberMessage).map((message, i) => {
+                  let date = new Date(memberMessage[message].Date)
+                    .toUTCString()
+                    .split(" ")
+                    .slice(0, 4)
+                    .join(" ");
+                  // var day = date.getDate();
+                  // var month = date.getMonth();
+                  // var year = date.getFullYear();
+
+                  return (
+                    <Feed.Event>
+                      <Feed.Label>
+                        <Icon name="user circle" />
+                      </Feed.Label>
+
+                      <Feed.Content style={{ color: "red" }}>
+                        <Feed.Summary>
+                          <Feed.User
+                            style={{ cursor: "default", color: "#DB2828" }}
+                          >
+                            {memberMessage[message].SenderName}
+                            {/* {memberMessage[message].noteHeader} */}
+                          </Feed.User>
+                          <Feed.Date>
+                            {date}
+                            {/* {month + " " + day + " " + year} */}
+                          </Feed.Date>
+                        </Feed.Summary>
+                        <Feed.Meta>
+                          <Feed.User>
+                            {/* {memberMessage[message].memberName} {""} */}
+                            {/* {memberMessage[message].memberIdentity} */}
+                          </Feed.User>
+                        </Feed.Meta>
+                        <Feed.Extra style={{ width: "300px" }}>
+                          {" "}
+                          {/* {memberMessage[message].note}
+                          {memberMessage[message].newFirst}
+                          {memberMessage[message].newMiddle}
+                          {memberMessage[message].newLast}
+                          {memberMessage[message].newPhone}
+                          {memberMessage[message].newEmail}
+                          {memberMessage[message].newAddress}
+                          {memberMessage[message].newPassword}
+                          {memberMessage[message].newCard}
+                          {memberMessage[message].newStore}
+                          {memberMessage[message].newCommunication}
+                          {memberMessage[message].newBorn}
+                          {memberMessage[message].newDob}
+                          {memberMessage[message].newSsn}
+                          {memberMessage[message].newEthnicity}
+                          {memberMessage[message].newRace} */}
+                          <p
+                            style={{
+                              textAlign: "right",
+                            }}
+                          >
+                            {memberMessage[message].Message}
+                          </p>
+                        </Feed.Extra>
+                        ________________________________________________________________{" "}
+                        <Icon
+                          name="x"
+                          style={{ marginRight: "0px" }}
+                          // onClick={() => {
+                          //   Deletenote(memberMessage[message].id);
+                          // }}
+                        />{" "}
+                      </Feed.Content>
+                    </Feed.Event>
+                  );
+                })}
+              </Feed>
+            </Card.Content>
+
+            <Card.Content>
+              <Form
+                style={{
+                  backgroundColor: "white",
+                  border: "none",
+                  padding: "0px",
+                  marginLeft: "0",
+                  width: "100%",
+                }}
+              >
+                <Form.Group widths="equal" style={{ height: "50px" }}>
+                  {/* <Form.Input
+                    onChange={(e) => {
+                      setAdminName(e.target.value);
+                    }}
+                    icon="user circle"
+                    iconPosition="left"
+                    placeholder="Admin Frist and Last"
+                  /> */}
+                  <select
+                    onChange={(e) => {
+                      setSenderName(e.target.value);
+                    }}
+                    style={{
+                      height: "40px",
+                      width: "100%",
+                      backgroundColor: "lightGrey",
+                      borderRadius: "5px",
+                      border: "none",
+                    }}
+                  >
+                    <option>Admin Name</option>
+                    <option value="Dillon H.">Dillon H.</option>
+                    <option value="Jose R. ">Jose R. </option>
+                    <option value="Derek L.">Derek L.</option>
+                    <option value="Chris A.">Chris A.</option>
+                    {/* <option value="Scopes">Scopes</option> */}
+                  </select>
+                  {/* <Form.Input
+                    onChange={(e) => {
+                      setMemberName(e.target.value);
+                    }}
+                    icon="user circle"
+                    iconPosition="left"
+                    placeholder="Member First and Last"
+                  /> */}
+                </Form.Group>
+
+                <textarea
+                  onChange={(e) => {
+                    setMessageTyped(e.target.value);
+                  }}
+                  style={{ margin: "1px", width: "88%", height: "100px" }}
+                  icon="sticky note outline"
+                  iconPosition="left"
+                  placeholder="Add Note..."
+                />
+                <Button type="reset" onClick={submitMessage}>
+                  Submit
+                </Button>
+              </Form>
+            </Card.Content>
+          </Card>
+        </div>
       </div>
       {/* ******** */}
       {/*  START REQUESTS */}
@@ -1598,6 +1793,7 @@ function ExecutiveData(props) {
                   <Table.HeaderCell>Item</Table.HeaderCell>
                   <Table.HeaderCell>UPC / SKU</Table.HeaderCell>
                   <Table.HeaderCell>Quantity</Table.HeaderCell>
+                  <Table.HeaderCell>Price</Table.HeaderCell>
                   <Table.HeaderCell>Status</Table.HeaderCell>
                   <Table.HeaderCell>Update Status</Table.HeaderCell>
                   <Table.HeaderCell>Source</Table.HeaderCell>
@@ -1644,6 +1840,7 @@ function ExecutiveData(props) {
                       <Table.Cell>{requestList[request].item}</Table.Cell>
                       <Table.Cell>{requestList[request].sku}</Table.Cell>
                       <Table.Cell>{requestList[request].quantity}</Table.Cell>
+                      <Table.Cell>{requestList[request].price}</Table.Cell>
                       <Table.Cell> {requestList[request].status}</Table.Cell>
                       <Table.Cell>
                         <Form.Group

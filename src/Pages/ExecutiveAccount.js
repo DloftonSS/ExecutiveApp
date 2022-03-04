@@ -24,8 +24,19 @@ function ExecutiveAccount(props) {
 
   return (
     <div style={{ backgroundColor: "black" }}>
-      <Header />
-
+      {/* <Header /> */}
+      <div
+        style={{
+          textAlign: "center",
+          paddingTop: "5%",
+          color: "white",
+          backgroundColor: "black",
+        }}
+      >
+        <a href="/AdminAccount" style={{ color: "white" }}>
+          <Icon disabled name="home" style={{ color: "white" }}></Icon> Home
+        </a>
+      </div>
       <div
         style={{
           width: "100%",

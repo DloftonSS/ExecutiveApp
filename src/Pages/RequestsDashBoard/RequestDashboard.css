@@ -1,0 +1,64 @@
+.background {
+  /* height: 100% !important; */
+  /* width: 100% !important; */
+  background-color: white !important;
+  /* color: black !important;
+  box-shadow: 0px 0px 5px 3px rgb(129, 0, 0); */
+}
+
+/* STATS BOXES  */
+.stats-box {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  /* background-color: #121212; */
+  color: black;
+  background-color: white;
+  box-shadow: 0px 0px 5px 3px rgb(60, 60, 60);
+}
+
+.stats-container {
+  margin: auto;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.dividing-line {
+  height: 1px;
+  background-color: rgb(129, 0, 0);
+  width: 90%;
+  margin: auto;
+  align-items: center;
+  align-content: center;
+}
+span.span {
+  color: rgb(129, 0, 0) !important;
+  font-size: 32px;
+}
+.ra-title {
+  color: black;
+}
+
+#all-members {
+  display: none;
+}
+#concluded-requests {
+  display: none;
+}
+#backordered-requests {
+  display: none;
+}
+#completed-request {
+  display: none;
+}
+#onHold-requests {
+  display: none;
+}
+#pending-requests {
+  display: none;
+}

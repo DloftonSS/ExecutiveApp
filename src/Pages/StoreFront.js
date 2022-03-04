@@ -5,6 +5,7 @@ import {
   Input,
   Card,
   Table,
+  Accordion,
   Icon,
   Modal,
   Header,
@@ -16,6 +17,7 @@ import { useParams } from "react-router";
 import "../components/Storefront/addMember.css";
 import emailjs from "emailjs-com";
 import { init } from "emailjs-com";
+import { normalizeUnits } from "moment";
 init("user_9MrgO9HIeQQan5hAG15a2");
 
 function StoreFront(props) {
@@ -168,6 +170,28 @@ function StoreFront(props) {
       );
     e.target.reset();
   };
+  //SEND ISSUE EMAIL
+  const sendIssueEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        // "service_gt7pfpe",
+        "service_640rs57",
+        "template_95cld3x",
+        form.current,
+        "user_QGlVs4Qz8yzIHPSfomOw6"
+      )
+      .then(
+        (result) => {
+          alert("Your report has been submited.");
+        },
+        (error) => {
+          // console.log(error.text);
+        }
+      );
+    e.target.reset();
+  };
 
   //UPDATE CARD PENDING STATUS
   const PendingCard = (id) => {
@@ -216,12 +240,148 @@ function StoreFront(props) {
     <div className="newMember" style={{ backgroundColor: "#F3F3FC" }}>
       <StoreHeader />
       {/* <div>This will be for adding the members to the Database.</div> */}
-
       {/* NEW STORE FRONT ADD MEMBER */}
-      <h1 style={{ marginLeft: "10%" }}>Hello {clerk}</h1>
+      {/* <h1 style={{ marginLeft: "10%" }}>Hello {clerk}</h1> */}
+      <div
+        class="dropdown"
+        style={{ marginLeft: "10%", marginTop: "2%", borderRadius: "10px" }}
+      >
+        <button class="dropbtn">
+          Hello {clerk}
+          <Icon name="caret down"></Icon>
+        </button>
+        <div class="dropdown-content">
+          <Modal
+            onClose={() => setOpen2(false)}
+            onOpen={() => setOpen2(true)}
+            open={open2}
+            trigger={
+              <Button style={{ width: "100%", backgroundColor: "white" }}>
+                Report an Issue{" "}
+                <Icon name="warning sign" style={{ marginLeft: "5px" }}></Icon>
+              </Button>
+            }
+            style={{
+              width: "500px",
+              height: "500px",
+              marginLeft: "25%",
+              marginTop: "10%",
+            }}
+          >
+            <Modal.Header>Report an Issue</Modal.Header>
+            <Modal.Content>
+              <Modal.Description>
+                <form
+                  className="register-modal"
+                  ref={form}
+                  onSubmit={sendIssueEmail}
+                  // style={{ marginLeft: "10%", marginRigth: "10%", width: "1500px" }}
+                >
+                  <input
+                    style={{
+                      color: "black",
+                      border: "1px solid",
+                      borderRadius: "5px",
+                      padding: "10px",
+                      boxShadow: "1px 2px 3px 2px #888888",
+                      marginBottom: "30px",
+                      marginRight: "10px",
+                      width: "350px",
+                    }}
+                    required
+                    type="text"
+                    placeholder="Title"
+                    name="title"
+                    // onChange={(e) => {
+                    //   setCustomerFirst(e.target.value);
+                    // }}
+                  />
+                  <input
+                    style={{
+                      color: "black",
+                      border: "1px solid",
+                      borderRadius: "5px",
+                      padding: "10px",
+                      boxShadow: "1px 2px 3px 2px #888888",
+                      marginBottom: "30px",
+                      marginRight: "10px",
+                      width: "350px",
+                    }}
+                    required
+                    type="text"
+                    placeholder="Name"
+                    name="issuer name"
+                    // onChange={(e) => {
+                    //   setCustomerFirst(e.target.value);
+                    // }}
+                  />
+                  <textarea
+                    style={{
+                      color: "black",
+                      border: "1px solid",
+                      borderRadius: "5px",
+                      padding: "10px",
+                      boxShadow: "1px 2px 3px 2px #888888",
+                      marginBottom: "30px",
+                      marginRight: "10px",
+                      height: "120px",
+                      width: "350px",
+                    }}
+                    required
+                    type="text"
+                    placeholder="Detailed Description of Issue"
+                    name="description"
+                    // onChange={(e) => {
+                    //   setCustomerFirst(e.target.value);
+                    // }}
+                  ></textarea>
+                  <input
+                    style={{
+                      color: "white",
+                      backgroundColor: "#121212",
+                      border: "1px solid",
+                      borderRadius: "5px",
+                      padding: "10px",
 
+                      marginBottom: "30px",
+                      marginRight: "10px",
+                      width: "350px",
+                    }}
+                    type="submit"
+                    value="Submit Issue"
+                    onClick={submitNewCustomer}
+                  />
+                </form>
+              </Modal.Description>
+            </Modal.Content>
+            <Modal.Actions>
+              {/* <Button color="black" onClick={() => setOpen2(false)}>
+                Nope
+              </Button> */}
+              <Button
+                content="Done"
+                labelPosition="right"
+                icon="checkmark"
+                onClick={() => setOpen2(false)}
+                positive
+              />
+            </Modal.Actions>
+          </Modal>
+          <a
+            href="/"
+            style={{
+              backgroundColor: "white",
+              color: "black",
+              textAlign: "center",
+            }}
+          >
+            {" "}
+            Sign Out{" "}
+            <Icon disabled name="sign out" style={{ marginLeft: "5px" }}></Icon>
+          </a>
+        </div>
+      </div>
       {/* START CUSTOMER LOOK UP */}
-
       <h1 style={{ marginLeft: "10%" }}>Customer Look up</h1>
       <Input
         type="text"

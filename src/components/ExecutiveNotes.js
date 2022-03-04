@@ -76,9 +76,10 @@ function ExectuiveNotes(props) {
           <Feed>
             {Object.keys(notesList).map((keyName, i) => {
               let date = new Date(notesList[keyName].createdAt)
+
                 .toUTCString()
                 .split(" ")
-                .slice(0, 4)
+                .slice(1, 4)
                 .join(" ");
               return (
                 <Feed.Event>

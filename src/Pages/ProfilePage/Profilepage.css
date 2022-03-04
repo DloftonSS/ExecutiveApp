@@ -1,8 +1,78 @@
 .profileMain {
   /* background-color: black; */
-  background-image: url("EA_App_BG_V01.jpg");
-  background-attachment: fixed;
+  /* background-image: url("EA_App_BG_V01.jpg"); */
+  /* background-attachment: fixed; */
+  background-color: #121212;
+  height: 100vh;
 }
+
+.header-section {
+  margin: auto;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.header-logo {
+  width: 300px;
+  padding-bottom: 10%;
+  padding-top: 25%;
+}
+.center-section {
+  background-color: white !important;
+  height: 100vh;
+  /* width: 700; */
+  overflow: scroll;
+}
+.center-section::-webkit-scrollbar {
+  display: none;
+}
+.personal-info-container {
+  text-align: center;
+  margin-top: 25%;
+}
+.peronal-info-inline {
+  color: white;
+}
+.customer-name {
+  text-align: center;
+  color: white;
+}
+h3.section-titles {
+  text-align: center;
+}
+h3.gallery-text {
+  color: black;
+}
+.table-container-div {
+  width: 100%;
+  overflow: scroll;
+  height: 350px;
+}
+.table-container-div::-webkit-scrollbar {
+  display: none;
+}
+.right-section-title {
+  color: white;
+  text-align: center;
+}
+
+.trythis::-webkit-scrollbar {
+  display: none;
+}
+
+.trythis {
+  /* height: 300px; */
+  /* width: 400px; */
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+/* 
+
+
+/* 
+/* */
 
 .MemberPhoto {
   border-radius: 100px;
@@ -12,14 +82,152 @@
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
 }
+.request-style {
+  color: white;
+}
+.catalog-options-icons {
+  padding: 0%;
+  /* margin-left: 5%; */
+  color: black;
+}
+.scroll-hidden {
+  height: 300px;
+}
+.right-side-section {
+  padding-top: 25%;
+}
+
+.received-Message {
+  float: left;
+  color: white;
+}
+.sent-message {
+  float: right;
+  color: white;
+}
+.messages-div {
+  color: lightgray;
+  font-size: 17px;
+}
+p.message {
+  color: white;
+  width: 300px;
+  padding-top: 3%;
+}
+.footer {
+  height: 50px;
+  width: 100%;
+  background-color: #121212;
+  text-align: center;
+}
+.message-underline {
+  color: rgb(129, 0, 0);
+}
+.message-icon {
+  color: white;
+}
+.message-name-date {
+  color: white;
+}
+.messages-div-section {
+  height: 100%;
+}
+.message-container {
+  height: 300px;
+  width: 500px;
+  overflow: scroll;
+}
+.message-container::-webkit-scrollbar {
+  display: none;
+}
+.request-scroll::-webkit-scrollbar {
+  display: none;
+}
+.request-scroll {
+  overflow: scroll;
+  height: 200px;
+}
+.message-textbox {
+  width: 100%;
+  height: 50px;
+}
+.message-button {
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  padding: 1%;
+  margin-bottom: 5%;
+}
 @media only screen and (max-width: 414px) {
+  .message-button {
+    width: 100%;
+    height: 40px;
+    background-color: #121212;
+    color: white;
+    padding: 1%;
+    margin-bottom: 5%;
+  }
+  p.message {
+    color: black;
+    width: 300px;
+    padding-top: 3%;
+  }
+  .message-name-date {
+    color: black;
+  }
+  .message-icon {
+    color: black;
+  }
   .profileMain {
-    /* background-color: black; */
-    background-image: url("EA_App_BG_V01.jpg");
+    background-color: #121212;
+    /* background-image: url("EA_App_BG_V01.jpg");
     background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+  }
+  .center-section {
+    background-color: none !important;
+    width: 700;
+    margin-top: 55%;
+
+    /* overflow: scroll; */
+  }
+  .table-container-div {
+    padding-bottom: 20%;
+  }
+  .right-side-section {
+    /* margin-top: 200px; */
+    /* background-color: black; */
+  }
+  .right-section-title {
+    color: black !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .header-logo {
+    padding-top: 25%;
+    align-items: center;
+    justify-content: ce;
+  }
+  .section-titles {
+    font-size: 30px !important;
+  }
+  .request-style {
+    color: black !important;
+  }
+  .scroll-hidden {
+    height: 600px;
+  }
+  .scroll-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .catalog-options-icons {
+    padding: 0%;
+    /* margin-left: 5%; */
+    color: black;
   }
 }
+
+/* ******** old classes below */
 .main {
   /* width: 100%; */
   height: 100%;

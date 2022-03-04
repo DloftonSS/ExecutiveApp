@@ -241,6 +241,7 @@ function ExecutiveRequests(props) {
                 <Table.HeaderCell>Item</Table.HeaderCell>
                 <Table.HeaderCell>UPC / SKU</Table.HeaderCell>
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
+                <Table.HeaderCell>Price</Table.HeaderCell>
                 <Table.HeaderCell>Status</Table.HeaderCell>
                 <Table.HeaderCell>Update Status</Table.HeaderCell>
                 <Table.HeaderCell>Note</Table.HeaderCell>
@@ -272,6 +273,7 @@ function ExecutiveRequests(props) {
                     <Table.Cell>{requestList[request].item}</Table.Cell>
                     <Table.Cell>{requestList[request].sku}</Table.Cell>
                     <Table.Cell>{requestList[request].quantity}</Table.Cell>
+                    <Table.Cell>{requestList[request].price}</Table.Cell>
                     <Table.Cell> {requestList[request].status}</Table.Cell>
                     <Table.Cell>
                       <Form.Group

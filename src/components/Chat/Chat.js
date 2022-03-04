@@ -66,6 +66,12 @@ function AdminChat() {
             }}
           >
             {Object.keys(chatList).map((keyName, i) => {
+              let date = new Date(chatList[keyName].createdAt)
+
+                .toUTCString()
+                .split(" ")
+                .slice(1, 4)
+                .join(" ");
               return (
                 // <p>{chatList[keyName].note}</p>;
                 <Feed.Event>
@@ -80,7 +86,7 @@ function AdminChat() {
                       >
                         {chatList[keyName].adminName}
                       </Feed.User>
-                      <Feed.Date>{chatList[keyName].createdAt}</Feed.Date>
+                      <Feed.Date>{date}</Feed.Date>
                     </Feed.Summary>
                     {/* <Feed.Meta>
                       <Feed.User>Name of Customer</Feed.User>

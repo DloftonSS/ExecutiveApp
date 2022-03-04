@@ -21,12 +21,12 @@ function StoreHeader() {
       <Container textAlign="center">
         <h3>Store Access</h3>
       </Container>
-      <Container textAlign="right">
+      {/* <Container textAlign="right">
         {" "}
         <a href="/">
           <button className="logoutNow">Logout</button>
         </a>
-      </Container>
+      </Container> */}
     </div>
   );
 }

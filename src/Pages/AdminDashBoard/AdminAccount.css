@@ -16,6 +16,7 @@ li {
 
 .main-container {
   background-color: black;
+  /* background-color: lightgray; */
   height: 100%;
 }
 
@@ -27,10 +28,13 @@ li {
   background-color: lightblue; */
 
   background-color: #121212;
+  /* background-color: white; */
 }
 .img-container {
   color: white;
   background-color: #121212;
+  /* color: black; */
+  /* background-color: white; */
   padding-bottom: 10px;
   padding-top: 5px;
 }
@@ -39,12 +43,15 @@ li {
   justify-content: center;
 
   background-color: #121212;
+  /* background-color: white; */
+  /* color: black; */
 }
 .hello-name {
   /* border: 1px solid black; */
   padding-top: 20px;
   margin: auto;
   color: white;
+  /* color: black; */
   font-size: large;
 }
 
@@ -58,6 +65,7 @@ li {
   padding-top: 20px;
   margin: auto;
   color: white;
+  /* color: black; */
 }
 .member-search {
   width: 100%;
@@ -72,6 +80,7 @@ li {
 .side-navigation {
   background-color: #121212;
   color: white;
+  /* background-color: white; */
   box-shadow: 0px 0px 5px 3px rgb(129, 0, 0);
   /* border: 1px solid black; */
 }
@@ -94,8 +103,9 @@ li {
 }
 /* MAIN DASHBOARD CONTENT */
 .main-dashboard {
-  background-color: #121212;
-  color: white;
+  /* background-color: #121212;
+  color: white; */
+  background-color: white;
   box-shadow: 0px 0px 5px 3px rgb(129, 0, 0);
 }
 /* STATS BOXES  */
@@ -107,8 +117,9 @@ li {
   height: 100px;
   width: 100px;
   border-radius: 10px;
-  background-color: #121212;
-  color: white;
+  /* background-color: #121212;
+  color: white; */
+  background-color: white;
   box-shadow: 0px 0px 5px 3px rgb(60, 60, 60);
 }
 
@@ -137,8 +148,8 @@ li {
 
   overflow: scroll;
   max-height: 680px;
-  background-color: #121212;
-
+  /* background-color: #121212; */
+  background-color: white;
   /* overflow: hidden; */
   /* color: white;
   box-shadow: 0px 0px 5px 3px rgb(129, 0, 0); */
@@ -151,8 +162,9 @@ li {
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #121212;
-  color: white;
+  /* background-color: #121212;
+  color: white; */
+  background-color: white;
   box-shadow: 0px 0px 5px 3px rgb(60, 60, 60);
 }
 
@@ -164,11 +176,15 @@ li {
 .feed-container {
 }
 span.span {
-  color: white !important;
+  color: rgb(129, 0, 0) !important;
   font-size: 32px;
 }
 .ra-title {
   text-align: center;
+}
+.chat-title {
+  text-align: center;
+  color: white;
 }
 h2.card-title {
   text-align: left !important;
@@ -184,8 +200,8 @@ h2.card-title {
   height: 370px;
   background-color: #121212;
   overflow: "scroll";
-  /* color: white;
-  box-shadow: 0px 0px 5px 3px rgb(129, 0, 0); */
+  color: white;
+  /* box-shadow: 0px 0px 5px 3px rgb(129, 0, 0); */
 }
 .chat-div {
   background-color: lime;
@@ -205,6 +221,9 @@ h2.card-title {
   margin-top: 5px;
   margin-bottom: 10px;
   width: 100%;
+  /* THIS IS INLINE */
+  /* color: white;
+  background-color: rgb(60, 60, 60); */
 }
 
 .chat-send-button {
@@ -213,5 +232,72 @@ h2.card-title {
 
 .below-pending {
   background-color: #121212;
+  /* background-color: white; */
   height: 50px;
+}
+
+/* TEST */
+/* #logo-hidden {
+}
+
+#hidden-test {
+  display: none;
+}
+
+#hidden-test,
+.flip {
+} */
+/*  */
+/* 
+display and hide the members page
+ */
+#members-content {
+  display: none;
+}
+#members-content,
+.main-members {
+  color: white;
+}
+/* 
+display and hide the requests page */
+#requests-content {
+  display: none;
+}
+#requests-content,
+.main-requests {
+  color: white;
+}
+
+/* 
+display and hide the catalog page
+ */
+
+#catalog-content {
+  display: none;
+}
+#catalog-content,
+.main-catalog {
+  color: white;
+}
+
+/* 
+display and hide the add member page
+ */
+#addMember-content {
+  display: none;
+}
+#addMember-content,
+.main-addMember {
+  color: white;
+}
+
+/* 
+display and hide the add admin page
+ */
+#addAdmin-content {
+  display: none;
+}
+#addAdmin-content,
+.main-addAdmin {
+  color: white;
 }

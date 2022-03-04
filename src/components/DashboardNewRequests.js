@@ -61,6 +61,12 @@ function DashboardNewRequest() {
         >
           {" "}
           {Object.keys(requestList).map((request, i) => {
+            let created = new Date(requestList[request].date_created)
+
+              .toUTCString()
+              .split(" ")
+              .slice(1, 4)
+              .join(" ");
             return (
               <Card
                 style={{
@@ -88,7 +94,7 @@ function DashboardNewRequest() {
                   </Card.Meta>
                   <Card.Description style={{ color: "lightgray" }}>
                     {" "}
-                    Created: {requestList[request].date_created}
+                    Created: {created}
                   </Card.Description>
                 </Card.Content>
               </Card>
@@ -110,6 +116,12 @@ function DashboardNewRequest() {
         >
           {" "}
           {Object.keys(requestListOld).map((old, i) => {
+            let oldcreated = new Date(requestListOld[old].date_created)
+
+              .toUTCString()
+              .split(" ")
+              .slice(1, 4)
+              .join(" ");
             return (
               <Card
                 style={{
@@ -137,7 +149,7 @@ function DashboardNewRequest() {
                   </Card.Meta>
                   <Card.Description style={{ color: "lightgray" }}>
                     {" "}
-                    Created: {requestListOld[old].date_created}
+                    Created: {oldcreated}
                   </Card.Description>
                 </Card.Content>
               </Card>

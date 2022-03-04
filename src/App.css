@@ -52,12 +52,31 @@
   font-family: "Tinos", serif;
   width: 200px;
   height: 30px;
+
+  box-shadow: 1px 2px 3px 2px black;
+}
+.admin-validate {
+  /* border: 3px solid; */
+  /* padding: 10px; */
+  /* box-shadow: 5px 8px; */
+  margin-top: 2%;
+  border-radius: 100px;
+  border: none;
+  font-family: "Tinos", serif;
+  width: 200px;
+  height: 30px;
+  margin-left: 10%;
   box-shadow: 1px 2px 3px 2px black;
 }
 
 .login-title {
   font-family: "Tinos", serif;
   /* font-size: 30px; */
+}
+.login-title-admin {
+  font-family: "Tinos", serif;
+  /* font-size: 30px; */
+  text-align: center;
 }
 
 .loginHeader {
@@ -74,7 +93,7 @@
   /* color: black; */
   margin: 5%;
   padding-top: 2%;
-  height: 230px;
+  height: 300px;
   width: 120px;
   box-shadow: 1px 2px 3px 2px black;
   border-radius: 5px;

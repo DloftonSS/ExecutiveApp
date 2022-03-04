@@ -296,16 +296,18 @@ function AllMembers() {
                           let joindate = new Date(
                             decendingList[decending].dateJoined
                           )
+
                             .toUTCString()
                             .split(" ")
-                            .slice(0, 4)
+                            .slice(1, 4)
                             .join(" ");
+
                           let expiredate = new Date(
                             decendingList[decending].expiring
                           )
                             .toUTCString()
                             .split(" ")
-                            .slice(0, 4)
+                            .slice(1, 4)
                             .join(" ");
                           return (
                             <Table.Row
@@ -435,12 +437,12 @@ function AllMembers() {
                           let joindate = new Date(memberList[member].dateJoined)
                             .toUTCString()
                             .split(" ")
-                            .slice(0, 4)
+                            .slice(1, 4)
                             .join(" ");
                           let expiredate = new Date(memberList[member].expiring)
                             .toUTCString()
                             .split(" ")
-                            .slice(0, 4)
+                            .slice(1, 4)
                             .join(" ");
                           return (
                             <Table.Row
@@ -565,7 +567,7 @@ function AllMembers() {
                           )
                             .toUTCString()
                             .split(" ")
-                            .slice(0, 4)
+                            .slice(1, 4)
                             .join(" ");
                           return (
                             <Table.Row
@@ -707,7 +709,7 @@ function AllMembers() {
                           )
                             .toUTCString()
                             .split(" ")
-                            .slice(0, 4)
+                            .slice(1, 4)
                             .join(" ");
                           return (
                             <Table.Row
@@ -935,12 +937,12 @@ function AllMembers() {
                 let joindate1 = new Date(activeList[act].dateJoined)
                   .toUTCString()
                   .split(" ")
-                  .slice(0, 4)
+                  .slice(1, 4)
                   .join(" ");
                 let expiredate = new Date(activeList[act].expiring)
                   .toUTCString()
                   .split(" ")
-                  .slice(0, 4)
+                  .slice(1, 4)
                   .join(" ");
                 return (
                   <Card

@@ -53,6 +53,12 @@ function NewMembers() {
       >
         {" "}
         {Object.keys(memberList).map((member, i) => {
+          let joined = new Date(memberList[member].dateJoined)
+
+            .toUTCString()
+            .split(" ")
+            .slice(1, 4)
+            .join(" ");
           return (
             <Card
               style={{
@@ -88,7 +94,8 @@ function NewMembers() {
                 </Card.Meta>
                 <Card.Description style={{ color: "lightgray" }}>
                   {" "}
-                  Joined: {memberList[member].dateJoined}
+                  Joined: {joined}
+                  {/* {memberList[member].dateJoined} */}
                 </Card.Description>
                 <div
                   style={{

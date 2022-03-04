@@ -1,0 +1,72 @@
+.background {
+  /* height: 100% !important; */
+  background-color: white !important;
+  /* color: black !important;
+  box-shadow: 0px 0px 5px 3px rgb(129, 0, 0); */
+}
+
+/* STATS BOXES  */
+.stats-box {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  /* background-color: #121212; */
+  color: black;
+  background-color: white;
+  box-shadow: 0px 0px 5px 3px rgb(60, 60, 60);
+}
+
+.stats-container {
+  margin: auto;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.search-input {
+  height: 30px;
+  margin: auto;
+  width: 50%;
+  border-radius: 10px;
+}
+.dividing-line {
+  height: 1px;
+  background-color: rgb(129, 0, 0);
+  width: 90%;
+  margin: auto;
+  align-items: center;
+  align-content: center;
+}
+span.span {
+  color: rgb(129, 0, 0) !important;
+  font-size: 32px;
+}
+.ra-title {
+  color: black;
+}
+
+#all-members {
+  display: none;
+}
+#expiring-members {
+  display: none;
+}
+#expired-members {
+  display: none;
+}
+#decending-members {
+  display: none;
+}
+#customer-portal-page {
+  display: none;
+}
+
+.personal-data-container {
+  background-color: white;
+  box-shadow: 0px 0px 5px 3px rgb(60, 60, 60);
+  padding: 5%;
+}

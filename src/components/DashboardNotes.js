@@ -70,6 +70,12 @@ function DashboardNotes() {
         >
           <Feed>
             {Object.keys(notesList).map((keyName, i) => {
+              let created = new Date(notesList[keyName].createdAt)
+
+                .toUTCString()
+                .split(" ")
+                .slice(1, 4)
+                .join(" ");
               return (
                 // <p>{notesList[keyName].note}</p>;
                 <Feed.Event>
@@ -85,16 +91,11 @@ function DashboardNotes() {
                         {notesList[keyName].adminName}
                         {notesList[keyName].noteHeader}
                       </Feed.User>
-                      <Feed.Date>{notesList[keyName].createdAt}</Feed.Date>
+                      <Feed.Date>{created}</Feed.Date>
                     </Feed.Summary>
                     <Feed.Meta>
                       <Feed.User>
-                        {/* <Link
-                        style={{ color: "black" }}
-                        to={`/executiveAccount/${memberList[member].id}`}
-                      ></Link> */}
                         {notesList[keyName].memberName} {""}
-                        {/* {notesList[keyName].memberIdentity} */}
                       </Feed.User>
                     </Feed.Meta>
                     <Feed.Extra
@@ -128,12 +129,6 @@ function DashboardNotes() {
                       </p>
                     </Feed.Extra>
                     ____________________________________________________________________________________________{" "}
-                    {/* Delete */}
-                    {/* <button
-                      onClick={() => {
-                        Deletenote(notesList[keyName].id);
-                      }}
-                    > */}
                     <Icon
                       onClick={() => {
                         Deletenote(notesList[keyName].id);
@@ -141,7 +136,6 @@ function DashboardNotes() {
                       name="x"
                       style={{ marginRight: "0px" }}
                     />{" "}
-                    {/* </button> */}
                   </Feed.Content>
                 </Feed.Event>
               );

@@ -114,7 +114,8 @@ function App(props) {
                 color: "white",
               }}
               // to={`/adminDashboard/${adminData.id}`}
-              to="adminDashboard"
+              // to="adminDashboard"
+              to="AdminAccount"
             >
               Hello {adminData.first_name}, CLICK HERE TO CONTINUE.
             </Link>
@@ -196,7 +197,7 @@ function App(props) {
             <div className="Modals">
               <Container>
                 <Row>
-                  {/* <Col className="BenCol4">
+                  <Col className="BenCol4">
                     <p className="login-title">Member Login</p>
                     <Input
                       className="loginInput"
@@ -226,8 +227,58 @@ function App(props) {
                     >
                       Sign In
                     </button>
-                  </Col> */}
-                  <Col className="BenCol4">
+                    <br></br>
+                    <Modal
+                      onClose={() => setOpen(false)}
+                      onOpen={() => setOpen(true)}
+                      open={open}
+                      trigger={<button className="validate">Admin?</button>}
+                      style={{
+                        height: "300px",
+                        width: "300px",
+                        marginLeft: "45%",
+                        marginRight: "45%",
+                        marginTop: "25%",
+                      }}
+                    >
+                      <Modal.Content>
+                        <p className="login-title-admin">Admin Login</p>
+                        <Input
+                          className="loginInput"
+                          required
+                          type="text"
+                          placeholder="Email"
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                          }}
+                        ></Input>
+                        <br></br>
+                        <Input
+                          className="loginInput"
+                          required
+                          type="password"
+                          placeholder="Password"
+                          onChange={(e) => {
+                            setPassword(e.target.value);
+                          }}
+                        ></Input>
+                        <br></br>
+                        <button
+                          className="admin-validate"
+                          onClick={() => {
+                            login();
+                            // memberLogin();
+                            // clearInput();
+                          }}
+                        >
+                          Sign In
+                        </button>
+                      </Modal.Content>
+                    </Modal>
+                  </Col>
+
+                  {/* ADMIN LOGIN */}
+                  {/* <Col className="BenCol4">
                     <p className="login-title">Login</p>
                     <Input
                       className="loginInput"
@@ -259,7 +310,7 @@ function App(props) {
                     >
                       Sign In
                     </button>
-                  </Col>
+                  </Col> */}
                 </Row>
                 <Row>
                   <Col>
@@ -292,13 +343,13 @@ function App(props) {
           path="/adminDashBoard"
           exact
           component={AdminDashBoard}
-          isAuth={isAuth}
+          // isAuth={isAuth}
         />
         <Route
           path="/adminAccount"
           exact
           component={AdminAccount}
-          // isAuth={isAuth}
+          isAuth={isAuth}
         />
         <ProtectedRoute
           path="/storeFront/:id"

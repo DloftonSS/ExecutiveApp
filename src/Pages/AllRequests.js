@@ -320,6 +320,22 @@ function AllRequests(props) {
                           }
                         })
                         .map((pending, i) => {
+                          let pendingCreated = new Date(
+                            pendingRequests[pending].date_created
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
+                          let pendingUpdated = new Date(
+                            pendingRequests[pending].date_updated
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll" }}
@@ -458,13 +474,8 @@ function AllRequests(props) {
                                   <Icon name="edit outline"></Icon>
                                 </Button>
                               </Table.Cell>
-                              <Table.Cell>
-                                {pendingRequests[pending].date_created}
-                              </Table.Cell>
-                              <Table.Cell>
-                                {" "}
-                                {pendingRequests[pending].date_updated}
-                              </Table.Cell>
+                              <Table.Cell>{pendingCreated}</Table.Cell>
+                              <Table.Cell> {pendingUpdated}</Table.Cell>
                             </Table.Row>
                           );
                         })}
@@ -582,6 +593,22 @@ function AllRequests(props) {
                           }
                         })
                         .map((hold, i) => {
+                          let holdCreated = new Date(
+                            onholdRequest[hold].date_created
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
+                          let holdUpdated = new Date(
+                            onholdRequest[hold].date_updated
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll" }}
@@ -716,13 +743,8 @@ function AllRequests(props) {
                                   <Icon name="edit outline"></Icon>
                                 </Button>
                               </Table.Cell>
-                              <Table.Cell>
-                                {onholdRequest[hold].date_created}
-                              </Table.Cell>
-                              <Table.Cell>
-                                {" "}
-                                {onholdRequest[hold].date_updated}
-                              </Table.Cell>
+                              <Table.Cell>{holdCreated}</Table.Cell>
+                              <Table.Cell> {holdUpdated}</Table.Cell>
                             </Table.Row>
                           );
                         })}
@@ -840,6 +862,22 @@ function AllRequests(props) {
                           }
                         })
                         .map((back, i) => {
+                          let backCreated = new Date(
+                            backorderRequest[back].date_created
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
+                          let backUpdated = new Date(
+                            backorderRequest[back].date_updated
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll" }}
@@ -978,13 +1016,8 @@ function AllRequests(props) {
                                   <Icon name="edit outline"></Icon>
                                 </Button>
                               </Table.Cell>
-                              <Table.Cell>
-                                {backorderRequest[back].date_created}
-                              </Table.Cell>
-                              <Table.Cell>
-                                {" "}
-                                {backorderRequest[back].date_updated}
-                              </Table.Cell>
+                              <Table.Cell>{backCreated}</Table.Cell>
+                              <Table.Cell> {backUpdated}</Table.Cell>
                             </Table.Row>
                           );
                         })}
@@ -1102,6 +1135,22 @@ function AllRequests(props) {
                           }
                         })
                         .map((ordered, i) => {
+                          let orderedCreated = new Date(
+                            orderedRequest[ordered].date_created
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
+                          let orderedUpdated = new Date(
+                            orderedRequest[ordered].date_updated
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll" }}
@@ -1240,13 +1289,8 @@ function AllRequests(props) {
                                   <Icon name="edit outline"></Icon>
                                 </Button>
                               </Table.Cell>
-                              <Table.Cell>
-                                {orderedRequest[ordered].date_created}
-                              </Table.Cell>
-                              <Table.Cell>
-                                {" "}
-                                {orderedRequest[ordered].date_updated}
-                              </Table.Cell>
+                              <Table.Cell>{orderedCreated}</Table.Cell>
+                              <Table.Cell> {orderedUpdated}</Table.Cell>
                             </Table.Row>
                           );
                         })}
@@ -1364,6 +1408,22 @@ function AllRequests(props) {
                           }
                         })
                         .map((ordered, i) => {
+                          let completeCreated = new Date(
+                            completedRequest[ordered].date_created
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
+                          let completeUpdated = new Date(
+                            completedRequest[ordered].date_updated
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll" }}
@@ -1504,13 +1564,8 @@ function AllRequests(props) {
                                   <Icon name="edit outline"></Icon>
                                 </Button>
                               </Table.Cell>
-                              <Table.Cell>
-                                {completedRequest[ordered].date_created}
-                              </Table.Cell>
-                              <Table.Cell>
-                                {" "}
-                                {completedRequest[ordered].date_updated}
-                              </Table.Cell>
+                              <Table.Cell>{completeCreated}</Table.Cell>
+                              <Table.Cell> {completeUpdated}</Table.Cell>
                             </Table.Row>
                           );
                         })}
@@ -1609,19 +1664,21 @@ function AllRequests(props) {
                         }
                       })
                       .map((offered, i) => {
-                        let createDate = new Date(
+                        let offeredCreated = new Date(
                           offeredRequest[offered].date_created
                         )
+
                           .toUTCString()
                           .split(" ")
-                          .slice(0, 4)
+                          .slice(1, 4)
                           .join(" ");
-                        let updateDate = new Date(
+                        let offeredUpdated = new Date(
                           offeredRequest[offered].date_updated
                         )
+
                           .toUTCString()
                           .split(" ")
-                          .slice(0, 4)
+                          .slice(1, 4)
                           .join(" ");
                         return (
                           <Card
@@ -1647,13 +1704,11 @@ function AllRequests(props) {
 
                                     <Card.Meta style={{ color: "black" }}>
                                       Created:
-                                      {" " +
-                                        offeredRequest[offered].date_created}
+                                      {" " + offeredCreated}
                                     </Card.Meta>
                                     <Card.Meta>
                                       Updated:
-                                      {" " +
-                                        offeredRequest[offered].date_updated}
+                                      {" " + offeredUpdated}
                                     </Card.Meta>
 
                                     <br></br>
@@ -1961,6 +2016,22 @@ function AllRequests(props) {
                           }
                         })
                         .map((canceled, i) => {
+                          let canCreated = new Date(
+                            canceledRequest[canceled].date_created
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
+                          let canUpdated = new Date(
+                            canceledRequest[canceled].date_updated
+                          )
+
+                            .toUTCString()
+                            .split(" ")
+                            .slice(1, 4)
+                            .join(" ");
                           return (
                             <Table.Row
                               style={{ overflowY: "scroll" }}
@@ -2101,13 +2172,8 @@ function AllRequests(props) {
                                   <Icon name="edit outline"></Icon>
                                 </Button>
                               </Table.Cell>
-                              <Table.Cell>
-                                {canceledRequest[canceled].date_created}
-                              </Table.Cell>
-                              <Table.Cell>
-                                {" "}
-                                {canceledRequest[canceled].date_updated}
-                              </Table.Cell>
+                              <Table.Cell>{canCreated}</Table.Cell>
+                              <Table.Cell> {canUpdated}</Table.Cell>
                             </Table.Row>
                           );
                         })}
@@ -2175,15 +2241,17 @@ function AllRequests(props) {
                 }
               })
               .map((request, i) => {
-                let createDate = new Date(requestList[request].date_created)
+                let reqCreated = new Date(requestList[request].date_created)
+
                   .toUTCString()
                   .split(" ")
-                  .slice(0, 4)
+                  .slice(1, 4)
                   .join(" ");
-                let updateDate = new Date(requestList[request].date_updated)
+                let reqUpdated = new Date(requestList[request].date_updated)
+
                   .toUTCString()
                   .split(" ")
-                  .slice(0, 4)
+                  .slice(1, 4)
                   .join(" ");
                 return (
                   <Card
@@ -2208,11 +2276,11 @@ function AllRequests(props) {
 
                             <Card.Meta style={{ color: "black" }}>
                               Created:
-                              {" " + requestList[request].date_created}
+                              {" " + reqCreated}
                             </Card.Meta>
                             <Card.Meta>
                               Updated:
-                              {" " + requestList[request].date_updated}
+                              {" " + reqUpdated}
                             </Card.Meta>
 
                             <br></br>
@@ -2380,180 +2448,6 @@ function AllRequests(props) {
                 );
               })}
           </Segment>
-          {/* <Card.Content style={{ overflowY: "scroll", height: "100%" }}>
-          <Table celled striped color="blue">
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Request #</Table.HeaderCell>
-                <Table.HeaderCell>Member Name</Table.HeaderCell>
-                <Table.HeaderCell>Category</Table.HeaderCell>
-                <Table.HeaderCell>Brand</Table.HeaderCell>
-                <Table.HeaderCell>Sku</Table.HeaderCell>
-                <Table.HeaderCell>Item</Table.HeaderCell>
-                <Table.HeaderCell>Qty</Table.HeaderCell>
-                <Table.HeaderCell>Status</Table.HeaderCell>
-                <Table.HeaderCell>Change Status</Table.HeaderCell>
-                <Table.HeaderCell>Note</Table.HeaderCell>
-                <Table.HeaderCell>Source</Table.HeaderCell>
-                <Table.HeaderCell>Edit Note</Table.HeaderCell>
-                <Table.HeaderCell>Update Source</Table.HeaderCell>
-                <Table.HeaderCell>Date Created</Table.HeaderCell>
-                <Table.HeaderCell>Date Updated</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-
-            <Table.Body>
-              {Object.keys(requestList)
-                .filter((request) => {
-                  if (searchTerm == "") {
-                    return request;
-                  } else if (
-                    requestList[request].status
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) ||
-                    requestList[request].category
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) ||
-                 
-                    requestList[request].sku
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) ||
-                    requestList[request].memberName
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) ||
-                    requestList[request].brand
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) ||
-                    requestList[request].note
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase()) ||
-                    requestList[request].item
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase())
-                   
-                  ) {
-                    return request;
-                  }
-                })
-                .map((request, i) => {
-                  return (
-                    <Table.Row key={request.id}>
-                      <Table.Cell>{requestList[request].id}</Table.Cell>
-                      <Table.Cell>{requestList[request].memberName}</Table.Cell>
-                      <Table.Cell>
-                      
-                        {requestList[request].category}
-                       
-                      </Table.Cell>
-
-                      <Table.Cell>{requestList[request].brand}</Table.Cell>
-                      <Table.Cell>{requestList[request].sku}</Table.Cell>
-                      <Table.Cell>{requestList[request].item}</Table.Cell>
-                      <Table.Cell>{requestList[request].quantity}</Table.Cell>
-
-                      <Table.Cell> {requestList[request].status}</Table.Cell>
-                      <Table.Cell>
-                        <Form.Group
-                          style={{ backgroundColor: "none", border: "none" }}
-                        >
-                          <select
-                            onChange={(e) => {
-                              setNewStatus(e.target.value.toUpperCase());
-                            }}
-                            style={{
-                              height: "35px",
-                              width: "100%",
-                              backgroundColor: "lightGrey",
-                              borderRadius: "5px",
-                              border: "none",
-                            }}
-                          >
-                            <option>Choose Status</option>
-                            <option value="Pending">Pending</option>
-                            <option value="On Hold">On Hold</option>
-                            <option value="Back Order">Back Order</option>
-                            <option value="Ordered">Ordered</option>
-                            <option value="Completed">Completed</option>
-                            <option value="Canceled">Canceled</option>
-                            <option value="Offered">Offered</option>
-                          </select>
-                          <Button
-                            onClick={() => {
-                              updateStatus(requestList[request].id);
-                            }}
-                            style={{
-                              width: "100%",
-                              marginTop: "10px",
-                              backgroundColor: "black",
-                              color: "white",
-                            }}
-                          >
-                            Update
-                            <Icon
-                              style={{ marginLeft: "10px" }}
-                              name="edit outline"
-                            ></Icon>
-                          </Button>
-                        </Form.Group>{" "}
-                      </Table.Cell>
-                      <Table.Cell>{requestList[request].note}</Table.Cell>
-                      <Table.Cell>{requestList[request].source}</Table.Cell>
-                      <Table.Cell>
-                        <textarea
-                          onChange={(e) => {
-                            setNewNote(e.target.value);
-                          }}
-                          placeholder="Update Note"
-                        ></textarea>
-                        <Button
-                          onClick={() => {
-                            updateNote(requestList[request].id);
-                          }}
-                          style={{
-                            marginLeft: "20px",
-                            color: "white",
-                            backgroundColor: "black",
-                          }}
-                        >
-                          Update
-                          <Icon name="edit outline"></Icon>
-                        </Button>
-                      </Table.Cell>
-                      <Table.Cell>
-                        <textarea
-                          onChange={(e) => {
-                            setNewSource(e.target.value);
-                          }}
-                          placeholder="Update Source"
-                        ></textarea>
-                        <Button
-                          type="reset"
-                          onClick={() => {
-                            updateSource(requestList[request].id);
-                          }}
-                          style={{
-                            marginLeft: "20px",
-                            color: "white",
-                            backgroundColor: "black",
-                          }}
-                        >
-                          Update
-                          <Icon name="edit outline"></Icon>
-                        </Button>
-                      </Table.Cell>
-                      <Table.Cell>
-                        {requestList[request].date_created}
-                      </Table.Cell>
-                      <Table.Cell>
-                        {" "}
-                        {requestList[request].date_updated}
-                      </Table.Cell>
-                    </Table.Row>
-                  );
-                })}
-            </Table.Body>
-          </Table>
-        </Card.Content> */}
         </Card>
       </div>
     </div>
