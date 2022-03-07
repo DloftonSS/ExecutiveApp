@@ -229,15 +229,21 @@ function CalendarDashbaord() {
       <br></br>
       <Row>
         <Col className="trythis">
-          {Object.keys(events).map((cal, i) => {
-            return (
-              <Table.Row
-                style={{ width: "500px", height: "400px", overflow: "scroll" }}
-              >
-                <Table.Cell style={{}}>{events[cal].Title}</Table.Cell>
-                <Table.Cell style={{}}>{events[cal].Date}</Table.Cell>
-                <Table.Cell style={{}}>{events[cal].location}</Table.Cell>
-                {/* <Table.Cell style={{}}>
+          <Table>
+            <Table.body
+              style={{
+                width: "500px",
+                height: "400px",
+                overflow: "scroll",
+              }}
+            >
+              {Object.keys(events).map((cal, i) => {
+                return (
+                  <Table.Row>
+                    <Table.Cell style={{}}>{events[cal].Title}</Table.Cell>
+                    <Table.Cell style={{}}>{events[cal].Date}</Table.Cell>
+                    <Table.Cell style={{}}>{events[cal].location}</Table.Cell>
+                    {/* <Table.Cell style={{}}>
                             <select
                               onChange={(e) => {
                                 set(e.target.value.toUpperCase());
@@ -258,9 +264,11 @@ function CalendarDashbaord() {
                               </option>
                             </select>
                           </Table.Cell> */}
-              </Table.Row>
-            );
-          })}
+                  </Table.Row>
+                );
+              })}
+            </Table.body>
+          </Table>
         </Col>
       </Row>
     </div>
