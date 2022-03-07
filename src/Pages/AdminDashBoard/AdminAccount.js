@@ -316,7 +316,10 @@ function AdminAccount() {
                 REQUESTS
               </List.Item>
               <List.Item className="menu-item" onClick={ShowCatalog}>
-                <Icon className="icon" name="list"></Icon>CATALOG
+                <Icon className="icon" name="list"></Icon>MARKET
+              </List.Item>
+              <List.Item className="menu-item" onClick={ShowCatalog}>
+                <Icon className="icon" name="list"></Icon>CALENDAR
               </List.Item>
               <List.Item className="menu-item" onClick={AddMember}>
                 <Icon className="icon" name="user plus"></Icon>ADD MEMBER
