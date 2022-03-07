@@ -23,8 +23,8 @@ import Axios from "axios";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import "./CatalogDashboard.css";
-import Logo from "../images/exec catalog.png";
+import "./CalendarDashboard.css";
+// import Logo from "../images/exec catalog.png";
 
 function CalendarDashbaord() {
   const [title, setTitle] = useState("");
