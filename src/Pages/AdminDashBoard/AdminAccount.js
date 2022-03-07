@@ -528,7 +528,7 @@ function AdminAccount() {
               backgroundColor: "white",
               boxShadow: "0px 0px 5px 3px rgb(129, 0, 0)",
             }}
-            className="main-catalog"
+            className="main-calendar"
           >
             <CalendarDashbaord />
           </Col>

@@ -231,7 +231,7 @@ function CalendarDashbaord() {
         <Col className="trythis">
           <div
             style={{
-              width: "500px",
+              width: "60%",
               height: "300px",
               overflow: "scroll",
               margin: "auto",
