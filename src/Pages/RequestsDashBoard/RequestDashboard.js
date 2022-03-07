@@ -147,7 +147,7 @@ function RequestDashboard() {
     //     document.body.appendChild(link);
     //     link.click();
     // });
-    axios({
+    Axios({
       url: "https://executive-app.herokuapp.com/downloadRequests", //your url
       method: "GET",
       responseType: "blob", // important
