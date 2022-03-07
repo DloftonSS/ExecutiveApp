@@ -231,7 +231,6 @@ function CalendarDashbaord() {
         <Col className="trythis">
           <div
             style={{
-              width: "60%",
               height: "300px",
               overflow: "scroll",
               margin: "auto",
@@ -243,8 +242,10 @@ function CalendarDashbaord() {
                   <Table.Cell style={{}}>{events[cal].Title}</Table.Cell>
                   <Table.Cell style={{}}>{events[cal].Date}</Table.Cell>
                   <Table.Cell style={{}}>{events[cal].location}</Table.Cell>
-                  <Table.Cell style={{ color: "red" }} onClick={DeleteEvent}>
-                    DELETE
+                  <Table.Cell style={{}}>
+                    <p onClick={DeleteEvent} style={{ color: "red" }}>
+                      Delete
+                    </p>
                   </Table.Cell>
                   {/* <Table.Cell style={{}}>
                             <select
