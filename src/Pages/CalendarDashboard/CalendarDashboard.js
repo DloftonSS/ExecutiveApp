@@ -54,14 +54,14 @@ function CalendarDashbaord() {
   };
 
   //DELETE EVENT
-  const DeleteEvent = (id) => {
-    Axios.delete(
-      `https://executive-app.herokuapp.com/deleteProduct/${id}`
-    ).then(() => {
-      // Axios.delete(`http://localhost:3001/deleteProduct/${id}`).then(() => {
-      console.log("deleted");
-    });
-  };
+  //   const DeleteEvent = (id) => {
+  //     Axios.delete(
+  //       `https://executive-app.herokuapp.com/deleteProduct/${id}`
+  //     ).then(() => {
+  //       // Axios.delete(`http://localhost:3001/deleteProduct/${id}`).then(() => {
+  //       console.log("deleted");
+  //     });
+  //   };
   const DoTasks = () => {
     getEvents();
   };
@@ -228,13 +228,13 @@ function CalendarDashbaord() {
       <br></br>
       <Row>
         <Col className="trythis">
-          {Object.keys(events).map((logs, i) => {
+          {Object.keys(events).map((cal, i) => {
             return (
               <div>
                 <Row>
-                  <Col>{events.Title}</Col>
-                  <Col>{events.Date}</Col>
-                  <Col>{events.location}</Col>
+                  <Col>{events[cal].Title}</Col>
+                  <Col>{events[cal].Date}</Col>
+                  <Col>{events[cal].location}</Col>
                 </Row>
               </div>
             );
