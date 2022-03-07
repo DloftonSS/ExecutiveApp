@@ -55,19 +55,19 @@ function CalendarDashbaord() {
   };
 
   //DELETE EVENT
-  //   const DeleteEvent = (id) => {
-  //     Axios.delete(
-  //       `https://executive-app.herokuapp.com/deleteProduct/${id}`
-  //     ).then(() => {
-  //       // Axios.delete(`http://localhost:3001/deleteProduct/${id}`).then(() => {
-  //       console.log("deleted");
-  //     });
-  //   };
+  const DeleteEvent = (id) => {
+    Axios.delete(
+      `https://executive-app.herokuapp.com/deleteProduct/${id}`
+    ).then(() => {
+      // Axios.delete(`http://localhost:3001/deleteProduct/${id}`).then(() => {
+      console.log("deleted");
+    });
+  };
   const DoTasks = () => {
     getEvents();
   };
   useEffect(() => {
-    getEvents();
+    // getEvents();
   });
   //
   //
@@ -229,13 +229,23 @@ function CalendarDashbaord() {
       <br></br>
       <Row>
         <Col className="trythis">
-          <div style={{ width: "500px", height: "300px", overflow: "scroll" }}>
+          <div
+            style={{
+              width: "500px",
+              height: "300px",
+              overflow: "scroll",
+              margin: "auto",
+            }}
+          >
             {Object.keys(events).map((cal, i) => {
               return (
                 <Table.Row>
                   <Table.Cell style={{}}>{events[cal].Title}</Table.Cell>
                   <Table.Cell style={{}}>{events[cal].Date}</Table.Cell>
                   <Table.Cell style={{}}>{events[cal].location}</Table.Cell>
+                  <Table.Cell style={{ color: "red" }} onClick={DeleteEvent}>
+                    DELETE
+                  </Table.Cell>
                   {/* <Table.Cell style={{}}>
                             <select
                               onChange={(e) => {
