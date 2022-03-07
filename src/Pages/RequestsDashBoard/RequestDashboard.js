@@ -135,6 +135,31 @@ function RequestDashboard() {
       GetPendingRequests();
     });
   };
+
+  const DownloadRequests = () => {
+    // Axios.Get("https://executive-app.herokuapp.com/downloadRequests", {
+
+    // }).then((response) => {
+    //     const url = window.URL.createObjectURL(new Blob([response.data]));
+    //     const link = document.createElement("a");
+    //     link.href = url;
+    //     link.setAttribute("download", "file.pdf"); //or any other extension
+    //     document.body.appendChild(link);
+    //     link.click();
+    // });
+    axios({
+      url: "https://executive-app.herokuapp.com/downloadRequests", //your url
+      method: "GET",
+      responseType: "blob", // important
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "download.csv"); //or any other extension
+      document.body.appendChild(link);
+      link.click();
+    });
+  };
   useEffect(() => {
     GetAllRequests();
     // GetAllConcluded();
@@ -262,6 +287,7 @@ function RequestDashboard() {
         </Col>
       </Row>
       <Row id="active-requests">
+        <button onClick={DownloadRequests}>Download Requests</button>
         <h2 className="ra-title">
           <span className="span">A</span>ctive <span className="span">R</span>
           equests
