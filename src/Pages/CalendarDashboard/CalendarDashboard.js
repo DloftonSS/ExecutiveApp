@@ -66,7 +66,9 @@ function CalendarDashbaord() {
   const DoTasks = () => {
     getEvents();
   };
-  useEffect(() => {});
+  useEffect(() => {
+    getEvents();
+  });
   //
   //
   return (
@@ -227,21 +229,14 @@ function CalendarDashbaord() {
       <br></br>
       <Row>
         <Col className="trythis">
-          <Table>
-            <Table.body
-              style={{
-                width: "500px",
-                height: "400px",
-                overflow: "scroll",
-              }}
-            >
-              {Object.keys(events).map((cal, i) => {
-                return (
-                  <Table.Row>
-                    <Table.Cell style={{}}>{events[cal].Title}</Table.Cell>
-                    <Table.Cell style={{}}>{events[cal].Date}</Table.Cell>
-                    <Table.Cell style={{}}>{events[cal].location}</Table.Cell>
-                    {/* <Table.Cell style={{}}>
+          <div style={{ width: "500px", height: "300px", overflow: "scroll" }}>
+            {Object.keys(events).map((cal, i) => {
+              return (
+                <Table.Row>
+                  <Table.Cell style={{}}>{events[cal].Title}</Table.Cell>
+                  <Table.Cell style={{}}>{events[cal].Date}</Table.Cell>
+                  <Table.Cell style={{}}>{events[cal].location}</Table.Cell>
+                  {/* <Table.Cell style={{}}>
                             <select
                               onChange={(e) => {
                                 set(e.target.value.toUpperCase());
@@ -262,11 +257,10 @@ function CalendarDashbaord() {
                               </option>
                             </select>
                           </Table.Cell> */}
-                  </Table.Row>
-                );
-              })}
-            </Table.body>
-          </Table>
+                </Table.Row>
+              );
+            })}
+          </div>
         </Col>
       </Row>
     </div>
