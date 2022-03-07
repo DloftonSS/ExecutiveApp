@@ -137,7 +137,7 @@ function RequestDashboard() {
   };
   useEffect(() => {
     GetAllRequests();
-    GetAllConcluded();
+    // GetAllConcluded();
     GetOnholdRequests();
     GetBackorderedRequests();
     GetPendingRequests();
@@ -157,6 +157,7 @@ function RequestDashboard() {
     document.getElementById("onHold-requests").style.display = "none";
     document.getElementById("pending-requests").style.display = "none";
     document.getElementById("backordered-requests").style.display = "none";
+    GetAllConcluded();
   };
   const ShowOnhold = () => {
     document.getElementById("onHold-requests").style.display = "block";
