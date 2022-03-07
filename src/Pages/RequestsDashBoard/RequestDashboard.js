@@ -69,7 +69,7 @@ function RequestDashboard() {
       (response) => {
         // Axios.get("http://localhost:3001/allConcluded").then((response) => {
         setConcludedList(response.data);
-        GetAllConcluded();
+        // GetAllConcluded();
       }
     );
   };
