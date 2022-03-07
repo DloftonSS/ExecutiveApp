@@ -530,7 +530,7 @@ function AdminAccount() {
             }}
             className="main-catalog"
           >
-            <CalendarDashbaord />
+            {/* <CalendarDashbaord /> */}
           </Col>
           <Col
             sm={10}
