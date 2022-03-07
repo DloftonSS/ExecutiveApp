@@ -66,9 +66,7 @@ function CalendarDashbaord() {
   const DoTasks = () => {
     getEvents();
   };
-  useEffect(() => {
-    getEvents();
-  });
+  useEffect(() => {});
   //
   //
   return (

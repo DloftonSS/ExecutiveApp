@@ -519,7 +519,7 @@ function AdminAccount() {
           >
             <CatalogDashboard />
           </Col>
-          {/* <Col
+          <Col
             sm={10}
             id="calendar-content"
             style={{
@@ -531,7 +531,7 @@ function AdminAccount() {
             className="main-catalog"
           >
             <CalendarDashbaord />
-          </Col> */}
+          </Col>
           <Col
             sm={10}
             id="addMember-content"
