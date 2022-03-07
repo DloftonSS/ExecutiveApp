@@ -230,13 +230,32 @@ function CalendarDashbaord() {
         <Col className="trythis">
           {Object.keys(events).map((cal, i) => {
             return (
-              <div>
-                <Row>
-                  <Col>{events[cal].Title}</Col>
-                  <Col>{events[cal].Date}</Col>
-                  <Col>{events[cal].location}</Col>
-                </Row>
-              </div>
+              <Table.Row>
+                <Table.Cell style={{}}>{events[cal].Title}</Table.Cell>
+                <Table.Cell style={{}}>{events[cal].Date}</Table.Cell>
+                <Table.Cell style={{}}>{events[cal].location}</Table.Cell>
+                {/* <Table.Cell style={{}}>
+                            <select
+                              onChange={(e) => {
+                                set(e.target.value.toUpperCase());
+                              }}
+                              style={{
+                                height: "35px",
+                                width: "100%",
+                                backgroundColor: "white",
+                                borderRadius: "5px",
+                                border: "solid 1px rgb(129, 0, 0)",
+                              }}
+                            >
+                              <option>Attendance</option>
+                              <option value="Attending">Attending</option>
+                              <option value="Maybe">Maybe</option>
+                              <option value="Not Attending">
+                                Not Attending
+                              </option>
+                            </select>
+                          </Table.Cell> */}
+              </Table.Row>
             );
           })}
         </Col>
