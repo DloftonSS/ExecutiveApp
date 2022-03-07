@@ -147,6 +147,25 @@ function RequestDashboard() {
     //     document.body.appendChild(link);
     //     link.click();
     // });
+
+    const objectToCsv = function (data) {
+      const cvsRows = [];
+
+      //get the headers
+      const headers = Object.keys(data[0]);
+      cvsRows.push(headers.join(","));
+      // loop over the rows
+      for (const row of data) {
+        const values = headers.map((header) => {
+          const escaped = ("" + row[headers]).replace(/"/g, '\\"');
+          return `"${escaped}"`;
+        });
+      }
+      // form escaped comma separated values
+      const csvData = objectToCsv(data);
+      download(csvData);
+    };
+
     Axios({
       url: "https://executive-app.herokuapp.com/downloadRequests", //your url
       method: "GET",
@@ -154,6 +173,20 @@ function RequestDashboard() {
     }).then((response) => {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
+
+      const data = json.map((row) => ({
+        category: row.category,
+        item: row.item,
+        brand: row.brand,
+        quantity: row.quantity,
+        status: row.status,
+        sku: row.sku,
+        memberName: row.memberName,
+        datecreated: date_created,
+        price: price,
+      }));
+      const csvData = objectToCsv(data);
+
       link.href = url;
       link.setAttribute("download", "download.csv"); //or any other extension
       document.body.appendChild(link);
