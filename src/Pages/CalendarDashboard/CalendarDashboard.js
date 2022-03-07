@@ -231,7 +231,9 @@ function CalendarDashbaord() {
         <Col className="trythis">
           {Object.keys(events).map((cal, i) => {
             return (
-              <Table.Row>
+              <Table.Row
+                style={{ width: "500px", height: "400px", overflow: "scroll" }}
+              >
                 <Table.Cell style={{}}>{events[cal].Title}</Table.Cell>
                 <Table.Cell style={{}}>{events[cal].Date}</Table.Cell>
                 <Table.Cell style={{}}>{events[cal].location}</Table.Cell>
