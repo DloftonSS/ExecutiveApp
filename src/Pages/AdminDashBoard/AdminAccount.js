@@ -521,7 +521,7 @@ function AdminAccount() {
           </Col>
           <Col
             sm={10}
-            id="catalog-content"
+            id="calendar-content"
             style={{
               height: "100% !important",
               color: "black",
