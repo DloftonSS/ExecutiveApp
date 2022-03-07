@@ -29,6 +29,7 @@ import RequestDashboard from "../RequestsDashBoard/RequestDashboard";
 import AddNewMember from "../AddMember/AddMember";
 import AddAdminDashboard from "../AddAdmin/AddAdminDashboard";
 import CatalogDashboard from "../CatalogDashboard/CatalogDashboard";
+import CalendarDashbaord from "../CalendarDashboard/CalendarDashboard";
 // import AllMembers from "../Allmembers";
 
 // CHANGE DARK MODE
@@ -186,6 +187,7 @@ function AdminAccount() {
     document.getElementById("requests-content").style.display = "none";
     document.getElementById("members-content").style.display = "none";
     document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("calendar-content").style.display = "none";
     document.getElementById("addMember-content").style.display = "none";
     document.getElementById("addAdmin-content").style.display = "none";
   };
@@ -195,6 +197,7 @@ function AdminAccount() {
     document.getElementById("requests-content").style.display = "none";
     document.getElementById("addMember-content").style.display = "none";
     document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("calendar-content").style.display = "none";
     document.getElementById("addAdmin-content").style.display = "none";
   };
   const ShowRequests = () => {
@@ -203,6 +206,7 @@ function AdminAccount() {
     document.getElementById("members-content").style.display = "none";
     document.getElementById("addMember-content").style.display = "none";
     document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("calendar-content").style.display = "none";
     document.getElementById("addAdmin-content").style.display = "none";
   };
   const ShowCatalog = () => {
@@ -211,6 +215,16 @@ function AdminAccount() {
     document.getElementById("members-content").style.display = "none";
     document.getElementById("addMember-content").style.display = "none";
     document.getElementById("catalog-content").style.display = "block";
+    document.getElementById("calendar-content").style.display = "none";
+    document.getElementById("addAdmin-content").style.display = "none";
+  };
+  const ShowCalendar = () => {
+    document.getElementById("requests-content").style.display = "none";
+    document.getElementById("dashboard-content").style.display = "none";
+    document.getElementById("members-content").style.display = "none";
+    document.getElementById("addMember-content").style.display = "none";
+    document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("calendar-content").style.display = "block";
     document.getElementById("addAdmin-content").style.display = "none";
   };
   const AddMember = () => {
@@ -219,6 +233,7 @@ function AdminAccount() {
     document.getElementById("members-content").style.display = "none";
     document.getElementById("addMember-content").style.display = "block";
     document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("calendar-content").style.display = "none";
     document.getElementById("addAdmin-content").style.display = "none";
   };
   const AddAdmin = () => {
@@ -227,6 +242,7 @@ function AdminAccount() {
     document.getElementById("members-content").style.display = "none";
     document.getElementById("addMember-content").style.display = "none";
     document.getElementById("catalog-content").style.display = "none";
+    document.getElementById("calendar-content").style.display = "none";
     document.getElementById("addAdmin-content").style.display = "block";
   };
 
@@ -318,8 +334,8 @@ function AdminAccount() {
               <List.Item className="menu-item" onClick={ShowCatalog}>
                 <Icon className="icon" name="list"></Icon>MARKET
               </List.Item>
-              <List.Item className="menu-item" onClick={ShowCatalog}>
-                <Icon className="icon" name="list"></Icon>CALENDAR
+              <List.Item className="menu-item" onClick={ShowCalendar}>
+                <Icon className="icon" name="calendar alternate"></Icon>CALENDAR
               </List.Item>
               <List.Item className="menu-item" onClick={AddMember}>
                 <Icon className="icon" name="user plus"></Icon>ADD MEMBER
@@ -502,6 +518,19 @@ function AdminAccount() {
             className="main-catalog"
           >
             <CatalogDashboard />
+          </Col>
+          <Col
+            sm={10}
+            id="catalog-content"
+            style={{
+              height: "100% !important",
+              color: "black",
+              backgroundColor: "white",
+              boxShadow: "0px 0px 5px 3px rgb(129, 0, 0)",
+            }}
+            className="main-catalog"
+          >
+            <CalendarDashbaord />
           </Col>
           <Col
             sm={10}
