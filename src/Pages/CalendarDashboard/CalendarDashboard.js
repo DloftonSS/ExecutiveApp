@@ -57,9 +57,9 @@ function CalendarDashbaord() {
   //DELETE EVENT
   const DeleteEvent = (id) => {
     Axios.delete(
-      `https://executive-app.herokuapp.com/deleteProduct/${id}`
+      `https://executive-app.herokuapp.com/deleteCalendar/${id}`
     ).then(() => {
-      // Axios.delete(`http://localhost:3001/deleteProduct/${id}`).then(() => {
+      // Axios.delete(`http://localhost:3001/deleteCalendar/${id}`).then(() => {
       console.log("deleted");
     });
   };
@@ -243,7 +243,12 @@ function CalendarDashbaord() {
                   <Table.Cell style={{}}>{events[cal].Date}</Table.Cell>
                   <Table.Cell style={{}}>{events[cal].location}</Table.Cell>
                   <Table.Cell style={{}}>
-                    <p onClick={DeleteEvent} style={{ color: "red" }}>
+                    <p
+                      style={{ color: "red" }}
+                      onClick={() => {
+                        DeleteEvent(events[cal].id);
+                      }}
+                    >
                       Delete
                     </p>
                   </Table.Cell>
