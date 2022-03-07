@@ -11,6 +11,7 @@ import {
   Image,
   Modal,
   Card,
+  Table,
   Popup,
   Form,
   Menu,
