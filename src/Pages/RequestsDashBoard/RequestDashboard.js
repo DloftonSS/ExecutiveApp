@@ -136,63 +136,102 @@ function RequestDashboard() {
     });
   };
 
-  const DownloadRequests = () => {
-    // Axios.Get("https://executive-app.herokuapp.com/downloadRequests", {
+  const objectToCsv = function (data) {
+    const csvRows = [];
 
-    // }).then((response) => {
-    //     const url = window.URL.createObjectURL(new Blob([response.data]));
-    //     const link = document.createElement("a");
-    //     link.href = url;
-    //     link.setAttribute("download", "file.pdf"); //or any other extension
-    //     document.body.appendChild(link);
-    //     link.click();
-    // });
+    const headers = Object.keys(data[0]);
+    csvRows.push(headers.join(","));
 
-    const objectToCsv = function (data) {
-      const cvsRows = [];
+    for (const row of data) {
+      const values = headers.map((header) => {
+        const escaped = ("" + row[headers]).replace(/"/g, '\\"');
+        return `"${escaped}"`;
+      });
 
-      //get the headers
-      const headers = Object.keys(data[0]);
-      cvsRows.push(headers.join(","));
-      // loop over the rows
-      for (const row of data) {
-        const values = headers.map((header) => {
-          const escaped = ("" + row[headers]).replace(/"/g, '\\"');
-          return `"${escaped}"`;
-        });
-      }
-      // form escaped comma separated values
-      const csvData = objectToCsv(data);
-      download(csvData);
-    };
-
-    Axios({
-      url: "https://executive-app.herokuapp.com/downloadRequests", //your url
-      method: "GET",
-      responseType: "blob", // important
-    }).then((response) => {
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-
-      const data = json.map((row) => ({
-        category: row.category,
-        item: row.item,
-        brand: row.brand,
-        quantity: row.quantity,
-        status: row.status,
-        sku: row.sku,
-        memberName: row.memberName,
-        datecreated: date_created,
-        price: price,
-      }));
-      const csvData = objectToCsv(data);
-
-      link.href = url;
-      link.setAttribute("download", "download.csv"); //or any other extension
-      document.body.appendChild(link);
-      link.click();
-    });
+      csvRows.push(values.join(","));
+    }
+    return csvRows.join("\n");
   };
+
+  const download = function () {
+    const blob = new Blob([data], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.setAttribute("hidden", "");
+    a.setAttribute("href", url);
+    a.setAttribute("download", "download.csv");
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  const DownloadRequests = async function () {
+    const jsonUrl = "https://executive-app.herokuapp.com/downloadRequests";
+    const res = await fetch(jsonUrl);
+    const json = await res.json();
+
+    const data = json.map((row) => ({
+      category: row.category,
+      item: row.item,
+      brand: row.brand,
+      quantity: row.quantity,
+      status: row.status,
+      sku: row.sku,
+      memberName: row.memberName,
+      datecreated: row.date_created,
+      price: row.price,
+    }));
+
+    const csvData = objectToCsv(data);
+
+    download(csvData);
+  };
+  // const DownloadRequests = () => {
+
+  //   const objectToCsv = function (data) {
+  //     const cvsRows = [];
+
+  //     const headers = Object.keys(data[0]);
+  //     cvsRows.push(headers.join(","));
+
+  //     for (const row of data) {
+  //       const values = headers.map((header) => {
+  //         const escaped = ("" + row[headers]).replace(/"/g, '\\"');
+  //         return `"${escaped}"`;
+  //       });
+  //     }
+
+  //     const csvData = objectToCsv(data);
+  //     download(csvData);
+  //   };
+
+  //   Axios({
+  //     url: "https://executive-app.herokuapp.com/downloadRequests",
+  //     method: "GET",
+  //     responseType: "blob", // important
+  //   }).then((response) => {
+  //     const url = window.URL.createObjectURL(new Blob([response.data]));
+  //     const link = document.createElement("a");
+
+  //     const data = json.map((row) => ({
+  //       category: row.category,
+  //       item: row.item,
+  //       brand: row.brand,
+  //       quantity: row.quantity,
+  //       status: row.status,
+  //       sku: row.sku,
+  //       memberName: row.memberName,
+  //       datecreated: date_created,
+  //       price: price,
+  //     }));
+  //     const csvData = objectToCsv(data);
+
+  //     link.href = url;
+  //     link.setAttribute("download", "download.csv");
+  //     document.body.appendChild(link);
+  //     link.click();
+  //   });
+  // };
   useEffect(() => {
     GetAllRequests();
     // GetAllConcluded();
