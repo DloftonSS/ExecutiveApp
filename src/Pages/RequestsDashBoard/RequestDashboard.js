@@ -319,7 +319,7 @@ function RequestDashboard() {
       <Row id="active-requests">
         <button
           onClick={DownloadRequests}
-          style={{ width: "200px", height: "30px", paddingLeft: "50px" }}
+          style={{ width: "200px", height: "30px", marginLeft: "50px" }}
         >
           Download Requests
         </button>

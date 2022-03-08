@@ -211,7 +211,7 @@ function CatalogDashboard() {
       <Row id="active-requests">
         <button
           onClick={DoTasks}
-          style={{ width: "200px", height: "30px", paddingLeft: "50px" }}
+          style={{ width: "200px", height: "30px", marginLeft: "50px" }}
         >
           Reload Data
         </button>
