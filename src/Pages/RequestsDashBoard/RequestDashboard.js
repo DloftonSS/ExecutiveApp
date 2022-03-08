@@ -144,7 +144,7 @@ function RequestDashboard() {
 
     for (const row of data) {
       const values = headers.map((header) => {
-        const escaped = ("" + row[headers]).replace(/"/g, '\\"');
+        const escaped = ("" + row[header]).replace(/"/g, '\\"');
         return `"${escaped}"`;
       });
 
