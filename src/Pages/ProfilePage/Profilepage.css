@@ -227,14 +227,14 @@ p.message {
     color: black;
   }
   .message-textbox {
-    width: 50%;
+    width: 92%;
     height: 50px;
   }
   form {
     width: 100vw;
   }
   .message-button {
-    width: 50%;
+    width: 92%;
     /* height: 20px; */
     color: white;
     background-color: black;

@@ -26,6 +26,7 @@ import Logo from "../images/exec catalog.png";
 import Axios from "axios";
 // import Logo from "./profileImage.jpg";
 import Albert from "./profileImage.jpg";
+import Product from "../images/ProductPlaceholderImage.png";
 
 import "./Profilepage.css";
 
@@ -255,7 +256,7 @@ const Profile = (props) => {
               }}
             >
               {" "}
-              <img src={Albert} className="header-logo"></img>
+              <img src={Product} className="header-logo"></img>
             </div>
             <span style={{ float: "right", paddingRight: "10%" }}>
               <a style={{ color: "white" }} href="/">
@@ -552,7 +553,7 @@ const Profile = (props) => {
                     return (
                       <div className="card-catalog-container">
                         <Image wrapped ui={false} />{" "}
-                        <img src={Logo} className="img-height"></img>
+                        <img src={Product} className="img-height"></img>
                         <Card.Content style={{ marginLeft: "5%" }}>
                           <Card.Header style={{ fontSize: "20px" }}>
                             {catalog[logs].Make}
@@ -705,7 +706,7 @@ const Profile = (props) => {
                     );
                   })}
                 </Feed>
-                {/* <form className="message-textbox" style={{ width: "100vw" }}> */}
+                {/* <form className="message-textbox"> */}
                 <textarea
                   placeholder="Message"
                   className="message-textbox"
