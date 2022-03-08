@@ -1339,6 +1339,7 @@ function ExecutiveData(props) {
           <Card fluid style={{ height: "600px" }}>
             <Card.Content>
               <Card.Header>Notes</Card.Header>
+              <p>Notate account for admins.</p>
             </Card.Content>
             <Card.Content
               style={{
@@ -1502,6 +1503,7 @@ function ExecutiveData(props) {
           <Card fluid style={{ height: "600px" }}>
             <Card.Content>
               <Card.Header>Messages</Card.Header>
+              <p>Send direct message to customer.</p>
             </Card.Content>
             <Card.Content
               style={{

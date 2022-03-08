@@ -54,6 +54,9 @@ const Profile = (props) => {
   const [custName, setCustName] = useState("");
 
   const [catalog, setCatalog] = useState("");
+  const [likeTotal, setLikeTotal] = useState("");
+  // const [newLikeTotal, setNewLikeTotal] = useState("");
+  const newLikeTotal = "1";
   // const id = props.match.params.id;
   // const id = props.id;
   const { id } = useParams();
@@ -94,10 +97,24 @@ const Profile = (props) => {
       (response) => {
         // Axios.get("http://localhost:3001/getCatalogNow").then((response) => {
         setCatalog(response.data);
+        setLikeTotal(response.data.Likes);
         console.log(response.data.length);
+        console.log(likeTotal);
       }
     );
   };
+  // ******** CONTROL LIKE COUNTER **************
+  // var likeNumber = likeTotal;
+  const AddLike = (id) => {
+    // setNewLikeTotal(likeTotal++);
+    // console.log(newLikeTotal);
+    Axios.post("https://executive-app.herokuapp.com/addALike", {
+      // Axios.post("http://localhost:3001/addALike", {
+      newLikeTotal: newLikeTotal,
+      id: id,
+    }).then(() => {});
+  };
+
   const getMemberInfo = () => {
     Axios.get("https://executive-app.herokuapp.com/memberProfile").then(
       (response) => {
@@ -574,8 +591,11 @@ const Profile = (props) => {
                             <Icon
                               name="thumbs up"
                               className="catalog-options-icons"
+                              onClick={() => {
+                                AddLike(catalog[logs].id);
+                              }}
                             />
-                            22
+                            {catalog[logs].Likes}
                           </Col>
                           <Col>
                             <p className="catalog-options-icons">
