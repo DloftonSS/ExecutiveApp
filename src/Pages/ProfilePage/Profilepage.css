@@ -187,7 +187,7 @@ p.message {
   }
   .center-section {
     background-color: none !important;
-    width: 700;
+    width: 100vw;
     margin-top: 55%;
 
     /* overflow: scroll; */
@@ -230,12 +230,21 @@ p.message {
     width: 50%;
     height: 50px;
   }
+  form {
+    width: 100vw;
+  }
   .message-button {
     width: 50%;
-    height: 40px;
-    background-color: white;
+    /* height: 20px; */
+    color: white;
+    background-color: black;
     padding: 1%;
+    position: relative;
+    padding-bottom: 10%;
     margin-bottom: 5%;
+  }
+  form.message-textbox {
+    width: 100vw;
   }
 }
 

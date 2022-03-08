@@ -257,7 +257,7 @@ const Profile = (props) => {
               {" "}
               <img src={Albert} className="header-logo"></img>
             </div>
-            <span style={{ float: "right", paddingRight: "5%" }}>
+            <span style={{ float: "right", paddingRight: "10%" }}>
               <a style={{ color: "white" }} href="/">
                 <Icon name="sign out alternate" size="large"></Icon>
               </a>
@@ -266,7 +266,7 @@ const Profile = (props) => {
               style={{
                 position: "relative",
                 float: "left",
-                paddingLeft: "5%",
+                paddingLeft: "10%",
               }}
             >
               <Modal
@@ -674,7 +674,7 @@ const Profile = (props) => {
                 <h3 className="section-titles right-section-title messages-title">
                   MESSAGES
                 </h3>
-                <Feed className="message-container">
+                <Feed className="message-container" style={{ width: "100vw" }}>
                   {Object.keys(messageList).map((message, i) => {
                     let update = new Date(messageList[message].Date)
                       .toUTCString()
@@ -705,22 +705,23 @@ const Profile = (props) => {
                     );
                   })}
                 </Feed>
-                <form className="message-textbox">
-                  <textarea
-                    placeholder="Message"
-                    className="message-textbox"
-                    onChange={(e) => {
-                      setMessageTyped(e.target.value);
-                    }}
-                  ></textarea>
-                  <button
-                    className="message-button"
-                    type="reset"
-                    onClick={submitMessage}
-                  >
-                    Send Message
-                  </button>
-                </form>
+                {/* <form className="message-textbox" style={{ width: "100vw" }}> */}
+                <textarea
+                  placeholder="Message"
+                  className="message-textbox"
+                  onChange={(e) => {
+                    setMessageTyped(e.target.value);
+                  }}
+                ></textarea>
+                <br></br>
+                <button
+                  className="message-button"
+                  type="reset"
+                  onClick={submitMessage}
+                >
+                  Send Message
+                </button>
+                {/* </form> */}
               </div>
             </div>
           </Col>
