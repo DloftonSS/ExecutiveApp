@@ -186,52 +186,7 @@ function RequestDashboard() {
 
     download(csvData);
   };
-  // const DownloadRequests = () => {
 
-  //   const objectToCsv = function (data) {
-  //     const cvsRows = [];
-
-  //     const headers = Object.keys(data[0]);
-  //     cvsRows.push(headers.join(","));
-
-  //     for (const row of data) {
-  //       const values = headers.map((header) => {
-  //         const escaped = ("" + row[headers]).replace(/"/g, '\\"');
-  //         return `"${escaped}"`;
-  //       });
-  //     }
-
-  //     const csvData = objectToCsv(data);
-  //     download(csvData);
-  //   };
-
-  //   Axios({
-  //     url: "https://executive-app.herokuapp.com/downloadRequests",
-  //     method: "GET",
-  //     responseType: "blob", // important
-  //   }).then((response) => {
-  //     const url = window.URL.createObjectURL(new Blob([response.data]));
-  //     const link = document.createElement("a");
-
-  //     const data = json.map((row) => ({
-  //       category: row.category,
-  //       item: row.item,
-  //       brand: row.brand,
-  //       quantity: row.quantity,
-  //       status: row.status,
-  //       sku: row.sku,
-  //       memberName: row.memberName,
-  //       datecreated: date_created,
-  //       price: price,
-  //     }));
-  //     const csvData = objectToCsv(data);
-
-  //     link.href = url;
-  //     link.setAttribute("download", "download.csv");
-  //     document.body.appendChild(link);
-  //     link.click();
-  //   });
-  // };
   useEffect(() => {
     GetAllRequests();
     // GetAllConcluded();
@@ -359,7 +314,12 @@ function RequestDashboard() {
         </Col>
       </Row>
       <Row id="active-requests">
-        <button onClick={DownloadRequests}>Download Requests</button>
+        <button
+          onClick={DownloadRequests}
+          style={{ width: "200px", height: "30px", paddingBottom: "5px" }}
+        >
+          Download Requests
+        </button>
         <h2 className="ra-title">
           <span className="span">A</span>ctive <span className="span">R</span>
           equests
