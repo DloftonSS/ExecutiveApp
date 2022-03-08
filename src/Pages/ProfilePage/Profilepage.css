@@ -226,6 +226,17 @@ p.message {
     /* margin-left: 5%; */
     color: black;
   }
+  .message-textbox {
+    width: 50%;
+    height: 50px;
+  }
+  .message-button {
+    width: 50%;
+    height: 40px;
+    background-color: white;
+    padding: 1%;
+    margin-bottom: 5%;
+  }
 }
 
 /* ******** old classes below */

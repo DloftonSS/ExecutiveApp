@@ -257,7 +257,7 @@ const Profile = (props) => {
               {" "}
               <img src={Albert} className="header-logo"></img>
             </div>
-            <span style={{ float: "right" }}>
+            <span style={{ float: "right", paddingRight: "5%" }}>
               <a style={{ color: "white" }} href="/">
                 <Icon name="sign out alternate" size="large"></Icon>
               </a>
@@ -266,6 +266,7 @@ const Profile = (props) => {
               style={{
                 position: "relative",
                 float: "left",
+                paddingLeft: "5%",
               }}
             >
               <Modal
