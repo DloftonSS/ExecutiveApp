@@ -331,7 +331,7 @@ function RequestDashboard() {
         <br></br>
         <input
           type="text"
-          placeholder="Search First or Last Name"
+          placeholder="Search any Parameter "
           className="search-input"
           style={{ marginLeft: "25%", marginRight: "25%", width: "50%" }}
           onChange={(event) => {
@@ -594,7 +594,7 @@ function RequestDashboard() {
         <br></br>
         <input
           type="text"
-          placeholder="Search First or Last Name"
+          placeholder="Search any Parameter "
           className="search-input"
           style={{ marginLeft: "25%", marginRight: "25%", width: "50%" }}
           onChange={(event) => {
@@ -861,7 +861,7 @@ function RequestDashboard() {
         <br></br>
         <input
           type="text"
-          placeholder="Search First or Last Name"
+          placeholder="Search any Parameter "
           className="search-input"
           style={{ marginLeft: "25%", marginRight: "25%", width: "50%" }}
           onChange={(event) => {
@@ -1122,7 +1122,7 @@ function RequestDashboard() {
         <br></br>
         <input
           type="text"
-          placeholder="Search First or Last Name"
+          placeholder="Search any Parameter "
           className="search-input"
           style={{ marginLeft: "25%", marginRight: "25%", width: "50%" }}
           onChange={(event) => {
@@ -1385,7 +1385,7 @@ function RequestDashboard() {
         <br></br>
         <input
           type="text"
-          placeholder="Search First or Last Name"
+          placeholder="Search any Parameter "
           className="search-input"
           style={{ marginLeft: "25%", marginRight: "25%", width: "50%" }}
           onChange={(event) => {
