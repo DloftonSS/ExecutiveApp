@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Input, Form } from "react";
+import React, { useState, useEffect, Input } from "react";
 import { useParams } from "react-router";
 import {
   Card,
@@ -12,6 +12,7 @@ import {
   Menu,
   Segment,
   Image,
+  Form,
   Sidebar,
   Dropdown,
   Modal,
@@ -706,23 +707,29 @@ const Profile = (props) => {
                     );
                   })}
                 </Feed>
+                {/* <div style={{ width: "200px" }}> */}
                 {/* <form className="message-textbox"> */}
-                <textarea
-                  placeholder="Message"
-                  className="message-textbox"
-                  onChange={(e) => {
-                    setMessageTyped(e.target.value);
-                  }}
-                ></textarea>
+                <Form>
+                  <textarea
+                    placeholder="Message"
+                    className="message-textbox"
+                    // style={{ width: "80%" }}
+                    onChange={(e) => {
+                      setMessageTyped(e.target.value);
+                    }}
+                  ></textarea>
+                  <br></br>
+                  <button
+                    className="message-button"
+                    type="reset"
+                    onClick={submitMessage}
+                  >
+                    Send Message
+                  </button>
+                </Form>
                 <br></br>
-                <button
-                  className="message-button"
-                  type="reset"
-                  onClick={submitMessage}
-                >
-                  Send Message
-                </button>
                 {/* </form> */}
+                {/* </div> */}
               </div>
             </div>
           </Col>

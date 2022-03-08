@@ -152,21 +152,16 @@ p.message {
   height: 50px;
 }
 .message-button {
-  width: 100%;
+  /* width: 100%; */
   height: 40px;
   background-color: white;
   padding: 1%;
   margin-bottom: 5%;
 }
+for {
+  width: 20%;
+}
 @media only screen and (max-width: 414px) {
-  .message-button {
-    width: 100%;
-    height: 40px;
-    background-color: #121212;
-    color: white;
-    padding: 1%;
-    margin-bottom: 5%;
-  }
   p.message {
     color: black;
     width: 300px;
@@ -227,24 +222,19 @@ p.message {
     color: black;
   }
   .message-textbox {
-    width: 92%;
+    width: 80%;
     height: 50px;
   }
-  form {
-    width: 100vw;
-  }
+
   .message-button {
-    width: 92%;
+    width: 40%;
     /* height: 20px; */
     color: white;
     background-color: black;
     padding: 1%;
     position: relative;
-    padding-bottom: 10%;
-    margin-bottom: 5%;
-  }
-  form.message-textbox {
-    width: 100vw;
+    /* padding-bottom: 10%; */
+    margin-bottom: 10%;
   }
 }
 
