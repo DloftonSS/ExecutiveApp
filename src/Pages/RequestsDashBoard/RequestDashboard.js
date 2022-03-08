@@ -153,7 +153,7 @@ function RequestDashboard() {
     return csvRows.join("\n");
   };
 
-  const download = function () {
+  const download = function (data) {
     const blob = new Blob([data], { type: "text/csv" });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
