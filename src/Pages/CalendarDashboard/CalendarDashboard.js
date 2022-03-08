@@ -151,7 +151,10 @@ function CalendarDashbaord() {
         </Col>
       </Row>
       <Row id="active-requests">
-        <button onClick={DoTasks} style={{ width: "200px" }}>
+        <button
+          onClick={DoTasks}
+          style={{ width: "200px", height: "30px", paddingLeft: "50px" }}
+        >
           Reload Data
         </button>
         <h2 className="ra-title">

@@ -136,6 +136,9 @@ function RequestDashboard() {
     });
   };
 
+  //
+  // ********** DOWNLAOD THE REQUEST LISTS ***********
+  //
   const objectToCsv = function (data) {
     const csvRows = [];
 
@@ -316,7 +319,7 @@ function RequestDashboard() {
       <Row id="active-requests">
         <button
           onClick={DownloadRequests}
-          style={{ width: "200px", height: "30px", paddingBottom: "5px" }}
+          style={{ width: "200px", height: "30px", paddingLeft: "50px" }}
         >
           Download Requests
         </button>
