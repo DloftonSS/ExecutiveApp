@@ -96,6 +96,17 @@ function ExecutiveData(props) {
   // const id = props.id;
   const { id } = useParams();
   //
+  function generatePassword() {
+    var length = 8,
+      charset =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+      retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+    setPassword(retVal);
+  }
   //set a random password
   const MakePassword = (id) => {
     Axios.post("https://executive-app.herokuapp.com/setRandomPassword", {
@@ -121,9 +132,7 @@ function ExecutiveData(props) {
       // console.log(result[0].expiring.format("mm-dd-yyy"));
       // setExpDate(result[0].expiring);
       // setJoinDate(result[0].joinDate);
-      setJoinDate(
-        result[0].dateJoined.toUTCString().split(" ").slice(1, 4).join(" ")
-      );
+      setJoinDate(result[0].dateJoined);
       // console.log(result[0]);
       // const userID = response.data[id];
       // setMemberDetails(userID);
@@ -1269,7 +1278,9 @@ function ExecutiveData(props) {
                     <Table.Cell>
                       <Icon name="calendar check outline" /> Join Date
                     </Table.Cell>
-                    <Table.Cell>{joinDate}</Table.Cell>
+                    <Table.Cell>
+                      {joinDate.toUTCString().split(" ").slice(1, 4).join(" ")}
+                    </Table.Cell>
 
                     <Table.Cell>
                       <button onClick={MakePassword}>Random Password</button>
