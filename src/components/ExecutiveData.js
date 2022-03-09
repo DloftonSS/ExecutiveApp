@@ -110,7 +110,7 @@ function ExecutiveData(props) {
       // console.log(result[0].expiring.format("mm-dd-yyy"));
       // setExpDate(result[0].expiring);
       // setJoinDate(result[0].joinDate);
-      setjoinDate(result[0].dateJoined)
+      setJoinDate(result[0].dateJoined)
         .toUTCString()
         .split(" ")
         .slice(1, 4)
