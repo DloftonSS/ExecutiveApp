@@ -78,47 +78,15 @@ function ExecutiveData(props) {
   const [senderName, setSenderName] = useState("");
   const [messageTyped, setMessageTyped] = useState("");
   const [password, setPassword] = useState("");
-  let datenow = new Date(
-    joindate.toUTCString().split(" ").slice(1, 4).join(" ")
-  );
 
   var [joinDate, setJoinDate] = useState("");
   // var [renewalDate, setRenewalDate] = useState("");
   // var [expDate, setExpDate] = useState("");
 
-  // joinDate = {
-  //   dateMDY: Moment(memberDetails.joinDate).format("MM-DD-YYYY"),
-  // };
-  // renewalDate = {
-  //   dateMDY: Moment().format("MM-DD-YYYY"),
-  // };
-  // expDate = {
-  //   dateMDY: Moment().format("MM-DD-YYYY"),
-  // };
-
   // const id = props.id;
   const { id } = useParams();
   //
-  function generatePassword() {
-    var length = 8,
-      charset =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-      retVal = "";
-    for (var i = 0, n = charset.length; i < length; ++i) {
-      retVal += charset.charAt(Math.floor(Math.random() * n));
-    }
-    return retVal;
-    setPassword(retVal);
-  }
-  //set a random password
-  const MakePassword = (id) => {
-    Axios.post("https://executive-app.herokuapp.com/setRandomPassword", {
-      // Axios.post("http://localhost:3001/setRandomPassword", {
-      // adminName: adminName,
-      password: password,
-      id: id,
-    }).then(() => {});
-  };
+
   //
   //GET MEMBER DETAILS
   const getMemberInfo = () => {
@@ -1281,7 +1249,7 @@ function ExecutiveData(props) {
                     <Table.Cell>
                       <Icon name="calendar check outline" /> Join Date
                     </Table.Cell>
-                    <Table.Cell>{datenow}</Table.Cell>
+                    <Table.Cell>{joinDate}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>
