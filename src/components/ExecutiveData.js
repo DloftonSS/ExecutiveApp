@@ -78,7 +78,7 @@ function ExecutiveData(props) {
   const [senderName, setSenderName] = useState("");
   const [messageTyped, setMessageTyped] = useState("");
 
-  // var [joinDate, setJoinDate] = useState("");
+  var [joinDate, setJoinDate] = useState("");
   // var [renewalDate, setRenewalDate] = useState("");
   // var [expDate, setExpDate] = useState("");
 
@@ -110,6 +110,11 @@ function ExecutiveData(props) {
       // console.log(result[0].expiring.format("mm-dd-yyy"));
       // setExpDate(result[0].expiring);
       // setJoinDate(result[0].joinDate);
+      setjoinDate(result[0].dateJoined)
+        .toUTCString()
+        .split(" ")
+        .slice(1, 4)
+        .join(" ");
       // console.log(result[0]);
       // const userID = response.data[id];
       // setMemberDetails(userID);
@@ -1255,7 +1260,7 @@ function ExecutiveData(props) {
                     <Table.Cell>
                       <Icon name="calendar check outline" /> Join Date
                     </Table.Cell>
-                    <Table.Cell>{memberDetails.dateJoined}</Table.Cell>
+                    <Table.Cell>{joinDate}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>
