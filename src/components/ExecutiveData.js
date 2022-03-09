@@ -78,6 +78,9 @@ function ExecutiveData(props) {
   const [senderName, setSenderName] = useState("");
   const [messageTyped, setMessageTyped] = useState("");
   const [password, setPassword] = useState("");
+  let datenow = new Date(
+    joindate.toUTCString().split(" ").slice(1, 4).join(" ")
+  );
 
   var [joinDate, setJoinDate] = useState("");
   // var [renewalDate, setRenewalDate] = useState("");
@@ -1278,7 +1281,7 @@ function ExecutiveData(props) {
                     <Table.Cell>
                       <Icon name="calendar check outline" /> Join Date
                     </Table.Cell>
-                    <Table.Cell>{joinDate}</Table.Cell>
+                    <Table.Cell>{datenow}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>
