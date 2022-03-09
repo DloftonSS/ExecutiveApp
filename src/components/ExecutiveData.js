@@ -1278,13 +1278,7 @@ function ExecutiveData(props) {
                     <Table.Cell>
                       <Icon name="calendar check outline" /> Join Date
                     </Table.Cell>
-                    <Table.Cell>
-                      {joinDate.toUTCString().split(" ").slice(1, 4).join(" ")}
-                    </Table.Cell>
-
-                    <Table.Cell>
-                      <button onClick={MakePassword}>Random Password</button>
-                    </Table.Cell>
+                    <Table.Cell>{joinDate}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>
