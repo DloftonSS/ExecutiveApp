@@ -77,6 +77,7 @@ function ExecutiveData(props) {
   const [memberMessage, setMemberMessage] = useState("");
   const [senderName, setSenderName] = useState("");
   const [messageTyped, setMessageTyped] = useState("");
+  const [password, setPassword] = useState("");
 
   var [joinDate, setJoinDate] = useState("");
   // var [renewalDate, setRenewalDate] = useState("");
@@ -94,7 +95,17 @@ function ExecutiveData(props) {
 
   // const id = props.id;
   const { id } = useParams();
-
+  //
+  //set a random password
+  const MakePassword = (id) => {
+    Axios.post("https://executive-app.herokuapp.com/setRandomPassword", {
+      // Axios.post("http://localhost:3001/setRandomPassword", {
+      // adminName: adminName,
+      password: password,
+      id: id,
+    }).then(() => {});
+  };
+  //
   //GET MEMBER DETAILS
   const getMemberInfo = () => {
     Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
@@ -1259,6 +1270,10 @@ function ExecutiveData(props) {
                       <Icon name="calendar check outline" /> Join Date
                     </Table.Cell>
                     <Table.Cell>{joinDate}</Table.Cell>
+
+                    <Table.Cell>
+                      <button onClick={MakePassword}>Random Password</button>
+                    </Table.Cell>
                   </Table.Row>
                   <Table.Row>
                     <Table.Cell>
