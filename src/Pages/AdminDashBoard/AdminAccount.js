@@ -697,6 +697,12 @@ function AdminAccount() {
                   Customer Info .customer-card
                 </div> */}{" "}
                 {Object.keys(pendingCardList).map((member, i) => {
+                  let joinDate = new Date(requestList[request].date_created)
+
+                    .toUTCString()
+                    .split(" ")
+                    .slice(1, 4)
+                    .join(" ");
                   return (
                     <Card
                       style={{
@@ -737,7 +743,7 @@ function AdminAccount() {
                             </Card.Meta>
                             <Card.Description style={{ color: "darkGray" }}>
                               {" "}
-                              Joined: {pendingCardList[member].dateJoined}
+                              Joined: {joinDate}
                             </Card.Description>
                           </Col>
                           <Col>
