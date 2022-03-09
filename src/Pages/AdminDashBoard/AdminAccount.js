@@ -697,7 +697,7 @@ function AdminAccount() {
                   Customer Info .customer-card
                 </div> */}{" "}
                 {Object.keys(pendingCardList).map((member, i) => {
-                  let joinDate = new Date(requestList[request].date_created)
+                  let joinDate = new Date(pendingCardList[member].dateJoined)
 
                     .toUTCString()
                     .split(" ")
