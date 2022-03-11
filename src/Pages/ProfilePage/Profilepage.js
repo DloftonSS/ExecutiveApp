@@ -696,7 +696,13 @@ const Profile = (props) => {
                 <h3 className="section-titles right-section-title messages-title">
                   MESSAGES
                 </h3>
-                <Feed className="message-container" style={{ width: "100vw" }}>
+                <Feed
+                  className="message-container"
+                  style={{
+                    width: "300px",
+                    boxShadow: "0px 0px 5px 3px rgb(129, 0, 0)",
+                  }}
+                >
                   {Object.keys(messageList).map((message, i) => {
                     let update = new Date(messageList[message].Date)
                       .toUTCString()
@@ -721,7 +727,7 @@ const Profile = (props) => {
                           {messageList[message].Message}
                         </p>
                         <p className="message-underline">
-                          ___________________________________________________________________
+                          ______________________________________________
                         </p>
                       </div>
                     );
@@ -730,14 +736,14 @@ const Profile = (props) => {
                 {/* <div style={{ width: "200px" }}> */}
                 {/* <form className="message-textbox"> */}
                 <Form>
-                  <textarea
+                  <input
                     placeholder="Message"
                     className="message-textbox"
                     // style={{ width: "80%" }}
                     onChange={(e) => {
                       setMessageTyped(e.target.value);
                     }}
-                  ></textarea>
+                  ></input>
                   <br></br>
                   <button
                     className="message-button"

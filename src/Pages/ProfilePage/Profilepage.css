@@ -165,7 +165,7 @@ for {
   p.message {
     color: black;
     width: 300px;
-    padding-top: 3%;
+    padding-top: 1%;
   }
   .message-name-date {
     color: black;
