@@ -56,14 +56,14 @@ function Benefits() {
       <p className="underlineC"></p>
       <p style={{ height: "50px" }}></p>
 
-      <div className="footer">
-        <h2>Shoot Straight Inc. Headquarters</h2>
-        <p>1349 South Orange Blossom Trail Apopka, FL 32703</p>
-        <h2>Shoot-Straight.com</h2>
-        <p>
-          <Icon name="copyright outline"></Icon>Shoot Straight 2021
-        </p>
-      </div>
+      {/* <div className="footer"> */}
+      <h2>Shoot Straight Inc. Headquarters</h2>
+      <p>1349 South Orange Blossom Trail Apopka, FL 32703</p>
+      <h2>Shoot-Straight.com</h2>
+      <p>
+        <Icon name="copyright outline"></Icon>Shoot Straight 2021
+      </p>
+      {/* </div> */}
     </div>
   );
 }

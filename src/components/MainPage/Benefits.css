@@ -30,9 +30,9 @@ h1 {
 }
 
 .footer {
-  color: white;
-  background-color: black;
-  padding: 2%;
+  /* color: white; */
+  /* background-color: black; */
+  /* padding: 5%; */
 }
 span {
   color: rgb(233, 10, 42);
@@ -94,8 +94,8 @@ span {
     font-size: 25px;
   }
   .footer {
-    color: white;
-    background-color: black;
-    padding: 4%;
+    /* color: white; */
+    /* background-color: black; */
+    /* padding: 4%; */
   }
 }
