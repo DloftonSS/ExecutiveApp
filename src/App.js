@@ -101,7 +101,7 @@ function App(props) {
         setIsAuth(true);
         setAdminData(response.data[0]);
         const adminData = response.data[0];
-        console.log(adminData);
+        // console.log(adminData);
         setLoginStatus(
           <button
             onClick={() => {
@@ -125,7 +125,7 @@ function App(props) {
         setIsAuth(true);
         setAdminData(response.data[0]);
         const adminData = response.data[0];
-        console.log(adminData);
+        // console.log(adminData);
         setLoginStatus(
           <button
             onClick={() => {
@@ -269,7 +269,9 @@ function App(props) {
                             login();
                             // memberLogin();
                             // clearInput();
+                            setOpen(false);
                           }}
+                          // onClick={() => setOpen(false)}
                         >
                           Sign In
                         </button>

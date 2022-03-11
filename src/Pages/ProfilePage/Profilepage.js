@@ -98,8 +98,8 @@ const Profile = (props) => {
         // Axios.get("http://localhost:3001/getCatalogNow").then((response) => {
         setCatalog(response.data);
         setLikeTotal(response.data.Likes);
-        console.log(response.data.length);
-        console.log(likeTotal);
+        // console.log(response.data.length);
+        // console.log(likeTotal);
       }
     );
   };
@@ -128,7 +128,7 @@ const Profile = (props) => {
         setSenderName(result[0].first_name + " " + result[0].last_name);
         setCustName(result[0].first_name + " " + result[0].last_name);
         setMemberId(result[0].id);
-        console.log(result[0].id);
+        // console.log(result[0].id);
       }
     );
   };
@@ -235,7 +235,7 @@ const Profile = (props) => {
     Axios.get("https://executive-app.herokuapp.com/events").then((response) => {
       // Axios.get("http://localhost:3001/events").then((response) => {
       setEvents(response.data);
-      console.log(events);
+      // console.log(events);
     });
   };
 

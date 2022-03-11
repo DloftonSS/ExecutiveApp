@@ -39,7 +39,7 @@ function CalendarDashbaord() {
     Axios.get("https://executive-app.herokuapp.com/events").then((response) => {
       // Axios.get("http://localhost:3001/events").then((response) => {
       setEvents(response.data);
-      console.log(events);
+      // console.log(events);
     });
   };
   // ADD EVENT TO CALENDAR
@@ -60,7 +60,7 @@ function CalendarDashbaord() {
       `https://executive-app.herokuapp.com/deleteCalendar/${id}`
     ).then(() => {
       // Axios.delete(`http://localhost:3001/deleteCalendar/${id}`).then(() => {
-      console.log("deleted");
+      // console.log("deleted");
     });
   };
   const DoTasks = () => {

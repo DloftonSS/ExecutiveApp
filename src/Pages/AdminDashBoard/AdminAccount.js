@@ -112,7 +112,7 @@ function AdminAccount() {
     Axios.delete(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
       () => {
         // Axios.delete(`http://localhost:3001/deleteNote/${id}`).then(() => {
-        console.log("deleted");
+        // console.log("deleted");
         GetNotes();
       }
     );
@@ -149,7 +149,7 @@ function AdminAccount() {
     Axios.delete(`https://executive-app.herokuapp.com/deleteChat/${id}`).then(
       () => {
         // Axios.delete(`http://localhost:3001/deleteChat/${id}`).then(() => {
-        console.log("deleted");
+        // console.log("deleted");
         GetChat();
       }
     );

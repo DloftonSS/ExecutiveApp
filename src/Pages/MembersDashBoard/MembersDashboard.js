@@ -140,7 +140,7 @@ function MembersDashboard(props) {
       getDecendingPeople();
       getExpiredPeople();
       getExpiringPeople();
-      console.log("card updated" + id);
+      // console.log("card updated" + id);
     });
   };
   //
@@ -153,7 +153,7 @@ function MembersDashboard(props) {
       card: card,
       acknowledged: acknowledged,
     }).then((response) => {
-      console.log("completed" + id);
+      // console.log("completed" + id);
     });
   };
   const ChangeRenewal = (id) => {

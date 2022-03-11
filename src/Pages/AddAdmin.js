@@ -54,7 +54,7 @@ function AddAdmin() {
       // Axios.get("http://localhost:3001/getAdmins", {})
       .then((response, error) => {
         setAdmins(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);

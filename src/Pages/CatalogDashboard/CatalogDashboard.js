@@ -60,7 +60,7 @@ function CatalogDashboard() {
       (response) => {
         // Axios.get("http://localhost:3001/getCatalogNow").then((response) => {
         setCatalog(response.data);
-        console.log(response.data.length);
+        // console.log(response.data.length);
       }
     );
   };
@@ -109,7 +109,7 @@ function CatalogDashboard() {
       `https://executive-app.herokuapp.com/deleteProduct/${id}`
     ).then(() => {
       // Axios.delete(`http://localhost:3001/deleteProduct/${id}`).then(() => {
-      console.log("deleted");
+      // console.log("deleted");
       DoTasks();
     });
   };

@@ -67,7 +67,7 @@ function AddNewMember() {
       acknowledged: acknowledged,
     })
       .then((response, error) => {
-        console.log("submited");
+        // console.log("submited");
       })
       .catch((error) => {
         console.log(error);

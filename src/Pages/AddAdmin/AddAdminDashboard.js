@@ -55,7 +55,7 @@ function AddAdminDashboard() {
         GetAdmins();
       })
       .catch((error) => {
-        console.log(error.response);
+        // console.log(error.response);
       });
   };
   const GetAdmins = (e) => {

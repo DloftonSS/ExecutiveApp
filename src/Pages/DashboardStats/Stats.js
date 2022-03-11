@@ -40,7 +40,7 @@ function Stats() {
       (response) => {
         // Axios.get("http://localhost:3001/initialContact").then((response) => {
         setInitalTotal(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       }
     );
   };

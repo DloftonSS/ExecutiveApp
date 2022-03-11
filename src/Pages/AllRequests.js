@@ -93,7 +93,7 @@ function AllRequests(props) {
       (response) => {
         // Axios.get("http://localhost:3001/onholdRequests").then((response) => {
         setOnholdRequest(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       }
     );
   };
@@ -168,7 +168,7 @@ function AllRequests(props) {
       // DateChange();
       GetAllRequests();
       // requestNote(id);
-      console.log("this is the id " + id);
+      // console.log("this is the id " + id);
     });
   };
   //UPDATE SOURCE

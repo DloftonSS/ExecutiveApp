@@ -52,7 +52,7 @@ function AllMembers() {
     }).then((response) => {
       alert("Card Status Updated");
       getMemberInfo();
-      console.log("card updated" + id);
+      // console.log("card updated" + id);
     });
   };
   //
@@ -77,7 +77,7 @@ function AllMembers() {
       card: card,
       acknowledged: acknowledged,
     }).then((response) => {
-      console.log("completed" + id);
+      // console.log("completed" + id);
       // getMemberInfo();
     });
   };
