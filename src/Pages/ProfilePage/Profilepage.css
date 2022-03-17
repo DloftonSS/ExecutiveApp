@@ -19,7 +19,7 @@
   margin-bottom: 30px;
 }
 .section-titles {
-  font-size: 30px !important;
+  font-size: 20px !important;
   color: white;
 }
 .header-logo {
@@ -174,7 +174,9 @@ p.message {
 for {
   width: 20%;
 }
-
+form {
+  width: 90% !important;
+}
 .card-catalog-container {
   background-color: white;
 }
@@ -218,7 +220,7 @@ for {
   .right-section-title {
     /* color: black !important; */
     text-align: center;
-    font-size: 30px;
+    /* font-size: 30px; */
   }
   .header-logo {
     padding-top: 25%;
@@ -226,7 +228,7 @@ for {
     justify-content: center;
   }
   .section-titles {
-    font-size: 30px !important;
+    /* font-size: 20px !important; */
     color: white;
   }
   .request-style {
@@ -244,12 +246,13 @@ for {
     color: black;
   }
   input.message-textbox {
-    width: 41%;
+    /* width: 41%; */
     height: 50px;
+    border-radius: 10px;
   }
 
   .message-button {
-    width: 41%;
+    /* width: 41%; */
     height: 50px;
     /* color: white; */
     /* background-color: black; */
@@ -259,6 +262,9 @@ for {
     margin-top: 2%;
 
     border-radius: 10px;
+  }
+  form {
+    width: 320px !important;
   }
 }
 
