@@ -29,9 +29,9 @@ h1 {
   margin-top: 5%;
 }
 
-.footer {
-  /* color: white; */
-  /* background-color: black; */
+div.footer {
+  color: white;
+  background-color: black;
   /* padding: 5%; */
 }
 span {
@@ -60,6 +60,10 @@ span {
   font-size: 50px;
 }
 
+.footer-text {
+  font-size: 10px;
+  background-color: black;
+}
 @media only screen and (max-width: 414px) {
   h1 {
     width: 70%;
@@ -72,7 +76,7 @@ span {
   .underline {
     width: 75%;
     height: 15px;
-    background-color: lightgray;
+    background-color: #94989a;
   }
 
   .BenCol {

@@ -4,7 +4,11 @@
   width: 100%;
   height: 100px;
 }
-
+.header-img {
+  width: 60% !important;
+  height: 100% !important;
+  padding-top: 5%;
+}
 .Navigation {
   background-color: black;
   width: 100%;
@@ -13,6 +17,16 @@
   padding-top: 15px;
   /* position: sticky;
   top: 0; */
+}
+.title-col {
+}
+.title-header {
+  text-align: center;
+  padding-top: 5%;
+}
+h3.title-header {
+  text-align: center;
+  padding-top: 2%;
 }
 ul {
   list-style-type: none;

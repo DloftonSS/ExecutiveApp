@@ -55,15 +55,30 @@ function Benefits() {
       </div>
       <p className="underlineC"></p>
       <p style={{ height: "50px" }}></p>
-
-      {/* <div className="footer"> */}
-      <h2>Shoot Straight Inc. Headquarters</h2>
-      <p>1349 South Orange Blossom Trail Apopka, FL 32703</p>
-      <h2>Shoot-Straight.com</h2>
-      <p>
-        <Icon name="copyright outline"></Icon>Shoot Straight 2021
+      <div className="titleDiv">
+        {" "}
+        <h1>
+          INVITATION<span> ONLY</span> MEMBERSHIP
+        </h1>
+      </div>
+      <p className="underlineB"></p>
+      <p style={{ height: "50px" }}></p>
+      <p id="join">
+        FOR MORE INFORMATION PLEASE VISIT OR CONTACT ONE OF OUR 9 SHOOT STRAIGHT
+        LOCATIONS.
       </p>
-      {/* </div> */}
+
+      <div className="footer">
+        <p className="footer-text">Shoot Straight Inc. Headquarters</p>
+        <p className="footer-text">
+          1349 South Orange Blossom Trail Apopka, FL 32703
+        </p>
+        <p className="footer-text">Shoot-Straight.com</p>
+        <p className="footer-text">
+          <Icon name="copyright outline"></Icon>
+          Shoot Straight 2021
+        </p>
+      </div>
     </div>
   );
 }

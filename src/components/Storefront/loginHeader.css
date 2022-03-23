@@ -1,16 +1,23 @@
 .loginLogo {
-  /* width: 100%;
-  height: 100%; */
-  width: 800px;
-  height: 350px;
+  width: 60%;
+  max-height: 180px;
+  /* width: 800px;
+  height: 350px; */
   background: black;
   align-content: center;
   margin-left: auto;
   margin-right: auto;
 }
 
-.Navtigation {
-  height: 320px !important;
+.Navigation {
+  height: 200px !important;
+}
+
+.dropdown-arrow {
+  /* padding-top: 12%;
+  background-color: white;
+  width: 100px;
+  height: 20px; */
 }
 
 /* .Navigation { */
@@ -38,8 +45,8 @@ img {
 
 @media only screen and (max-width: 414px) {
   .loginLogo {
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    max-height: 55px;
 
     background: black;
     align-content: center;
@@ -60,11 +67,17 @@ img {
     border-radius: 0.1px !important;
   }
   .Navigation {
-    height: 120px !important;
+    height: 70px !important;
     /* background-repeat: no-repeat;
     background-size: auto; */
     /* width: 100%; */
     /* height: 100%; */
     /* background-image: url("../../Pages/images//EAAppBanner.jpg"); */
+  }
+  .dropdown-arrow {
+    /* padding-top: 20%;
+    background-color: white;
+    width: 50px;
+    height: 20px; */
   }
 }

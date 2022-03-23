@@ -27,6 +27,7 @@ import Logo from "../images/exec catalog.png";
 import Axios from "axios";
 // import Logo from "./profileImage.jpg";
 import Albert from "./profileImage.jpg";
+import NoImage from "./no-product-found.png";
 import Product from "../images/ProductPlaceholderImage.png";
 
 import "./Profilepage.css";
@@ -52,16 +53,31 @@ const Profile = (props) => {
   const [messageTyped, setMessageTyped] = useState("");
   const [senderName, setSenderName] = useState("");
   const [custName, setCustName] = useState("");
-
+  const [file, setFile] = useState("");
+  const [fileName, setFileName] = useState("");
   const [catalog, setCatalog] = useState("");
-  const [likeTotal, setLikeTotal] = useState("");
-  // const [newLikeTotal, setNewLikeTotal] = useState("");
-  const newLikeTotal = "1";
+  // const [newPicture, setNewPicture] = useState("");
+  // const [like, setLike] = useState(catalog.likes);
   // const id = props.match.params.id;
   // const id = props.id;
   const { id } = useParams();
+  //
+
   // Category, Model, Make, Sku, Price;
 
+  // const state = {
+  //   likes: 0,
+  // };
+
+  // const addLike = () => {
+  //   let newCount = this.state.likes + 1;
+  //   this.setState({
+  //     likes: newCount,
+  //   });
+  // };
+  // ADD NEW PROFILE PICTURE
+
+  //
   //ADD CATALOG ITEM TO REQUESTS
   const AddToRequests = (id) => {
     Axios.post("https://executive-app.herokuapp.com/marketCart", {
@@ -97,7 +113,7 @@ const Profile = (props) => {
       (response) => {
         // Axios.get("http://localhost:3001/getCatalogNow").then((response) => {
         setCatalog(response.data);
-        setLikeTotal(response.data.Likes);
+        // setLikeTotal(response.data.Likes);
         // console.log(response.data.length);
         // console.log(likeTotal);
       }
@@ -110,7 +126,7 @@ const Profile = (props) => {
     // console.log(newLikeTotal);
     Axios.post("https://executive-app.herokuapp.com/addALike", {
       // Axios.post("http://localhost:3001/addALike", {
-      newLikeTotal: newLikeTotal,
+      // newLikeTotal: newLikeTotal,
       id: id,
     }).then(() => {});
   };
@@ -464,6 +480,39 @@ const Profile = (props) => {
                   >
                     Change Password
                   </Button>
+                  <Header>Profile Picture</Header>
+                  <form action="/" method="POST" encType="multiport/form-data">
+                    <input
+                      type="file"
+                      name="samepleFile"
+                      accept="image/*"
+                    ></input>
+                    <input type="submit" class="btn btn-primary"></input>
+                  </form>
+                  {/* <input
+                    type="file"
+                    // onChange={(p) => {
+                    //   setNewPicture(p.target.value);
+                    // }}
+                    // onChange={saveFile}
+                    placeholder="********"
+                    style={{
+                      height: "30px",
+                      width: "300px",
+                      marginBottom: "5px",
+                    }}
+                  ></input>
+
+                  <Button
+                    size="mini"
+                    color="black"
+                    // onClick={() => {
+                    //   setProfilePicture(memberDetails.id);
+                    // }}
+                    // onClick={uploadFile}
+                  >
+                    Change Picture
+                  </Button> */}
                 </Modal.Content>
                 <Modal.Actions>
                   {/* <Button color="black" onClick={() => setOpen(false)}>
@@ -540,8 +589,8 @@ const Profile = (props) => {
                     //   <Table.Cell>{update}</Table.Cell>
                     // </Table.Row>
                     <div>
-                      <Row style={{ color: "rgb(129, 0, 0)" }}>
-                        ___________________________________________________________________
+                      <Row className="message-underline">
+                        {/* ___________________________________________________________________ */}
                       </Row>
 
                       <Row key={request.id}>
@@ -593,9 +642,7 @@ const Profile = (props) => {
                       <span style={{ color: "lightgray" }}> {update}</span>
                       {/* <p style={{ color: "white" }}>{update}</p> */}
                       <p className="message"> {messageList[message].Message}</p>
-                      <p className="message-underline">
-                        ______________________________________________
-                      </p>
+                      <p className="message-underline"></p>
                     </div>
                   );
                 })}
@@ -636,7 +683,7 @@ const Profile = (props) => {
                 return (
                   <div className="card-catalog-container">
                     <Image wrapped ui={false} />{" "}
-                    <img src={Product} className="img-height"></img>
+                    <img src={NoImage} className="img-height"></img>
                     <Card.Content style={{ marginLeft: "5%" }}>
                       <Card.Header style={{ fontSize: "20px" }}>
                         {catalog[logs].Make}
@@ -654,11 +701,15 @@ const Profile = (props) => {
                         <Icon
                           name="thumbs up"
                           className="catalog-options-icons"
-                          onClick={() => {
-                            AddLike(catalog[logs].id);
-                          }}
+                          // onClick={() => {
+                          //   setLike(like + 1);
+                          // }}
+                          // onClick={this.addLike}
+                          // id={this.props.itemId}
                         />
                         {catalog[logs].Likes}
+                        {/* {this.state.likes} */}
+                        {/* {like} */}
                       </Col>
                       <Col>
                         <p className="catalog-options-icons">
