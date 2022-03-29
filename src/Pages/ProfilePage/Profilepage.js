@@ -295,7 +295,7 @@ const Profile = (props) => {
               <img src={Product} className="header-logo"></img>
             </div>
             <span style={{ float: "right", paddingRight: "10%" }}>
-              <a style={{ color: "white" }} href="/">
+              <a style={{ color: "black" }} href="/">
                 <Icon name="sign out alternate" size="large"></Icon>
               </a>
             </span>
@@ -313,7 +313,7 @@ const Profile = (props) => {
                 trigger={
                   <Icon
                     name="edit"
-                    style={{ color: "white" }}
+                    style={{ color: "black" }}
                     size="large"
                   ></Icon>
                 }
@@ -550,7 +550,7 @@ const Profile = (props) => {
           </Col>
           <Col>
             {" "}
-            <div style={{ paddingTop: "25%" }}>
+            <div style={{ paddingTop: "25%", width: "500px" }}>
               {" "}
               <h3 className="section-titles, right-section-title">
                 SPECIAL REQUESTS
@@ -588,7 +588,7 @@ const Profile = (props) => {
                     //   <Table.Cell>{requestList[request].status}</Table.Cell>
                     //   <Table.Cell>{update}</Table.Cell>
                     // </Table.Row>
-                    <div>
+                    <div className="request-item-row">
                       <Row className="message-underline">
                         {/* ___________________________________________________________________ */}
                       </Row>
@@ -677,61 +677,61 @@ const Profile = (props) => {
         <Row className="market-calendar-section">
           {" "}
           <h3 className="section-titles">MARKET</h3>
-          <div>
-            <div className="card-catalog-container" className="trythis">
-              {Object.keys(catalog).map((logs, i) => {
-                return (
-                  <div className="card-catalog-container">
-                    <Image wrapped ui={false} />{" "}
-                    <img src={NoImage} className="img-height"></img>
-                    <Card.Content style={{ marginLeft: "5%" }}>
-                      <Card.Header style={{ fontSize: "20px" }}>
-                        {catalog[logs].Make}
-                      </Card.Header>
-                      <Card.Meta>{catalog[logs].Category}</Card.Meta>
-                      <Card.Meta>{catalog[logs].Model}</Card.Meta>
-                      <Card.Description style={{ color: "red" }}>
-                        <span className="date">{catalog[logs].Price}</span>
-                      </Card.Description>
-                      <Card.Description>{catalog[logs].Sku}</Card.Description>
-                    </Card.Content>
-                    <Row style={{ paddingLeft: "10%", paddingTop: "5%" }}>
-                      <Col>
+          {/* <div style={{ height: "250px" }}> */}
+          <div className="card-catalog-container" className="trythis">
+            {Object.keys(catalog).map((logs, i) => {
+              return (
+                <div className="card-catalog-container">
+                  <Image wrapped ui={false} />{" "}
+                  <img src={NoImage} className="img-height"></img>
+                  <Card.Content style={{ marginLeft: "5%" }}>
+                    <Card.Header style={{ fontSize: "20px" }}>
+                      {catalog[logs].Make}
+                    </Card.Header>
+                    <Card.Meta>{catalog[logs].Category}</Card.Meta>
+                    <Card.Meta>{catalog[logs].Model}</Card.Meta>
+                    <Card.Description style={{ color: "red" }}>
+                      <span className="date">{catalog[logs].Price}</span>
+                    </Card.Description>
+                    <Card.Description>{catalog[logs].Sku}</Card.Description>
+                  </Card.Content>
+                  <Row style={{ paddingLeft: "10%", paddingTop: "5%" }}>
+                    <Col>
+                      {" "}
+                      <Icon
+                        name="thumbs up"
+                        className="catalog-options-icons"
+                        // onClick={() => {
+                        //   setLike(like + 1);
+                        // }}
+                        // onClick={this.addLike}
+                        // id={this.props.itemId}
+                      />
+                      {catalog[logs].Likes}
+                      {/* {this.state.likes} */}
+                      {/* {like} */}
+                    </Col>
+                    <Col>
+                      <p className="catalog-options-icons">
                         {" "}
-                        <Icon
-                          name="thumbs up"
-                          className="catalog-options-icons"
-                          // onClick={() => {
-                          //   setLike(like + 1);
-                          // }}
-                          // onClick={this.addLike}
-                          // id={this.props.itemId}
-                        />
-                        {catalog[logs].Likes}
-                        {/* {this.state.likes} */}
-                        {/* {like} */}
-                      </Col>
-                      <Col>
-                        <p className="catalog-options-icons">
-                          {" "}
-                          Avail: {catalog[logs].Quantity}
-                        </p>
-                      </Col>
-                      <Col>
-                        <Icon
-                          name="cart"
-                          className="catalog-options-icons"
-                          onClick={() => {
-                            AddToRequests(catalog[logs].id);
-                          }}
-                        />
-                      </Col>
-                    </Row>
-                  </div>
-                );
-              })}
-            </div>
+                        Avail: {catalog[logs].Quantity}
+                      </p>
+                    </Col>
+                    <Col>
+                      <Icon
+                        name="cart"
+                        className="catalog-options-icons"
+                        onClick={() => {
+                          AddToRequests(catalog[logs].id);
+                        }}
+                      />
+                    </Col>
+                  </Row>
+                </div>
+              );
+            })}
           </div>
+          {/* </div> */}
         </Row>
         <Row>
           {" "}
@@ -740,7 +740,7 @@ const Profile = (props) => {
               CALENDAR
             </h3>
             <div className="table-container-div">
-              <Table singleLine style={{ padding: "5%", width: "100%" }}>
+              <Table singleLine style={{ padding: "5%" }}>
                 {/* <Table.Header>
                     <Table.Row>
                       <Table.HeaderCell style={{ width: "100px" }}>

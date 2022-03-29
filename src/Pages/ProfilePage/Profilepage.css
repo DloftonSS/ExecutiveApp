@@ -2,15 +2,15 @@
   /* background-color: black; */
   /* background-image: url("EA_App_BG_V01.jpg"); */
   /* background-attachment: fixed; */
-  background-color: black;
+  background-color: #121212;
   /* background-color: #121212; */
   /* height: 100vh; */
 }
 .info-message-requests {
-  background-color: #121212;
+  background-color: white;
 }
 .market-calendar-section {
-  background-color: #121212;
+  background-color: white;
 }
 .header-section {
   margin: auto;
@@ -20,7 +20,7 @@
 }
 .section-titles {
   font-size: 20px !important;
-  color: white;
+  color: black;
 }
 .header-logo {
   width: 300px;
@@ -28,7 +28,7 @@
   padding-top: 15%;
 }
 .center-section {
-  background-color: #121212;
+  background-color: white;
   /* height: 100vh; */
   padding-bottom: 5%;
   /* width: 700; */
@@ -42,11 +42,11 @@
   margin-top: 25%;
 }
 .peronal-info-inline {
-  color: white;
+  color: black;
 }
 .customer-name {
   text-align: center;
-  color: white;
+  color: black;
 }
 h3.section-titles {
   text-align: center;
@@ -63,7 +63,7 @@ h3.gallery-text {
   display: none;
 }
 .right-section-title {
-  color: white;
+  color: black;
   text-align: center;
 }
 
@@ -76,6 +76,7 @@ h3.gallery-text {
   flex-direction: row;
   overflow-x: scroll;
   overflow-y: hidden;
+  padding: 10px;
 }
 
 /* 
@@ -93,7 +94,8 @@ h3.gallery-text {
   font-size: 12px;
 }
 .request-style {
-  color: white;
+  color: black;
+  text-align: center;
 }
 .catalog-options-icons {
   padding: 0%;
@@ -109,18 +111,18 @@ h3.gallery-text {
 
 .received-Message {
   float: left;
-  color: white;
+  color: black;
 }
 .sent-message {
   float: right;
-  color: white;
+  color: black;
 }
 .messages-div {
   color: lightgray;
   font-size: 17px;
 }
 p.message {
-  color: white;
+  color: black;
   width: 300px;
   padding-top: 3%;
 }
@@ -136,18 +138,26 @@ p.message {
   background-color: rgb(129, 0, 0);
 }
 .message-icon {
-  color: white;
+  color: black;
 }
 .message-name-date {
-  color: white;
+  color: black;
 }
 .messages-div-section {
   height: 100%;
 }
+
 .message-container {
+  box-shadow: 0px 0px 5px 3px black;
+  border-radius: 10px;
+  /* border: 1px solid black; */
+  padding: 10px;
   height: 300px;
   width: 500px;
   overflow: scroll;
+}
+.message-div {
+  padding: 10px;
 }
 .message-container::-webkit-scrollbar {
   display: none;
@@ -158,6 +168,14 @@ p.message {
 .request-scroll {
   overflow: scroll;
   height: 200px;
+  width: 500px;
+  box-shadow: 0px 0px 5px 3px black;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+}
+.request-item-row {
+  padding: 10px;
 }
 .message-textbox {
   width: 100%;
@@ -194,18 +212,29 @@ form {
     /* color: black; */
   }
   .profileMain {
-    background-color: #121212;
+    background-color: white !important;
     max-width: 100vw;
     /* background-image: url("EA_App_BG_V01.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat; */
   }
+
   .message-container {
-    box-shadow: 0px 0px 5px 3px rgb(129, 0, 0);
+    box-shadow: 0px 0px 5px 3px black;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    padding: 10px;
+    width: 93vw;
+    height: 500px;
+  }
+  .request-scroll {
     width: 93vw;
   }
+  .message-div {
+    padding: 10px;
+  }
   .center-section {
-    background-color: none !important;
+    background-color: white !important;
     width: 100vw;
     margin-top: 10%;
 
@@ -213,6 +242,9 @@ form {
   }
   .table-container-div {
     padding-bottom: 20%;
+    width: 93vw;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 3px black;
   }
   .right-side-section {
     /* margin-top: 200px; */
@@ -230,7 +262,7 @@ form {
   }
   .section-titles {
     /* font-size: 20px !important; */
-    color: white;
+    color: black;
   }
   .request-style {
     /* color: black !important; */
