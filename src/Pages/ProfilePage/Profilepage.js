@@ -550,7 +550,7 @@ const Profile = (props) => {
           </Col>
           <Col>
             {" "}
-            <div style={{ paddingTop: "25%", width: "500px" }}>
+            <div style={{ paddingTop: "25%" }}>
               {" "}
               <h3 className="section-titles, right-section-title">
                 SPECIAL REQUESTS
@@ -731,6 +731,20 @@ const Profile = (props) => {
               );
             })}
           </div>
+          <Row>
+            <Col></Col>
+            <Col>
+              <Icon name="arrow left" size="large"></Icon>
+            </Col>
+            <Col>
+              <Icon
+                name="arrow right"
+                size="large"
+                style={{ float: "right" }}
+              ></Icon>
+            </Col>
+            <Col></Col>
+          </Row>
           {/* </div> */}
         </Row>
         <Row>

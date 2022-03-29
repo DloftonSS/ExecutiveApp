@@ -55,9 +55,11 @@ h3.gallery-text {
   color: black;
 }
 .table-container-div {
-  width: 100%;
   overflow: scroll;
+  width: 100%;
   height: 350px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 3px black;
 }
 .table-container-div::-webkit-scrollbar {
   display: none;
@@ -180,15 +182,20 @@ p.message {
 .message-textbox {
   width: 100%;
   height: 50px;
+
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 1px black;
 }
 .message-button {
   width: 100%;
   height: 40px;
+  color: black;
   background-color: white;
   padding: 1%;
   margin-bottom: 5%;
   margin-top: 2%;
   border-radius: 10px;
+  box-shadow: 0px 0px 5px 1px black;
 }
 for {
   width: 20%;
@@ -295,6 +302,7 @@ form {
     margin-top: 2%;
 
     border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px black;
   }
   form {
     width: 320px !important;
