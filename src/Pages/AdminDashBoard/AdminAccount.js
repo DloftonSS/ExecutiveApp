@@ -42,7 +42,7 @@ function AdminAccount() {
   const [activeList, setActiveList] = useState("");
   const [requestList, setRequestList] = useState("");
   const [expiringMembers, setExpiringMembers] = useState("");
-
+  const [searchTerm, setSearchTerm] = useState("");
   const [notesList, setNotesList] = useState("");
   const acknowledged = "Yes";
 
@@ -679,6 +679,19 @@ function AdminAccount() {
               </Col>
             </Row>
             {/* PENDING CARD */}
+            <input
+              type="text"
+              placeholder="Search First or Last Name"
+              style={{
+                marginLeft: "4%",
+                width: "20%",
+                marginBottom: "2%",
+                borderRadius: "10px",
+              }}
+              onChange={(event) => {
+                setSearchTerm(event.target.value);
+              }}
+            ></input>
             <Row className="dash-content">
               <Col sm={8} className="pending-card">
                 <h2 className="card-title">
@@ -697,96 +710,111 @@ function AdminAccount() {
                 <div className="customer-card">
                   Customer Info .customer-card
                 </div> */}{" "}
-                {Object.keys(pendingCardList).map((member, i) => {
-                  let joinDate = new Date(pendingCardList[member].dateJoined)
+                {Object.keys(pendingCardList)
+                  .filter((member) => {
+                    if (searchTerm == "") {
+                      return member;
+                    } else if (
+                      pendingCardList[member].first_name
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                      pendingCardList[member].last_name
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase())
+                    ) {
+                      return member;
+                    }
+                  })
+                  .map((member, i) => {
+                    let joinDate = new Date(pendingCardList[member].dateJoined)
 
-                    .toUTCString()
-                    .split(" ")
-                    .slice(1, 4)
-                    .join(" ");
-                  return (
-                    <Card
-                      style={{
-                        height: "200px",
-                        width: "100%",
-                        marginTop: "20px",
-                        marginBottom: "20px",
-                        borderRadius: "10px",
-                        color: "black",
-                        boxShadow: "0px 0px 5px 3px rgb(60, 60, 60)",
-                      }}
-                    >
-                      <Card.Content>
-                        <Row>
-                          <Col>
-                            <h2 style={{ color: "black" }}>
-                              <Link
-                                style={{ color: "black" }}
-                                to={`/executiveAccount/${pendingCardList[member].id}`}
-                              >
+                      .toUTCString()
+                      .split(" ")
+                      .slice(1, 4)
+                      .join(" ");
+                    return (
+                      <Card
+                        style={{
+                          height: "200px",
+                          width: "100%",
+                          marginTop: "20px",
+                          marginBottom: "20px",
+                          borderRadius: "10px",
+                          color: "black",
+                          boxShadow: "0px 0px 5px 3px rgb(60, 60, 60)",
+                        }}
+                      >
+                        <Card.Content>
+                          <Row>
+                            <Col>
+                              <h2 style={{ color: "black" }}>
+                                <Link
+                                  style={{ color: "black" }}
+                                  to={`/executiveAccount/${pendingCardList[member].id}`}
+                                >
+                                  {" "}
+                                  {pendingCardList[member].first_name +
+                                    " " +
+                                    pendingCardList[member].last_name}
+                                </Link>
+                              </h2>
+                              <Card.Meta style={{ color: "black" }}>
                                 {" "}
-                                {pendingCardList[member].first_name +
-                                  " " +
-                                  pendingCardList[member].last_name}
-                              </Link>
-                            </h2>
-                            <Card.Meta style={{ color: "black" }}>
-                              {" "}
-                              Phone: {pendingCardList[member].phone}
-                            </Card.Meta>
-                            <Card.Description style={{ color: "darkGray" }}>
-                              {" "}
-                              Email: {pendingCardList[member].email}
-                            </Card.Description>
-                            <Card.Meta style={{ color: "black" }}>
-                              {" "}
-                              Card Status: {pendingCardList[member].card}
-                            </Card.Meta>
-                            <Card.Description style={{ color: "darkGray" }}>
-                              {" "}
-                              Joined: {joinDate}
-                            </Card.Description>
-                          </Col>
-                          <Col>
-                            <div
-                              style={{
-                                backgroundColor: "white",
-                                color: "rgb(129, 0, 0)",
-                                boxShadow: "0px 0px 5px 3px rgb(60, 60, 60)",
-                                borderRadius: "10px",
-                                padding: "5px",
-                                position: "absolute",
-                                float: "right",
-                                marginTop: "10px",
-                                height: "120px",
-                                width: "120px",
-                              }}
-                            >
-                              <Card.Header
+                                Phone: {pendingCardList[member].phone}
+                              </Card.Meta>
+                              <Card.Description style={{ color: "darkGray" }}>
+                                {" "}
+                                Email: {pendingCardList[member].email}
+                              </Card.Description>
+                              <Card.Meta style={{ color: "black" }}>
+                                {" "}
+                                Card Status: {pendingCardList[member].card}
+                              </Card.Meta>
+                              <Card.Description style={{ color: "darkGray" }}>
+                                {" "}
+                                Joined: {joinDate}
+                              </Card.Description>
+                            </Col>
+                            <Col>
+                              <div
                                 style={{
-                                  marginTop: "2%",
-                                  textAlign: "center",
-                                  fontSize: "17px",
+                                  backgroundColor: "white",
+                                  color: "rgb(129, 0, 0)",
+                                  boxShadow: "0px 0px 5px 3px rgb(60, 60, 60)",
+                                  borderRadius: "10px",
+                                  padding: "5px",
+                                  position: "absolute",
+                                  float: "right",
+                                  marginTop: "10px",
+                                  height: "120px",
+                                  width: "120px",
                                 }}
                               >
-                                Initial Contact
-                              </Card.Header>
-                              <Button
-                                style={{ width: "100%", marginTop: "25px" }}
-                                // inverted
-                                onClick={() => {
-                                  Responded(pendingCardList[member].id);
-                                }}
-                              >
-                                {pendingCardList[member].acknowledged}
-                              </Button>
-                            </div>
-                          </Col>
-                        </Row>
-                      </Card.Content>
-                    </Card>
-                  );
-                })}
+                                <Card.Header
+                                  style={{
+                                    marginTop: "2%",
+                                    textAlign: "center",
+                                    fontSize: "17px",
+                                  }}
+                                >
+                                  Initial Contact
+                                </Card.Header>
+                                <Button
+                                  style={{ width: "100%", marginTop: "25px" }}
+                                  // inverted
+                                  onClick={() => {
+                                    Responded(pendingCardList[member].id);
+                                  }}
+                                >
+                                  {pendingCardList[member].acknowledged}
+                                </Button>
+                              </div>
+                            </Col>
+                          </Row>
+                        </Card.Content>
+                      </Card>
+                    );
+                  })}
               </Col>
               <Col sm={4} className="recent-activity">
                 <h2 className="ra-title">
