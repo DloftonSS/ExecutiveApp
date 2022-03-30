@@ -274,7 +274,7 @@ function AdminAccount() {
               </Col>
               <Col sm={6} className="nav-search">
                 <input
-                  placeholder="Search Members"
+                  placeholder="Search Unavailable"
                   className="member-search"
                 ></input>
               </Col>
@@ -454,6 +454,7 @@ function AdminAccount() {
                 <option value="Jose R. ">Jose R. </option>
                 <option value="Derek L.">Derek L.</option>
                 <option value="Chris A.">Chris A.</option>
+                <option value="Michael N.">Michael N.</option>
                 {/* <option value="Scopes">Scopes</option> */}
               </select>
               <Button

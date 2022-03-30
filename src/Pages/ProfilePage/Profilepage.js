@@ -86,7 +86,7 @@ const Profile = (props) => {
       custName: custName,
       memberId: memberId,
       id: id,
-    }).then((response) => {
+    }).then(() => {
       alert("Your order has been placed.");
       // LoadPage();
     });
@@ -550,7 +550,7 @@ const Profile = (props) => {
           </Col>
           <Col>
             {" "}
-            <div style={{ paddingTop: "25%" }}>
+            <div className="request-div-section" style={{ paddingTop: "25%" }}>
               {" "}
               <h3 className="section-titles, right-section-title">
                 SPECIAL REQUESTS

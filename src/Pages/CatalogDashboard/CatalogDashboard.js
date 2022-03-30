@@ -39,6 +39,7 @@ function CatalogDashboard() {
   const [upcsku, setUpcsku] = useState("");
   const [qty, setQty] = useState("");
   const [price, setPrice] = useState("");
+  const [open, setOpen] = React.useState(false);
 
   const AddProduct = () => {
     Axios.post("https://executive-app.herokuapp.com/addProductCatalog", {
@@ -355,6 +356,41 @@ function CatalogDashboard() {
                   <Card.Description>{catalog[logs].Sku}</Card.Description>
                 </Card.Content>
                 <Row>
+                  {/* <Col>
+                    <Modal
+                      // basic
+                      onClose={() => setOpen(false)}
+                      onOpen={() => setOpen(true)}
+                      open={open[logs]}
+                      size="small"
+                      trigger={<Button>Edit</Button>}
+                    >
+                      <Modal.Content>
+                        <Row>
+                         
+                          <Icon
+                            name="x"
+                            onClick={() => {
+                              DeleteProduct(catalog[logs].id);
+                            }}
+                          >
+                            {" "}
+                            Del
+                          </Icon>
+                        </Row>
+                      </Modal.Content>
+                      <Modal.Actions>
+                        <Button
+                          basic
+                          color="red"
+                          inverted
+                          onClick={() => setOpen(false)}
+                        >
+                          <Icon name="remove" /> Done
+                        </Button>
+                      </Modal.Actions>
+                    </Modal>
+                  </Col> */}
                   <Col sm={4} style={{ marginLeft: "10px" }}>
                     <Card.Content extra>
                       <a>
