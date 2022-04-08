@@ -346,29 +346,29 @@ function RequestDashboard() {
           }}
         >
           {Object.keys(requestList)
-            .filter((request) => {
+            .filter((request ) => {
               if (searchTerm == "") {
                 return request;
               } else if (
-                requestList[request].status
+                // requestList[  request].status
+                //   .toLowerCase()
+                //   .includes(searchTerm.toLowerCase()) ||
+                // requestList[ request].category
+                //   .toLowerCase()
+                //   .includes(searchTerm.toLowerCase()) ||
+                // requestList[ request].sku
+                //   .toLowerCase()
+                //   .includes(searchTerm.toLowerCase()) ||
+                requestList[ request].memberName
                   .toLowerCase()
                   .includes(searchTerm.toLowerCase()) ||
-                requestList[request].category
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase()) ||
-                requestList[request].sku
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase()) ||
-                requestList[request].memberName
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase()) ||
-                requestList[request].brand
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase()) ||
-                requestList[request].note
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase()) ||
-                requestList[request].item
+                // requestList[ request].brand
+                //   .toLowerCase()
+                //   .includes(searchTerm.toLowerCase()) ||
+                // requestList[ request].note
+                //   .toLowerCase()
+                //   .includes(searchTerm.toLowerCase()) ||
+                requestList[ request].item
                   .toLowerCase()
                   .includes(searchTerm.toLowerCase())
               ) {
@@ -613,24 +613,24 @@ function RequestDashboard() {
               if (searchTerm1 == "") {
                 return concluded;
               } else if (
-                concludedList[concluded].status
-                  .toLowerCase()
-                  .includes(searchTerm1.toLowerCase()) ||
-                concludedList[concluded].category
-                  .toLowerCase()
-                  .includes(searchTerm1.toLowerCase()) ||
+                // concludedList[concluded].status
+                //   .toLowerCase()
+                //   .includes(searchTerm1.toLowerCase()) ||
+                // concludedList[concluded].category
+                //   .toLowerCase()
+                //   .includes(searchTerm1.toLowerCase()) ||
                 concludedList[concluded].sku
                   .toLowerCase()
                   .includes(searchTerm1.toLowerCase()) ||
                 concludedList[concluded].memberName
                   .toLowerCase()
                   .includes(searchTerm1.toLowerCase()) ||
-                concludedList[concluded].brand
-                  .toLowerCase()
-                  .includes(searchTerm1.toLowerCase()) ||
-                concludedList[concluded].note
-                  .toLowerCase()
-                  .includes(searchTerm1.toLowerCase()) ||
+                // concludedList[concluded].brand
+                //   .toLowerCase()
+                //   .includes(searchTerm1.toLowerCase()) ||
+                // concludedList[concluded].note
+                //   .toLowerCase()
+                //   .includes(searchTerm1.toLowerCase()) ||
                 concludedList[concluded].item
                   .toLowerCase()
                   .includes(searchTerm1.toLowerCase())
@@ -880,24 +880,24 @@ function RequestDashboard() {
               if (searchTerm2 == "") {
                 return hold;
               } else if (
-                onholdRequest[hold].status
-                  .toLowerCase()
-                  .includes(searchTerm2.toLowerCase()) ||
-                onholdRequest[hold].category
-                  .toLowerCase()
-                  .includes(searchTerm2.toLowerCase()) ||
-                onholdRequest[hold].sku
-                  .toLowerCase()
-                  .includes(searchTerm2.toLowerCase()) ||
+                // onholdRequest[hold].status
+                //   .toLowerCase()
+                //   .includes(searchTerm2.toLowerCase()) ||
+                // onholdRequest[hold].category
+                //   .toLowerCase()
+                //   .includes(searchTerm2.toLowerCase()) ||
+                // onholdRequest[hold].sku
+                //   .toLowerCase()
+                //   .includes(searchTerm2.toLowerCase()) ||
                 onholdRequest[hold].memberName
                   .toLowerCase()
                   .includes(searchTerm2.toLowerCase()) ||
-                onholdRequest[hold].brand
-                  .toLowerCase()
-                  .includes(searchTerm2.toLowerCase()) ||
-                onholdRequest[hold].note
-                  .toLowerCase()
-                  .includes(searchTerm2.toLowerCase()) ||
+                // onholdRequest[hold].brand
+                //   .toLowerCase()
+                //   .includes(searchTerm2.toLowerCase()) ||
+                // onholdRequest[hold].note
+                //   .toLowerCase()
+                //   .includes(searchTerm2.toLowerCase()) ||
                 onholdRequest[hold].item
                   .toLowerCase()
                   .includes(searchTerm2.toLowerCase())
@@ -1141,24 +1141,24 @@ function RequestDashboard() {
               if (searchTerm3 == "") {
                 return pend;
               } else if (
-                pendingRequests[pend].status
-                  .toLowerCase()
-                  .includes(searchTerm3.toLowerCase()) ||
-                pendingRequests[pend].category
-                  .toLowerCase()
-                  .includes(searchTerm3.toLowerCase()) ||
-                pendingRequests[pend].sku
-                  .toLowerCase()
-                  .includes(searchTerm3.toLowerCase()) ||
+                // pendingRequests[pend].status
+                //   .toLowerCase()
+                //   .includes(searchTerm3.toLowerCase()) ||
+                // pendingRequests[pend].category
+                //   .toLowerCase()
+                //   .includes(searchTerm3.toLowerCase()) ||
+                // pendingRequests[pend].sku
+                //   .toLowerCase()
+                //   .includes(searchTerm3.toLowerCase()) ||
                 pendingRequests[pend].memberName
                   .toLowerCase()
                   .includes(searchTerm3.toLowerCase()) ||
-                pendingRequests[pend].brand
-                  .toLowerCase()
-                  .includes(searchTerm3.toLowerCase()) ||
-                pendingRequests[pend].note
-                  .toLowerCase()
-                  .includes(searchTerm3.toLowerCase()) ||
+                // pendingRequests[pend].brand
+                //   .toLowerCase()
+                //   .includes(searchTerm3.toLowerCase()) ||
+                // pendingRequests[pend].note
+                //   .toLowerCase()
+                //   .includes(searchTerm3.toLowerCase()) ||
                 pendingRequests[pend].item
                   .toLowerCase()
                   .includes(searchTerm3.toLowerCase())
@@ -1404,24 +1404,24 @@ function RequestDashboard() {
               if (searchTerm4 == "") {
                 return back;
               } else if (
-                backorderRequest[back].status
-                  .toLowerCase()
-                  .includes(searchTerm4.toLowerCase()) ||
-                backorderRequest[back].category
-                  .toLowerCase()
-                  .includes(searchTerm4.toLowerCase()) ||
-                backorderRequest[back].sku
-                  .toLowerCase()
-                  .includes(searchTerm4.toLowerCase()) ||
+                // backorderRequest[back].status
+                //   .toLowerCase()
+                //   .includes(searchTerm4.toLowerCase()) ||
+                // backorderRequest[back].category
+                //   .toLowerCase()
+                //   .includes(searchTerm4.toLowerCase()) ||
+                // backorderRequest[back].sku
+                //   .toLowerCase()
+                //   .includes(searchTerm4.toLowerCase()) ||
                 backorderRequest[back].memberName
                   .toLowerCase()
                   .includes(searchTerm4.toLowerCase()) ||
-                backorderRequest[back].brand
-                  .toLowerCase()
-                  .includes(searchTerm4.toLowerCase()) ||
-                backorderRequest[back].note
-                  .toLowerCase()
-                  .includes(searchTerm4.toLowerCase()) ||
+                // backorderRequest[back].brand
+                //   .toLowerCase()
+                //   .includes(searchTerm4.toLowerCase()) ||
+                // backorderRequest[back].note
+                //   .toLowerCase()
+                //   .includes(searchTerm4.toLowerCase()) ||
                 backorderRequest[back].item
                   .toLowerCase()
                   .includes(searchTerm4.toLowerCase())
