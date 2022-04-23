@@ -1150,9 +1150,9 @@ function RequestDashboard() {
                 // pendingRequests[pend].sku
                 //   .toLowerCase()
                 //   .includes(searchTerm3.toLowerCase()) ||
-                pendingRequests[pend].memberName
-                  .toLowerCase()
-                  .includes(searchTerm3.toLowerCase()) ||
+                // pendingRequests[pend].memberName
+                //   .toLowerCase()
+                //   .includes(searchTerm3.toLowerCase()) ||
                 // pendingRequests[pend].brand
                 //   .toLowerCase()
                 //   .includes(searchTerm3.toLowerCase()) ||
