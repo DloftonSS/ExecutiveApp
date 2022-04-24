@@ -441,18 +441,19 @@ function MembersDashboard(props) {
       {/* ************************************************* THE BREAK FOR THE LIST OF CUSTOMER ************************************************* */}
       {/* ************************************ THIS IS GOING TO HIDE WHEN A STAT MENU IS CLICKED **************************************** */}
       <Row id="active-members">
+      <button
+          onClick={DownloadRequests}
+          style={{ width: "200px", height: "30px", marginLeft: "50px" }}
+        >
+          Download Members
+        </button>
         <h2 className="ra-title">
           <span className="span">A</span>ctive <span className="span">M</span>
           emebers
         </h2>
         <p className="dividing-line"></p>
         <br></br>
-        <button
-          onClick={DownloadRequests}
-          style={{ width: "200px", height: "30px", marginLeft: "50px" }}
-        >
-          Download Requests
-        </button>
+      
         <input
           type="text"
           placeholder="Search First or Last Name"
