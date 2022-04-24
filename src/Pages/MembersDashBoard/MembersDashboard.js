@@ -307,7 +307,58 @@ function MembersDashboard(props) {
       }
     );
   };
+ //
+  // ********** DOWNLAOD THE REQUEST LISTS ***********
+  //
+  const objectToCsv = function (data) {
+    const csvRows = [];
 
+    const headers = Object.keys(data[0]);
+    csvRows.push(headers.join(","));
+
+    for (const row of data) {
+      const values = headers.map((header) => {
+        const escaped = ("" + row[header]).replace(/"/g, '\\"');
+        return `"${escaped}"`;
+      });
+
+      csvRows.push(values.join(","));
+    }
+    return csvRows.join("\n");
+  };
+
+  const download = function (data) {
+    const blob = new Blob([data], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.setAttribute("hidden", "");
+    a.setAttribute("href", url);
+    a.setAttribute("download", "download.csv");
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  const DownloadRequests = async function () {
+    const jsonUrl = "https://executive-app.herokuapp.com/downloadMembers";
+    const res = await fetch(jsonUrl);
+    const json = await res.json();
+
+    const data = json.map((row) => ({
+      first_name: row.first_name,
+      last_name: row.last_name,
+      phone: row.phone,
+      email: row.email,
+      address: row.address,
+      dateJoined: row.dateJoined,
+      expiring: row.expiring,
+      number: row.number,
+    }));
+
+    const csvData = objectToCsv(data);
+
+    download(csvData);
+  };
   //
   //***************** useEffect ******************** */
   //
@@ -396,7 +447,12 @@ function MembersDashboard(props) {
         </h2>
         <p className="dividing-line"></p>
         <br></br>
-
+        <button
+          onClick={DownloadRequests}
+          style={{ width: "200px", height: "30px", marginLeft: "50px" }}
+        >
+          Download Requests
+        </button>
         <input
           type="text"
           placeholder="Search First or Last Name"
