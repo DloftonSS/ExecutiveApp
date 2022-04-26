@@ -441,7 +441,7 @@ function MembersDashboard(props) {
       {/* ************************************************* THE BREAK FOR THE LIST OF CUSTOMER ************************************************* */}
       {/* ************************************ THIS IS GOING TO HIDE WHEN A STAT MENU IS CLICKED **************************************** */}
       <Row id="active-members">
-        <button
+        <button className="dnl-btn"
           onClick={DownloadRequests}
           style={{ width: "200px", height: "30px", marginLeft: "50px" }}
         >

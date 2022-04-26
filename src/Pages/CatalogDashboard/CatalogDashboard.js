@@ -217,7 +217,7 @@ function CatalogDashboard() {
           Reload Data
         </button>
         <h2 className="ra-title">
-          <span className="span">C</span>atalog
+          <span className="span">M</span>arket
         </h2>
         <p className="dividing-line"></p>
         <br></br>

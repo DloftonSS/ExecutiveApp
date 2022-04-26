@@ -317,7 +317,7 @@ function RequestDashboard() {
         </Col>
       </Row>
       <Row id="active-requests">
-        <button
+        <button className="dnl-btn"
           onClick={DownloadRequests}
           style={{ width: "200px", height: "30px", marginLeft: "50px" }}
         >
