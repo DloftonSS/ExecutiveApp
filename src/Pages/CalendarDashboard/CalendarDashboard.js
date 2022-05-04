@@ -151,7 +151,7 @@ function CalendarDashbaord() {
         </Col>
       </Row>
       <Row id="active-requests">
-        <button
+        <button className="reload-btn"
           onClick={DoTasks}
           style={{ width: "200px", height: "30px", marginLeft: "50px" }}
         >
