@@ -98,6 +98,11 @@ li {
   margin-top: 20px;
   padding: 1px;
 }
+
+.menu-item:hover{
+  cursor: pointer;
+}
+
 .middle-row {
   margin-bottom: 10px;
 }
@@ -121,6 +126,10 @@ li {
   color: white; */
   background-color: white;
   box-shadow: 0px 0px 5px 3px rgb(60, 60, 60);
+}
+
+.stats-box:hover{
+  cursor: pointer;
 }
 
 .stats-container {
