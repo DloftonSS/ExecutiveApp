@@ -1,11 +1,12 @@
 .App {
   text-align: center;
-  background-color: white;
+  background-color: black;
 }
 
 .Modals {
   margin-top: 5%;
-  background-color: white;
+  /* background-color: white; */
+  background-color: black;
 }
 
 .mainform {
@@ -47,31 +48,34 @@
   /* padding: 10px; */
   /* box-shadow: 5px 8px; */
   margin-top: 2%;
-  border-radius: 100px;
+  border-radius: 8px;
   border: none;
   font-family: "Tinos", serif;
   width: 200px;
   height: 30px;
-  color: black;
-
-  box-shadow: 1px 2px 3px 2px black;
+  color: white;
+  background-color: black;
+  /* box-shadow: 1px 2px 3px 2px #94989a; */
 }
 .admin-validate {
   /* border: 3px solid; */
   /* padding: 10px; */
   /* box-shadow: 5px 8px; */
   margin-top: 2%;
-  border-radius: 100px;
+  border-radius: 8px;
   border: none;
   font-family: "Tinos", serif;
   width: 200px;
   height: 30px;
   margin-left: 10%;
-  box-shadow: 1px 2px 3px 2px black;
+  /* box-shadow: 1px 2px 3px 2px #94989a; */
+  color: white;
+  background-color: black;
 }
 
 .login-title {
   font-family: "Tinos", serif;
+  color: white;
   /* font-size: 30px; */
 }
 .login-title-admin {
@@ -89,14 +93,17 @@
   color: black;
 }
 .BenCol4 {
-  background-color: #94989a;
+  /* background-color: #94989a; */
+  background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
   /* background-color: black; */
   /* color: black; */
   margin: 5%;
   padding-top: 2%;
   height: 300px;
   width: 120px;
-  box-shadow: 1px 2px 3px 2px black;
+  /* width: 100%; */
+  /* box-shadow: 1px 2px 3px 2px black; */
   border-radius: 5px;
 }
 .BenCol4 p {

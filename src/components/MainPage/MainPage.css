@@ -6,6 +6,7 @@
 
 h1 {
   width: 60%;
+  color: white;
 }
 
 .titleDiv {
@@ -15,7 +16,8 @@ h1 {
 
 .MainContainer {
   margin-top: 5%;
-  background-color: white;
+  background-color: black;
+  /* background-color: white; */
 }
 
 span {

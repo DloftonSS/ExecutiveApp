@@ -39,12 +39,15 @@ span {
 }
 
 .BenCol {
-  background-color: black;
+  /* background-color: black; */
+
+  background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
   color: white;
   margin: 5%;
   height: 300px;
   width: 300px;
-  box-shadow: 1px 2px 3px 2px #94989a;
+  /* box-shadow: 1px 2px 3px 2px #94989a; */
   border-radius: 5px;
 }
 
