@@ -34,12 +34,19 @@
   align-items: center;
 }
 
+
+
 .loginInput {
   /* border: 3px solid; */
   /* padding: 10px; */
   /* box-shadow: 5px 10px; */
+  background-color: black;
+  color: white;
   width: 250px;
   margin: 5px;
+  height: 30px;
+  border: 2px black;
+  border-radius: 8px;
   font-family: "Tinos", serif;
 }
 
@@ -112,6 +119,10 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
   font-size: medium;
 }
 
+.modal-design {
+  background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
+}
 .incorrect-combo {
   border: 2px solid red;
   font-family: "Tinos", serif;
@@ -151,7 +162,8 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
     /* border: 3px solid; */
     /* padding: 10px; */
     /* box-shadow: 5px 10px; */
-
+    background-color: black;
+   color: white;
     width: 250px;
     font-family: "Tinos", serif;
   }

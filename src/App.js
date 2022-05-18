@@ -199,7 +199,7 @@ function App(props) {
                 <Row>
                   <Col className="BenCol4">
                     <p className="login-title">Member Login</p>
-                    <Input
+                    <input
                       className="loginInput"
                       required
                       type="text"
@@ -207,9 +207,9 @@ function App(props) {
                       onChange={(e) => {
                         setEmail(e.target.value);
                       }}
-                    ></Input>
+                    ></input>
                     <br></br>
-                    <Input
+                    <input
                       className="loginInput"
                       required
                       type="password"
@@ -217,7 +217,7 @@ function App(props) {
                       onChange={(e) => {
                         setPassword(e.target.value);
                       }}
-                    ></Input>
+                    ></input>
                     <br></br>
                     <button
                       className="validate"
@@ -243,7 +243,7 @@ function App(props) {
                     >
                       <Modal.Content>
                         <p className="login-title-admin">Admin Login</p>
-                        <Input
+                        <input
                           className="loginInput"
                           required
                           type="text"
@@ -251,9 +251,9 @@ function App(props) {
                           onChange={(e) => {
                             setEmail(e.target.value);
                           }}
-                        ></Input>
+                        ></input>
                         <br></br>
-                        <Input
+                        <input
                           className="loginInput"
                           required
                           type="password"
@@ -261,7 +261,7 @@ function App(props) {
                           onChange={(e) => {
                             setPassword(e.target.value);
                           }}
-                        ></Input>
+                        ></input>
                         <br></br>
                         <button
                           className="admin-validate"
