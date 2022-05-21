@@ -199,6 +199,7 @@ function AdminAccount() {
     document.getElementById("catalog-content").style.display = "none";
     document.getElementById("calendar-content").style.display = "none";
     document.getElementById("addAdmin-content").style.display = "none";
+    
   };
   const ShowRequests = () => {
     document.getElementById("requests-content").style.display = "block";
@@ -250,8 +251,8 @@ function AdminAccount() {
   //
   //
   useEffect(() => {
-    getPending();
     GetChat();
+    getPending();
     ActiveOnly();
     GetAllRequests();
     getExpiringnumber();
@@ -285,13 +286,14 @@ function AdminAccount() {
                       trigger={
                         <div>
                           {" "}
-                          <Icon name="bell outline" size="large"></Icon>Alert
+                          <Icon name="bell outline" size="large" style={{color: "red"}}></Icon>Alert
                         </div>
                       }
                       content={
                         <div>
-                          Welcome to the new Shoot Straight Executive Access
-                          Admin Dashboard!
+                          Change to content loading: some content will not display until tiles or buttons
+                          are clicked, this is expected behavior to improve the load times of the website. 
+                          Future improvments on this to come as well.
                         </div>
                       }
                       position="bottom center"

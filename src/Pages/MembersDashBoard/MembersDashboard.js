@@ -230,6 +230,7 @@ function MembersDashboard(props) {
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
+    getActiveMembers();
   };
   const ShowAllExpiring = () => {
     document.getElementById("expiring-members").style.display = "block";
@@ -237,6 +238,7 @@ function MembersDashboard(props) {
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
+    getExpiringPeople();
   };
   const ShowAllExpired = () => {
     document.getElementById("expired-members").style.display = "block";
@@ -244,6 +246,7 @@ function MembersDashboard(props) {
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
+    getExpiredPeople();
   };
   const ShowAllDecending = () => {
     document.getElementById("decending-members").style.display = "block";
@@ -251,6 +254,7 @@ function MembersDashboard(props) {
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
+    getDecendingPeople();
   };
   // ************************************************************************************************************************************************************
   //
@@ -364,10 +368,10 @@ function MembersDashboard(props) {
   //
   useEffect(() => {
     getMemberInfo();
-    getDecendingPeople();
-    getActiveMembers();
-    getExpiredPeople();
-    getExpiringPeople();
+    // getDecendingPeople();
+    // getActiveMembers();
+    // getExpiredPeople();
+    // getExpiringPeople();
   }, []);
   //
   //***************** useEffect ******************** */

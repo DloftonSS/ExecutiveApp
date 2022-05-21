@@ -193,9 +193,9 @@ function RequestDashboard() {
   useEffect(() => {
     GetAllRequests();
     // GetAllConcluded();
-    GetOnholdRequests();
-    GetBackorderedRequests();
-    GetPendingRequests();
+    // GetOnholdRequests();
+    // GetBackorderedRequests();
+    // GetPendingRequests();
   }, []);
 
   // ************************************************ CONTROLS THE HIDE /SHOW EFFECT WHEN CLICKING ON THE STAT MENUS ********************************************
@@ -220,6 +220,7 @@ function RequestDashboard() {
     document.getElementById("active-requests").style.display = "none";
     document.getElementById("pending-requests").style.display = "none";
     document.getElementById("backordered-requests").style.display = "none";
+    GetOnholdRequests();
   };
   const ShowAllPending = () => {
     document.getElementById("pending-requests").style.display = "block";
@@ -227,6 +228,7 @@ function RequestDashboard() {
     document.getElementById("active-requests").style.display = "none";
     document.getElementById("onHold-requests").style.display = "none";
     document.getElementById("backordered-requests").style.display = "none";
+    GetPendingRequests();
   };
   const ShowBackordered = () => {
     document.getElementById("backordered-requests").style.display = "block";
@@ -234,6 +236,7 @@ function RequestDashboard() {
     document.getElementById("active-requests").style.display = "none";
     document.getElementById("onHold-requests").style.display = "none";
     document.getElementById("pending-requests").style.display = "none";
+    GetBackorderedRequests();
   };
   // ************************************************************************************************************************************************************
   //
