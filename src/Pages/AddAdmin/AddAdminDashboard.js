@@ -181,8 +181,8 @@ function AddAdminDashboard() {
                 }}
               >
                 <option>Choose Role</option>
-                <option value="Manager">Manager</option>
-                <option value="Admin">Admin</option>
+                <option value="manager">Manager</option>
+                <option value="admin">Admin</option>
               </select>
             </Form.Field>
             <Form.Field width={4}>
