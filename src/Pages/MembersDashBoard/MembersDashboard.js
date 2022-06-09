@@ -124,7 +124,7 @@ function MembersDashboard(props) {
       memberName: memberName,
       noteHeader: noteHeader,
       id: id,
-    }).then(() => {});
+    }).then(() => { });
   };
   //*****************************************  END REQUEST FUNCTIONS ON CUSTOMER MODAL *************************** */
   // CHANGE CARD STATUS
@@ -172,7 +172,7 @@ function MembersDashboard(props) {
     });
   };
   //
-  const getMemberInfo = () => {
+  const getMemberInfo  = async function () {
     // GET ALL MEMBERS
     Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
       (response) => {
@@ -217,50 +217,50 @@ function MembersDashboard(props) {
   };
 
   // ************************************************ CONTROLS THE HIDE /SHOW EFFECT WHEN CLICKING ON THE STAT MENUS ********************************************
-  const ShowAllMembers = () => {
+  const ShowAllMembers  = async function () {
     document.getElementById("all-members").style.display = "block";
     document.getElementById("active-members").style.display = "none";
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
   };
-  const ShowAllActive = () => {
+  const ShowAllActive  = async function () {
     document.getElementById("active-members").style.display = "block";
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
-    getActiveMembers();
+    // getActiveMembers();
   };
-  const ShowAllExpiring = () => {
+  const ShowAllExpiring  = async function () {
     document.getElementById("expiring-members").style.display = "block";
     document.getElementById("active-members").style.display = "none";
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
-    getExpiringPeople();
+    // getExpiringPeople();
   };
-  const ShowAllExpired = () => {
+  const ShowAllExpired  = async function () {
     document.getElementById("expired-members").style.display = "block";
     document.getElementById("active-members").style.display = "none";
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
-    getExpiredPeople();
+    // getExpiredPeople();
   };
-  const ShowAllDecending = () => {
+  const ShowAllDecending  = async function () {
     document.getElementById("decending-members").style.display = "block";
     document.getElementById("active-members").style.display = "none";
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
-    getDecendingPeople();
+    // getDecendingPeople();
   };
   // ************************************************************************************************************************************************************
   //
   //
   //**********************  SHOW SPECIFIC CUSTOMR ********************* */
-  const ShowCustomerDetails = () => {
+  const ShowCustomerDetails  = async function () {
     document.getElementById("customer-portal-page").style.display = "block";
     document.getElementById("decending-members").style.display = "none";
     document.getElementById("active-members").style.display = "none";
@@ -271,7 +271,7 @@ function MembersDashboard(props) {
   //
   //
   //GET ACTIVE ONLY MEMBERS
-  const getActiveMembers = () => {
+  const getActiveMembers  = async function () {
     Axios.get("https://executive-app.herokuapp.com/api/activeMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/api/activeMembers").then((response) => {
@@ -283,7 +283,7 @@ function MembersDashboard(props) {
   };
 
   // GET ALL MEMBERS DECENDING
-  const getDecendingPeople = () => {
+  const getDecendingPeople  = async function () {
     Axios.get("https://executive-app.herokuapp.com/getAllMembersDesc").then(
       (response) => {
         // Axios.get("http://localhost:3001/getAllMembersDesc").then((response) => {
@@ -294,7 +294,7 @@ function MembersDashboard(props) {
   };
 
   // GET EXPIRED MEMBERS
-  const getExpiredPeople = () => {
+  const getExpiredPeople = async function () {
     Axios.get("https://executive-app.herokuapp.com/expiredMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/expiredMembers").then((response) => {
@@ -363,13 +363,21 @@ function MembersDashboard(props) {
 
     download(csvData);
   };
+
+  const RefreshStats = async function () {
+    getMemberInfo();
+    getDecendingPeople();
+    getActiveMembers();
+    getExpiredPeople();
+    getExpiringPeople();
+  }
   //
   //***************** useEffect ******************** */
   //
   useEffect(() => {
-    getMemberInfo();
+    // getMemberInfo();
     // getDecendingPeople();
-    // getActiveMembers();
+    getActiveMembers();
     // getExpiredPeople();
     // getExpiringPeople();
   }, []);
@@ -450,6 +458,12 @@ function MembersDashboard(props) {
           style={{ width: "200px", height: "30px", marginLeft: "50px" }}
         >
           Download Members
+        </button>
+        <button className="dnl-btn"
+          onClick={RefreshStats}
+          style={{ width: "200px", height: "30px", marginLeft: "50px" }}
+        >
+          Refresh Stats
         </button>
         <h2 className="ra-title">
           <span className="span">A</span>ctive <span className="span">M</span>

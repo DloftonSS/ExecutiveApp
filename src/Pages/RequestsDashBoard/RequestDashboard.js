@@ -190,6 +190,14 @@ function RequestDashboard() {
     download(csvData);
   };
 
+
+  const RefreshStats = async function () {
+    GetAllConcluded();
+    GetOnholdRequests();
+    GetBackorderedRequests();
+    GetPendingRequests();
+  }
+
   useEffect(() => {
     GetAllRequests();
     // GetAllConcluded();
@@ -212,7 +220,7 @@ function RequestDashboard() {
     document.getElementById("onHold-requests").style.display = "none";
     document.getElementById("pending-requests").style.display = "none";
     document.getElementById("backordered-requests").style.display = "none";
-    GetAllConcluded();
+    // GetAllConcluded();
   };
   const ShowOnhold = () => {
     document.getElementById("onHold-requests").style.display = "block";
@@ -220,7 +228,7 @@ function RequestDashboard() {
     document.getElementById("active-requests").style.display = "none";
     document.getElementById("pending-requests").style.display = "none";
     document.getElementById("backordered-requests").style.display = "none";
-    GetOnholdRequests();
+    // GetOnholdRequests();
   };
   const ShowAllPending = () => {
     document.getElementById("pending-requests").style.display = "block";
@@ -228,7 +236,7 @@ function RequestDashboard() {
     document.getElementById("active-requests").style.display = "none";
     document.getElementById("onHold-requests").style.display = "none";
     document.getElementById("backordered-requests").style.display = "none";
-    GetPendingRequests();
+    // GetPendingRequests();
   };
   const ShowBackordered = () => {
     document.getElementById("backordered-requests").style.display = "block";
@@ -236,7 +244,7 @@ function RequestDashboard() {
     document.getElementById("active-requests").style.display = "none";
     document.getElementById("onHold-requests").style.display = "none";
     document.getElementById("pending-requests").style.display = "none";
-    GetBackorderedRequests();
+    // GetBackorderedRequests();
   };
   // ************************************************************************************************************************************************************
   //
@@ -325,6 +333,12 @@ function RequestDashboard() {
           style={{ width: "200px", height: "30px", marginLeft: "50px" }}
         >
           Download Requests
+        </button>
+        <button className="dnl-btn"
+          onClick={RefreshStats}
+          style={{ width: "200px", height: "30px", marginLeft: "50px" }}
+        >
+          Refresh Stats
         </button>
         <h2 className="ra-title">
           <span className="span">A</span>ctive <span className="span">R</span>

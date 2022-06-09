@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./DashNotes.css";
 import Axios from "axios";
 
-function DashboardNotes() {
+async function DashboardNotes() {
   const [noteTyped, setNoteTyped] = useState("");
   const [notesList, setNotesList] = useState("");
 

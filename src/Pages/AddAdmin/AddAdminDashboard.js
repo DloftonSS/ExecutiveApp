@@ -58,17 +58,19 @@ function AddAdminDashboard() {
         // console.log(error.response);
       });
   };
-  const GetAdmins = (e) => {
-    Axios.get("https://executive-app.herokuapp.com/getAdmins", {})
-      // Axios.get("http://localhost:3001/getAdmins", {})
-      .then((response, error) => {
-        setAdmins(response.data);
-        // console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+ 
+    const GetAdmins = (e) => {
+      Axios.get("https://executive-app.herokuapp.com/getAdmins", {})
+        // Axios.get("http://localhost:3001/getAdmins", {})
+        .then((response, error) => {
+          setAdmins(response.data);
+          // console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+  
 
   const ChangePassword = (id) => {
     Axios.put("https://executive-app.herokuapp.com/changeAdminPassword", {

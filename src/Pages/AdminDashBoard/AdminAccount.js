@@ -271,7 +271,7 @@ function AdminAccount() {
             {/* sm=8 */}
             <Row className="nav-main">
               <Col sm={2} className="hello-name">
-                HELLO
+              <a href="mailto:derekl@shoot-straight.com"><button className="chat-send-button" style={{borderRadius: "8px", border: "2px black", backgroundColor: "lightgray"}}>Report an Issue</button></a>  
               </Col>
               <Col sm={6} className="nav-search">
                 <input
@@ -286,11 +286,20 @@ function AdminAccount() {
                       trigger={
                         <div>
                           {" "}
-                          <Icon name="bell outline" size="large" style={{color: "red"}}></Icon>Alert
+                          <Icon name="bell outline" size="large" style={{color: "yellow"}}></Icon>Alert
                         </div>
                       }
                       content={
                         <div>
+                          <p>6/8/2022</p>
+                          * Report an issue is now available in the top left of the dashboard. Store front access also
+                          has the option to report an issue. 
+                          <br></br>
+                          <br></br>
+                          * Refresh buttons are available on Members and Requests pages. 
+                          <br></br>
+                          <br></br>
+                          <p>5/15/2022</p>
                           Change to content loading: some content will not display until tiles or buttons
                           are clicked, this is expected behavior to improve the load times of the website. 
                           Future improvments on this to come as well.

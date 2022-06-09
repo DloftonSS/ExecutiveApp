@@ -8,7 +8,7 @@ import NewMembers from "../components/newMembers";
 // import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
-function DashboardNewRequest() {
+async function DashboardNewRequest() {
   const [requestList, setRequestList] = useState("");
   const [requestListOld, setRequestListOld] = useState("");
   useEffect(() => {

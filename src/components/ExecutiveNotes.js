@@ -3,7 +3,7 @@ import Axios from "axios";
 import { useParams } from "react-router";
 import { Card, Feed, Icon, Input, Button, Form } from "semantic-ui-react";
 
-function ExectuiveNotes(props) {
+async function ExectuiveNotes(props) {
   const [noteTyped, setNoteTyped] = useState("");
   const [adminName, setAdminName] = useState("");
   const [memberName, setMemberName] = useState("");

@@ -17,7 +17,7 @@ import { useParams } from "react-router";
 // import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
-function ExecutiveRequests(props) {
+async function ExecutiveRequests(props) {
   // const [requestList, setRequestList] = useState("");
   const userId = props.id;
 
