@@ -220,7 +220,7 @@ function RequestDashboard() {
     document.getElementById("onHold-requests").style.display = "none";
     document.getElementById("pending-requests").style.display = "none";
     document.getElementById("backordered-requests").style.display = "none";
-    // GetAllConcluded();
+    GetAllConcluded();
   };
   const ShowOnhold = () => {
     document.getElementById("onHold-requests").style.display = "block";
@@ -228,7 +228,7 @@ function RequestDashboard() {
     document.getElementById("active-requests").style.display = "none";
     document.getElementById("pending-requests").style.display = "none";
     document.getElementById("backordered-requests").style.display = "none";
-    // GetOnholdRequests();
+    GetOnholdRequests();
   };
   const ShowAllPending = () => {
     document.getElementById("pending-requests").style.display = "block";
@@ -236,7 +236,7 @@ function RequestDashboard() {
     document.getElementById("active-requests").style.display = "none";
     document.getElementById("onHold-requests").style.display = "none";
     document.getElementById("backordered-requests").style.display = "none";
-    // GetPendingRequests();
+    GetPendingRequests();
   };
   const ShowBackordered = () => {
     document.getElementById("backordered-requests").style.display = "block";
@@ -244,7 +244,7 @@ function RequestDashboard() {
     document.getElementById("active-requests").style.display = "none";
     document.getElementById("onHold-requests").style.display = "none";
     document.getElementById("pending-requests").style.display = "none";
-    // GetBackorderedRequests();
+    GetBackorderedRequests();
   };
   // ************************************************************************************************************************************************************
   //

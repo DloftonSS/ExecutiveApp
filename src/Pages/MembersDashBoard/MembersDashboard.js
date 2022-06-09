@@ -230,7 +230,7 @@ function MembersDashboard(props) {
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
-    // getActiveMembers();
+    getActiveMembers();
   };
   const ShowAllExpiring  = async function () {
     document.getElementById("expiring-members").style.display = "block";
@@ -238,7 +238,7 @@ function MembersDashboard(props) {
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
-    // getExpiringPeople();
+    getExpiringPeople();
   };
   const ShowAllExpired  = async function () {
     document.getElementById("expired-members").style.display = "block";
@@ -246,7 +246,7 @@ function MembersDashboard(props) {
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
-    // getExpiredPeople();
+    getExpiredPeople();
   };
   const ShowAllDecending  = async function () {
     document.getElementById("decending-members").style.display = "block";
@@ -254,7 +254,7 @@ function MembersDashboard(props) {
     document.getElementById("all-members").style.display = "none";
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
-    // getDecendingPeople();
+    getDecendingPeople();
   };
   // ************************************************************************************************************************************************************
   //
