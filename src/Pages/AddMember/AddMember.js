@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
-  Input,
-  List,
-  Button,
-  Checkbox,
-  Grid,
-  Header,
-  Icon,
-  Feed,
-  Image,
-  Modal,
-  Card,
-  Popup,
-  Form,
-  Menu,
-  Segment,
-  Sidebar,
+  Input, 
+  Button, 
+  Form, 
 } from "semantic-ui-react";
 import Axios from "axios";
 // import API from "../utils/API";
 // import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import "./AddMember.css";
 // import "../AdminDashBoard/AdminAccount.css";
 
@@ -41,8 +28,8 @@ function AddNewMember() {
   const [ethnicity, setEthnicity] = useState("");
   const [race, setRace] = useState("");
   const [memberNumber, setMemberNumber] = useState("");
-  const [associate, setAssociate] = useState("");
-  const [clerk, setClerk] = useState("");
+  // const [associate, setAssociate] = useState("");
+  // const [clerk, setClerk] = useState("");
   const card = "Pending";
   const acknowledged = "No";
 
@@ -66,8 +53,7 @@ function AddNewMember() {
       card: card,
       acknowledged: acknowledged,
     })
-      .then((response, error) => {
-        // console.log("submited");
+      .then((response, error) => { 
       })
       .catch((error) => {
         console.log(error);

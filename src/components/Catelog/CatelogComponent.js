@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 function CatComponent() {
   return (
     <div style={{ backgroundColor: "#F3F3FC" }}>

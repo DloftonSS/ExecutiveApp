@@ -1,103 +1,23 @@
-import React, { useState, useEffect, Input, Form } from "react";
-import { useParams } from "react-router";
-import AdminHeader from "../components/header";
-// import Navigation from "../components/navigation";
-import { Route, Redirect, withRouter } from "react-router-dom";
-import NewMembers from "../components/newMembers";
+import React, { useEffect } from "react"; 
+import AdminHeader from "../components/header"; 
+import { withRouter } from "react-router-dom"; 
 import DashboardNotes from "../components/DashboardNotes";
 import DashboardNewRequest from "../components/DashboardNewRequests";
 import Stats from "../Pages/DashboardStats/Stats";
-import AdminChat from "../components/Chat/Chat";
-import OldestRequests from "../components/oldestRequests";
-import SideChat from "../components/SideChat";
-import "../Pages/CSS/dashboard.css";
-import Axios from "axios";
-import { Header, Icon, Modal, Button } from "semantic-ui-react";
-// import { useHistory } from "react-router-dom";
-// import { useSelector } from "react-redux";
-
-// import { Container } from "semantic-ui-react";
-// import axios from "axios";
+import AdminChat from "../components/Chat/Chat"; 
+import "../Pages/CSS/dashboard.css"; 
+import { Header, Modal, Button } from "semantic-ui-react"; 
 
 function AdminDashBoard() {
   const [open, setOpen] = React.useState(false);
-  // const [newFirstName, setNewFirstName] = useState("");
-  // const [newLastName, setNewLastName] = useState("");
-  // const [newEmail, setNewEmail] = useState("");
-  // const [newPassword, setNewPassword] = useState("");
-  // const [open, setOpen] = React.useState(false);
-  // //GETTING DETAILS
-  // const [adminDetails, setAdminDetails] = useState("");
-  // const { id } = useParams();
-  // const getAdminInfo = () => {
-  //   // Axios.get("https://executive-app.herokuapp.com/adminData").then(
-  //   //   (response) => {
-  //   Axios.get("http://localhost:3001/adminData").then((response) => {
-  //     const adminID = response.data[id];
-  //     // console.log(id);
-  //     // console.log(adminID);
-  //     setAdminDetails(adminID);
-  //   });
-  // };
 
-  // //CHANGE FIRST
-
-  // const ChangeFirst = (id) => {
-  //   // Axios.put("https://executive-app.herokuapp.com/changeAdminFirst", {
-  //   Axios.put("http://localhost:3001/changeAdminFirst", {
-  //     firstName: newFirstName,
-  //     id: id,
-  //   }).then((response) => {
-  //     // console.log("completed");
-  //     getAdminInfo();
-  //   });
-  // };
-
-  // //CHANGE LAST
-  // const ChangeLast = (id) => {
-  //   // Axios.put("https://executive-app.herokuapp.com/changeAdminLast", {
-  //   Axios.put("http://localhost:3001/changeAdminLast", {
-  //     lastName: newLastName,
-  //     id: id,
-  //   }).then((response) => {
-  //     // console.log("completed");
-  //     getAdminInfo();
-  //   });
-  // };
-  // //CHANGE EMAIL
-  // const ChangeEmail = (id) => {
-  //   // Axios.put("https://executive-app.herokuapp.com/changeAdminEmail", {
-  //   Axios.put("http://localhost:3001/changeAdminEmail", {
-  //     email: newEmail,
-  //     id: id,
-  //   }).then((response) => {
-  //     // console.log("completed");
-  //     getAdminInfo();
-  //   });
-  // };
-  // //CHAGNE PASSWORD
-  // const ChangePassword = (id) => {
-  //   // Axios.put("https://executive-app.herokuapp.com/changeAdminPassword", {
-  //   Axios.put("http://localhost:3001/changeAdminPassword", {
-  //     password: newPassword,
-  //     id: id,
-  //   }).then((response) => {
-  //     // console.log("completed");
-  //     getAdminInfo();
-  //   });
-  // };
-
-  useEffect(() => {
-    //LOAD ADMIN DATA
-    // getAdminInfo();
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div
       className="main"
       style={{
-        backgroundColor: "#F3F3FC",
-        // backgroundColor: "#CAD5E2",
+        backgroundColor: "#F3F3FC", 
       }}
     >
       {/* WHATS NEW MODAL */}
@@ -134,18 +54,11 @@ function AdminDashBoard() {
             <p>
               . Warning to sign out and in to see newly registered customers
             </p>
-            {/* <h3>All Requests</h3>
-            <p>. New Status option "Offered".</p>
-            <p></p>
-            <h3>All Members</h3>
-            <p>. Now shows card status and can update it.</p>
-            <p></p> */}
+            
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          {/* <Button color="black" onClick={() => setOpen(false)}>
-            Nope
-          </Button> */}
+          
           <Button
             content="OK , got it."
             labelPosition="right"
@@ -191,11 +104,7 @@ function AdminDashBoard() {
           {/* <OldestRequests /> */}
         </div>
       </div>
-      {/* <Header /> */}
-      {/* {/* <Navigation /> */}
-      {/* <NewMembers /> */}
-      {/* <DashboardNotes /> */}
-      {/* <DashboardNewRequest /> */}
+      
     </div>
   );
 }

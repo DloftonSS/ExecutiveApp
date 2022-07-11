@@ -31,10 +31,7 @@ function StoreFront(props) {
   const [preferredStore, setPreferredStore] = useState("");
   const [requestList, setRequestList] = useState("");
   const [arrayRequests, setArrayRequests] = useState("");
-  const userId = props.id;
-  // const { id } = useParams();
-  // const [card, setCard] = useState("");
-  // const [memberNumber, setMemberNumber] = useState("");
+  const userId = props.id; 
   const [placeBorn, setPlaceBorn] = useState("");
   const [dob, setDob] = useState("");
   const [ssn, setSsn] = useState("");
@@ -97,8 +94,7 @@ function StoreFront(props) {
 
       .then((response, error) => {
         // console.log("submited");
-        GetAllmembers();
-
+        GetAllmembers(); 
         alert("Submition Successful");
       })
       .catch((error) => {
@@ -113,15 +109,13 @@ function StoreFront(props) {
     }).then((response) => {
       GetAllmembers();
       alert("Submition Successful");
-      // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT
-      // console.log(response);
+      // THIS WILL UPDATE PENDING CARD AND ACKNOWWLDEGMENT 
       Axios.put("https://executive-app.herokuapp.com/pendingCardRenew", {
         // Axios.put("http://localhost:3001/pendingCardRenew", {
         id: id,
         card: card,
         acknowledged: acknowledged,
-      }).then((response) => {
-        // console.log("completed");
+      }).then((response) => { 
         GetAllmembers();
       });
     });
@@ -139,11 +133,9 @@ function StoreFront(props) {
         "user_QGlVs4Qz8yzIHPSfomOw6"
       )
       .then(
-        (result) => {
-          // console.log(result.text);
+        (result) => { 
         },
-        (error) => {
-          // console.log(error.text);
+        (error) => { 
         }
       );
     e.target.reset();
@@ -161,11 +153,9 @@ function StoreFront(props) {
         "user_QGlVs4Qz8yzIHPSfomOw6"
       )
       .then(
-        (result) => {
-          // console.log(result.text);
+        (result) => { 
         },
-        (error) => {
-          // console.log(error.text);
+        (error) => { 
         }
       );
     e.target.reset();
@@ -186,8 +176,7 @@ function StoreFront(props) {
         (result) => {
           alert("Your report has been submited.");
         },
-        (error) => {
-          // console.log(error.text);
+        (error) => { 
         }
       );
     e.target.reset();
@@ -199,9 +188,7 @@ function StoreFront(props) {
       // Axios.put("http://localhost:3001/pendingCardRenew", {
       id: id,
       card: card,
-    }).then((response) => {
-      // console.log("completed");
-      // getMemberInfo();
+    }).then((response) => { 
     });
   };
   // GET ALL MEMBERS
@@ -209,9 +196,7 @@ function StoreFront(props) {
     Axios.get("https://executive-app.herokuapp.com/api/getAllMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/api/getAllMembers").then((response) => {
-        setMemberList(response.data);
-        // console.log(response.data);
-        // console.log(id);
+        setMemberList(response.data); 
       }
     );
   };
@@ -224,8 +209,7 @@ function StoreFront(props) {
           (arrayRequests) => arrayRequests.memberIdentity == memberList.number
         );
         setArrayRequests(arrayRequests);
-        setRequestList(result);
-        // console.log(arrayRequests);
+        setRequestList(result); 
       }
     );
   };
@@ -274,8 +258,7 @@ function StoreFront(props) {
                 <form
                   className="register-modal"
                   ref={form}
-                  onSubmit={sendIssueEmail}
-                  // style={{ marginLeft: "10%", marginRigth: "10%", width: "1500px" }}
+                  onSubmit={sendIssueEmail} 
                 >
                   <input
                     style={{
@@ -291,10 +274,7 @@ function StoreFront(props) {
                     required
                     type="text"
                     placeholder="Title"
-                    name="title"
-                    // onChange={(e) => {
-                    //   setCustomerFirst(e.target.value);
-                    // }}
+                    name="title" 
                   />
                   <input
                     style={{
@@ -310,10 +290,7 @@ function StoreFront(props) {
                     required
                     type="text"
                     placeholder="Name"
-                    name="issuer name"
-                    // onChange={(e) => {
-                    //   setCustomerFirst(e.target.value);
-                    // }}
+                    name="issuer name" 
                   />
                   <textarea
                     style={{
@@ -330,10 +307,7 @@ function StoreFront(props) {
                     required
                     type="text"
                     placeholder="Detailed Description of Issue"
-                    name="description"
-                    // onChange={(e) => {
-                    //   setCustomerFirst(e.target.value);
-                    // }}
+                    name="description" 
                   ></textarea>
                   <input
                     style={{
@@ -354,10 +328,7 @@ function StoreFront(props) {
                 </form>
               </Modal.Description>
             </Modal.Content>
-            <Modal.Actions>
-              {/* <Button color="black" onClick={() => setOpen2(false)}>
-                Nope
-              </Button> */}
+            <Modal.Actions> 
               <Button
                 content="Done"
                 labelPosition="right"

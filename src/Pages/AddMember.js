@@ -21,8 +21,8 @@ function AddMember() {
   const [ethnicity, setEthnicity] = useState("");
   const [race, setRace] = useState("");
   const [memberNumber, setMemberNumber] = useState("");
-  const [associate, setAssociate] = useState("");
-  const [clerk, setClerk] = useState("");
+  // const [associate, setAssociate] = useState("");
+  // const [clerk, setClerk] = useState("");
   const card = "Pending";
   const acknowledged = "No";
 

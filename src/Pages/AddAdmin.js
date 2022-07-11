@@ -6,10 +6,7 @@ import HeaderMain from "../components/header";
 import {
   Button,
   Form,
-  Input,
-  Card,
-  Segment,
-  List,
+  Input,  
   Modal,
 } from "semantic-ui-react";
 import Axios from "axios";

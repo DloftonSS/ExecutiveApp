@@ -3,11 +3,14 @@ import "./App.css";
 // import Axios from "axios";
 // import React, { useState } from "react";
 // import PrivateRoute from "./PrivateRoute";
-import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Container } from "react-bootstrap";
+import LoginHeader from "./components/Storefront/loginHeader";
+
+import { BrowserRouter as Router, Link, Switch, Route, useHistory } from "react-router-dom"; 
 import AdminDashBoard from "./Pages/adminDashBoard";
 import AdminAccount from "./Pages/AdminDashBoard/AdminAccount";
-import Login from "./Pages/login";
+// import Login from "./Pages/login";
 import AddMember from "./Pages/AddMember";
 import AllMembers from "./Pages/Allmembers";
 import AddAdmin from "./Pages/AddAdmin";
@@ -19,24 +22,24 @@ import Benefits from "./components/MainPage/Benefits";
 import StoreFront from "./Pages/StoreFront";
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import Profile from "./Pages/ProfilePage/Profilepage";
-import LoggingIn from "./Pages/login";
+// import LoggingIn from "./Pages/login";
 import "./Pages/login.css";
 import Axios from "axios";
-import { Button, Form, Header, Icon, Modal, Input } from "semantic-ui-react";
-import React from "react";
-import { useHistory } from "react-router-dom";
+import { Header, Modal } from "semantic-ui-react";
+import React, { useState, useRef } from "react"; 
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Container } from "react-bootstrap";
+import emailjs from "emailjs-com";
+import { init } from "emailjs-com";
+init("user_9MrgO9HIeQQan5hAG15a2");
 
-import LoginHeader from "./components/Storefront/loginHeader";
 
 function App(props) {
   const [isAuth, setIsAuth] = useState(false);
   // let isAuth = false;
-  let history = useHistory();
+  // let history = useHistory();
 
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
   const [profileData, setProfileData] = useState("");
@@ -44,6 +47,10 @@ function App(props) {
   const id = props.id;
   const [open, setOpen] = React.useState(false);
   const [openTwo, setOpenTwo] = React.useState(false);
+  const form = useRef();
+
+  // let tempPassword = "";
+  var [tempPassword, setTempPassword] = useState("")
   // const [memberList, setMemberList] = useState("");
 
   const memberLogin = (props) => {
@@ -85,6 +92,77 @@ function App(props) {
       }
     });
   };
+
+  const sendPasswordReset = () => {
+    Axios.post("https://executive-app.herokuapp.com/sendPasswordReset", {
+      // Axios.post("http://localhost:3001/sendPasswordReset", {
+      email: email,
+      phone: phone,
+      tempPassword: tempPassword,
+      // password: password,
+    }).then((response) => {
+      if (response.data.message) {
+        setOpenTwo(false);
+        setLoginStatus(
+          <p className="incorrect-combo">
+            Email and Phone number do not match.
+          </p>
+        );
+      } else if (response.data[0]) {
+        // Axios.post("https://executive-app.herokuapp.com/setTempPassword", { 
+    //   Axios.post("http://localhost:3001/setTempPassword", {
+    //     tempPassword: tempPassword
+    // })
+        sendTempPasswordEmail();
+        setOpenTwo(false);
+        setLoginStatus(
+          <p className="loginStatus">Password Sent to {response.data[0].email}</p>
+        )
+        
+      }
+    })
+  };
+
+  const theTempPassword = () => {
+    Axios.post("https://executive-app.herokuapp.com/setTempPassword", { 
+      // Axios.post("http://localhost:3001/setTempPassword", {
+        tempPassword: tempPassword
+    })
+  }
+
+  const makeTempPassword = () => {
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   var passwordLength = 12;
+  
+   for (var i = 0; i <= passwordLength; i++) {
+    var randomNumber = Math.floor(Math.random() * chars.length);
+    // tempPassword += chars.substring(randomNumber, randomNumber +1);
+   setTempPassword(tempPassword += chars.substring(randomNumber, randomNumber +1));
+
+   }
+  }
+
+ //SENDING EMAIL NOTIFICATION OF EXEC SIGN UP
+ const sendTempPasswordEmail = (e) => {
+  // e.preventDefault();
+
+  emailjs
+    .sendForm(
+      // "service_gt7pfpe",
+      "service_640rs57",
+      "template_7vtpjtr",
+      form.current,
+      "user_QGlVs4Qz8yzIHPSfomOw6"
+    )
+    .then(
+      (result) => { 
+      },
+      (error) => { 
+      }
+    );
+  // e.target.reset();
+};  
+
   const login = (props) => {
     Axios.post("https://executive-app.herokuapp.com/login", {
       // Axios.post("http://localhost:3001/login", {
@@ -267,52 +345,81 @@ function App(props) {
                           className="admin-validate"
                           onClick={() => {
                             login();
-                            // memberLogin();
-                            // clearInput();
                             setOpen(false);
                           }}
-                          // onClick={() => setOpen(false)}
                         >
                           Sign In
                         </button>
                       </Modal.Content>
                     </Modal>
-                  </Col>
-
-                  {/* ADMIN LOGIN */}
-                  {/* <Col className="BenCol4">
-                    <p className="login-title">Login</p>
-                    <Input
-                      className="loginInput"
-                      required
-                      type="text"
-                      placeholder="Email"
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                      }}
-                    ></Input>
                     <br></br>
-                    <Input
-                      className="loginInput"
-                      required
-                      type="password"
-                      placeholder="Password"
-                      onChange={(e) => {
-                        setPassword(e.target.value);
-                      }}
-                    ></Input>
-                    <br></br>
-                    <button
-                      className="validate"
-                      onClick={() => {
-                        login();
-                        // memberLogin();
-                        // clearInput();
+                    <Modal
+                      onClose={() => setOpenTwo(false)}
+                      onOpen={() => setOpenTwo(true)}
+                      open={openTwo}
+                      trigger={<button className="forgot-btn" onClick={() => {makeTempPassword()}}>Forgot Password?</button>}
+                      style={{
+                        height: "300px",
+                        width: "300px",
+                        marginLeft: "45%",
+                        marginRight: "45%",
+                        marginTop: "25%",
                       }}
                     >
-                      Sign In
-                    </button>
-                  </Col> */}
+                      <Modal.Content>
+                        <p className="login-title-admin">Receive Temporary Password.</p>
+                        <p style={{textAlign: "center", fontSize: "10px"}}>*Phone Format 000-000-000</p>
+                        <input
+                          className="loginInput"
+                          required
+                          type="text"
+                          placeholder="Email"
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                          }}
+                        ></input>
+                        <br></br>
+                        <input
+                          className="loginInput"
+                          required
+                          type="text"
+                          placeholder="Phone Number"
+                          onChange={(e) => {
+                            setPhone(e.target.value);
+                          }}
+                        ></input>
+                        <br></br>
+                        <button
+                          className="admin-validate"
+                          onClick={() => {
+                            sendPasswordReset();
+                            // setOpenTwo(false);
+                          }}
+                        >
+                          Send
+                        </button>
+                        <form ref={form} onSubmit={sendTempPasswordEmail} className="hide">
+                          <input 
+                            value={email}
+                            type="text"
+                            placeholder="email"
+                            name="customerEmail"
+                            readOnly>
+                          </input>
+                          <input
+                            value={tempPassword}
+                            type="tel"
+                            data-mask="(999) 999-9999"
+                            placeholder="password"
+                            name="tempPassword"
+                            readOnly>
+                          </input>
+                        </form>
+                      </Modal.Content>
+                    </Modal>
+                  </Col>
+
+                
                 </Row>
                 <Row>
                   <Col>

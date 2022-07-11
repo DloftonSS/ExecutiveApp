@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from "react";
-import {
-  Input,
+import { 
   List,
-  Button,
-  Checkbox,
-  Grid,
-  Header,
+  Button, 
   Icon,
-  Feed,
-  Image,
+  Feed, 
   Card,
   Popup,
-  Form,
-  Menu,
-  Segment,
-  Sidebar,
+  Form, 
 } from "semantic-ui-react";
-import Axios from "axios";
-// import API from "../utils/API";
-// import { useParams } from "react-router";
+import Axios from "axios"; 
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "./AdminAccount.css";
 import Logo from "../images/ExecutiveAccess.png";
 import MembersDashboard from "../MembersDashBoard/MembersDashboard";
@@ -29,8 +19,7 @@ import RequestDashboard from "../RequestsDashBoard/RequestDashboard";
 import AddNewMember from "../AddMember/AddMember";
 import AddAdminDashboard from "../AddAdmin/AddAdminDashboard";
 import CatalogDashboard from "../CatalogDashboard/CatalogDashboard";
-import CalendarDashbaord from "../CalendarDashboard/CalendarDashboard";
-// import AllMembers from "../Allmembers";
+import CalendarDashbaord from "../CalendarDashboard/CalendarDashboard"; 
 
 // CHANGE DARK MODE
 
@@ -52,9 +41,7 @@ function AdminAccount() {
       // Axios.put("http://localhost:3001/adminResponded", {
       acknowledged: acknowledged,
       id: id,
-    }).then(() => {
-      // console.log("clicked");
-      // Alert("Initial Contact Changed");
+    }).then(() => { 
       getPending();
       GetChat();
       ActiveOnly();
@@ -70,8 +57,7 @@ function AdminAccount() {
     Axios.get("https://executive-app.herokuapp.com/PendingCardMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/PendingCardMembers").then((response) => {
-        setPendingCardList(response.data);
-        // console.log(response.data);
+        setPendingCardList(response.data); 
       }
     );
   };
@@ -81,8 +67,7 @@ function AdminAccount() {
     Axios.get("https://executive-app.herokuapp.com/getNeedContact").then(
       (response) => {
         // Axios.get("http://localhost:3001/getNeedContact").then((response) => {
-        setContactNeeded(response.data);
-        // console.log(response.data);
+        setContactNeeded(response.data); 
       }
     );
   };
@@ -102,8 +87,7 @@ function AdminAccount() {
     Axios.get("https://executive-app.herokuapp.com/api/get").then(
       (response) => {
         // Axios.get("http://localhost:3001/api/get").then((response) => {
-        setNotesList(response.data);
-        // console.log(response.data);
+        setNotesList(response.data); 
       }
     );
   };
@@ -111,8 +95,7 @@ function AdminAccount() {
   const Deletenote = (id) => {
     Axios.delete(`https://executive-app.herokuapp.com/deleteNote/${id}`).then(
       () => {
-        // Axios.delete(`http://localhost:3001/deleteNote/${id}`).then(() => {
-        // console.log("deleted");
+        // Axios.delete(`http://localhost:3001/deleteNote/${id}`).then(() => { 
         GetNotes();
       }
     );
@@ -131,16 +114,14 @@ function AdminAccount() {
       chatTyped: chatTyped,
       adminName: adminName,
     }).then(() => {
-      alert("sumbited");
-      // reloadPage();
+      alert("sumbited"); 
     });
   };
 
   const GetChat = () => {
     Axios.get("https://executive-app.herokuapp.com/chat").then((response) => {
       // Axios.get("http://localhost:3001/chat").then((response) => {
-      setchatList(response.data);
-      // console.log(response.data);
+      setchatList(response.data); 
     });
   };
 
@@ -148,8 +129,7 @@ function AdminAccount() {
   const DeleteChat = (id) => {
     Axios.delete(`https://executive-app.herokuapp.com/deleteChat/${id}`).then(
       () => {
-        // Axios.delete(`http://localhost:3001/deleteChat/${id}`).then(() => {
-        // console.log("deleted");
+        // Axios.delete(`http://localhost:3001/deleteChat/${id}`).then(() => { 
         GetChat();
       }
     );
@@ -162,8 +142,7 @@ function AdminAccount() {
     Axios.get("https://executive-app.herokuapp.com/api/activeMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/api/activeMembers").then((response) => {
-        setActiveList(response.data);
-        // console.log(response.data);
+        setActiveList(response.data); 
       }
     );
   };
@@ -374,25 +353,10 @@ function AdminAccount() {
                 marginBottom: "8%",
               }}
             >
-              {/* .chat-container */}
-              {/* <Feed
-                style={{
-                  overflowY: "scroll",
-                  scrollbarWidth: "1px",
-                  height: "80%",
-                  display: "flex",
-                  flexDirection: "column-reverse",
-                  //   marginBottom: "8%",
-                }}
-              > */}
+              
               {Object.keys(chatList).map((keyName, i) => {
-                return (
-                  // <p>{chatList[keyName].note}</p>;
+                return ( 
                   <Feed.Event>
-                    {/* <Feed.Label>
-                        <Icon name="user circle" />
-                      </Feed.Label> */}
-
                     <Feed.Content style={{ color: " rgb(129, 0, 0)" }}>
                       <Feed.Summary>
                         <Feed.User
@@ -408,9 +372,7 @@ function AdminAccount() {
                           {chatList[keyName].createdAt}
                         </Feed.Date>
                       </Feed.Summary>
-                      {/* <Feed.Meta>
-                      <Feed.User>Name of Customer</Feed.User>
-                    </Feed.Meta> */}
+                      
                       <Feed.Extra
                         style={{
                           width: "100%",

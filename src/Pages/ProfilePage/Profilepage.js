@@ -1,20 +1,11 @@
-import React, { useState, useEffect, Input } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import {
-  Card,
-  Checkbox,
-  Grid,
-  Header,
-  List,
+  Card, 
+  Header, 
   Icon,
-  Table,
-  Link,
-  Menu,
-  Segment,
-  Image,
-  Form,
-  Sidebar,
-  Dropdown,
+  Table, 
+  Image, 
   Modal,
   Button,
   Feed,
@@ -22,11 +13,8 @@ import {
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-
-import Logo from "../images/exec catalog.png";
-import Axios from "axios";
-// import Logo from "./profileImage.jpg";
-import Albert from "./profileImage.jpg";
+ 
+import Axios from "axios"; 
 import NoImage from "./no-product-found.png";
 import Product from "../images/ProductPlaceholderImage.png";
 

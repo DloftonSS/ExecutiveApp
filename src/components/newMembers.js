@@ -1,4 +1,4 @@
-import { Card, Table, Button, Icon, Segment } from "semantic-ui-react";
+import { Card, Button, Segment } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
@@ -23,21 +23,12 @@ function NewMembers() {
     Axios.get("https://executive-app.herokuapp.com/PendingCardMembers").then(
       (response) => {
         // Axios.get("http://localhost:3001/PendingCardMembers").then((response) => {
-        setMemberList(response.data);
-        // console.log(response.data);
+        setMemberList(response.data); 
       }
     );
   };
   useEffect(() => {
-    getPending();
-    //OLD NOT USING ON DASHBOARD
-
-    // Axios.get("https://executive-app.herokuapp.com/api/getMembers").then(
-    //   (response) => {
-    // Axios.get("http://localhost:3001/api/getMembers").then((response) => {
-    // setMemberList(response.data);
-    // console.log(response.data);
-    // });
+    getPending(); 
   }, []);
 
   return (

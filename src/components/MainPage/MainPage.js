@@ -1,6 +1,6 @@
-import { Card, Feed, Icon, Input, Button } from "semantic-ui-react";
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+// import { Card, Feed, Icon, Input, Button } from "semantic-ui-react";
+import React from "react";
+// import Axios from "axios";
 import "./MainPage.css";
 
 function MainPage() {

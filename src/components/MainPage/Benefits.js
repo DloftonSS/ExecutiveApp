@@ -1,18 +1,14 @@
 import { Icon } from "semantic-ui-react";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Container } from "react-bootstrap";
-import Axios from "axios";
+// import Axios from "axios";
 import "./Benefits.css";
 
 function Benefits() {
   return (
     <div className="MainContainer">
-      {/* <p>
-        the Executive Access Club gives you exlusive acces to services and
-        products typically unavailable to members of the public as well as
-        access to special discounts and fast access.
-      </p> */}
+       
       <div className="titleDiv">
         {" "}
         <h1>
