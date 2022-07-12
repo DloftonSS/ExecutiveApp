@@ -109,9 +109,9 @@
   color: black;
 }
 .BenCol4 {
-  /* background-color: #94989a; */
-  background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
+  background-color: #dc1b29;
+  /* background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%); */
   /* background-color: black; */
   /* color: black; */
   margin: 5%;
@@ -120,7 +120,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
   width: 120px;
   /* width: 100%; */
   /* box-shadow: 1px 2px 3px 2px black; */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 .BenCol4 p {
   /* float: left; */

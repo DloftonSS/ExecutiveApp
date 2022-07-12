@@ -353,7 +353,7 @@ function App(props) {
                       </Modal.Content>
                     </Modal>
                     <br></br>
-                    <Modal
+                    {/* <Modal
                       onClose={() => setOpenTwo(false)}
                       onOpen={() => setOpenTwo(true)}
                       open={openTwo}
@@ -393,7 +393,6 @@ function App(props) {
                           className="admin-validate"
                           onClick={() => {
                             sendPasswordReset();
-                            // setOpenTwo(false);
                           }}
                         >
                           Send
@@ -416,7 +415,7 @@ function App(props) {
                           </input>
                         </form>
                       </Modal.Content>
-                    </Modal>
+                    </Modal> */}
                   </Col>
 
                 

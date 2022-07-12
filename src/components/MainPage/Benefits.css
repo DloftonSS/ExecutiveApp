@@ -1,18 +1,18 @@
 .underlineB {
   width: 75%;
   height: 15px;
-  background-color: #94989a;
+  background-color: #a9abad;
   float: right;
 }
 .underlineC {
   width: 70%;
   height: 15px;
-  background-color: #94989a;
+  background-color: #a9abad;
 }
 .underlineD {
   width: 75%;
   height: 15px;
-  background-color: #94989a;
+  background-color: #a9abad;
   float: right;
 }
 
@@ -35,20 +35,20 @@ div.footer {
   /* padding: 5%; */
 }
 span {
-  color: rgb(233, 10, 42);
+  color: #dc1b29;
 }
 
 .BenCol {
-  /* background-color: black; */
+  background-color: #dc1b29;
 
-  background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
+  /* background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%); */
   color: white;
   margin: 5%;
   height: 300px;
   width: 300px;
   /* box-shadow: 1px 2px 3px 2px #94989a; */
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 .BenCol p {
@@ -59,7 +59,8 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
 .BenCol h3 {
   float: left;
   text-align: left;
-  color: #94989a;
+  /* color: #94989a; */
+  color: black;
   font-size: 50px;
 }
 
@@ -79,7 +80,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
   .underline {
     width: 75%;
     height: 15px;
-    background-color: #94989a;
+    background-color: #a9abad;
   }
 
   .BenCol {
@@ -97,7 +98,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
   .BenCol h3 {
     float: left;
     text-align: left;
-    color: lightgray;
+    color: #a9abad;
     font-size: 25px;
   }
   .footer {
