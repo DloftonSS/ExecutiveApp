@@ -4,8 +4,7 @@
 }
 
 .Modals {
-  margin-top: 5%;
-  /* background-color: white; */
+  margin-top: 5%; 
   background-color: black;
 }
 
@@ -17,11 +16,7 @@
   border-radius: 25px;
   border: 3px solid;
   padding: 10px;
-  box-shadow: 5px 10px;
-  /* width: 20%; */
-  /* margin-left: 40%;
-  margin-right: 40%;
-  margin-top: 10%; */
+  box-shadow: 5px 10px; 
   background-color: gray;
 }
 
@@ -109,21 +104,13 @@
   color: black;
 }
 .BenCol4 {
-  background-color: #dc1b29;
-  /* background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%); */
-  /* background-color: black; */
-  /* color: black; */
+  background-color: #dc1b29; 
   margin: 5%;
   padding-top: 2%;
   height: 300px;
-  width: 120px;
-  /* width: 100%; */
-  /* box-shadow: 1px 2px 3px 2px black; */
-  /* border-radius: 5px; */
+  width: 120px; 
 }
-.BenCol4 p {
-  /* float: left; */
+.BenCol4 p { 
   text-align: center;
   font-size: medium;
 }
@@ -167,10 +154,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
     margin-top: 10%;
   }
 
-  .loginInput {
-    /* border: 3px solid; */
-    /* padding: 10px; */
-    /* box-shadow: 5px 10px; */
+  .loginInput { 
     background-color: black;
    color: white;
     width: 250px;
@@ -182,8 +166,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
     width: 200px;
   }
   .BenCol4 {
-    background-color: lightgray;
-    /* color: black; */
+    background-color: lightgray; 
     margin: 5%;
     height: 250px;
     width: 120px;
