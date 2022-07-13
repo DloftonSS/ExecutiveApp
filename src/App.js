@@ -353,7 +353,7 @@ function App(props) {
                       </Modal.Content>
                     </Modal>
                     <br></br>
-                    {/* <Modal
+                    <Modal
                       onClose={() => setOpenTwo(false)}
                       onOpen={() => setOpenTwo(true)}
                       open={openTwo}
@@ -415,7 +415,7 @@ function App(props) {
                           </input>
                         </form>
                       </Modal.Content>
-                    </Modal> */}
+                    </Modal>
                   </Col>
 
                 
