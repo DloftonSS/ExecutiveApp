@@ -43,46 +43,22 @@ const Profile = (props) => {
   const [custName, setCustName] = useState("");
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const [catalog, setCatalog] = useState("");
-  // const [newPicture, setNewPicture] = useState("");
-  // const [like, setLike] = useState(catalog.likes);
-  // const id = props.match.params.id;
-  // const id = props.id;
+  const [catalog, setCatalog] = useState(""); 
   const { id } = useParams();
-  //
-
-  // Category, Model, Make, Sku, Price;
-
-  // const state = {
-  //   likes: 0,
-  // };
-
-  // const addLike = () => {
-  //   let newCount = this.state.likes + 1;
-  //   this.setState({
-  //     likes: newCount,
-  //   });
-  // };
-  // ADD NEW PROFILE PICTURE
-
-  //
+  
   //ADD CATALOG ITEM TO REQUESTS
   const AddToRequests = (id) => {
     Axios.post("https://executive-app.herokuapp.com/marketCart", {
-      // Axios.post("http://localhost:3001/marketCart", {
-      // messageTyped: messageTyped,
+      // Axios.post("http://localhost:3001/marketCart", { 
       custName: custName,
       memberId: memberId,
       id: id,
     }).then(() => {
-      alert("Your order has been placed.");
-      // LoadPage();
+      alert("Your order has been placed."); 
     });
   };
   //ADD CATALOG ITEM TO REQUESTS
-  // const AddToRequests = (id) => {
-  //   console.log();
-  // };
+  
 
   //SUBMIT NOTE
   const submitMessage = (e) => {
@@ -100,21 +76,16 @@ const Profile = (props) => {
     Axios.get("https://executive-app.herokuapp.com/getCatalogNow").then(
       (response) => {
         // Axios.get("http://localhost:3001/getCatalogNow").then((response) => {
-        setCatalog(response.data);
-        // setLikeTotal(response.data.Likes);
-        // console.log(response.data.length);
-        // console.log(likeTotal);
+        setCatalog(response.data); 
       }
     );
   };
-  // ******** CONTROL LIKE COUNTER **************
-  // var likeNumber = likeTotal;
+  // ******** CONTROL LIKE COUNTER ************** 
   const AddLike = (id) => {
     // setNewLikeTotal(likeTotal++);
     // console.log(newLikeTotal);
     Axios.post("https://executive-app.herokuapp.com/addALike", {
-      // Axios.post("http://localhost:3001/addALike", {
-      // newLikeTotal: newLikeTotal,
+      // Axios.post("http://localhost:3001/addALike", { 
       id: id,
     }).then(() => {});
   };
@@ -122,8 +93,7 @@ const Profile = (props) => {
   const getMemberInfo = () => {
     Axios.get("https://executive-app.herokuapp.com/memberProfile").then(
       (response) => {
-        // Axios.get("http://localhost:3001/memberProfile").then((response) => {
-        // setMemberDetails(userID);
+        // Axios.get("http://localhost:3001/memberProfile").then((response) => { 
         const arrayMembers = response.data;
         const result = arrayMembers.filter(
           (arrayMembers) => arrayMembers.id == id
@@ -131,8 +101,7 @@ const Profile = (props) => {
         setMemberDetails(result[0]);
         setSenderName(result[0].first_name + " " + result[0].last_name);
         setCustName(result[0].first_name + " " + result[0].last_name);
-        setMemberId(result[0].id);
-        // console.log(result[0].id);
+        setMemberId(result[0].id); 
       }
     );
   };
@@ -142,8 +111,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeFirst", {
       firstName: newFirstName,
       id: id,
-    }).then((response) => {
-      // console.log("completed");
+    }).then((response) => { 
       getMemberInfo();
     });
   };
@@ -152,8 +120,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeMiddle", {
       middleName: newMiddleName,
       id: id,
-    }).then((response) => {
-      // console.log("completed");
+    }).then((response) => { 
       getMemberInfo();
     });
   };
@@ -162,8 +129,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeLast", {
       lastName: newLastName,
       id: id,
-    }).then((response) => {
-      // console.log("completed");
+    }).then((response) => { 
       getMemberInfo();
     });
   };
@@ -172,8 +138,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeEmail", {
       email: newEmail,
       id: id,
-    }).then((response) => {
-      // console.log("completed");
+    }).then((response) => { 
       getMemberInfo();
     });
   };
@@ -182,8 +147,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changePhone", {
       phone: newPhone,
       id: id,
-    }).then((response) => {
-      // console.log("completed");
+    }).then((response) => { 
       getMemberInfo();
     });
   };
@@ -192,8 +156,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeAddress", {
       address: newAddress,
       id: id,
-    }).then((response) => {
-      // console.log("completed");
+    }).then((response) => { 
       getMemberInfo();
     });
   };
@@ -202,8 +165,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changePassword", {
       password: newPassword,
       id: id,
-    }).then((response) => {
-      // console.log("completed");
+    }).then((response) => { 
       getMemberInfo();
     });
   };
@@ -229,8 +191,7 @@ const Profile = (props) => {
         const returned = arrayMessages.filter(
           (arrayMessages) => arrayMessages.memberIdentity == id
         );
-        setMessageList(returned);
-        // console.log("here" + returned);
+        setMessageList(returned); 
       }
     );
   };
@@ -238,8 +199,7 @@ const Profile = (props) => {
   const getEvents = () => {
     Axios.get("https://executive-app.herokuapp.com/events").then((response) => {
       // Axios.get("http://localhost:3001/events").then((response) => {
-      setEvents(response.data);
-      // console.log(events);
+      setEvents(response.data); 
     });
   };
 
@@ -255,12 +215,7 @@ const Profile = (props) => {
     getMemberMessages();
     GetCatalog();
     getEvents();
-
-    // GET CUSTOMER REQUESTS
-    // Axios.get("https://executive-app.herokuapp.com/member").then((response) => {
-    // Axios.get("http://localhost:3001/member").then((response) => {
-    //   setRequestList(response.data);
-    // });
+ 
   }, []);
 
   return (
@@ -314,72 +269,7 @@ const Profile = (props) => {
                 <Modal.Header>Edit Personal Details</Modal.Header>
 
                 <Modal.Content style={{ float: "center" }}>
-                  {/* <Header>First Name</Header>
-                <input
-                  onChange={(e) => {
-                    setNewFirstName(e.target.value);
-                  }}
-                  placeholder="first name"
-                  Value={memberDetails.first_name}
-                  style={{
-                    height: "30px",
-                    width: "300px",
-                    marginBottom: "5px",
-                  }}
-                ></input>
-                <Button
-                  size="mini"
-                  color="black"
-                  onClick={() => {
-                    ChangeFirst(memberDetails.id);
-                  }}
-                >
-                  Change First
-                </Button>
-                <Header>Middle Name</Header>
-                <input
-                  onChange={(r) => {
-                    setNewMiddleName(r.target.value);
-                  }}
-                  placeholder="first name"
-                  Value={memberDetails.middle_name}
-                  style={{
-                    height: "30px",
-                    width: "300px",
-                    marginBottom: "5px",
-                  }}
-                ></input>
-                <Button
-                  size="mini"
-                  color="black"
-                  onClick={() => {
-                    ChangeMiddle(memberDetails.id);
-                  }}
-                >
-                  Change Middle
-                </Button>
-                <Header>Last Name</Header>
-                <input
-                  onChange={(t) => {
-                    setNewLastName(t.target.value);
-                  }}
-                  placeholder="last name"
-                  Value={memberDetails.last_name}
-                  style={{
-                    height: "30px",
-                    width: "300px",
-                    marginBottom: "5px",
-                  }}
-                ></input>
-                <Button
-                  size="mini"
-                  color="black"
-                  onClick={() => {
-                    ChangeLast(memberDetails.id);
-                  }}
-                >
-                  Change Last
-                </Button> */}
+               
                   <Header>Email</Header>
                   <input
                     onChange={(y) => {
@@ -477,42 +367,15 @@ const Profile = (props) => {
                     ></input>
                     <input type="submit" class="btn btn-primary"></input>
                   </form>
-                  {/* <input
-                    type="file"
-                    // onChange={(p) => {
-                    //   setNewPicture(p.target.value);
-                    // }}
-                    // onChange={saveFile}
-                    placeholder="********"
-                    style={{
-                      height: "30px",
-                      width: "300px",
-                      marginBottom: "5px",
-                    }}
-                  ></input>
-
-                  <Button
-                    size="mini"
-                    color="black"
-                    // onClick={() => {
-                    //   setProfilePicture(memberDetails.id);
-                    // }}
-                    // onClick={uploadFile}
-                  >
-                    Change Picture
-                  </Button> */}
+                   
                 </Modal.Content>
                 <Modal.Actions>
-                  {/* <Button color="black" onClick={() => setOpen(false)}>
-                  Cancel
-                </Button> */}
+                   
                   <Button
                     content="Done"
                     labelPosition="right"
                     icon="checkmark"
-                    // onClick={() => {
-                    //   UpdateDetails(memberDetails.id);
-                    // }}
+                     
 
                     onClick={() => setOpen(false)}
                     positive
@@ -543,15 +406,7 @@ const Profile = (props) => {
               <h3 className="section-titles, right-section-title">
                 SPECIAL REQUESTS
               </h3>
-              {/* <Table celled striped color="red"> */}
-              {/* <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell>Item</Table.HeaderCell>
-                      <Table.HeaderCell>status</Table.HeaderCell>
-                      <Table.HeaderCell>Modified</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header> */}
-              {/* <Table.Body> */}
+              
               <Row>
                 <Col>
                   <p className="request-style">Item</p>
@@ -571,14 +426,9 @@ const Profile = (props) => {
                     .slice(0, 4)
                     .join(" ");
                   return (
-                    // <Table.Row key={request.id}>
-                    //   <Table.Cell>{requestList[request].item}</Table.Cell>
-                    //   <Table.Cell>{requestList[request].status}</Table.Cell>
-                    //   <Table.Cell>{update}</Table.Cell>
-                    // </Table.Row>
+                     
                     <div className="request-item-row">
-                      <Row className="message-underline">
-                        {/* ___________________________________________________________________ */}
+                      <Row className="message-underline"> 
                       </Row>
 
                       <Row key={request.id}>
@@ -600,9 +450,7 @@ const Profile = (props) => {
                     </div>
                   );
                 })}
-              </div>
-              {/* </Table.Body> */}
-              {/* </Table> */}
+              </div> 
             </div>
             <div className="messages-div-section">
               <div style={{ height: "50px" }}></div>
@@ -628,20 +476,18 @@ const Profile = (props) => {
                         {messageList[message].SenderName}
                       </p>
                       <span style={{ color: "lightgray" }}> {update}</span>
-                      {/* <p style={{ color: "white" }}>{update}</p> */}
+                      
                       <p className="message"> {messageList[message].Message}</p>
                       <p className="message-underline"></p>
                     </div>
                   );
                 })}
               </Feed>
-              {/* <div style={{ width: "200px" }}> */}
-              {/* <form className="message-textbox"> */}
+              
               <form>
                 <input
                   placeholder="Message"
-                  className="message-textbox"
-                  // style={{ width: "80%" }}
+                  className="message-textbox" 
                   onChange={(e) => {
                     setMessageTyped(e.target.value);
                   }}
@@ -655,18 +501,14 @@ const Profile = (props) => {
                   Send Message
                 </button>
               </form>
-              <br></br>
-              {/* </form> */}
-              {/* </div> */}
+              <br></br> 
             </div>
           </Col>
-        </Row>
-        {/* <Row>requests</Row> */}
+        </Row> 
         <Row className="market-calendar-section">
           {" "}
-          <h3 className="section-titles">MARKET</h3>
-          {/* <div style={{ height: "250px" }}> */}
-          <div className="card-catalog-container" className="trythis">
+          <h3 className="section-titles">MARKET</h3> 
+          <div className="card-catalog-container trythis">
             {Object.keys(catalog).map((logs, i) => {
               return (
                 <div className="card-catalog-container">
@@ -688,16 +530,9 @@ const Profile = (props) => {
                       {" "}
                       <Icon
                         name="thumbs up"
-                        className="catalog-options-icons"
-                        // onClick={() => {
-                        //   setLike(like + 1);
-                        // }}
-                        // onClick={this.addLike}
-                        // id={this.props.itemId}
-                      />
+                        className="catalog-options-icons" />
                       {catalog[logs].Likes}
-                      {/* {this.state.likes} */}
-                      {/* {like} */}
+                       
                     </Col>
                     <Col>
                       <p className="catalog-options-icons">
@@ -732,8 +567,7 @@ const Profile = (props) => {
               ></Icon>
             </Col>
             <Col></Col>
-          </Row>
-          {/* </div> */}
+          </Row> 
         </Row>
         <Row>
           {" "}
@@ -743,19 +577,7 @@ const Profile = (props) => {
             </h3>
             <div className="table-container-div">
               <Table singleLine style={{ padding: "5%" }}>
-                {/* <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell style={{ width: "100px" }}>
-                        Event
-                      </Table.HeaderCell>
-                      <Table.HeaderCell style={{ width: "100px" }}>
-                        Time
-                      </Table.HeaderCell>
-                      <Table.HeaderCell style={{ width: "100px" }}>
-                        Location
-                      </Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header> */}
+                
                 <Table.Body
                   className="scroll-hidden"
                   style={{ overflow: "scroll" }}
@@ -772,27 +594,7 @@ const Profile = (props) => {
                         <Table.Cell style={{}}>
                           {events[allEvents].location}
                         </Table.Cell>
-                        {/* <Table.Cell style={{}}>
-                            <select
-                              onChange={(e) => {
-                                set(e.target.value.toUpperCase());
-                              }}
-                              style={{
-                                height: "35px",
-                                width: "100%",
-                                backgroundColor: "white",
-                                borderRadius: "5px",
-                                border: "solid 1px rgb(129, 0, 0)",
-                              }}
-                            >
-                              <option>Attendance</option>
-                              <option value="Attending">Attending</option>
-                              <option value="Maybe">Maybe</option>
-                              <option value="Not Attending">
-                                Not Attending
-                              </option>
-                            </select>
-                          </Table.Cell> */}
+                        
                       </Table.Row>
                     );
                   })}
