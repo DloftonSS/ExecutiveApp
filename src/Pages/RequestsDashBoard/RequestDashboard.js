@@ -48,8 +48,7 @@ function RequestDashboard() {
     Axios.get("https://executive-app.herokuapp.com/allRequests").then(
       (response) => {
         // Axios.get("http://localhost:3001/allRequests").then((response) => {
-        setRequestList(response.data);
-        // console.log(requestList.length);
+        setRequestList(response.data); 
       }
     );
   };
@@ -58,8 +57,7 @@ function RequestDashboard() {
     Axios.get("https://executive-app.herokuapp.com/pendingRequests").then(
       (response) => {
         // Axios.get("http://localhost:3001/pendingRequests").then((response) => {
-        setPendingRequests(response.data);
-        // console.log(response.data);
+        setPendingRequests(response.data); 
       }
     );
   };
@@ -78,8 +76,7 @@ function RequestDashboard() {
     Axios.get("https://executive-app.herokuapp.com/onholdRequests").then(
       (response) => {
         // Axios.get("http://localhost:3001/onholdRequests").then((response) => {
-        setOnholdRequest(response.data);
-        console.log(response.data);
+        setOnholdRequest(response.data); 
       }
     );
   };
@@ -88,8 +85,7 @@ function RequestDashboard() {
     Axios.get("https://executive-app.herokuapp.com/backorderedRequests").then(
       (response) => {
         // Axios.get("http://localhost:3001/backorderedRequests").then((response) => {
-        setBackorderRequest(response.data);
-        // console.log(response.data);
+        setBackorderRequest(response.data); 
       }
     );
   };
