@@ -1,18 +1,18 @@
 .underlineB {
   width: 75%;
   height: 15px;
-  background-color: #a9abad;
+  background-color: #dc1b29;
   float: right;
 }
 .underlineC {
   width: 70%;
   height: 15px;
-  background-color: #a9abad;
+  background-color: #dc1b29;
 }
 .underlineD {
   width: 75%;
   height: 15px;
-  background-color: #a9abad;
+  background-color: #dc1b29;
   float: right;
 }
 
@@ -80,12 +80,9 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%); */
   .underline {
     width: 75%;
     height: 15px;
-    background-color: #a9abad;
   }
 
   .BenCol {
-    background-color: black;
-    color: white;
     margin: 5%;
     height: 120px;
     width: 100px;
@@ -98,7 +95,6 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%); */
   .BenCol h3 {
     float: left;
     text-align: left;
-    color: #a9abad;
     font-size: 25px;
   }
   .footer {

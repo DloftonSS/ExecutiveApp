@@ -128,12 +128,7 @@ p.message {
   width: 300px;
   padding-top: 3%;
 }
-.footer {
-  height: 50px;
-  width: 100%;
-  background-color: #121212;
-  text-align: center;
-}
+
 .message-underline {
   width: 100%;
   height: 1px;

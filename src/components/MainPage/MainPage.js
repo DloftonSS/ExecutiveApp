@@ -9,7 +9,9 @@ function MainPage() {
       <div className="titleDiv">
         {" "}
         <h1>
-          AN <span>EXCLUSIVE</span> BENEFITS PROGRAM FOR FIREARMS ENTHUSIASTS
+          AN <span>EXCLUSIVE</span> BENEFITS PROGRAM FOR
+          <br />
+          FIREARMS ENTHUSIASTS
         </h1>
       </div>
 

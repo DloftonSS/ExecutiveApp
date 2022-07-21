@@ -1,0 +1,30 @@
+span {
+    color: #dc1b29;
+}
+
+span a{
+    color: #dc1b29;
+}
+
+span a:hover{
+    color: #dc1b29;
+    text-decoration: underline;
+}
+
+.footer-text {
+    font-size: 10px;
+    background-color: black;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+}
+
+.footer {
+    height: 85px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: 3%;
+    position: absolute;
+    bottom: 0;
+}
