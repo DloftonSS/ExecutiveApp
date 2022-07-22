@@ -4,7 +4,7 @@
 }
 
 .Modals {
-  margin-top: 5%; 
+  margin-top: 3%; 
   background-color: black;
 }
 
@@ -13,7 +13,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 25px;
   border: 3px solid;
   padding: 10px;
   box-shadow: 5px 10px; 
@@ -29,57 +28,74 @@
   align-items: center;
 }
 
-
 .hide {
   display: none;
 }
 .loginInput { 
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   width: 250px;
   margin: 5px;
   height: 30px;
-  border: 2px black;
-  border-radius: 8px;
-  font-family: "Tinos", serif;
+  border: 1px solid black;
+  font-family: "Open Sans", sans-serif;
 }
 
 .validate { 
-  margin-top: 2%;
-  border-radius: 8px;
+  margin-top: 1%;
   border: none;
-  font-family: "Tinos", serif;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
   width: 200px;
   height: 30px;
-  color: white;
+  color: black;
+  background-color: white;
+}
+
+.validate:hover{
+  color: #dc1b29;
   background-color: black;
+  border: 1px solid #dc1b29;
+  transition-duration: 200ms;
 }
 
 .forgot-btn {
   margin-top: .5%;
-  border-radius: 8px;
   border: none;
-  font-family: "Tinos", serif;
+  font-family: "Open Sans", sans-serif;
   width: 200px;
   height: 30px;
   color: white;
   background-color: transparent;
 }
 
+.forgot-btn:hover{
+  text-decoration: underline;
+}
+
 .admin-validate {
   margin-top: 2%;
-  border-radius: 8px;
   border: none;
-  font-family: "Tinos", serif;
+  font-family: "Open Sans", sans-serif;
   width: 200px;
   height: 30px;
-  margin-left: 10%;
+  margin-left: 50%;
+  transform: translate(-50%);
   color: white;
   background-color: black;
+  text-transform: uppercase;
 }
+
+.admin-validate:hover{
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  transition-duration: 200ms;
+}
+
 .password-validate {
   margin-top: 2%;
-  font-family: "Tinos", serif;
+  font-family: "Open Sans", sans-serif;
   width: 200px;
   height: 30px;
   margin-left: 10%;
@@ -87,16 +103,31 @@
 }
 
 .login-title {
-  font-family: "Tinos", serif;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px !important;
   color: white;
+  text-transform: uppercase;
+  margin-bottom: 5.25px;
 }
+
+.login-underline{
+  width: 145px;
+  height: 3px;
+  background-color: #a9abad;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .login-title-admin {
-  font-family: "Tinos", serif;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px !important;
   text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 5.25px;
 }
 
 .loginHeader {
-  font-family: "Tinos", serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .NewLogin {
@@ -104,10 +135,8 @@
   color: black;
 }
 .BenCol4 {
-  background-color: #dc1b29; 
-  margin: 5%;
-  padding-top: 2%;
-  height: 300px;
+  background-color: black; 
+  /* padding-top: 2%; */
   width: 120px; 
 }
 .BenCol4 p { 
@@ -117,26 +146,27 @@
 
 .modal-design {
   background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
 }
 .incorrect-combo {
-  border: 2px solid red;
-  font-family: "Tinos", serif;
-  width: 400px;
+  border: 2px solid #dc1b29;
+  font-family: "Open Sans", sans-serif;
+  /* width: 400px; */
   height: 50px;
+  margin-right: auto;
+  margin-left: auto;
   background-color: black;
   color: white;
-  border-radius: 5px;
+  text-transform: uppercase;
 }
 
 .loginStatus {
   border: 2px solid red;
-  font-family: "Tinos", serif;
+  font-family: "Open Sans", sans-serif;
   width: 400px;
   height: 50px;
   background-color: black;
   color: white;
-  border-radius: 5px;
 }
 @media only screen and (max-width: 414px) {
   .mainform {
@@ -144,7 +174,6 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 25px;
     border: 3px solid;
     padding: 10px;
     box-shadow: 5px 10px;
@@ -155,10 +184,7 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
   }
 
   .loginInput { 
-    background-color: black;
-   color: white;
     width: 250px;
-    font-family: "Tinos", serif;
   }
 
   .loginStatus {
@@ -166,9 +192,10 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 1%, rgba(61,0,0,1) 50%);
     width: 200px;
   }
   .BenCol4 {
-    background-color: lightgray; 
-    margin: 5%;
-    height: 250px;
     width: 120px;
+  }
+
+  .validate{
+    margin-top: 4%;
   }
 }

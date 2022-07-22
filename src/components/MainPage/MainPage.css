@@ -1,23 +1,31 @@
+/* * {
+  border: 1px solid green;
+} */
+
 .underline {
-  width: 70%;
-  height: 15px;
-  background-color: #94989a;
+  height: 5px;
+  background-color: #dc1b29;
+  width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0 !important;
 }
 
-h1 {
-  width: 60%;
+.titleDiv h1 {
   color: white;
+  font-family: "Open Sans", sans-serif !important;
 }
 
 .titleDiv {
-  padding-left: 25%;
   padding-bottom: 1%;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-family: "Open Sans", sans-serif;
 }
 
 .MainContainer {
-  margin-top: 5%;
+  margin-top: 3%;
   background-color: black;
-  /* background-color: white; */
 }
 
 span {
@@ -25,17 +33,11 @@ span {
 }
 
 @media only screen and (max-width: 414px) {
-  h1 {
-    width: 70%;
+  .titleDiv h1 {
+    font-size: 20px !important;
   }
 
-  .titleDiv {
-    padding-left: 25%;
-    padding-bottom: 1%;
-  }
-  .underline {
-    width: 75%;
-    height: 15px;
-    background-color: lightgray;
+  .MainContainer{
+    margin-bottom: 5%;
   }
 }

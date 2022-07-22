@@ -6,8 +6,13 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Container } from "react-bootstrap";
 import LoginHeader from "./components/Storefront/loginHeader";
-
-import { BrowserRouter as Router, Link, Switch, Route, useHistory } from "react-router-dom"; 
+import {
+  BrowserRouter as Router,
+  Link,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom";
 import AdminDashBoard from "./Pages/adminDashBoard";
 import AdminAccount from "./Pages/AdminDashBoard/AdminAccount";
 // import Login from "./Pages/login";
@@ -18,7 +23,8 @@ import AllRequests from "./Pages/AllRequests";
 import ExecutiveAccount from "./Pages/ExecutiveAccount";
 import Catalog from "./Pages/Catalog";
 import MainPage from "./components/MainPage/MainPage";
-import Benefits from "./components/MainPage/Benefits";
+// import Benefits from "./components/MainPage/Benefits";
+import LoginFooter from "./components/MainPage/loginFooter";
 import StoreFront from "./Pages/StoreFront";
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import Profile from "./Pages/ProfilePage/Profilepage";
@@ -26,12 +32,10 @@ import Profile from "./Pages/ProfilePage/Profilepage";
 import "./Pages/login.css";
 import Axios from "axios";
 import { Header, Modal } from "semantic-ui-react";
-import React, { useState, useRef } from "react"; 
-
+import React, { useState, useRef } from "react";
 import emailjs from "emailjs-com";
 import { init } from "emailjs-com";
 init("user_9MrgO9HIeQQan5hAG15a2");
-
 
 function App(props) {
   const [isAuth, setIsAuth] = useState(false);
@@ -50,7 +54,7 @@ function App(props) {
   const form = useRef();
 
   // let tempPassword = "";
-  var [tempPassword, setTempPassword] = useState("")
+  var [tempPassword, setTempPassword] = useState("");
   // const [memberList, setMemberList] = useState("");
 
   const memberLogin = (props) => {
@@ -79,7 +83,7 @@ function App(props) {
               }}
               to={`/profile/${profileData.id}`}
             >
-              Welcome {profileData.first_name}, Click to view Profile.
+              WELCOME {profileData.first_name}, CLICK TO VIEW PROFILE
             </Link>
           </button>
         );
@@ -104,64 +108,63 @@ function App(props) {
       if (response.data.message) {
         setOpenTwo(false);
         setLoginStatus(
-          <p className="incorrect-combo">
-            Email and Phone number do not match.
-          </p>
+          <p className="incorrect-combo">Email and Phone number do not match</p>
         );
       } else if (response.data[0]) {
-        // Axios.post("https://executive-app.herokuapp.com/setTempPassword", { 
-    //   Axios.post("http://localhost:3001/setTempPassword", {
-    //     tempPassword: tempPassword
-    // })
+        // Axios.post("https://executive-app.herokuapp.com/setTempPassword", {
+        //   Axios.post("http://localhost:3001/setTempPassword", {
+        //     tempPassword: tempPassword
+        // })
         sendTempPasswordEmail();
         setOpenTwo(false);
         setLoginStatus(
-          <p className="loginStatus">Password Sent to {response.data[0].email}</p>
-        )
-        
+          <p className="loginStatus">
+            PASSWORD SENT TO {response.data[0].email}
+          </p>
+        );
       }
-    })
+    });
   };
 
   const theTempPassword = () => {
-    Axios.post("https://executive-app.herokuapp.com/setTempPassword", { 
+    Axios.post("https://executive-app.herokuapp.com/setTempPassword", {
       // Axios.post("http://localhost:3001/setTempPassword", {
-        tempPassword: tempPassword
-    })
-  }
+      tempPassword: tempPassword,
+    });
+  };
 
   const makeTempPassword = () => {
-    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-   var passwordLength = 12;
-  
-   for (var i = 0; i <= passwordLength; i++) {
-    var randomNumber = Math.floor(Math.random() * chars.length);
-    // tempPassword += chars.substring(randomNumber, randomNumber +1);
-   setTempPassword(tempPassword += chars.substring(randomNumber, randomNumber +1));
+    var chars =
+      "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = 12;
 
-   }
-  }
+    for (var i = 0; i <= passwordLength; i++) {
+      var randomNumber = Math.floor(Math.random() * chars.length);
+      // tempPassword += chars.substring(randomNumber, randomNumber +1);
+      setTempPassword(
+        (tempPassword += chars.substring(randomNumber, randomNumber + 1))
+      );
+    }
+  };
 
- //SENDING EMAIL NOTIFICATION OF EXEC SIGN UP
- const sendTempPasswordEmail = (e) => {
-  // e.preventDefault();
+  //SENDING EMAIL NOTIFICATION OF EXEC SIGN UP
+  const sendTempPasswordEmail = (e) => {
+    // e.preventDefault();
 
-  emailjs
-    .sendForm(
-      // "service_gt7pfpe",
-      "service_640rs57",
-      "template_7vtpjtr",
-      form.current,
-      "user_QGlVs4Qz8yzIHPSfomOw6"
-    )
-    .then(
-      (result) => { 
-      },
-      (error) => { 
-      }
-    );
-  // e.target.reset();
-};  
+    emailjs
+      .sendForm(
+        // "service_gt7pfpe",
+        "service_640rs57",
+        "template_7vtpjtr",
+        form.current,
+        "user_QGlVs4Qz8yzIHPSfomOw6"
+      )
+      .then(
+        (result) => {},
+        (error) => {}
+      );
+    // e.target.reset();
+  };
 
   const login = (props) => {
     Axios.post("https://executive-app.herokuapp.com/login", {
@@ -172,7 +175,7 @@ function App(props) {
       if (response.data.message) {
         setLoginStatus(
           <p className="incorrect-combo">
-            Incorrect UserName/Password Combination.
+            Incorrect Username/Password Combination.
           </p>
         );
       } else if (response.data[0].role == "admin") {
@@ -195,7 +198,7 @@ function App(props) {
               // to="adminDashboard"
               to="AdminAccount"
             >
-              Hello {adminData.first_name}, CLICK HERE TO CONTINUE.
+              HELLO {adminData.first_name}, CLICK HERE TO CONTINUE
             </Link>
           </button>
         );
@@ -209,11 +212,6 @@ function App(props) {
             onClick={() => {
               setIsAuth(true);
             }}
-            style={{
-              backgroundColor: "black",
-              borderRadius: "5px",
-              borderColor: "red",
-            }}
             className="loginStatus"
           >
             <Link
@@ -223,38 +221,18 @@ function App(props) {
               // to="/storeFront"
               to={`/storeFront/${adminData.id}`}
             >
-              Hello! {adminData.first_name} CLICK HERE TO CONTINUE.
+              HELLO {adminData.first_name}, CLICK HERE TO CONTINUE
             </Link>
           </button>
         );
         // console.log(isAuth);
       } else if (profileData.id === undefined) {
         setLoginStatus(
-          <p
-            className="loginStatus"
-            style={{
-              backgroundColor: "black",
-              borderRadius: "5px",
-              borderColor: "red",
-              color: "white",
-            }}
-          >
-            You are not authorized to login here.
-          </p>
+          <p className="loginStatus">YOU ARE NOT AUTHORIZED TO LOG IN HERE</p>
         );
       } else {
         setLoginStatus(
-          <p
-            className="loginStatus"
-            style={{
-              backgroundColor: "black",
-              borderRadius: "5px",
-              borderColor: "red",
-              color: "white",
-            }}
-          >
-            You are not authorized to login here.
-          </p>
+          <p className="loginStatus">YOU ARE NOT AUTHORIZED TO LOG IN HERE</p>
         );
       }
     });
@@ -277,6 +255,7 @@ function App(props) {
                 <Row>
                   <Col className="BenCol4">
                     <p className="login-title">Member Login</p>
+                    <p className="login-underline"></p>
                     <input
                       className="loginInput"
                       required
@@ -314,13 +293,16 @@ function App(props) {
                       style={{
                         height: "300px",
                         width: "300px",
-                        marginLeft: "45%",
-                        marginRight: "45%",
-                        marginTop: "25%",
+                        position: "fixed",
+                        left: "50%",
+                        top: "50%",
+                        transform: "translate(-50%, -50%)",
+                        borderRadius: "0px",
                       }}
                     >
                       <Modal.Content>
                         <p className="login-title-admin">Admin Login</p>
+                        <p className="login-underline"></p>
                         <input
                           className="loginInput"
                           required
@@ -357,18 +339,31 @@ function App(props) {
                       onClose={() => setOpenTwo(false)}
                       onOpen={() => setOpenTwo(true)}
                       open={openTwo}
-                      trigger={<button className="forgot-btn" onClick={() => {makeTempPassword()}}>Forgot Password?</button>}
+                      trigger={
+                        <button
+                          className="forgot-btn"
+                          onClick={() => {
+                            makeTempPassword();
+                          }}
+                        >
+                          Forgot Password?
+                        </button>
+                      }
                       style={{
                         height: "300px",
                         width: "300px",
-                        marginLeft: "45%",
-                        marginRight: "45%",
-                        marginTop: "25%",
+                        position: "fixed",
+                        left: "50%",
+                        top: "50%",
+                        transform: "translate(-50%, -50%)",
+                        borderRadius: "0px",
                       }}
                     >
                       <Modal.Content>
-                        <p className="login-title-admin">Receive Temporary Password.</p>
-                        <p style={{textAlign: "center", fontSize: "10px"}}>*Phone Format 000-000-000</p>
+                        <p className="login-title-admin">
+                          Receive Temporary Password
+                        </p>
+                        <p className="login-underline"></p>
                         <input
                           className="loginInput"
                           required
@@ -388,6 +383,15 @@ function App(props) {
                             setPhone(e.target.value);
                           }}
                         ></input>
+                        <p
+                          style={{
+                            textAlign: "center",
+                            fontSize: "10px",
+                            marginBottom: "0px",
+                          }}
+                        >
+                          *Phone Format 000-000-000
+                        </p>
                         <br></br>
                         <button
                           className="admin-validate"
@@ -397,28 +401,30 @@ function App(props) {
                         >
                           Send
                         </button>
-                        <form ref={form} onSubmit={sendTempPasswordEmail} className="hide">
-                          <input 
+                        <form
+                          ref={form}
+                          onSubmit={sendTempPasswordEmail}
+                          className="hide"
+                        >
+                          <input
                             value={email}
                             type="text"
                             placeholder="email"
                             name="customerEmail"
-                            readOnly>
-                          </input>
+                            readOnly
+                          ></input>
                           <input
                             value={tempPassword}
                             type="tel"
                             data-mask="(999) 999-9999"
                             placeholder="password"
                             name="tempPassword"
-                            readOnly>
-                          </input>
+                            readOnly
+                          ></input>
                         </form>
                       </Modal.Content>
                     </Modal>
                   </Col>
-
-                
                 </Row>
                 <Row>
                   <Col>
@@ -428,7 +434,8 @@ function App(props) {
               </Container>
               {/* </div> */}
             </div>
-            <Benefits />
+            {/* <Benefits /> */}
+            <LoginFooter />
           </div>
         </Route>
 

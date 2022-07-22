@@ -1,83 +1,13 @@
 .loginLogo {
   width: 60%;
-  max-height: 180px;
-  /* width: 800px;
-  height: 350px; */
   background: black;
   align-content: center;
   margin-left: auto;
   margin-right: auto;
 }
 
-.Navigation {
-  height: 200px !important;
-}
-
-.dropdown-arrow {
-  /* padding-top: 12%;
-  background-color: white;
-  width: 100px;
-  height: 20px; */
-}
-
-/* .Navigation { */
-/* /* background-image: url("EA_App_Banner_V01.jpg"); */
-/* background-repeat: no-repeat;
-  background-position: center center; */
-/* height: 100%; */
-/* } */
-img {
-  border-radius: 0.1px !important;
-  height: auto;
-}
-
-.line {
-  height: 5px;
-  background-color: rgb(192, 192, 192);
-  /* border: 2px solid white; */
-  width: 100%;
-}
-@media only screen and (max-width: 2000) {
+@media only screen and (max-width: 1080px) {
   .loginLogo {
-    width: 80%;
-  }
-}
-
-@media only screen and (max-width: 414px) {
-  .loginLogo {
-    width: 100%;
-    max-height: 55px;
-
-    background: black;
-    align-content: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .line {
-    height: 5px;
-    background-color: rgb(192, 192, 192);
-    /* border: 2px solid white; */
-    width: 75%;
-    align-content: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  img {
-    border-radius: 0.1px !important;
-  }
-  .Navigation {
-    height: 70px !important;
-    /* background-repeat: no-repeat;
-    background-size: auto; */
-    /* width: 100%; */
-    /* height: 100%; */
-    /* background-image: url("../../Pages/images//EAAppBanner.jpg"); */
-  }
-  .dropdown-arrow {
-    /* padding-top: 20%;
-    background-color: white;
-    width: 50px;
-    height: 20px; */
+    width: 250px;
   }
 }

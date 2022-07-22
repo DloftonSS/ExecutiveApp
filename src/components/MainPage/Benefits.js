@@ -8,7 +8,6 @@ import "./Benefits.css";
 function Benefits() {
   return (
     <div className="MainContainer">
-       
       <div className="titleDiv">
         {" "}
         <h1>
@@ -69,8 +68,10 @@ function Benefits() {
         <p className="footer-text">
           1349 South Orange Blossom Trail Apopka, FL 32703
         </p>
-        <p className="footer-text">Shoot-Straight.com <Icon name="copyright outline"></Icon>
-          Shoot Straight 2021</p>
+        <p className="footer-text">
+          Shoot-Straight.com <Icon name="copyright outline"></Icon>
+          Shoot Straight 2021
+        </p>
         {/* <p className="footer-text">
           <Icon name="copyright outline"></Icon>
           Shoot Straight 2021
