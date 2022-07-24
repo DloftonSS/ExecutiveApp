@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
-// import API from "../../utils/API";
+import React, { useEffect, useState } from "react"; 
 import { Card, Table } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
-
-// import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
-
+import Axios from "axios"; 
 function OldestRequests() {
   const [requestList, setRequestList] = useState("");
 
@@ -14,8 +9,7 @@ function OldestRequests() {
     Axios.get("https://executive-app.herokuapp.com/newRequests").then(
       (response) => {
         // Axios.get("http://localhost:3001/oldRequests").then((response) => {
-        setRequestList(response.data);
-        // console.log(response.data);
+        setRequestList(response.data); 
       }
     );
   }, []);
@@ -33,10 +27,8 @@ function OldestRequests() {
         <Table celled striped color="red">
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Executive Name</Table.HeaderCell>
-              {/* <Table.HeaderCell>Category</Table.HeaderCell> */}
-              <Table.HeaderCell>Item</Table.HeaderCell>
-              {/* <Table.HeaderCell>sku</Table.HeaderCell> */}
+              <Table.HeaderCell>Executive Name</Table.HeaderCell> 
+              <Table.HeaderCell>Item</Table.HeaderCell> 
               <Table.HeaderCell>status</Table.HeaderCell>
               <Table.HeaderCell>Date</Table.HeaderCell>
             </Table.Row>
@@ -59,11 +51,8 @@ function OldestRequests() {
                     >
                       {requestList[request].memberName}
                     </Link>
-                  </Table.Cell>
-
-                  {/* <Table.Cell>{requestList[request].category}</Table.Cell> */}
-                  <Table.Cell>{requestList[request].item}</Table.Cell>
-                  {/* <Table.Cell>{requestList[request].sku}</Table.Cell> */}
+                  </Table.Cell> 
+                  <Table.Cell>{requestList[request].item}</Table.Cell> 
                   <Table.Cell>{requestList[request].status}</Table.Cell>
                   <Table.Cell>{created}</Table.Cell>
                 </Table.Row>

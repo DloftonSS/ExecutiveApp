@@ -1,8 +1,4 @@
-import "./App.css";
-// import loggingIn from "./components/login";
-// import Axios from "axios";
-// import React, { useState } from "react";
-// import PrivateRoute from "./PrivateRoute";
+import "./App.css"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Container } from "react-bootstrap";
 import LoginHeader from "./components/Storefront/loginHeader";
@@ -12,24 +8,19 @@ import {
   Switch,
   Route,
   useHistory,
-} from "react-router-dom";
-import AdminDashBoard from "./Pages/adminDashBoard";
-import AdminAccount from "./Pages/AdminDashBoard/AdminAccount";
-// import Login from "./Pages/login";
+} from "react-router-dom"; 
+import AdminAccount from "./Pages/AdminDashBoard/AdminAccount"; 
 import AddMember from "./Pages/AddMember";
 import AllMembers from "./Pages/Allmembers";
 import AddAdmin from "./Pages/AddAdmin";
 import AllRequests from "./Pages/AllRequests";
 import ExecutiveAccount from "./Pages/ExecutiveAccount";
 import Catalog from "./Pages/Catalog";
-import MainPage from "./components/MainPage/MainPage";
-// import Benefits from "./components/MainPage/Benefits";
+import MainPage from "./components/MainPage/MainPage"; 
 import LoginFooter from "./components/MainPage/loginFooter";
 import StoreFront from "./Pages/StoreFront";
 import ProtectedRoute from "./Pages/ProtectedRoute";
-import Profile from "./Pages/ProfilePage/Profilepage";
-// import LoggingIn from "./Pages/login";
-import "./Pages/login.css";
+import Profile from "./Pages/ProfilePage/Profilepage";  
 import Axios from "axios";
 import { Header, Modal } from "semantic-ui-react";
 import React, { useState, useRef } from "react";
@@ -38,10 +29,7 @@ import { init } from "emailjs-com";
 init("user_9MrgO9HIeQQan5hAG15a2");
 
 function App(props) {
-  const [isAuth, setIsAuth] = useState(false);
-  // let isAuth = false;
-  // let history = useHistory();
-
+  const [isAuth, setIsAuth] = useState(false); 
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -51,11 +39,8 @@ function App(props) {
   const id = props.id;
   const [open, setOpen] = React.useState(false);
   const [openTwo, setOpenTwo] = React.useState(false);
-  const form = useRef();
-
-  // let tempPassword = "";
-  var [tempPassword, setTempPassword] = useState("");
-  // const [memberList, setMemberList] = useState("");
+  const form = useRef(); 
+  var [tempPassword, setTempPassword] = useState(""); 
 
   const memberLogin = (props) => {
     Axios.post("https://executive-app.herokuapp.com/memberLogin", {
@@ -181,8 +166,7 @@ function App(props) {
       } else if (response.data[0].role == "admin") {
         setIsAuth(true);
         setAdminData(response.data[0]);
-        const adminData = response.data[0];
-        // console.log(adminData);
+        const adminData = response.data[0]; 
         setLoginStatus(
           <button
             onClick={() => {
@@ -205,8 +189,7 @@ function App(props) {
       } else if (response.data[0].role == "manager") {
         setIsAuth(true);
         setAdminData(response.data[0]);
-        const adminData = response.data[0];
-        // console.log(adminData);
+        const adminData = response.data[0]; 
         setLoginStatus(
           <button
             onClick={() => {
@@ -224,8 +207,7 @@ function App(props) {
               HELLO {adminData.first_name}, CLICK HERE TO CONTINUE
             </Link>
           </button>
-        );
-        // console.log(isAuth);
+        ); 
       } else if (profileData.id === undefined) {
         setLoginStatus(
           <p className="loginStatus">YOU ARE NOT AUTHORIZED TO LOG IN HERE</p>
@@ -243,13 +225,9 @@ function App(props) {
       <Switch>
         <Route path="/" exact>
           <div className="App">
-            {" "}
-            {/* TITLE OF THE PAGE WITH THE RED BACKGROUND GUN IMAGES */}
-            <LoginHeader />
-            {/* HOME PAGE TITLE "AN EXCLUSIE BENEFITS..." */}
-            <MainPage />
-            {/* NEW LOGIN SCREEN */}
-            {/* LOGIN BUTTONS FOR MEMBERS AND ADMINS */}
+            {" "} 
+            <LoginHeader /> 
+            <MainPage /> 
             <div className="Modals">
               <Container>
                 <Row>
@@ -431,10 +409,8 @@ function App(props) {
                     <Header icon>{loginStatus}</Header>
                   </Col>
                 </Row>
-              </Container>
-              {/* </div> */}
-            </div>
-            {/* <Benefits /> */}
+              </Container> 
+            </div> 
             <LoginFooter />
           </div>
         </Route>
@@ -454,12 +430,12 @@ function App(props) {
         />
 
         {/* PROTECTED ROUTES */}
-        <Route
-          path="/adminDashBoard"
-          exact
-          component={AdminDashBoard}
-          // isAuth={isAuth}
-        />
+        {/* <Route */}
+          {/* path="/adminDashBoard" */}
+          {/* exact */}
+          {/* component={AdminDashBoard} */}
+          {/* // isAuth={isAuth} */}
+        {/* /> */}
         <Route
           path="/adminAccount"
           exact

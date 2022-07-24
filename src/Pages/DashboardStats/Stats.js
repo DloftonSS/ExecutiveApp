@@ -13,10 +13,7 @@ import {
   Image,
 } from "semantic-ui-react";
 import React, { useState, useEffect, Input, Link } from "react";
-import Axios from "axios";
-// import API from "../utils/API";
-import { useParams } from "react-router";
-import { useLocation } from "react-router-dom";
+import Axios from "axios"; 
 
 function Stats() {
   const [activeList, setActiveList] = useState("");

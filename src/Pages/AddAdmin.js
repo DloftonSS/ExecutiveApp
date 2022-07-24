@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
-// import Header from "../components/header";
-
-import HeaderMain from "../components/header";
-// import Navigation from "../components/navigation";
+import React, { useEffect, useState } from "react";   
 import {
   Button,
   Form,
   Input,  
   Modal,
 } from "semantic-ui-react";
-import Axios from "axios";
-// import Header from "../components/header";
-
-// import "./CSS/AddAdmin.css";
+import Axios from "axios"; 
 
 function AddAdmin() {
   const [firstnameReg, setFirstNameReg] = useState("");
@@ -24,10 +17,7 @@ function AddAdmin() {
   const [admins, setAdmins] = useState("");
   const [open, setOpen] = React.useState(false);
   const [newPassword, setNewPassword] = useState("");
-  const [newUsername, setNewUsername] = useState("");
-
-  //   const [username, setUsername] = useState("");
-  //   const [password, setPassword] = useState("");
+  const [newUsername, setNewUsername] = useState(""); 
 
   const register = (e) => {
     Axios.post("https://executive-app.herokuapp.com/register", {
@@ -39,8 +29,7 @@ function AddAdmin() {
       role: roleReg,
       store: storeReg,
     })
-      .then((response, error) => {
-        // console.log(response);
+      .then((response, error) => { 
       })
       .catch((error) => {
         console.log(error.response);
@@ -50,8 +39,7 @@ function AddAdmin() {
     Axios.get("https://executive-app.herokuapp.com/getAdmins", {})
       // Axios.get("http://localhost:3001/getAdmins", {})
       .then((response, error) => {
-        setAdmins(response.data);
-        // console.log(response.data);
+        setAdmins(response.data); 
       })
       .catch((error) => {
         console.log(error);
@@ -63,8 +51,7 @@ function AddAdmin() {
       // Axios.put("http://localhost:3001/changeAdminPassword", {
       password: newPassword,
       id: id,
-    }).then((response) => {
-      // console.log("completed");
+    }).then((response) => { 
       alert("Your Password has been successfuly updated");
 
       GetAdmins();
@@ -75,8 +62,7 @@ function AddAdmin() {
       // Axios.put("http://localhost:3001/changeUserName", {
       email: newUsername,
       id: id,
-    }).then((response) => {
-      // console.log("completed");
+    }).then((response) => { 
       alert("Your Email has been successfuly updated");
 
       GetAdmins();
@@ -86,9 +72,7 @@ function AddAdmin() {
     GetAdmins();
   }, []);
   return (
-    <div className="App" style={{ backgroundColor: "#F3F3FC" }}>
-      {/* <Header /> */}
-      <HeaderMain />
+    <div className="App" style={{ backgroundColor: "#F3F3FC" }}>  
       <Form
         className="main-form"
         style={{
@@ -190,13 +174,6 @@ function AddAdmin() {
               <option value="West Palm Beach">West Palm Beach</option>
               <option value="All">All</option>
             </select>
-            {/* <Input
-              fluid
-              placeholder="Apopka, Sarasota, Ft. Lauderdale"
-              onChange={(e) => {
-                setStoreReg(e.target.value);
-              }}
-            /> */}
           </Form.Field>
         </Form.Group>
         <Button type="reset" onClick={register}>
@@ -204,16 +181,7 @@ function AddAdmin() {
         </Button>
         <p>* Managers will have Store front access only.</p>
         <p>* Admins will have backend access. </p>
-      </Form>
-      {/* <Segment
-        style={{
-          overflow: "auto",
-          maxHeight: "500px",
-          width: "500px",
-
-          boxShadow: "5px 10px 8px gray",
-        }}
-      > */}{" "}
+      </Form> 
       <div
         style={{
           backgroundColor: "white",
@@ -226,7 +194,6 @@ function AddAdmin() {
         <h2>Users</h2>
         {Object.keys(admins).map((user, i) => {
           return (
-            //
             <Modal
               style={{
                 height: "450px",
@@ -241,8 +208,7 @@ function AddAdmin() {
                   style={{
                     margin: "1%",
                     padding: "1%",
-                    boxShadow: "-1px 1px 1px 1px #888888",
-                    // border: "1px solid #888888",
+                    boxShadow: "-1px 1px 1px 1px #888888", 
                     opacity: ".7",
                     borderRadius: "5px",
                   }}
@@ -309,8 +275,7 @@ function AddAdmin() {
             //
           );
         })}
-      </div>
-      {/* </Segment> */}
+      </div> 
       <footer
         style={{ backgroundColor: "#F3F3FC", height: "100px", width: "100%" }}
       ></footer>

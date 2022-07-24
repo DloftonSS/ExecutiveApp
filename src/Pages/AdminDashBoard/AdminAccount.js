@@ -155,8 +155,7 @@ function AdminAccount() {
       }
     );
   };
-  //
-  //
+  //z
   //
   // CONTROLLING THE SHOW / HIDE FEATURE OF THE NAV
   //
@@ -672,18 +671,7 @@ function AdminAccount() {
                   <span className="span">P</span>ending{" "}
                   <span className="span">C</span>ard
                 </h2>{" "}
-                {/* <div className="customer-card">
-                  Customer Info .customer-card
-                </div>
-                <div className="customer-card">
-                  Customer Info .customer-card
-                </div>
-                <div className="customer-card">
-                  Customer Info .customer-card
-                </div>
-                <div className="customer-card">
-                  Customer Info .customer-card
-                </div> */}{" "}
+               {" "}
                 {Object.keys(pendingCardList)
                   .filter((member) => {
                     if (searchTerm == "") {

@@ -13,7 +13,6 @@ import {
 } from "semantic-ui-react";
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import HeaderMain from "../components/header";
 import { Link } from "react-router-dom";
 
 function AllMembers() {
@@ -204,7 +203,7 @@ function AllMembers() {
   // fjkdls;
   return (
     <div>
-      <HeaderMain />
+      {/* <HeaderMain /> */}
       <div
         className="newMembers"
         style={{

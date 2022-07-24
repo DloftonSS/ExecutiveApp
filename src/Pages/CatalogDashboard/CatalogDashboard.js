@@ -17,9 +17,7 @@ import {
   Segment,
   Sidebar,
 } from "semantic-ui-react";
-import Axios from "axios";
-// import API from "../utils/API";
-// import { useParams } from "react-router";
+import Axios from "axios"; 
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";

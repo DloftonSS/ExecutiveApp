@@ -5,13 +5,9 @@ import {
   Form, 
 } from "semantic-ui-react";
 import Axios from "axios";
-// import API from "../utils/API";
-// import { useParams } from "react-router";
-// import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row } from "react-bootstrap";
 import "./AddMember.css";
-// import "../AdminDashBoard/AdminAccount.css";
 
 function AddNewMember() {
   const [customerFirst, setCustomerFirst] = useState("");
