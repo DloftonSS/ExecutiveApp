@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import {
-  Card, 
-  Header, 
+  Card,
+  Header,
   Icon,
-  Table, 
-  Image, 
+  Table,
+  Image,
   Modal,
   Button,
   Feed,
@@ -13,8 +13,8 @@ import {
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
- 
-import Axios from "axios"; 
+
+import Axios from "axios";
 import NoImage from "./no-product-found.png";
 import Product from "../images/ProductPlaceholderImage.png";
 
@@ -43,22 +43,21 @@ const Profile = (props) => {
   const [custName, setCustName] = useState("");
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const [catalog, setCatalog] = useState(""); 
+  const [catalog, setCatalog] = useState("");
   const { id } = useParams();
-  
+
   //ADD CATALOG ITEM TO REQUESTS
   const AddToRequests = (id) => {
     Axios.post("https://executive-app.herokuapp.com/marketCart", {
-      // Axios.post("http://localhost:3001/marketCart", { 
+      // Axios.post("http://localhost:3001/marketCart", {
       custName: custName,
       memberId: memberId,
       id: id,
     }).then(() => {
-      alert("Your order has been placed."); 
+      alert("Your order has been placed.");
     });
   };
   //ADD CATALOG ITEM TO REQUESTS
-  
 
   //SUBMIT NOTE
   const submitMessage = (e) => {
@@ -76,16 +75,16 @@ const Profile = (props) => {
     Axios.get("https://executive-app.herokuapp.com/getCatalogNow").then(
       (response) => {
         // Axios.get("http://localhost:3001/getCatalogNow").then((response) => {
-        setCatalog(response.data); 
+        setCatalog(response.data);
       }
     );
   };
-  // ******** CONTROL LIKE COUNTER ************** 
+  // ******** CONTROL LIKE COUNTER **************
   const AddLike = (id) => {
     // setNewLikeTotal(likeTotal++);
     // console.log(newLikeTotal);
     Axios.post("https://executive-app.herokuapp.com/addALike", {
-      // Axios.post("http://localhost:3001/addALike", { 
+      // Axios.post("http://localhost:3001/addALike", {
       id: id,
     }).then(() => {});
   };
@@ -93,7 +92,7 @@ const Profile = (props) => {
   const getMemberInfo = () => {
     Axios.get("https://executive-app.herokuapp.com/memberProfile").then(
       (response) => {
-        // Axios.get("http://localhost:3001/memberProfile").then((response) => { 
+        // Axios.get("http://localhost:3001/memberProfile").then((response) => {
         const arrayMembers = response.data;
         const result = arrayMembers.filter(
           (arrayMembers) => arrayMembers.id == id
@@ -101,7 +100,7 @@ const Profile = (props) => {
         setMemberDetails(result[0]);
         setSenderName(result[0].first_name + " " + result[0].last_name);
         setCustName(result[0].first_name + " " + result[0].last_name);
-        setMemberId(result[0].id); 
+        setMemberId(result[0].id);
       }
     );
   };
@@ -111,7 +110,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeFirst", {
       firstName: newFirstName,
       id: id,
-    }).then((response) => { 
+    }).then((response) => {
       getMemberInfo();
     });
   };
@@ -120,7 +119,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeMiddle", {
       middleName: newMiddleName,
       id: id,
-    }).then((response) => { 
+    }).then((response) => {
       getMemberInfo();
     });
   };
@@ -129,7 +128,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeLast", {
       lastName: newLastName,
       id: id,
-    }).then((response) => { 
+    }).then((response) => {
       getMemberInfo();
     });
   };
@@ -138,7 +137,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeEmail", {
       email: newEmail,
       id: id,
-    }).then((response) => { 
+    }).then((response) => {
       getMemberInfo();
     });
   };
@@ -147,7 +146,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changePhone", {
       phone: newPhone,
       id: id,
-    }).then((response) => { 
+    }).then((response) => {
       getMemberInfo();
     });
   };
@@ -156,7 +155,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changeAddress", {
       address: newAddress,
       id: id,
-    }).then((response) => { 
+    }).then((response) => {
       getMemberInfo();
     });
   };
@@ -165,7 +164,7 @@ const Profile = (props) => {
       // Axios.put("http://localhost:3001/changePassword", {
       password: newPassword,
       id: id,
-    }).then((response) => { 
+    }).then((response) => {
       getMemberInfo();
     });
   };
@@ -191,7 +190,7 @@ const Profile = (props) => {
         const returned = arrayMessages.filter(
           (arrayMessages) => arrayMessages.memberIdentity == id
         );
-        setMessageList(returned); 
+        setMessageList(returned);
       }
     );
   };
@@ -199,7 +198,7 @@ const Profile = (props) => {
   const getEvents = () => {
     Axios.get("https://executive-app.herokuapp.com/events").then((response) => {
       // Axios.get("http://localhost:3001/events").then((response) => {
-      setEvents(response.data); 
+      setEvents(response.data);
     });
   };
 
@@ -215,11 +214,10 @@ const Profile = (props) => {
     getMemberMessages();
     GetCatalog();
     getEvents();
- 
   }, []);
 
   return (
-    <div className="profileMain" style={{ padding: "1%", width: "100%" }}>
+    <div className="profileMain">
       {/* ************************** start new profile page ************************* */}
 
       {/* ************************************************************************************************************ end new profile page ************************************************************************************************************************* */}
@@ -269,7 +267,6 @@ const Profile = (props) => {
                 <Modal.Header>Edit Personal Details</Modal.Header>
 
                 <Modal.Content style={{ float: "center" }}>
-               
                   <Header>Email</Header>
                   <input
                     onChange={(y) => {
@@ -367,16 +364,12 @@ const Profile = (props) => {
                     ></input>
                     <input type="submit" class="btn btn-primary"></input>
                   </form>
-                   
                 </Modal.Content>
                 <Modal.Actions>
-                   
                   <Button
                     content="Done"
                     labelPosition="right"
                     icon="checkmark"
-                     
-
                     onClick={() => setOpen(false)}
                     positive
                   />
@@ -401,56 +394,56 @@ const Profile = (props) => {
           </Col>
           <Col>
             {" "}
-            <div className="request-div-section" style={{ paddingTop: "25%" }}>
+            <div className="request-div-section">
               {" "}
-              <h3 className="section-titles, right-section-title">
+              <div style={{ height: "50px" }}></div>
+              <h3 className="section-titles right-section-title requests-title">
                 SPECIAL REQUESTS
               </h3>
-              
-              <Row>
-                <Col>
-                  <p className="request-style">Item</p>
-                </Col>
-                <Col>
-                  <p className="request-style">Status</p>
-                </Col>
-                <Col>
-                  <p className="request-style">Modified</p>
-                </Col>
-              </Row>
-              <div className="request-scroll">
-                {Object.keys(requestList).map((request, i) => {
-                  let update = new Date(requestList[request].date_updated)
-                    .toUTCString()
-                    .split(" ")
-                    .slice(0, 4)
-                    .join(" ");
-                  return (
-                     
-                    <div className="request-item-row">
-                      <Row className="message-underline"> 
-                      </Row>
+              <div className="request-container">
+                <Row>
+                  <Col>
+                    <p className="request-style">Item</p>
+                  </Col>
+                  <Col>
+                    <p className="request-style">Status</p>
+                  </Col>
+                  <Col>
+                    <p className="request-style">Modified</p>
+                  </Col>
+                </Row>
+                <div className="request-scroll">
+                  {Object.keys(requestList).map((request, i) => {
+                    let update = new Date(requestList[request].date_updated)
+                      .toUTCString()
+                      .split(" ")
+                      .slice(0, 4)
+                      .join(" ");
+                    return (
+                      <div className="request-item-row">
+                        <Row className="message-underline"></Row>
 
-                      <Row key={request.id}>
-                        <Col>
-                          <p className="request-style">
-                            {requestList[request].item}
-                          </p>
-                        </Col>
-                        <Col>
-                          <p className="request-style">
-                            {" "}
-                            {requestList[request].status}
-                          </p>
-                        </Col>
-                        <Col>
-                          <p className="request-style">{update}</p>
-                        </Col>
-                      </Row>
-                    </div>
-                  );
-                })}
-              </div> 
+                        <Row key={request.id}>
+                          <Col>
+                            <p className="request-style">
+                              {requestList[request].item}
+                            </p>
+                          </Col>
+                          <Col>
+                            <p className="request-style">
+                              {" "}
+                              {requestList[request].status}
+                            </p>
+                          </Col>
+                          <Col>
+                            <p className="request-style">{update}</p>
+                          </Col>
+                        </Row>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
             <div className="messages-div-section">
               <div style={{ height: "50px" }}></div>
@@ -476,18 +469,18 @@ const Profile = (props) => {
                         {messageList[message].SenderName}
                       </p>
                       <span style={{ color: "lightgray" }}> {update}</span>
-                      
+
                       <p className="message"> {messageList[message].Message}</p>
                       <p className="message-underline"></p>
                     </div>
                   );
                 })}
               </Feed>
-              
+
               <form>
                 <input
                   placeholder="Message"
-                  className="message-textbox" 
+                  className="message-textbox"
                   onChange={(e) => {
                     setMessageTyped(e.target.value);
                   }}
@@ -501,13 +494,13 @@ const Profile = (props) => {
                   Send Message
                 </button>
               </form>
-              <br></br> 
+              <br></br>
             </div>
           </Col>
-        </Row> 
-        <Row className="market-calendar-section">
+        </Row>
+        {/* <Row className="market-calendar-section">
           {" "}
-          <h3 className="section-titles">MARKET</h3> 
+          <h3 className="section-titles">MARKET</h3>
           <div className="card-catalog-container trythis">
             {Object.keys(catalog).map((logs, i) => {
               return (
@@ -530,9 +523,9 @@ const Profile = (props) => {
                       {" "}
                       <Icon
                         name="thumbs up"
-                        className="catalog-options-icons" />
+                        className="catalog-options-icons"
+                      />
                       {catalog[logs].Likes}
-                       
                     </Col>
                     <Col>
                       <p className="catalog-options-icons">
@@ -567,8 +560,8 @@ const Profile = (props) => {
               ></Icon>
             </Col>
             <Col></Col>
-          </Row> 
-        </Row>
+          </Row>
+        </Row> */}
         <Row>
           {" "}
           <div className="center-section">
@@ -577,7 +570,6 @@ const Profile = (props) => {
             </h3>
             <div className="table-container-div">
               <Table singleLine style={{ padding: "5%" }}>
-                
                 <Table.Body
                   className="scroll-hidden"
                   style={{ overflow: "scroll" }}
@@ -594,7 +586,6 @@ const Profile = (props) => {
                         <Table.Cell style={{}}>
                           {events[allEvents].location}
                         </Table.Cell>
-                        
                       </Table.Row>
                     );
                   })}
