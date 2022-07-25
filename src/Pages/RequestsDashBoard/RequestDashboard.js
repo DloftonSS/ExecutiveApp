@@ -17,14 +17,10 @@ import {
   Segment,
   Sidebar,
 } from "semantic-ui-react";
-import Axios from "axios";
-// import API from "../utils/API";
-// import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import Axios from "axios"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import "./RequestDashboard.css";
-// import "../AdminDashBoard/AdminAccount.css";
+import "./RequestDashboard.css"; 
 
 function RequestDashboard() {
   const [requestList, setRequestList] = useState("");

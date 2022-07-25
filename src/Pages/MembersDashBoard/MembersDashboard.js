@@ -223,6 +223,7 @@ function MembersDashboard(props) {
     document.getElementById("expiring-members").style.display = "none";
     document.getElementById("expired-members").style.display = "none";
     document.getElementById("decending-members").style.display = "none";
+    getMemberInfo();
   };
   const ShowAllActive  = async function () {
     document.getElementById("active-members").style.display = "block";
@@ -374,12 +375,8 @@ function MembersDashboard(props) {
   //
   //***************** useEffect ******************** */
   //
-  useEffect(() => {
-    // getMemberInfo();
-    // getDecendingPeople();
-    getActiveMembers();
-    // getExpiredPeople();
-    // getExpiringPeople();
+  useEffect(() => { 
+    getActiveMembers(); 
   }, []);
   //
   //***************** useEffect ******************** */
@@ -395,7 +392,7 @@ function MembersDashboard(props) {
             trigger={
               <div className="stats-box" onClick={ShowAllMembers}>
                 {" "}
-                <h1 className="stat-number">{decendingList.length}</h1>
+                <h1 className="stat-number">{memberList.length}</h1>
                 <p>Members</p>
               </div>
             }

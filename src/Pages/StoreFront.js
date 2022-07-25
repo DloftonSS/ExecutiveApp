@@ -92,8 +92,7 @@ function StoreFront(props) {
       acknowledged: acknowledged,
     })
 
-      .then((response, error) => {
-        // console.log("submited");
+      .then((response, error) => { 
         GetAllmembers(); 
         alert("Submition Successful");
       })
@@ -145,8 +144,7 @@ function StoreFront(props) {
     e.preventDefault();
 
     emailjs
-      .sendForm(
-        // "service_gt7pfpe",
+      .sendForm( 
         "service_640rs57",
         "template_cpec7nh",
         form.current,
@@ -165,8 +163,7 @@ function StoreFront(props) {
     e.preventDefault();
 
     emailjs
-      .sendForm(
-        // "service_gt7pfpe",
+      .sendForm( 
         "service_640rs57",
         "template_95cld3x",
         form.current,
@@ -222,10 +219,7 @@ function StoreFront(props) {
 
   return (
     <div className="newMember" style={{ backgroundColor: "#F3F3FC" }}>
-      <StoreHeader />
-      {/* <div>This will be for adding the members to the Database.</div> */}
-      {/* NEW STORE FRONT ADD MEMBER */}
-      {/* <h1 style={{ marginLeft: "10%" }}>Hello {clerk}</h1> */}
+      <StoreHeader /> 
       <div
         class="dropdown"
         style={{ marginLeft: "10%", marginTop: "2%", borderRadius: "10px" }}
@@ -384,10 +378,7 @@ function StoreFront(props) {
               <Table.Row>
                 <Table.HeaderCell>Details</Table.HeaderCell>
                 <Table.HeaderCell>First Name</Table.HeaderCell>
-                <Table.HeaderCell>Last Name</Table.HeaderCell>
-                {/* <Table.HeaderCell>Phone</Table.HeaderCell> */}
-                {/* <Table.HeaderCell>Email</Table.HeaderCell> */}
-                {/* <Table.HeaderCell>Address</Table.HeaderCell> */}
+                <Table.HeaderCell>Last Name</Table.HeaderCell> 
                 <Table.HeaderCell>Date Joined</Table.HeaderCell>
                 <Table.HeaderCell>Date Expiring</Table.HeaderCell>
               </Table.Row>
@@ -685,32 +676,14 @@ function StoreFront(props) {
                                 ></Popup>
                               </form>
                             </div>
-                          </Modal.Content>
-
-                          <Modal.Actions>
-                            {/* <Button
-                              color="yellow"
-                              style={{ float: "left" }}
-                              // onClick={() => setOpen(false)}
-                            >
-                              Renew
-                            </Button> */}
-
-                            {/* <Button
-                              content="Done"
-                              labelPosition="right"
-                              icon="checkmark"
-                              onClick={() => setOpen(false)}
-                              positive
-                            /> */}
+                          </Modal.Content> 
+                          <Modal.Actions> 
                             <h1>Click outside of the box to close.</h1>
                           </Modal.Actions>
                         </Modal>
                       </Table.Cell>
-                      <Table.Cell>{memberList[member].first_name}</Table.Cell>
-
-                      <Table.Cell> {memberList[member].last_name}</Table.Cell>
-
+                      <Table.Cell>{memberList[member].first_name}</Table.Cell> 
+                      <Table.Cell> {memberList[member].last_name}</Table.Cell> 
                       <Table.Cell>{joindate1}</Table.Cell>
                       <Table.Cell>{expiring}</Table.Cell>
                     </Table.Row>
@@ -721,298 +694,13 @@ function StoreFront(props) {
         </Card.Content>
       </Card>
       <br></br>
-      {/* RENEW CUSTOMER  OLD MODAL*/}
-      {/* <h1 style={{ marginLeft: "10%" }}>Renew Customer</h1>
-      <Input
-        type="text"
-        placeholder="Search First or Last Name"
-        style={{
-          width: "250px",
-          height: "40px",
-          marginLeft: "10%",
-          boxShadow: "1px 2px 3px 2px black",
-          borderRadius: "5px",
-        }}
-        onChange={(event) => {
-          setSearchTerm1(event.target.value);
-        }}
-      ></Input>
-      <Card style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
-        <Card.Content
-          style={{
-            overflowY: "scroll",
-            height: "200px",
-            marginBottom: "5%",
-          }}
-        >
-          <Table celled striped color="red">
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Details</Table.HeaderCell>
-                <Table.HeaderCell>First Name</Table.HeaderCell>
-                <Table.HeaderCell>Last Name</Table.HeaderCell>
-                <Table.HeaderCell>Date Joined</Table.HeaderCell>
-                <Table.HeaderCell>Date Expiring</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {Object.keys(memberList)
-                .filter((member) => {
-                  if (searchTerm1 == "" || searchTerm1 == null) {
-                    return "";
-                  } else if (
-                    memberList[member].first_name
-                      .toLowerCase()
-                      .includes(searchTerm1.toLowerCase()) ||
-                    memberList[member].last_name
-                      .toLowerCase()
-                      .includes(searchTerm1.toLowerCase())
-                  ) {
-                    return member;
-                  }
-                })
-                .map((member, i) => {
-                  let joindate1 = new Date(memberList[member].dateJoined)
-                    .toUTCString()
-                    .split(" ")
-                    .slice(0, 4)
-                    .join(" ");
-                  let expiring = new Date(memberList[member].expiring)
-                    .toUTCString()
-                    .split(" ")
-                    .slice(0, 4)
-                    .join(" ");
-                  return (
-                    <Table.Row
-                      style={{ overflowY: "scroll", width: "100%" }}
-                      key={member.id}
-                    >
-                      <Table.Cell>
-                        {" "}
-                        <Modal
-                          className="members-info-modal"
-                          onClose={() => setOpen4(false)}
-                          onOpen={() => setOpen4(true)}
-                          open={open4[member]}
-                          style={{
-                            marginLeft: "25%",
-                            height: "500px",
-                            marginTop: "10%",
-                          }}
-                          trigger={
-                            <Button
-                              color="gray"
-                              content="View"
-                              style={{
-                                float: "center",
-                                backgroundColor: "#F3F3FC",
-                                color: "black",
-                                boxShadow: "1px 2px 1px 2px black",
-                              }}
-                            />
-                          }
-                        >
-                          <Modal.Header>
-                            Member Number: {memberList[member].number}
-                          </Modal.Header>
-                          <Modal.Content image>
-                            <Modal.Description>
-                              <Header>
-                                {memberList[member].first_name}{" "}
-                                {memberList[member].last_name}
-                              </Header>
-                              <p>{memberList[member].phone}</p>
-                              <p>{memberList[member].email}</p>
-                              <p>{memberList[member].address}</p>
-                              <p>Date Joined: {joindate1}</p>
-                              <p>Date Expiring: {expiring}</p>
-                            </Modal.Description>
-                          </Modal.Content>
-
-                       
-                          <Modal.Header>Renew Member Subscription</Modal.Header>
-                          <Modal.Content
-                            style={{
-                              marginBottom: "30px",
-                            }}
-                          >
-                            <Modal.Description>
-                              <h4>Associate Name *</h4>
-
-                              <form
-                                ref={form}
-                                onSubmit={sendRenewEmail}
-                                style={{
-                                  marginRigth: "10%",
-                                  width: "1500px",
-                                }}
-                              >
-                                <input
-                                  required
-                                  name="clerkRenew"
-                                  onChange={(e) => {
-                                    setClerkRenew(e.target.value);
-                                  }}
-                                  placeholder="First and Last Name"
-                                  style={{
-                                    color: "black",
-                                    border: "1px solid",
-                                    borderRadius: "5px",
-                                    padding: "10px",
-                                    boxShadow: "1px 2px 3px 2px black",
-                                    marginBottom: "30px",
-                                    marginRight: "10px",
-                                    width: "200px",
-                                  }}
-                                ></input>
-                                <p>* Name REQUIRED for renewal credit.</p>
-                             
-                                <input
-                                  name="user_name"
-                                  value={memberList[member].first_name}
-                                  style={{
-                                    color: "black",
-                                    border: "1px solid  #BF3312",
-                                    borderRadius: "5px",
-                                    padding: "10px",
-                                    boxShadow: "1px 5px 3px 5px #BF3312",
-                                    marginBottom: "30px",
-                                    marginRight: "10px",
-                                    width: "200px",
-                                    display: "none",
-                                  }}
-                                ></input>
-                                <input
-                                  name="user_middle"
-                                  value={memberList[member].middle_name}
-                                  style={{
-                                    color: "black",
-                                    border: "1px solid  #BF3312",
-                                    borderRadius: "5px",
-                                    padding: "10px",
-                                    boxShadow: "1px 5px 3px 5px #BF3312",
-                                    marginBottom: "30px",
-                                    marginRight: "10px",
-                                    width: "200px",
-                                    display: "none",
-                                  }}
-                                ></input>
-                                <br></br>
-                                <input
-                                  name="user_last"
-                                  value={memberList[member].last_name}
-                                  style={{
-                                    color: "black",
-                                    border: "1px solid  #BF3312",
-                                    borderRadius: "5px",
-                                    padding: "10px",
-                                    boxShadow: "1px 5px 3px 5px #BF3312",
-                                    marginBottom: "30px",
-                                    marginRight: "10px",
-                                    width: "200px",
-                                    display: "none",
-                                  }}
-                                ></input>
-                                <input
-                                  name="user_email"
-                                  value={memberList[member].email}
-                                  style={{
-                                    color: "black",
-                                    border: "1px solid  #BF3312",
-                                    borderRadius: "5px",
-                                    padding: "10px",
-                                    boxShadow: "1px 5px 3px 5px #BF3312",
-                                    marginBottom: "30px",
-                                    marginRight: "10px",
-                                    width: "200px",
-                                    display: "none",
-                                  }}
-                                ></input>
-                                <br></br>
-                                <input
-                                  name="user_phone"
-                                  value={memberList[member].phone}
-                                  style={{
-                                    color: "black",
-                                    border: "1px solid  #BF3312",
-                                    borderRadius: "5px",
-                                    padding: "10px",
-                                    boxShadow: "1px 5px 3px 5px #BF3312",
-                                    marginBottom: "30px",
-                                    marginRight: "10px",
-                                    width: "200px",
-                                    display: "none",
-                                  }}
-                                ></input>
-                                <input
-                                  name="store"
-                                  value={store}
-                                  style={{
-                                    color: "black",
-                                    border: "1px solid  #BF3312",
-                                    borderRadius: "5px",
-                                    padding: "10px",
-                                    boxShadow: "1px 2px 3px 2px #BF3312",
-                                    marginBottom: "30px",
-                                    marginRight: "10px",
-                                    width: "200px",
-                                    display: "none",
-                                  }}
-                                ></input>
-                                <br></br>
-                                <Popup
-                                  content="This Action Can NOT be undone."
-                                  trigger={
-                                    <input
-                                      style={{
-                                        color: "black",
-                                        backgroundColor: "#F3F3FC",
-                                        border: "1px solid black",
-                                        borderRadius: "5px",
-                                        padding: "10px",
-
-                                        marginBottom: "30px",
-                                        marginRight: "10px",
-                                        boxShadow: "1px 2px 3px 2px black",
-                                        width: "230px",
-                                      }}
-                                      type="submit"
-                                      value="Renew Customer Membership"
-                                      onClick={() => {
-                                        ChangeRenewal(memberList[member].id);
-                                      }}
-                                    />
-                                  }
-                                ></Popup>
-                              </form>
-                            </Modal.Description>
-                            <Modal.Actions style={{ marginTop: "30px" }}>
-                            
-                              <h1>Click outside of the box to close.</h1>
-                            </Modal.Actions>
-                          </Modal.Content>
-                        </Modal>
-                      </Table.Cell>
-                      <Table.Cell>{memberList[member].first_name}</Table.Cell>
-
-                      <Table.Cell> {memberList[member].last_name}</Table.Cell>
-
-                      <Table.Cell>{joindate1}</Table.Cell>
-                      <Table.Cell>{expiring}</Table.Cell>
-                    </Table.Row>
-                  );
-                })}
-            </Table.Body>
-          </Table>
-        </Card.Content>
-      </Card> */}
+    
       <br></br>
       {/* REGISTER NEW CUSTOMER */}
       <form
         className="register-modal"
         ref={form}
-        onSubmit={sendEmail}
-        // style={{ marginLeft: "10%", marginRigth: "10%", width: "1500px" }}
+        onSubmit={sendEmail} 
       >
         {" "}
         <h2>Sign Up Form</h2>

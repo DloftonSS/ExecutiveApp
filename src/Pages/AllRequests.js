@@ -14,8 +14,7 @@ import {
   Grid,
 } from "semantic-ui-react";
 import { Link, useParams } from "react-router-dom";
-import Axios from "axios";
-import Header from "../components/header";
+import Axios from "axios"; 
 import "./CSS/AllRequests.css";
 
 // import { Link } from "react-router-dom";
@@ -206,7 +205,7 @@ function AllRequests(props) {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <div
         className="newMembers"
         style={{ padding: "1%", width: "100%", backgroundColor: "#F3F3FC" }}

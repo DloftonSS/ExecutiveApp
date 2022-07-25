@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Header from "../components/header";
+import React, { useState } from "react"; 
 // import Navigation from "../components/navigation";
 import { Button, Form, Input } from "semantic-ui-react";
 import Axios from "axios";
@@ -54,8 +53,7 @@ function AddMember() {
       });
   };
   return (
-    <div className="newMember">
-      <Header />
+    <div className="newMember"> 
       {/* <Navigation /> */}
       {/* <div>This will be for adding the members to the Database.</div> */}
 
