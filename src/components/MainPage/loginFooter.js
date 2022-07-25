@@ -12,7 +12,7 @@ function LoginFooter() {
         {" "}
         <h1>
           NOT A MEMBER? CLICK{" "}
-          <span>
+          <span className="login-title-emphasis">
             <a
               href="https://www.shoot-straight.com/executive-access-club/"
               target="_blank"

@@ -1,12 +1,8 @@
-span {
+.login-title-emphasis a{
     color: #dc1b29;
 }
 
-span a{
-    color: #dc1b29;
-}
-
-span a:hover{
+.login-title-emphasis a:hover{
     color: #dc1b29;
     text-decoration: underline;
 }

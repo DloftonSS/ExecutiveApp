@@ -1,7 +1,3 @@
-/* * {
-  border: 1px solid green;
-} */
-
 .underline {
   height: 5px;
   background-color: #dc1b29;
@@ -28,7 +24,7 @@
   background-color: black;
 }
 
-span {
+.login-title-emphasis {
   color: #dc1b29;
 }
 

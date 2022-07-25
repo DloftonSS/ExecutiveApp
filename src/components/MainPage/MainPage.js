@@ -9,7 +9,8 @@ function MainPage() {
       <div className="titleDiv">
         {" "}
         <h1>
-          AN <span>EXCLUSIVE</span> BENEFITS PROGRAM FOR
+          AN <span className="login-title-emphasis">EXCLUSIVE</span> BENEFITS
+          PROGRAM FOR
           <br />
           FIREARMS ENTHUSIASTS
         </h1>

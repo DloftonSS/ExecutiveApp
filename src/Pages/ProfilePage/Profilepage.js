@@ -222,6 +222,14 @@ const Profile = (props) => {
 
       {/* ************************************************************************************************************ end new profile page ************************************************************************************************************************* */}
       <Container fluid="md">
+        <Row className="header-banner">
+          <Col className="sign-out-profile-btn">
+            <a href="/">
+              SIGN OUT
+              <Icon name="sign-out" size="large"></Icon>
+            </a>
+          </Col>
+        </Row>
         <Row className="info-message-requests">
           <Col>
             {" "}
@@ -235,161 +243,186 @@ const Profile = (props) => {
               {" "}
               <img src={Product} className="header-logo"></img>
             </div>
-            <span style={{ float: "right", paddingRight: "10%" }}>
-              <a style={{ color: "black" }} href="/">
-                <Icon name="sign out alternate" size="large"></Icon>
-              </a>
-            </span>
-            <span
-              style={{
-                position: "relative",
-                float: "left",
-                paddingLeft: "10%",
-              }}
-            >
-              <Modal
-                onClose={() => setOpen(false)}
-                onOpen={() => setOpen(true)}
-                open={open}
-                trigger={
-                  <Icon
-                    name="edit"
-                    style={{ color: "black" }}
-                    size="large"
-                  ></Icon>
-                }
-                style={{
-                  margin: "0 auto",
-                  height: "80%",
-                  marginLeft: "5%",
-                }}
-              >
-                <Modal.Header>Edit Personal Details</Modal.Header>
-
-                <Modal.Content style={{ float: "center" }}>
-                  <Header>Email</Header>
-                  <input
-                    onChange={(y) => {
-                      setNewEmail(y.target.value);
-                    }}
-                    placeholder="example@email.com"
-                    Value={memberDetails.email}
-                    style={{
-                      height: "30px",
-                      width: "300px",
-                      marginBottom: "5px",
-                    }}
-                  ></input>
-                  <Button
-                    size="mini"
-                    color="black"
-                    onClick={() => {
-                      ChangeEmail(memberDetails.id);
-                    }}
-                  >
-                    Change Email
-                  </Button>
-                  <Header>Phone</Header>
-                  <input
-                    onChange={(u) => {
-                      setNewPhone(u.target.value);
-                    }}
-                    placeholder="000-000-0000"
-                    Value={memberDetails.phone}
-                    style={{
-                      height: "30px",
-                      width: "300px",
-                      marginBottom: "5px",
-                    }}
-                  ></input>
-                  <Button
-                    size="mini"
-                    color="black"
-                    onClick={() => {
-                      ChangePhone(memberDetails.id);
-                    }}
-                  >
-                    Change Phone
-                  </Button>
-                  <Header>Address</Header>
-                  <input
-                    onChange={(i) => {
-                      setNewAddress(i.target.value);
-                    }}
-                    placeholder="123 Main Street Orlando, FL 32808"
-                    Value={memberDetails.address}
-                    style={{
-                      height: "30px",
-                      width: "300px",
-                      marginBottom: "5px",
-                    }}
-                  ></input>
-                  <Button
-                    size="mini"
-                    color="black"
-                    onClick={() => {
-                      ChangeAddress(memberDetails.id);
-                    }}
-                  >
-                    Change Address
-                  </Button>
-                  <Header>Password</Header>
-                  <input
-                    onChange={(o) => {
-                      setNewPassword(o.target.value);
-                    }}
-                    placeholder="********"
-                    style={{
-                      height: "30px",
-                      width: "300px",
-                      marginBottom: "5px",
-                    }}
-                  ></input>
-
-                  <Button
-                    size="mini"
-                    color="black"
-                    onClick={() => {
-                      ChangePassword(memberDetails.id);
-                    }}
-                  >
-                    Change Password
-                  </Button>
-                  <Header>Profile Picture</Header>
-                  <form action="/" method="POST" encType="multiport/form-data">
-                    <input
-                      type="file"
-                      name="samepleFile"
-                      accept="image/*"
-                    ></input>
-                    <input type="submit" class="btn btn-primary"></input>
-                  </form>
-                </Modal.Content>
-                <Modal.Actions>
-                  <Button
-                    content="Done"
-                    labelPosition="right"
-                    icon="checkmark"
-                    onClick={() => setOpen(false)}
-                    positive
-                  />
-                </Modal.Actions>
-              </Modal>
-            </span>
+            <div style={{ height: "50px" }}></div>
+            <h3 className="section-titles">PROFILE INFORMATION</h3>
             <div className="personal-info-container">
               <h2 className="customer-name">
                 {memberDetails.first_name} {memberDetails.middle_name}{" "}
                 {memberDetails.last_name}
               </h2>
               <p className="peronal-info-inline">
-                Member ID: {memberDetails.number}
+                MEMBER ID: {memberDetails.number}
               </p>
               <p className="peronal-info-inline">
-                Preferred Store: {memberDetails.preferredStore}
+                PREFERRED STORE: {memberDetails.preferredStore}
               </p>
-              <p className="peronal-info-inline">{memberDetails.address}</p>
-              <p className="peronal-info-inline">{memberDetails.email}</p>
-              <p className="peronal-info-inline">{memberDetails.phone}</p>
+              <p className="peronal-info-inline">
+                ADDRESS: {memberDetails.address}
+              </p>
+              <p className="peronal-info-inline">
+                EMAIL: {memberDetails.email}
+              </p>
+              <p className="peronal-info-inline">
+                PHONE #: {memberDetails.phone}
+              </p>
+            </div>
+            <div className="edit-profile-btn-container">
+              <span className="edit-profile-btn">
+                <Modal
+                  onClose={() => setOpen(false)}
+                  onOpen={() => setOpen(true)}
+                  open={open}
+                  trigger={
+                    <span>
+                      <Icon
+                        name="edit"
+                        style={{ color: "black" }}
+                        size="large"
+                      ></Icon>
+                      <br></br>
+                      EDIT PROFILE
+                    </span>
+                  }
+                  style={{
+                    height: "80%",
+                    position: "fixed",
+                    left: "50%",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)",
+                    borderRadius: "0px",
+                  }}
+                >
+                  <Modal.Header className="edit-modal-header">
+                    Edit Personal Details
+                  </Modal.Header>
+
+                  <Modal.Content style={{ float: "center" }}>
+                    <Header className="edit-modal-field-title">Email</Header>
+                    <input
+                      onChange={(y) => {
+                        setNewEmail(y.target.value);
+                      }}
+                      placeholder="example@email.com"
+                      Value={memberDetails.email}
+                      style={{
+                        height: "30px",
+                        width: "300px",
+                        marginBottom: "5px",
+                        borderRadius: "0px",
+                        border: "2px solid black",
+                      }}
+                    ></input>
+                    <Button
+                      className="edit-modal-field-button"
+                      size="mini"
+                      color="black"
+                      onClick={() => {
+                        ChangeEmail(memberDetails.id);
+                      }}
+                    >
+                      Change Email
+                    </Button>
+                    <Header className="edit-modal-field-title">Phone</Header>
+                    <input
+                      onChange={(u) => {
+                        setNewPhone(u.target.value);
+                      }}
+                      placeholder="000-000-0000"
+                      Value={memberDetails.phone}
+                      style={{
+                        height: "30px",
+                        width: "300px",
+                        marginBottom: "5px",
+                        borderRadius: "0px",
+                        border: "2px solid black",
+                      }}
+                    ></input>
+                    <Button
+                      className="edit-modal-field-button"
+                      size="mini"
+                      color="black"
+                      onClick={() => {
+                        ChangePhone(memberDetails.id);
+                      }}
+                    >
+                      Change Phone
+                    </Button>
+                    <Header className="edit-modal-field-title">Address</Header>
+                    <input
+                      onChange={(i) => {
+                        setNewAddress(i.target.value);
+                      }}
+                      placeholder="123 Main Street Orlando, FL 32808"
+                      Value={memberDetails.address}
+                      style={{
+                        height: "30px",
+                        width: "300px",
+                        marginBottom: "5px",
+                        borderRadius: "0px",
+                        border: "2px solid black",
+                      }}
+                    ></input>
+                    <Button
+                      className="edit-modal-field-button"
+                      size="mini"
+                      color="black"
+                      onClick={() => {
+                        ChangeAddress(memberDetails.id);
+                      }}
+                    >
+                      Change Address
+                    </Button>
+                    <Header className="edit-modal-field-title">Password</Header>
+                    <input
+                      onChange={(o) => {
+                        setNewPassword(o.target.value);
+                      }}
+                      placeholder="********"
+                      style={{
+                        height: "30px",
+                        width: "300px",
+                        marginBottom: "5px",
+                        borderRadius: "0px",
+                        border: "2px solid black",
+                      }}
+                    ></input>
+                    <Button
+                      className="edit-modal-field-button"
+                      size="mini"
+                      color="black"
+                      onClick={() => {
+                        ChangePassword(memberDetails.id);
+                      }}
+                    >
+                      Change Password
+                    </Button>
+                    <Header className="edit-modal-field-title">
+                      Profile Picture
+                    </Header>
+                    <form
+                      action="/"
+                      method="POST"
+                      encType="multiport/form-data"
+                    >
+                      <input
+                        type="file"
+                        name="samepleFile"
+                        accept="image/*"
+                      ></input>
+                      <input type="submit" class="btn btn-primary"></input>
+                    </form>
+                  </Modal.Content>
+                  <Modal.Actions>
+                    <Button
+                      content="Done"
+                      labelPosition="right"
+                      icon="checkmark"
+                      onClick={() => setOpen(false)}
+                      positive
+                    />
+                  </Modal.Actions>
+                </Modal>
+              </span>
             </div>
           </Col>
           <Col>
@@ -468,7 +501,7 @@ const Profile = (props) => {
                         />{" "}
                         {messageList[message].SenderName}
                       </p>
-                      <span style={{ color: "lightgray" }}> {update}</span>
+                      <span style={{ color: "#a9abad" }}> {update}</span>
 
                       <p className="message"> {messageList[message].Message}</p>
                       <p className="message-underline"></p>
@@ -498,56 +531,76 @@ const Profile = (props) => {
             </div>
           </Col>
         </Row>
-        {/* <Row className="market-calendar-section">
+        <Row className="market-section">
           {" "}
-          <h3 className="section-titles">MARKET</h3>
-          <div className="card-catalog-container trythis">
-            {Object.keys(catalog).map((logs, i) => {
-              return (
-                <div className="card-catalog-container">
-                  <Image wrapped ui={false} />{" "}
-                  <img src={NoImage} className="img-height"></img>
-                  <Card.Content style={{ marginLeft: "5%" }}>
-                    <Card.Header style={{ fontSize: "20px" }}>
-                      {catalog[logs].Make}
-                    </Card.Header>
-                    <Card.Meta>{catalog[logs].Category}</Card.Meta>
-                    <Card.Meta>{catalog[logs].Model}</Card.Meta>
-                    <Card.Description style={{ color: "red" }}>
-                      <span className="date">{catalog[logs].Price}</span>
-                    </Card.Description>
-                    <Card.Description>{catalog[logs].Sku}</Card.Description>
-                  </Card.Content>
-                  <Row style={{ paddingLeft: "10%", paddingTop: "5%" }}>
-                    <Col>
-                      {" "}
-                      <Icon
-                        name="thumbs up"
-                        className="catalog-options-icons"
-                      />
-                      {catalog[logs].Likes}
-                    </Col>
-                    <Col>
-                      <p className="catalog-options-icons">
+          <Col>
+            <div style={{ height: "25px" }}></div>
+            <h3 className="section-titles">MARKET</h3>
+            <div className="market-items-container">
+              {Object.keys(catalog).map((logs, i) => {
+                return (
+                  <div className="card-catalog-container">
+                    <Image wrapped ui={false} />{" "}
+                    <img src={NoImage} className="img-height"></img>
+                    <Card.Content
+                      style={{ marginLeft: "5%", marginRight: "5%" }}
+                    >
+                      <Card.Header
+                        className="item-details"
+                        style={{ fontSize: "20px" }}
+                      >
+                        {catalog[logs].Make}
+                      </Card.Header>
+                      <Card.Meta className="item-details">
+                        {catalog[logs].Category}
+                      </Card.Meta>
+                      <Card.Meta className="item-details">
+                        {catalog[logs].Model}
+                      </Card.Meta>
+                      <Card.Description
+                        className="item-details"
+                        style={{ color: "#dc1b29" }}
+                      >
+                        <span className="date">{catalog[logs].Price}</span>
+                      </Card.Description>
+                      <Card.Description className="item-details">
+                        {catalog[logs].Sku}
+                      </Card.Description>
+                    </Card.Content>
+                    <Row style={{ textAlign: "center" }}>
+                      {/* <Col>
                         {" "}
-                        Avail: {catalog[logs].Quantity}
-                      </p>
-                    </Col>
-                    <Col>
-                      <Icon
-                        name="cart"
-                        className="catalog-options-icons"
-                        onClick={() => {
-                          AddToRequests(catalog[logs].id);
-                        }}
-                      />
-                    </Col>
-                  </Row>
-                </div>
-              );
-            })}
-          </div>
-          <Row>
+                        <Icon
+                          name="thumbs up"
+                          className="catalog-options-icons"
+                        />
+                        {catalog[logs].Likes}
+                      </Col> */}
+                      <Col>
+                        <p className="item-details">
+                          {" "}
+                          AVAILABLE: {catalog[logs].Quantity}
+                        </p>
+                      </Col>
+                    </Row>
+                    <Row style={{ textAlign: "center" }}>
+                      <div>
+                        <button
+                          className="request-item-btn"
+                          onClick={() => {
+                            AddToRequests(catalog[logs].id);
+                          }}
+                        >
+                          Request Item
+                        </button>
+                      </div>
+                    </Row>
+                  </div>
+                );
+              })}
+            </div>
+          </Col>
+          {/* <Row>
             <Col></Col>
             <Col>
               <Icon name="arrow left" size="large"></Icon>
@@ -560,9 +613,9 @@ const Profile = (props) => {
               ></Icon>
             </Col>
             <Col></Col>
-          </Row>
-        </Row> */}
-        <Row>
+          </Row> */}
+        </Row>
+        <Row className="calendar-section">
           {" "}
           <div className="center-section">
             <h3 className="section-titles" style={{ paddingTop: "5%" }}>

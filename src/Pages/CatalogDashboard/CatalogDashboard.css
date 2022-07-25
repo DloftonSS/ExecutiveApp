@@ -6,20 +6,17 @@ Card .catalog-items {
 }
 
 .card-catalog-container {
-  box-shadow: 0px 0px 5px 3px rgb(60, 60, 60);
-  /* box-shadow: 0px 0px 5px 3px rgb(129, 0, 0); */
-  border-radius: 10px;
   margin: 1%;
 }
 
-.trythis {
-  /* height: 300px; */
-  /* width: 400px; */
+/* .trythis {
+  height: 300px;
+  width: 400px;
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   overflow-y: hidden;
-}
+} */
 
 .img-height {
   /* height: 150px;

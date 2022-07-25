@@ -5,12 +5,56 @@
   padding: 1%;
   width: 100%;
 }
+
+.header-banner{
+  height: 50px;
+  background-color: #dc1b29;
+}
+
 .info-message-requests {
   background-color: white;
 }
-.market-calendar-section {
+
+.sign-out-profile-btn{
+  text-align: right;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.sign-out-profile-btn a{
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+.sign-out-profile-btn a:hover{
+  text-decoration: none;
+  color: black;
+}
+
+.icon{
+  margin: 0.25rem !important;
+}
+
+.edit-profile-btn{
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+.edit-profile-btn span:hover{
+  cursor: pointer;
+}
+
+.edit-profile-btn-container {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.market-section {
   background-color: white;
 }
+
 .header-section {
   margin: auto;
   justify-content: center;
@@ -24,23 +68,23 @@
 }
 .header-logo {
   width: 300px;
-  padding-bottom: 10%;
   padding-top: 15%;
 }
 .center-section {
   background-color: white; 
   padding-bottom: 5%; 
   overflow: scroll;
+  font-family: 'Open Sans', sans-serif;
 }
 .center-section::-webkit-scrollbar {
   display: none;
 }
 .personal-info-container {
   text-align: center;
-  margin-top: 25%;
   border: 2px solid black;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 1em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }
 .peronal-info-inline {
   color: black;
@@ -48,9 +92,14 @@
 .customer-name {
   text-align: center;
   color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 h3.section-titles {
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }
 h3.gallery-text {
   color: black;
@@ -59,34 +108,60 @@ h3.gallery-text {
   overflow: scroll;
   width: 100%;
   height: 350px; 
+  border: 2px solid black;
 }
 .table-container-div::-webkit-scrollbar {
   display: none;
 }
+
+.table-container-div .table tbody tr td{
+  border-bottom: 1px solid #dc1b29 !important;
+}
+
 .right-section-title {
   color: black;
   text-align: center;
 }
 
-.trythis::-webkit-scrollbar {
-  display: none;
-}
-
-.trythis {
+.market-items-container {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   overflow-y: hidden;
-  padding: 10px;
+  border: 2px solid black;
 } 
-
-.MemberPhoto { 
-}
 
 .editImage {
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
 }
+
+.edit-modal-header{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.edit-modal-field-title{
+  font-family: 'Open Sans', sans-serif !important;
+  text-transform: uppercase !important;
+}
+
+.edit-modal-field-button{
+  font-family: 'Open Sans', sans-serif !important;
+  text-transform: uppercase !important;
+  border-radius: 0px !important;
+  border: 1px solid black !important;
+  margin-left: 5px !important;
+}
+
+.edit-modal-field-button:hover{
+  color: black !important;
+  background-color: white !important;
+  transition-duration: 200ms !important;
+  border: 1px solid black !important;
+}
+
 .request-style {
   color: black;
   text-align: center;
@@ -95,6 +170,7 @@ h3.gallery-text {
   padding: 0%; 
   color: black;
 }
+
 .scroll-hidden {
   height: 300px;
 }
@@ -131,10 +207,6 @@ p.message {
 .message-name-date {
   color: black;
 }
-.messages-div-section {
-}
-.request-div-section { 
-}
 
 .request-container{
   padding: 10px;
@@ -143,6 +215,8 @@ p.message {
   overflow-y: scroll;
   overflow-x: hidden;
   border: 2px solid black;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }
 
 .message-container {
@@ -151,6 +225,8 @@ p.message {
   width: 100%;
   overflow: scroll;
   border: 2px solid black;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }
 .message-div {
   padding: 10px;
@@ -182,60 +258,92 @@ p.message {
   padding: 1%;
   margin-bottom: 5%;
   margin-top: 2%; 
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px solid black;
 }
-for {
-  width: 20%;
+
+.message-button:hover{
+  background-color: black;
+  color: white;
+  transition-duration: 200ms;
 }
+
 form {
   width: 100% !important;
 }
+
 .card-catalog-container {
-  background-color: white;
+  background-color: black;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  border: 2px solid black;
 }
+
+.item-details{
+  margin-bottom: 3%;
+}
+
+.request-item-btn{
+  text-transform: uppercase;
+  color: #a9abad;
+  background-color: black;
+  border: 2px solid #a9abad;
+  margin-bottom: 1em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+.request-item-btn:hover{
+  color: white;
+  border: 2px solid white;
+  transition-duration: 200ms;
+}
+
 @media only screen and (max-width: 414px) {
   p.message {
     /* color: black; */
     width: 300px;
     padding-top: 1%;
   }
-  .message-name-date { 
-  }
-  .message-icon {
-    /* color: black; */
-  }
+
   .profileMain {
     background-color: white !important;
-    max-width: 100vw; 
   }
 
   .message-container {
     padding: 10px;
-    /* width: 93vw; */
     height: 500px;
   }
-  .request-scroll {
-    /* width: 93vw; */
-  }
+
   .message-div {
     padding: 10px;
   }
+
+  .edit-modal-field-button{
+    margin-left: 0 !important;
+  }
+
   .center-section {
-    background-color: white !important;
-    width: 100vw;
     margin-top: 10%;
- 
   }
   .table-container-div {
     padding-bottom: 20%;
-    /* width: 93vw;  */
   }
+
+  .table-container-div .table tbody tr {
+    border-bottom: 1px solid #dc1b29 !important;
+  }
+
   .right-side-section { 
   }
   .right-section-title { 
     text-align: center; 
   }
   .header-logo {
-    padding-top: 25%;
+    padding-top: 15%;
     align-items: center;
     justify-content: center;
   }
@@ -250,12 +358,10 @@ form {
   .scroll-hidden::-webkit-scrollbar {
     display: none;
   }
-  .catalog-options-icons {
-    padding: 0%; 
-    color: black;
-  }
+
   input.message-textbox { 
     height: 50px; 
+    margin-top: 1em;
   }
 
   .message-button { 
@@ -282,6 +388,11 @@ form {
 
 img {
   width: 200px; 
+}
+
+.img-height{
+  background-color: white;
+  margin: 1em;
 }
 
 .slant {
