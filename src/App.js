@@ -21,6 +21,7 @@ import LoginFooter from "./components/MainPage/loginFooter";
 import StoreFront from "./Pages/StoreFront";
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import Profile from "./Pages/ProfilePage/Profilepage";  
+import ProfileLayout from "./Pages/ProfilePage/ProfileLayout/ProfileLayout"
 import Axios from "axios";
 import { Header, Modal } from "semantic-ui-react";
 import React, { useState, useRef } from "react";
@@ -428,6 +429,7 @@ function App(props) {
           exact
           component={ExecutiveAccount}
         />
+        <Route path="/profileLayout" exact component={ProfileLayout}/>
 
         {/* PROTECTED ROUTES */}
         {/* <Route */}
